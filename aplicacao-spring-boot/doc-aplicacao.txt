@@ -1,0 +1,9 @@
+http://localhost:8080/resenha/cadastrar-locatario/vinicius/vinicius@email/adm1
+
+http://localhost:8080/resenha/cadastrar-jogador/gabriel/gabriel@email.com/teste1
+
+http://localhost:8080/resenha/exibir-lista
+
+http://localhost:8080/resenha/entrar/gabriel/teste1
+
+http://localhost:8080/resenha/sair/gabriel
