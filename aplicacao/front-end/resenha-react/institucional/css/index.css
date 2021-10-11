@@ -2,3 +2,29 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    font-family: 'Spartan', sans-serif;
+}
+
+.sub-header {
+    height: 245px;
+    padding-top: 90px;
+    background-image: url("../img/quadras-poliesportivas.jpg");
+    background-size: cover;
+}
+
+.sub-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-header label {
+    width: 40%;
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 55px;
+    color: #F3FAFE;
+}
