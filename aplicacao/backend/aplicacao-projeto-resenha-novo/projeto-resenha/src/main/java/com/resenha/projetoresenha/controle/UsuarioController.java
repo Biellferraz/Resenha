@@ -14,37 +14,6 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository repository;
-
-//    @GetMapping
-//    public List<Usuario> getUsuario() {
-//        return repository.findAll();
-//    }
-//
-//    @PostMapping
-//    public String postUsuario(@RequestBody Usuario novoUsuario) {
-//        repository.save(novoUsuario);
-//        return "Usuario cadastrado com sucesso";
-//    }
-//
-//    @GetMapping("/{id}")
-//    public Usuario getUsuario(@PathVariable int id) {
-//        return repository.findById(id).get();
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public String deleteUsuario(@PathVariable int id) {
-//        repository.deleteById(id);
-//        return "Usuario excluído com sucesso";
-//    }
-//
-//    @PutMapping("/{id}")
-//    public String putUsuario(@PathVariable int id,
-//                             @RequestBody Usuario usuarioAlterado) {
-//        usuarioAlterado.setId(id);
-//        repository.save(usuarioAlterado);
-//        return "Usuario atualizado com sucesso";
-//    }
-
     @GetMapping
     public ResponseEntity getUsuarios() {
         List<Usuario> usuarios = repository.findAll();
@@ -81,17 +50,23 @@ public class UsuarioController {
         }
         return ResponseEntity.status(404).build();
     }
-
-//    @GetMapping("/letra/{id}")
-//    public ResponseEntity getLetra(@PathVariable int id){
-//        if (repository.existsById(id)){
-//            Musica musica = repository.findById(id).get();
-//            return ResponseEntity.status(200)
-//                    .header("content-type", "plain/text")
-//                    .body(musica.getLetra());
-//        }
-//        return ResponseEntity.status(404).build();
-//    }
-
+    @GetMapping("/relatorio/{id}")
+    public ResponseEntity getRelatorio(@PathVariable int id) {
+        if (repository.existsById(id)) {
+            Usuario usuario = repository.findById(id).get();
+            return ResponseEntity
+                    .status(200)
+                    .header("content-type", "plain/text")
+                    .body(String.format("Relatorio do usuario: %d\n" +
+                            "Nome: %s\n" +
+                            "Sobrenome: %s\n" +
+                            "Email: %s\n" +
+                            "Senha: %s\n" +
+                            "Cpf: %s\n" +
+                            "Telefone: %s\n", id, usuario.getNome(), usuario.getSobrenome(), usuario.getEmail(),
+                            usuario.getSenha(), usuario.getCpf(), usuario.getTelefone()));
+        }
+        return ResponseEntity.status(404).build();
+    }
 
 }
