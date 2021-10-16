@@ -156,6 +156,36 @@ body {
   text-transform: uppercase;
   color: #f3fafe;
 }
+.components-cpf {
+  position: absolute;
+  width: 43px;
+  height: 55px;
+  left: 10px;
+  top: 390px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 55px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #f3fafe;
+}
+.components-telefone {
+  position: absolute;
+  width: 43px;
+  height: 55px;
+  left: 10px;
+  top: 480px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 55px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #f3fafe;
+}
 .components-input-nome {
   position: relative;
   padding: 15px 0;
@@ -176,6 +206,41 @@ body {
   padding: 15px 0;
   left: 10px;
   top: 20px;
+  width: 200%;
+}
+.components-input-senha {
+  position: relative;
+  padding: 15px 0;
+  left: 10px;
+  top: 65px;
+  width: 200%;
+}
+.components-input-confirmarSenha {
+  position: relative;
+  padding: 15px 0;
+  left: 220px;
+  top: 6px;
+  width: 100%;
+}
+.components-input-cpf {
+  position: relative;
+  padding: 15px 0;
+  left: 10px;
+  top: 40px;
+  width: 200%;
+}
+.components-input-telefone {
+  position: relative;
+  padding: 15px 0;
+  left: 10px;
+  top: 60px;
+  width: 200%;
+}
+.components-button {
+  position: relative;
+  padding: 15px 0;
+  left: 10px;
+  top: 60px;
   width: 200%;
 }
 .form__nome {
@@ -206,6 +271,54 @@ body {
 .form__email {
   font-family: inherit;
   width: 220%;
+  border: 0;
+  border-bottom: 2px solid gray;
+  outline: 0;
+  font-size: 10px;
+  color: white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form__senha {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid gray;
+  outline: 0;
+  font-size: 10px;
+  color: white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+ .form__confirmarSenha {
+  font-family: inherit;
+  width: 200%;
+  border: 0;
+  border-bottom: 2px solid gray;
+  outline: 0;
+  font-size: 10px;
+  color: white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form__telefone {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid gray;
+  outline: 0;
+  font-size: 10px;
+  color: white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}   
+.form__cpf {
+  font-family: inherit;
+  width: 100%;
   border: 0;
   border-bottom: 2px solid gray;
   outline: 0;
