@@ -141,7 +141,142 @@ body {
 
 /* FIM HOME */
 
+/*SOBRE */
+
 .sobre {
     height: 770px;
     background-color: #1B2024;
+
+}
+
+.logo-sobre{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+}
+.logo-solo {
+    margin-left: 60px;
+}
+
+.sobre-content {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    margin-left: 10px;
+    justify-content: flex-start;
+    margin-left: 30px;
+    align-items: flex-start;
+    
+     
+    width: 100%;
+}
+
+.sobre-content-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    height: 40%;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    
+}
+
+.sobre-content-header label{
+    border-bottom: 2px solid #8FD5FE;
+    
+}
+
+.sobre-content2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.sobre-content-text-principal{
+    margin-left: 60px;
+
+}
+
+.sobre-img {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    float: right;
+}
+
+
+.sobre-content-text {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    width: 100%;
+    height: 27%;
+    color: white;
+
+    
+}
+
+.sobre-content-text p{
+    margin-left: 25px;
+}
+
+.sobre-content-text2 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    width: 100%;
+    height: 27%;
+    color: white;
+}
+
+.sobre-content-text2 p{
+    margin-left: 25px;
+}
+
+.sobre-content-text3 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+    width: 100%;
+    height: 30%;
+    color: white;
+    
+}
+
+.sobre-content-text3 p{
+    margin-left: 25px;
+}
+
+.sobre-content-text4 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    width: 100%;
+    height: 30%;
+    color: white;
+}
+
+.sobre-content-text4 p{
+    margin-left: 30px;
 }
