@@ -5,6 +5,7 @@
 
 body {
     font-family: 'Spartan', sans-serif;
+    background-color: #F3FAFE;
 }
 
 /* SUB-HEADER */
@@ -142,20 +143,19 @@ body {
 /* FIM HOME */
 
 /*SOBRE */
-
 .sobre {
     height: 770px;
     background-color: #1B2024;
-
 }
 
-.logo-sobre{
+.logo-sobre {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 20%;
     width: 100%;
 }
+
 .logo-solo {
     margin-left: 60px;
 }
@@ -168,8 +168,8 @@ body {
     justify-content: flex-start;
     margin-left: 30px;
     align-items: flex-start;
-    
-     
+
+
     width: 100%;
 }
 
@@ -182,22 +182,22 @@ body {
     text-align: center;
     font-size: 32px;
     font-weight: 800;
-    
+
 }
 
-.sobre-content-header label{
+.sobre-content-header label {
     border-bottom: 2px solid #8FD5FE;
-    
+
 }
 
-.sobre-content2{
+.sobre-content2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
 }
 
-.sobre-content-text-principal{
+.sobre-content-text-principal {
     margin-left: 60px;
 
 }
@@ -222,10 +222,10 @@ body {
     height: 27%;
     color: white;
 
-    
+
 }
 
-.sobre-content-text p{
+.sobre-content-text p {
     margin-left: 25px;
 }
 
@@ -242,7 +242,7 @@ body {
     color: white;
 }
 
-.sobre-content-text2 p{
+.sobre-content-text2 p {
     margin-left: 25px;
 }
 
@@ -257,10 +257,10 @@ body {
     width: 100%;
     height: 30%;
     color: white;
-    
+
 }
 
-.sobre-content-text3 p{
+.sobre-content-text3 p {
     margin-left: 25px;
 }
 
@@ -277,6 +277,106 @@ body {
     color: white;
 }
 
-.sobre-content-text4 p{
+.sobre-content-text4 p {
     margin-left: 30px;
 }
+
+/* FIM SOBRE */
+
+/* FUNCIONALIDADES */
+.funcionalidades {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 770px;
+}
+
+.funcionalidades-container {
+    width: 95%;
+    height: 85%;
+}
+
+.funcionalidades-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12%;
+}
+
+.funcionalidades-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-bottom: 4px solid #1B2024;
+}
+
+.funcionalidades-header-container label {
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-left: 20px;
+}
+
+.funcionalidades-content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.funcionalidades-content-box-A {
+    width: 30%;
+    height: 40%;
+}
+
+.funcionalidades-content-box-B {
+    width: 30%;
+    height: 40%;
+    margin-top: 20px;
+}
+
+.funcionalidades-box-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 25%;
+}
+
+.funcionalidades-box-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-bottom: 3px solid #61C4FF;
+}
+
+.funcionalidades-box-header-container label {
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-left: 20px;
+}
+
+.funcionalidades-box-text {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 26px;
+    text-align: justify;
+}
+
+/* FIM FUNCIONALIDADES ? */
+
+/* NOSSA EQUIPE */
+.equipe {
+    height: 770px;
+    background-color: #1B2024;
+}
+
+/* FIM NOSSA EQUIPE */
