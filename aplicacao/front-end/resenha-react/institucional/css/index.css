@@ -399,8 +399,6 @@ body {
     justify-content: flex-start;
     margin-left: 30px;
     align-items: flex-start;
-
-
     width: 100%;
 }
 
@@ -413,15 +411,12 @@ body {
     text-align: center;
     font-size: 32px;
     font-weight: 800;
-
 }
 
 .equipe-fotos {
     margin: 100px;
-    justify-content:center;
+    justify-content: center;
     text-align: center;
-     
-
 }
 
 .container-equipe {
@@ -429,22 +424,348 @@ body {
     height: 400px;
     align-items: center;
     justify-content: space-around;
-
 }
+
 .equipe-content-fotos {
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     height: 55px;
-    
-
 }
 
-
-
-
-
-
-
 /* FIM NOSSA EQUIPE */
+
+/* CONTATO */
+.contato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 770px;
+    background-image: url("../img/background-contato.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contato-container {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: 85%;
+}
+
+.contato-container-side-A {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.contato-slogan {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 70px;
+}
+
+.contato-slogan img {
+    height: 122px;
+}
+
+.contato-slogan label {
+    width: 100%;
+    font-size: 21px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #F3FAFE;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.contato-container-side-B {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.contato-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 470px;
+    height: 670px;
+    border-radius: 9px;
+    background-color: #1B2024;
+}
+
+.contato-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 82%;
+    height: 90%;
+}
+
+.contato-form-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.contato-form-title label {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 800;
+    margin-left: 10px;
+    color: #F3FAFE;
+}
+
+.contato-form-subtitle {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    margin-top: 10px;
+    color: #F3FAFE;
+}
+
+.contato-form-body {
+    /* background-color: rgb(14, 44, 44); */
+    height: 91%;
+}
+
+.contato-form-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 95%;
+}
+
+.contato-form-nome {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    color: #F3FAFE;
+}
+
+.contato-form-nome label {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.contato-form-nome input {
+    font-family: 'Spartan';
+    font-weight: 600;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #8FD5FE;
+    margin-top: 10px;
+    outline: none;
+    color: #F3FAFE;
+}
+
+.contato-form-email {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    color: #F3FAFE;
+}
+
+.contato-form-email label {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.contato-form-email input {
+    font-family: 'Spartan';
+    font-weight: 600;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #8FD5FE;
+    margin-top: 10px;
+    outline: none;
+    color: #F3FAFE;
+}
+
+.contato-form-telefone {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    color: #F3FAFE;
+}
+
+.contato-form-telefone label {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.contato-form-telefone input {
+    width: 50%;
+    font-family: 'Spartan';
+    font-weight: 600;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #8FD5FE;
+    margin-top: 10px;
+    outline: none;
+    color: #F3FAFE;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.contato-form-cep {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contato-form-cidade {
+    width: 65%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    color: #F3FAFE;
+}
+
+.contato-form-cidade label {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.contato-form-cidade input {
+    font-family: 'Spartan';
+    font-weight: 600;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #8FD5FE;
+    margin-top: 10px;
+    outline: none;
+    color: #F3FAFE;
+}
+
+.contato-form-uf {
+    width: 30%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    color: #F3FAFE;
+}
+
+.contato-form-uf label {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.contato-form-uf input {
+    font-family: 'Spartan';
+    font-weight: 600;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #8FD5FE;
+    margin-top: 10px;
+    outline: none;
+    color: #F3FAFE;
+}
+
+.contato-form-msg {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    color: #F3FAFE;
+}
+
+.contato-form-msg label {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.contato-form-msg textarea {
+    display: flex;
+    text-align: start;
+    width: 100%;
+    height: 87px;
+    font-family: 'Spartan';
+    font-weight: 600;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: 2px solid #8FD5FE;
+    border-radius: 9px;
+    margin-top: 10px;
+    padding: 8px 10px 0 10px;
+    outline: none;
+    color: #F3FAFE;
+}
+
+.contato-form-buttons {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contato-form-sendbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+}
+
+.contato-form-sendbutton button {
+    width: 100%;
+    height: 40px;
+    font-family: 'Spartan';
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid #8FD5FE;
+    border-radius: 9px;
+    color: #F3FAFE;
+}
+
+.contato-form-clearbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.contato-form-clearbutton button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    font-family: 'Spartan';
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid #8FD5FE;
+    border-radius: 9px;
+    color: #F3FAFE;
+}
+
+/* FIM CONTATO */
