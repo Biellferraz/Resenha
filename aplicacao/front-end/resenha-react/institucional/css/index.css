@@ -8,6 +8,15 @@ body {
     background-color: #F3FAFE;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+#home a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* SUB-HEADER */
 .sub-header {
     height: 245px;
@@ -131,6 +140,14 @@ body {
     height: 40px;
     font-size: 18px;
     font-weight: 700;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.home-button:hover {
+    background-color: #0DA5FF;
+    color: white;
+    transition: 0.1s;
 }
 
 .home-img2 {
@@ -144,7 +161,7 @@ body {
 
 /*SOBRE */
 .sobre {
-    height: 770px;
+    height: 1000px;
     background-color: #1B2024;
 }
 
@@ -288,12 +305,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 770px;
+    height: 900px;
 }
 
 .funcionalidades-container {
     width: 95%;
-    height: 85%;
+    height: 75%;
 }
 
 .funcionalidades-header {
@@ -350,9 +367,10 @@ body {
 .funcionalidades-box-header-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100%;
+    width: 100%;
     border-bottom: 3px solid #61C4FF;
 }
 
@@ -441,7 +459,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 770px;
+    height: 900px;
     background-image: url("../img/background-contato.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -742,6 +760,7 @@ input::-webkit-inner-spin-button {
     background-color: transparent;
     border: 2px solid #8FD5FE;
     border-radius: 9px;
+    cursor: pointer;
     color: #F3FAFE;
 }
 
@@ -765,6 +784,7 @@ input::-webkit-inner-spin-button {
     background-color: transparent;
     border: 2px solid #8FD5FE;
     border-radius: 9px;
+    cursor: pointer;
     color: #F3FAFE;
 }
 

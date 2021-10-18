@@ -6,7 +6,19 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #1B2024;
+    background-color: #15171A;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 15%;
+}
+
+.logo img {
+    height: 65px;
 }
 
 .nav-bar {
@@ -30,6 +42,14 @@ header {
     font-size: 14px;
     font-weight: 800;
     color: #F3FAFE;
+    text-transform: none;
+    text-decoration: none;
+    transition: 0.1s;
+}
+
+.nav-options label:hover {
+    color: #8FD5FE;
+    transition: 0.1s;
 }
 
 .nav-buttons {
