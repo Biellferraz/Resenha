@@ -328,3 +328,23 @@ body {
   background: transparent;
   transition: border-color 0.2s;
 }
+.contato-form-sendbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  left: 300px;
+}
+.contato-form-sendbutton button {
+  width: 100%;
+  height: 40px;
+  font-family: 'Spartan';
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 2px solid #8FD5FE;
+  border-radius: 9px;
+  color: #F3FAFE;
+  left: 100px;
+}
