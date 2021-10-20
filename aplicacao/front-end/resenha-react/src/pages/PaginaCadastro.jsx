@@ -33,9 +33,9 @@ function PaginaCadastro() {
 
           <div class="container-cadastro">
             <div class="corpo-cadastro">
-              <div class="components-logo">
+              <div class="components-logo-cadastro">
                 <img src={logoPessoa} alt="" />
-                <div class="components-leights">
+                <div class="components-leights-cadastro">
                   <h1>RESENHA</h1>
                 </div>
                 <div class="components-title">
@@ -49,10 +49,10 @@ function PaginaCadastro() {
                 <div class="components-sobrenome">
                   <p>SOBRENOME</p>
                 </div>
-                <div class="components-email">
+                <div class="components-email-cadastro">
                   <p>EMAIL</p>
                 </div>
-                <div class="components-senha">
+                <div class="components-senha-cadastro">
                   <p>SENHA</p>
                 </div>
                 <div class="components-confirmarSenha">
@@ -84,20 +84,20 @@ function PaginaCadastro() {
                     required
                   />
                 </div>
-                <div class="components-input-email">
+                <div class="components-input-email-cadastro">
                   <input
                     type="input"
-                    class="form__email"
+                    class="form__email_cadastro"
                     placeholder=""
                     name="email"
                     id="email"
                     required
                   />
                 </div>
-                <div class="components-input-senha">
+                <div class="components-input-senha-cadastro">
                   <input
                     type="password"
-                    class="form__senha"
+                    class="form__senha_cadastro"
                     placeholder=""
                     name="nome"
                     id="nome"
@@ -134,7 +134,7 @@ function PaginaCadastro() {
                     required
                   />
                 </div>
-                <div class="contato-form-sendbutton">
+                <div class="cadastro-form-sendbutton">
                   <button>CRIAR CONTA</button>
                 </div>
               </div>

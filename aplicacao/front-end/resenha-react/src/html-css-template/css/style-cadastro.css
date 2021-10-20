@@ -46,14 +46,14 @@ body {
   border-radius: 9.71741px;
   /* font-family: "Spartan", sans-serif; */
 }
-.components-logo {
+.components-logo-cadastro {
   position: absolute;
   width: 87.41px;
   height: 76.6px;
   left: 440px;
   top: 50px;
 }
-.components-leights {
+.components-leights-cadastro {
   position: absolute;
   width: 151.7px;
   height: 35.12px;
@@ -115,7 +115,7 @@ body {
   text-transform: uppercase;
   color: #f3fafe;
 }
-.components-email {
+.components-email-cadastro {
   position: absolute;
   width: 43px;
   height: 55px;
@@ -130,7 +130,7 @@ body {
   text-transform: uppercase;
   color: #f3fafe;
 }
-.components-senha {
+.components-senha-cadastro {
   position: absolute;
   width: 43px;
   height: 55px;
@@ -205,14 +205,14 @@ body {
   top: -16px;
   width: 100%;
 }
-.components-input-email {
+.components-input-email-cadastro {
   position: relative;
   padding: 15px 0;
   left: 10px;
   top: 20px;
   width: 200%;
 }
-.components-input-senha {
+.components-input-senha-cadastro {
   position: relative;
   padding: 15px 0;
   left: 10px;
@@ -272,7 +272,7 @@ body {
   background: transparent;
   transition: border-color 0.2s;
 }
-.form__email {
+.form__email_cadastro {
   font-family: inherit;
   width: 220%;
   border: 0;
@@ -284,7 +284,7 @@ body {
   background: transparent;
   transition: border-color 0.2s;
 }
-.form__senha {
+.form__senha_cadastro {
   font-family: inherit;
   width: 100%;
   border: 0;
@@ -332,15 +332,16 @@ body {
   background: transparent;
   transition: border-color 0.2s;
 }
-.contato-form-sendbutton {
-  display: flex;
+.cadastro-form-sendbutton {
+  position: absolute;
   justify-content: center;
   align-items: center;
-  width: 65%;
-  left: 300px;
+  width:  100%;
+  left: 70px;
+  top: 550px;
 }
-.contato-form-sendbutton button {
-  width: 100%;
+.cadastro-form-sendbutton button {
+  width: 300%;
   height: 40px;
   font-family: "Spartan";
   font-size: 14px;
@@ -350,5 +351,6 @@ body {
   border: 2px solid #8fd5fe;
   border-radius: 9px;
   color: #f3fafe;
-  left: 100px;
+  left: 400px;
+  top: 600px;
 }
