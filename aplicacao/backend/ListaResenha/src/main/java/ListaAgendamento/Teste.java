@@ -4,10 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Formatter;
-import java.util.FormatterClosedException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Teste {
 
@@ -32,7 +29,7 @@ public class Teste {
         try {
             for (int i = 0; i < lista.getTamanho(); i++) {
                 Agendamento agend = lista.getElemento(i);
-                saida.format("%d;%d;%.2f;%s\n",agend.getIdJogador(),agend.getIdQuadra(),agend.getPreco(),agend.getHoraDisponivel());
+                saida.format("%d;%d;%.2f;%s\n",agend.getIdJogador(),agend.getIdQuadra(),agend.getPreco(),agend.getHoraMarcada());
             }
         }
         catch (FormatterClosedException erro){
@@ -74,7 +71,7 @@ public class Teste {
 
         //Bloco try-catch para ler o arq
         try {
-            System.out.printf("%10s %10s %10s %20s \n","ID JOGADOR","ID QUADRA","PREÇO","HORA AGENDADA");
+            System.out.printf("%10s %10s %10s %20s \n","ID JOGADOR","ID QUADRA","PREÇO","HORA MARCADA");
             while (entrada.hasNext()){ // enquanto n for final do arq
                 Integer idJogador = entrada.nextInt();
                 Integer idQuadra = entrada.nextInt();
