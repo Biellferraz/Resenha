@@ -1,0 +1,69 @@
+.campo-form {
+    width: 48%;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    color: #F3FAFE;
+}
+
+.campo-form label {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.campo-form input {
+    font-family: 'Spartan';
+    font-weight: 600;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #8FD5FE;
+    margin-top: 10px;
+    outline: none;
+    color: #F3FAFE;
+    text-transform: none;
+    text-decoration: none;
+}
+
+.campo-form-extended {
+    width: 100%;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    color: #F3FAFE;
+}
+
+.campo-form-extended label {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.campo-form-extended input {
+    font-family: 'Spartan';
+    font-weight: 600;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #8FD5FE;
+    margin-top: 10px;
+    outline: none;
+    color: #F3FAFE;
+}
+
+/* Remove a estilização dos inputs com AutoComplete */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: "color 9999s ease-out, background-color 9999s ease-out";
+    transition-delay: 9999s;
+}
+
+/* Remove o spinner de inserir números em inputs em formato Number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
