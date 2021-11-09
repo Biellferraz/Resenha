@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../html-css-template/imagens/pessoa-logo.png";
-import logoQuadra from "../html-css-template/imagens/logo-quadra.png";
+import logo from "../html-css-template/img/pessoa-logo.png";
+import logoQuadra from "../html-css-template/img/logo-quadra.png";
 
 
 function PaginaLogin() {
