@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Usuario {
+public class Locatario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

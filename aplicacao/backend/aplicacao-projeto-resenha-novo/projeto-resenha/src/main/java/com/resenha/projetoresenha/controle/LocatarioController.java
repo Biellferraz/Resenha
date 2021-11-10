@@ -1,7 +1,7 @@
 package com.resenha.projetoresenha.controle;
 
-import com.resenha.projetoresenha.dominio.Usuario;
-import com.resenha.projetoresenha.repositorio.UsuarioRepository;
+import com.resenha.projetoresenha.dominio.Locatario;
+import com.resenha.projetoresenha.repositorio.LocatarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/resenha")
-public class UsuarioController {
+@RequestMapping("/locatario")
+public class LocatarioController {
 
     @Autowired
-    private UsuarioRepository repository;
+    private LocatarioRepository repository;
     @GetMapping
     public ResponseEntity getUsuarios() {
-        List<Usuario> usuarios = repository.findAll();
-        if(usuarios.isEmpty()){
+        List<Locatario> locatarios = repository.findAll();
+        if(locatarios.isEmpty()){
             return ResponseEntity.status(204).build();
         }
-        return ResponseEntity.status(200).body(usuarios);
+        return ResponseEntity.status(200).body(locatarios);
     }
     @PostMapping
-    public ResponseEntity postUsuarios(@RequestBody Usuario novoUsuario) {
-        repository.save(novoUsuario);
+    public ResponseEntity postUsuarios(@RequestBody Locatario novoLocatario) {
+        repository.save(novoLocatario);
         return ResponseEntity.status(201).build();
     }
     @GetMapping("/{id}")
@@ -42,10 +42,10 @@ public class UsuarioController {
     }
     @PutMapping("/{id}")
     public ResponseEntity putUsuarios(@PathVariable int id,
-                                    @RequestBody Usuario usuarioAlterado) {
+                                    @RequestBody Locatario locatarioAlterado) {
         if (repository.existsById(id)){
-            usuarioAlterado.setId(id);
-            repository.save(usuarioAlterado);
+            locatarioAlterado.setId(id);
+            repository.save(locatarioAlterado);
             return ResponseEntity.status(200).build();
         }
         return ResponseEntity.status(404).build();
@@ -53,7 +53,7 @@ public class UsuarioController {
     @GetMapping("/relatorio/{id}")
     public ResponseEntity getRelatorio(@PathVariable int id) {
         if (repository.existsById(id)) {
-            Usuario usuario = repository.findById(id).get();
+            Locatario locatario = repository.findById(id).get();
             return ResponseEntity
                     .status(200)
                     .header("content-type", "plain/text")
@@ -63,8 +63,8 @@ public class UsuarioController {
                             "Email: %s\n" +
                             "Senha: %s\n" +
                             "Cpf: %s\n" +
-                            "Telefone: %s\n", id, usuario.getNome(), usuario.getSobrenome(), usuario.getEmail(),
-                            usuario.getSenha(), usuario.getCpf(), usuario.getTelefone()));
+                            "Telefone: %s\n", id, locatario.getNome(), locatario.getSobrenome(), locatario.getEmail(),
+                            locatario.getSenha(), locatario.getCpf(), locatario.getTelefone()));
         }
         return ResponseEntity.status(404).build();
     }

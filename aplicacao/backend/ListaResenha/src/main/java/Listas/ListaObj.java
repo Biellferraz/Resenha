@@ -1,15 +1,21 @@
-package ListaQuadra;
+package Listas;
 
-public class ListaObj <T> {
+public class ListaObj <T> implements Iterator {
 
     // Atributos
     private T[] vetor;
     private int nroElem;
+    private int posicao;
+
 
     // Construtor
     public ListaObj(int tamanho) {
         vetor = (T[]) new Object[tamanho];
         nroElem = 0;
+        posicao = 0;
+    }
+    public ListaObj(T[] vetor) {
+        this.vetor = vetor;
     }
 
     // Métodos
@@ -34,6 +40,19 @@ public class ListaObj <T> {
             }
             System.out.println();
         }
+    }
+
+    public Object next(){
+        T var = vetor[posicao];
+        posicao++;
+        return var;
+    }
+
+    public boolean hasNext(){
+        if (nroElem >= vetor.length || vetor[posicao] == null){
+            return false;
+        }
+        return true;
     }
 
     public int busca(T elementoBuscado) {
@@ -79,3 +98,4 @@ public class ListaObj <T> {
     }
 
 }
+
