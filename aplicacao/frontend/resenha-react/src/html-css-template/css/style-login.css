@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-body {
+.imagem-login {
   font-family: "Spartan", sans-serif;
   background-image: url("../img/quadra-login.png");
   background-repeat: no-repeat;
