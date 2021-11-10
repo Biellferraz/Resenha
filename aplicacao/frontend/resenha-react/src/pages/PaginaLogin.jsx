@@ -1,6 +1,9 @@
 import React from "react";
-import logo from "../html-css-template/img/pessoa-logo.png";
-import logoQuadra from "../html-css-template/img/logo-quadra.png";
+import logo from "../html-css-template/img/logo-resenha2.svg";
+import logoQuadra from "../html-css-template/img/logo-quadra.svg";
+import TituloFormulario from "../components/titulo-form/TituloFormulario";
+import CampoFormularioExtended from "../components/campo-form/CampoFormularioExtended";
+import BotaoFormulario from "../components/botao-form/BotaoFormulario";
 
 
 function PaginaLogin() {
@@ -14,8 +17,8 @@ function PaginaLogin() {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <title>Faça login</title>
-          <link href="../css/style-login.css" rel="stylesheet" />
+          <title>Cadastre-se</title>
+          <link href="../css/style-login.css " rel="stylesheet" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link
@@ -27,58 +30,24 @@ function PaginaLogin() {
             rel="stylesheet"
           />
         </head>
-        <body class="imagem">
+        <body class="imagem-login">
           <div class="header-login">
             <img src={logo} alt="" />
           </div>
+
           <div class="container-login">
             <div class="corpo-login">
-              <div class="components-logo">
-                <img src={logoQuadra} alt="" />
-              </div>
-              <div class="components-leights">
-                <p>RESENHA</p>
-              </div>
-              <div class="components-lineone"></div>
-              <div class="components-linetwo"></div>
-              <div class="components-text">
-                <p>
-                  ACESSE JÁ NOSSA <b>APLICAÇÃO</b>
-                </p>
-              </div>
-              <div class="components-email">
-                <p>EMAIL</p>
-              </div>
-              <div class="components-senha">
-                <p>SENHA</p>
-              </div>
-              <div class="components-text-aviso">
-                <p>
-                  NÃO POSSUI UMA CONTA AINDA? <b>CADASTRE-SE AGORA</b>
-                </p>
-              </div>
-              <div class="contato-form-sendbutton">
-                <button>Enviar</button>
-              </div>
-              <div class="components-input-email">
-                <input
-                  type="input"
-                  class="form__email"
-                  placeholder=""
-                  name="email"
-                  id="email"
-                  required
-                />
-              </div>
-              <div class="components-input-senha">
-                <input
-                  type="input"
-                  class="form__senha"
-                  placeholder=""
-                  name="senha"
-                  id="senha"
-                  required
-                />
+              <div class="corpo-login-container">
+                <TituloFormulario img={logoQuadra} titulo="Resenha" subtitulo="Acesse já nossa aplicação" />
+                <form class="campo-form-login-container">
+                  <div class="campo-email-login">
+                    <CampoFormularioExtended nomeCampo="E-mail" type="email" id="email" name="email" />
+                  </div>
+                  <div class="campo-senha-login">
+                    <CampoFormularioExtended nomeCampo="Senha" type="password" id="passwrd" name="password" />
+                  </div>
+                </form>
+                <BotaoFormulario textoBotao="Entrar" textoFooter="Não possui conta ainda?" redirectFooter="CADASTRE-SE AGORA" />
               </div>
             </div>
           </div>

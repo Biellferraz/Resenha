@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../html-css-template/img/logo-quadra.png";
+import logo from "../html-css-template/img/logo-quadra.svg";
 import logoResenha from "../html-css-template/img/logo-resenha2.svg";
 import TituloFormulario from "../components/titulo-form/TituloFormulario";
 import CampoFormulario from "../components/campo-form/CampoFormulario";
@@ -45,7 +45,7 @@ function PaginaCadastro() {
                     <CampoFormulario nomeCampo="Sobrenome" type="text" id="sobrenome" name="sobrenome" />
                   </div>
                   <div class="campo-email">
-                    <CampoFormularioExtended nomeCampo="Email" type="email" id="email" name="email" />
+                    <CampoFormularioExtended nomeCampo="E-mail" type="email" id="email" name="email" />
                   </div>
                   <div class="campo-senha">
                     <CampoFormulario nomeCampo="Senha" type="password" id="senha" name="senha" />

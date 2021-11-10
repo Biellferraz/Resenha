@@ -2,204 +2,67 @@
   margin: 0;
   padding: 0;
 }
-.imagem {
-  background-image: url("../img/quadra-login.png");
-}
+
 body {
+  font-family: "Spartan", sans-serif;
+  background-image: url("../img/quadra-login.png");
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: "Spartan", sans-serif;
 }
+
 .header-login {
   position: absolute;
-  width: 158px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  width: 10%;
   height: 85px;
-  left: -26px;
-  top: 38px;
   background: #1b2024;
-  border-radius: 9.71741px;
+  border-radius: 0 10px 10px 0;
 }
-.header-login img {
-  position: absolute;
-  width: 75px;
-  height: 52.61px;
-  left: 27px;
-  top: 16px;
-}
+
 .container-login {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: red; */
   width: 100%;
   height: 100vh;
 }
+
 .corpo-login {
-  /* position: absolute; */
-  width: 516px;
-  height: 658px;
-  left: 425px;
-  top: 55px;
-  background: #1b2024;
-  border-radius: 9.71741px;
-}
-.components-logo {
-  position: absolute;
-  width: 40%;
-  height: 50%;
-  left: 580px;
-  top: 80px;
-}
-.components-leights {
-  position: absolute;
-  width: 210.47px;
-  height: 36.08px;
-  left: 525px;
-  top: 150px;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 34.3631px;
-  line-height: 46px;
   display: flex;
-  align-items: center;
-  text-align: center;
-  text-transform: uppercase;
-  color: #f3fafe;
-}
-.components-lineone {
-  position: absolute;
-  width: 71.3px;
-  height: 0px;
-  left: 480px;
-  top: 105px;
-  border: 1px solid #8fd5fe;
-}
-.components-linetwo {
-  position: absolute;
-  width: 71.3px;
-  height: 0px;
-  left: 680px;
-  top: 105px;
-  border: 1px solid #8fd5fe;
-}
-.components-text {
-  position: absolute;
-  width: 313px;
-  height: 56px;
-  left: 505px;
-  top: 190px;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 14px;
-  line-height: 30px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  text-transform: uppercase;
-  color: #f3fafe;
-}
-.components-email {
-  position: absolute;
-  width: 43px;
-  height: 55px;
-  left: 475px;
-  top: 270px;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 55px;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  color: #f3fafe;
-}
-.components-senha {
-  position: absolute;
-  width: 43px;
-  height: 55px;
-  left: 475px;
-  top: 350px;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 55px;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  color: #f3fafe;
-}
-.components-input-email {
-  position: relative;
-  padding: 15px 0;
-  left: 90px;
-  top: 300px;
-  width: 130%;
-}
-.components-input-senha {
-  position: relative;
-  padding: 15px 0;
-  left: 90px;
-  top: 320px;
-  width: 130%;
-}
-.form__email {
-  font-family: inherit;
-  width: 50%;
-  border: 0;
-  border-bottom: 2px solid gray;
-  outline: 0;
-  font-size: 10px;
-  color: white;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
-}
-.form__senha {
-  font-family: inherit;
-  width: 50%;
-  border: 0;
-  border-bottom: 2px solid gray;
-  outline: 0;
-  font-size: 10px;
-  color: white;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
-}
-.contato-form-sendbutton {
-  position: absolute;
   justify-content: center;
   align-items: center;
-  width:  60%;
-  left: 480px;
-  top: 500px;
+  width: 35%;
+  height: 70%;
+  background: #1b2024;
+  border-radius: 10px;
 }
-.contato-form-sendbutton button {
-  width: 40%;
-  height: 40px;
-  font-family: "Spartan";
-  font-size: 14px;
-  font-weight: 800;
-  text-transform: uppercase;
-  background-color: transparent;
-  border: 2px solid #8fd5fe;
-  border-radius: 9px;
-  color: #f3fafe;
-  left: 400px;
-  top: 600px;
+
+.corpo-login-container {
+  width: 80%;
+  height: 80%;
+  /* background-color: royalblue; */
 }
-.components-text-aviso {
-  position: absolute;
-  width: 255px;
-  height: 37px;
-  left: 520px;
-  top: 580px;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 20px;
+
+.campo-form-login-container {
   display: flex;
-  align-items: center;
-  text-align: center;
-  color: #f3fafe;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 65%;
+}
+
+.campo-email-login {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 0;
+}
+
+.campo-senha-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 50px;
 }
