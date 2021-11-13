@@ -1,25 +1,62 @@
 package com.resenha.projetoresenha.dominio;
 
+import javax.persistence.*;
+
+@Entity
 public class Quadra {
 
-    private Integer idQuadra;
+    // Atributos da Entidade
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+
+    @Column(name = "modalidade")
     private String modalidade;
-    private Integer numeroQuadra;
+
+    @Column(name = "numero_quadra")
+    private Integer numero_quadra;
+
+    @Column(name = "disponivel")
     private Boolean disponivel;
 
-    public Quadra(Integer idQuadra, String modalidade, Integer numeroQuadra, Boolean disponivel) {
-        this.idQuadra = idQuadra;
+    @Column(name = "fk_centro_esportivo")
+    private Integer fk_centro_esportivo;
+
+    // Construtores
+    // Sobrescrita de Construtores para evidenciar para o Spring qual o Construtor Default
+    public Quadra() {
+    }
+
+    public Quadra(Integer id,
+                  String modalidade,
+                  Integer numero_quadra,
+                  Boolean disponivel,
+                  Integer fk_centro_esportivo) {
+        super();
+        this.id = id;
         this.modalidade = modalidade;
-        this.numeroQuadra = numeroQuadra;
+        this.numero_quadra = numero_quadra;
         this.disponivel = disponivel;
+        this.fk_centro_esportivo = fk_centro_esportivo;
     }
 
-    public Integer getIdQuadra() {
-        return idQuadra;
+
+    // Getters & Setters
+    public Integer getFk_centro_esportivo() {
+        return fk_centro_esportivo;
     }
 
-    public void setIdQuadra(Integer idQuadra) {
-        this.idQuadra = idQuadra;
+    public void setFk_centro_esportivo(Integer fk_centro_esportivo) {
+        this.fk_centro_esportivo = fk_centro_esportivo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getModalidade() {
@@ -30,12 +67,12 @@ public class Quadra {
         this.modalidade = modalidade;
     }
 
-    public Integer getNumeroQuadra() {
-        return numeroQuadra;
+    public Integer getNumero_quadra() {
+        return numero_quadra;
     }
 
-    public void setNumeroQuadra(Integer numeroQuadra) {
-        this.numeroQuadra = numeroQuadra;
+    public void setNumero_quadra(Integer numero_quadra) {
+        this.numero_quadra = numero_quadra;
     }
 
     public Boolean getDisponivel() {
@@ -49,9 +86,9 @@ public class Quadra {
     @Override
     public String toString() {
         return "Quadra{" +
-                "idQuadra=" + idQuadra +
+                "id=" + id +
                 ", modalidade='" + modalidade + '\'' +
-                ", numeroQuadra=" + numeroQuadra +
+                ", numeroQuadra=" + numero_quadra +
                 ", disponivel=" + disponivel +
                 '}';
     }

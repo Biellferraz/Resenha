@@ -1,29 +1,51 @@
 package com.resenha.projetoresenha.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class CentroEsportivo {
 
+    // Atributos da Entidade
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCentroEsportivo;
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
+    @Column(name = "cnpj")
     private String cnpj;
+
+    @Column(name = "cep")
     private String cep;
-    private String cidade;
+
+    @Column(name = "numero")
     private Integer numero;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "horaAbre")
     private String horaAbre;
+
+    @Column(name = "horaFecha")
     private String horaFecha;
+
+    @Column(name = "telefone")
     private String telefone;
 
-    public CentroEsportivo(Integer idCentroEsportivo, String cnpj, String cep, Integer numero, String cidade, String nome,
+    @Column(name = "fk_locatario")
+    private Integer fk_locatario;
+
+    @Column(name = "cidade")
+    private String cidade;
+
+    // Construtor
+    // Sobrescrita de Construtores para evidenciar para o Spring qual o Construtor Default
+    public CentroEsportivo() {
+    }
+
+    public CentroEsportivo(Integer id, String cnpj, String cep, Integer numero, String cidade, String nome,
                            String horaAbre, String horaFecha, String telefone) {
-        this.idCentroEsportivo = idCentroEsportivo;
+        this.id = id;
         this.cnpj = cnpj;
         this.cep = cep;
         this.numero = numero;
@@ -34,12 +56,21 @@ public class CentroEsportivo {
         this.telefone = telefone;
     }
 
-    public Integer getIdCentroEsportivo() {
-        return idCentroEsportivo;
+    // Getters & Setters
+    public Integer getFk_locatario() {
+        return fk_locatario;
     }
 
-    public void setIdCentroEsportivo(Integer idCentroEsportivo) {
-        this.idCentroEsportivo = idCentroEsportivo;
+    public void setFk_locatario(Integer fk_locatario) {
+        this.fk_locatario = fk_locatario;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCnpj() {
@@ -109,7 +140,7 @@ public class CentroEsportivo {
     @Override
     public String toString() {
         return "\nCentroEsportivo: " +
-                " idCentroEsportivo=" + idCentroEsportivo +
+                " id=" + id +
                 ", cnpj='" + cnpj + '\'' +
                 ", cep='" + cep + '\'' +
                 ", cidade='" + cidade + '\'' +

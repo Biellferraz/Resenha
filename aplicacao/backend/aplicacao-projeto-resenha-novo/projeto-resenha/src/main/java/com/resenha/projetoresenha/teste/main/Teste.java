@@ -32,7 +32,7 @@ public class Teste {
         try {
             for (int i = 0; i < lista.getTamanho(); i++) {
                 CentroEsportivo centroE = lista.getElemento(i);
-                saida.format("%d;%s;%s;%s;%d;%s;%s;%s;%s\n", centroE.getIdCentroEsportivo(), centroE.getCnpj(),
+                saida.format("%d;%s;%s;%s;%d;%s;%s;%s;%s\n", centroE.getId(), centroE.getCnpj(),
                         centroE.getCep(), centroE.getCidade(), centroE.getNumero(), centroE.getNome(),
                         centroE.getHoraAbre(), centroE.getHoraFecha(), centroE.getTelefone());
             }
@@ -109,19 +109,18 @@ public class Teste {
         }
     }
 
-    public static void gravaArquivoCsvQuadra(ListaObj<Quadra> lista, String nomeArq){
+    public static void gravaArquivoCsvQuadra(ListaObj<Quadra> lista, String nomeArq) {
         FileWriter arq = null;     //Obj q representa o arq a ser gravado
-        Formatter saida =  null;   //Obj q usaremos para escrever no arq
+        Formatter saida = null;   //Obj q usaremos para escrever no arq
         Boolean deuRuim = false;
 
-        nomeArq+= ".csv";          //Acrescenta a extensão .csv ao nome do arq
+        nomeArq += ".csv";          //Acrescenta a extensão .csv ao nome do arq
 
         //Bloco try-catch para abrir o arq
-        try{
+        try {
             arq = new FileWriter(nomeArq);    //Abre o arq nomeArq
             saida = new Formatter(arq);       //Associa o obj saida ao arq
-        }
-        catch (IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao abrir o arquivo");
             System.exit(1);
         }
@@ -130,93 +129,81 @@ public class Teste {
         try {
             for (int i = 0; i < lista.getTamanho(); i++) {
                 Quadra quad = lista.getElemento(i);
-                saida.format("%d;%s;%d;%b\n",quad.getIdQuadra(),quad.getModalidade(),quad.getNumeroQuadra(),quad.getDisponivel());
+                saida.format("%d;%s;%d;%b\n", quad.getId(), quad.getModalidade(), quad.getNumero_quadra(), quad.getDisponivel());
             }
-        }
-        catch (FormatterClosedException erro){
+        } catch (FormatterClosedException erro) {
             System.out.println("Erro ao gravar no arquivo");
             deuRuim = true;
-        }
-        finally {
+        } finally {
             saida.close();
             try {
                 arq.close();
-            }
-            catch (IOException erro){
+            } catch (IOException erro) {
                 System.out.println("Erro ao fechar o aquivo");
                 deuRuim = true;
             }
-            if (deuRuim){
+            if (deuRuim) {
                 System.exit(1);
             }
         }
     }
 
-    public static void leExibeArquivoCsvQuadra(String nomeArq){
+    public static void leExibeArquivoCsvQuadra(String nomeArq) {
         FileReader arq = null;          //Obj q represent o arq para leitura
         Scanner entrada = null;         //Obj usado para ler do arq
         Boolean deuRuim = false;
 
-        nomeArq+= ".csv";
+        nomeArq += ".csv";
 
         //Bloco try-catch para abrir o arq
         try {
             arq = new FileReader(nomeArq);
             /*cria o obj do scanner, informando q o delimitador é o ';' ou o '\n'*/
             entrada = new Scanner(arq).useDelimiter(";|\\n");
-        }
-        catch (FileNotFoundException erro){
+        } catch (FileNotFoundException erro) {
             System.out.println("Arquivo não encontrado");
             System.exit(1);
         }
 
         //Bloco try-catch para ler o arq
         try {
-            System.out.printf("%10s %20s %20s %20s \n","ID QUADRA","MODALIDADE","NUMERO DA QUADRA","DISPONÍVEL");
-            while (entrada.hasNext()){ // enquanto n for final do arq
+            System.out.printf("%10s %20s %20s %20s \n", "ID QUADRA", "MODALIDADE", "NUMERO DA QUADRA", "DISPONÍVEL");
+            while (entrada.hasNext()) { // enquanto n for final do arq
                 Integer idQuadra = entrada.nextInt();
                 String modalidade = entrada.next();
                 Integer numeroQuadra = entrada.nextInt();
                 String disponivel = entrada.next();
 
 
-                System.out.printf("%10d %20S %20d %20s \n",idQuadra,modalidade,numeroQuadra,disponivel);
+                System.out.printf("%10d %20S %20d %20s \n", idQuadra, modalidade, numeroQuadra, disponivel);
             }
-        }
-
-        catch (NoSuchElementException erro){
+        } catch (NoSuchElementException erro) {
             System.out.println("Arquivos com problemas");
             deuRuim = true;
-        }
-
-        catch (IllegalStateException erro){
+        } catch (IllegalStateException erro) {
             System.out.println("Erro na leitura do arquivo");
             deuRuim = true;
-        }
-
-        finally {
+        } finally {
             entrada.close();
             try {
                 arq.close();
-            }
-            catch (IOException erro){
+            } catch (IOException erro) {
                 System.out.println("Erro ao fechar o arquivo");
                 deuRuim = true;
             }
-            if(deuRuim){
+            if (deuRuim) {
                 System.exit(1);
             }
         }
     }
 
-    public static void gravaRegistroQuadra(String registro,String nomeArq){
+    public static void gravaRegistroQuadra(String registro, String nomeArq) {
         BufferedWriter saida = null;
 
         //Abre o arquivo
         try {
             saida = new BufferedWriter(new FileWriter(nomeArq, true));
-        }
-        catch (IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao abrir o arquivo: " + erro.getMessage());
         }
 
@@ -224,14 +211,13 @@ public class Teste {
         try {
             saida.append(registro + "\n");
             saida.close();
-        }
-        catch (IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao gravar o arquivo: " + erro.getMessage());
         }
 
     }
 
-    public static void gravaArquivoTxtQuadra(List<Quadra> lista, String nomeArq){
+    public static void gravaArquivoTxtQuadra(List<Quadra> lista, String nomeArq) {
 
         //Monta o registro de reader
         String header = "00QUADRA";
@@ -248,12 +234,13 @@ public class Teste {
         Integer contaRegDados = 0;
 
         //Monta e grava o corpo
-        for (Quadra q:lista) {
+        for (Quadra q : lista) {
             String corpo = "02";
-            corpo += String.format("%04d",q.getIdQuadra());
-            corpo += String.format("%-8.8s",q.getModalidade());
-            corpo += String.format("%02d",q.getNumeroQuadra());
-            corpo += String.format("%b",q.getDisponivel());
+            corpo += String.format("%04d", q.getId());
+            corpo += String.format("%-8.8s", q.getModalidade());
+            corpo += String.format("%02d", q.getNumero_quadra());
+            corpo += String.format("%b", q.getDisponivel());
+            corpo += String.format("%04d", q.getFk_centro_esportivo());
 
             contaRegDados++;
 
@@ -263,16 +250,16 @@ public class Teste {
 
         //Monta e grava o registro de trailer
         String trailer = "01";
-        trailer += String.format("%05d",contaRegDados);
+        trailer += String.format("%05d", contaRegDados);
 
         gravaRegistroQuadra(trailer, nomeArq);
     }
 
-    public static void leArquivoTxtQuadra(String nomeArq){
+    public static void leArquivoTxtQuadra(String nomeArq) {
         BufferedReader entrada = null;
-        String registro,tipoRegistro;
+        String registro, tipoRegistro;
         String modalidade;
-        Integer id,numeroQuadra;
+        Integer id, numeroQuadra, fkCentroEsportivo;
         Boolean disponivel;
         Integer qtdResgistrosGravados;
 
@@ -281,8 +268,7 @@ public class Teste {
         //Abre o arquivo
         try {
             entrada = new BufferedReader(new FileReader(nomeArq));
-        }
-        catch (IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao abrir o arquivo: " + erro.getMessage());
         }
 
@@ -291,70 +277,63 @@ public class Teste {
         try {
             //Lê o primeiro registro do arquivo
             registro = entrada.readLine();
-            while (registro != null){
+            while (registro != null) {
                 //Enquanto não chegou ao final do arquivo
-                tipoRegistro = registro.substring(0,2);
+                tipoRegistro = registro.substring(0, 2);
 
-                if (tipoRegistro.equals("00")){
+                if (tipoRegistro.equals("00")) {
                     System.out.println("\n" +
                             "É um registro de header");
-                    System.out.println("Tipo de arquivo: " + registro.substring(2,8));
-                    System.out.println("Data/hora de gravação: " + registro.substring(8,27));
-                    System.out.println("Versão do documento: " + registro.substring(27,29));
-                }
-                else if(tipoRegistro.equals("01")){
+                    System.out.println("Tipo de arquivo: " + registro.substring(2, 8));
+                    System.out.println("Data/hora de gravação: " + registro.substring(8, 27));
+                    System.out.println("Versão do documento: " + registro.substring(27, 29));
+                } else if (tipoRegistro.equals("01")) {
                     System.out.println("É um registro de trailer");
-                    qtdResgistrosGravados = Integer.valueOf(registro.substring(2,7));
-                    if (qtdResgistrosGravados == listaLida.size()){
+                    qtdResgistrosGravados = Integer.valueOf(registro.substring(2, 7));
+                    if (qtdResgistrosGravados == listaLida.size()) {
                         System.out.println("Quantidade de registros gravados compatível com quantidade lida");
-                    }
-                    else{
+                    } else {
                         System.out.println("Quantidade de registro gravados imcompatível com quantidade lida");
                     }
 
-                }
-                else if(tipoRegistro.equals("02")){
+                } else if (tipoRegistro.equals("02")) {
                     System.out.println("É um registro de corpo");
-                    id = Integer.valueOf(registro.substring(2,6));
-                    modalidade = registro.substring(6,14).trim();
-                    numeroQuadra = Integer.valueOf(registro.substring(14,16));
-                    disponivel = Boolean.valueOf(registro.substring(16,18));
+                    id = Integer.valueOf(registro.substring(2, 6));
+                    modalidade = registro.substring(6, 14).trim();
+                    numeroQuadra = Integer.valueOf(registro.substring(14, 16));
+                    disponivel = Boolean.valueOf(registro.substring(16, 18));
+                    fkCentroEsportivo = Integer.valueOf(registro.substring(19, 23));
 
-
-
-                    listaLida.add(new Quadra(id,modalidade,numeroQuadra,disponivel));
-                }
-                else{
+                    listaLida.add(new Quadra(id, modalidade, numeroQuadra, disponivel, fkCentroEsportivo));
+                } else {
                     System.out.println("Tipo de registro inválido");
                 }
                 //Le o proximo registro
                 registro = entrada.readLine();
             }
             entrada.close();
-        }
-        catch (IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao ler o arquivo: " + erro.getMessage());
         }
 
         System.out.println("\nConteúdo lido do arquivo");
-        for (Quadra q:listaLida) {
+        for (Quadra q : listaLida) {
             System.out.println(q);
         }
     }
 
-    public static void gravaArquivoCsvAgendamento(ListaObj<Agendamento> lista, String nomeArq){
+    public static void gravaArquivoCsvAgendamento(ListaObj<Agendamento> lista, String nomeArq) {
         FileWriter arq = null;     //Obj q representa o arq a ser gravado
-        Formatter saida =  null;   //Obj q usaremos para escrever no arq
+        Formatter saida = null;   //Obj q usaremos para escrever no arq
         Boolean deuRuim = false;
 
-        nomeArq+= ".csv";          //Acrescenta a extensão .csv ao nome do arq
+        nomeArq += ".csv";          //Acrescenta a extensão .csv ao nome do arq
 
         //Bloco try-catch para abrir o arq
-        try{
+        try {
             arq = new FileWriter(nomeArq);    //Abre o arq nomeArq
             saida = new Formatter(arq);       //Associa o obj saida ao arq
-        }
-        catch (IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao abrir o arquivo");
             System.exit(1);
         }
@@ -363,93 +342,81 @@ public class Teste {
         try {
             for (int i = 0; i < lista.getTamanho(); i++) {
                 Agendamento agend = lista.getElemento(i);
-                saida.format("%d;%d;%.2f;%s\n",agend.getIdJogador(),agend.getIdQuadra(),agend.getPreco(),agend.getHoraMarcada());
+                saida.format("%d;%d;%.2f;%s\n", agend.getIdJogador(), agend.getIdQuadra(), agend.getPreco(), agend.getHoraMarcada());
             }
-        }
-        catch (FormatterClosedException erro){
+        } catch (FormatterClosedException erro) {
             System.out.println("Erro ao gravar no arquivo");
             deuRuim = true;
-        }
-        finally {
+        } finally {
             saida.close();
             try {
                 arq.close();
-            }
-            catch (IOException erro){
+            } catch (IOException erro) {
                 System.out.println("Erro ao fechar o aquivo");
                 deuRuim = true;
             }
-            if (deuRuim){
+            if (deuRuim) {
                 System.exit(1);
             }
         }
     }
 
-    public static void leExibeArquivoCsvAgendamento(String nomeArq){
+    public static void leExibeArquivoCsvAgendamento(String nomeArq) {
         FileReader arq = null;          //Obj q represent o arq para leitura
         Scanner entrada = null;         //Obj usado para ler do arq
         Boolean deuRuim = false;
 
-        nomeArq+= ".csv";
+        nomeArq += ".csv";
 
         //Bloco try-catch para abrir o arq
         try {
             arq = new FileReader(nomeArq);
             /*cria o obj do scanner, informando q o delimitador é o ';' ou o '\n'*/
             entrada = new Scanner(arq).useDelimiter(";|\\n");
-        }
-        catch (FileNotFoundException erro){
+        } catch (FileNotFoundException erro) {
             System.out.println("Arquivo não encontrado");
             System.exit(1);
         }
 
         //Bloco try-catch para ler o arq
         try {
-            System.out.printf("%10s %10s %10s %20s \n","ID JOGADOR","ID QUADRA","PREÇO","HORA MARCADA");
-            while (entrada.hasNext()){ // enquanto n for final do arq
+            System.out.printf("%10s %10s %10s %20s \n", "ID JOGADOR", "ID QUADRA", "PREÇO", "HORA MARCADA");
+            while (entrada.hasNext()) { // enquanto n for final do arq
                 Integer idJogador = entrada.nextInt();
                 Integer idQuadra = entrada.nextInt();
                 Double preco = entrada.nextDouble();
                 String horaDisponivel = entrada.next();
 
 
-                System.out.printf("%10d %10d %10.2f %20s \n",idJogador,idQuadra,preco,horaDisponivel);
+                System.out.printf("%10d %10d %10.2f %20s \n", idJogador, idQuadra, preco, horaDisponivel);
             }
-        }
-
-        catch (NoSuchElementException erro){
+        } catch (NoSuchElementException erro) {
             System.out.println("Arquivos com problemas");
             deuRuim = true;
-        }
-
-        catch (IllegalStateException erro){
+        } catch (IllegalStateException erro) {
             System.out.println("Erro na leitura do arquivo");
             deuRuim = true;
-        }
-
-        finally {
+        } finally {
             entrada.close();
             try {
                 arq.close();
-            }
-            catch (IOException erro){
+            } catch (IOException erro) {
                 System.out.println("Erro ao fechar o arquivo");
                 deuRuim = true;
             }
-            if(deuRuim){
+            if (deuRuim) {
                 System.exit(1);
             }
         }
     }
 
-    public static void gravaRegistroAgendamento(String registro,String nomeArq){
+    public static void gravaRegistroAgendamento(String registro, String nomeArq) {
         BufferedWriter saida = null;
 
         //Abre o arquivo
         try {
             saida = new BufferedWriter(new FileWriter(nomeArq, true));
-        }
-        catch (IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao abrir o arquivo: " + erro.getMessage());
         }
 
@@ -457,14 +424,13 @@ public class Teste {
         try {
             saida.append(registro + "\n");
             saida.close();
-        }
-        catch (IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao gravar o arquivo: " + erro.getMessage());
         }
 
     }
 
-    public static void gravaArquivoTxtAgendamento(List<Agendamento> lista, String nomeArq){
+    public static void gravaArquivoTxtAgendamento(List<Agendamento> lista, String nomeArq) {
 
         //Monta o registro de reader
         String header = "00AGENDAMENTO";
@@ -481,12 +447,12 @@ public class Teste {
         Integer contaRegDados = 0;
 
         //Monta e grava o corpo
-        for (Agendamento a:lista) {
+        for (Agendamento a : lista) {
             String corpo = "02";
-            corpo += String.format("%04d",a.getIdJogador());
-            corpo += String.format("%04d",a.getIdQuadra());
-            corpo += String.format("%06.2f",a.getPreco());
-            corpo += String.format("%19.19s",a.getHoraMarcada());
+            corpo += String.format("%04d", a.getIdJogador());
+            corpo += String.format("%04d", a.getIdQuadra());
+            corpo += String.format("%06.2f", a.getPreco());
+            corpo += String.format("%19.19s", a.getHoraMarcada());
 
             contaRegDados++;
 
@@ -496,16 +462,16 @@ public class Teste {
 
         //Monta e grava o registro de trailer
         String trailer = "01";
-        trailer += String.format("%05d",contaRegDados);
+        trailer += String.format("%05d", contaRegDados);
 
         gravaRegistroAgendamento(trailer, nomeArq);
     }
 
-    public static void leArquivoTxtAgendamento(String nomeArq){
+    public static void leArquivoTxtAgendamento(String nomeArq) {
         BufferedReader entrada = null;
-        String registro,tipoRegistro;
+        String registro, tipoRegistro;
         String horaMarcada;
-        Integer idJogador,idQuadra;
+        Integer idJogador, idQuadra;
         Double preco;
         Integer qtdResgistrosGravados;
 
@@ -514,8 +480,7 @@ public class Teste {
         //Abre o arquivo
         try {
             entrada = new BufferedReader(new FileReader(nomeArq));
-        }
-        catch (IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao abrir o arquivo: " + erro.getMessage());
         }
 
@@ -524,52 +489,46 @@ public class Teste {
         try {
             //Lê o primeiro registro do arquivo
             registro = entrada.readLine();
-            while (registro != null){
+            while (registro != null) {
                 //Enquanto não chegou ao final do arquivo
-                tipoRegistro = registro.substring(0,2);
+                tipoRegistro = registro.substring(0, 2);
 
-                if (tipoRegistro.equals("00")){
+                if (tipoRegistro.equals("00")) {
                     System.out.println("\nÉ um registro de header");
-                    System.out.println("Tipo de arquivo: " + registro.substring(2,13));
-                    System.out.println("Data/hora de gravação: " + registro.substring(13,32));
-                    System.out.println("Versão do documento: " + registro.substring(32,34));
-                }
-                else if(tipoRegistro.equals("01")){
+                    System.out.println("Tipo de arquivo: " + registro.substring(2, 13));
+                    System.out.println("Data/hora de gravação: " + registro.substring(13, 32));
+                    System.out.println("Versão do documento: " + registro.substring(32, 34));
+                } else if (tipoRegistro.equals("01")) {
                     System.out.println("É um registro de trailer");
-                    qtdResgistrosGravados = Integer.valueOf(registro.substring(2,7));
-                    if (qtdResgistrosGravados == listaLida.size()){
+                    qtdResgistrosGravados = Integer.valueOf(registro.substring(2, 7));
+                    if (qtdResgistrosGravados == listaLida.size()) {
                         System.out.println("Quantidade de registros gravados compatível com quantidade lida");
-                    }
-                    else{
+                    } else {
                         System.out.println("Quantidade de registro gravados imcompatível com quantidade lida");
                     }
 
-                }
-                else if(tipoRegistro.equals("02")){
+                } else if (tipoRegistro.equals("02")) {
                     System.out.println("É um registro de corpo");
-                    idJogador = Integer.valueOf(registro.substring(2,6));
-                    idQuadra = Integer.valueOf(registro.substring(6,10));
-                    preco = Double.valueOf(registro.substring(10,16).replace(',','.'));
-                    horaMarcada = registro.substring(16,35);
+                    idJogador = Integer.valueOf(registro.substring(2, 6));
+                    idQuadra = Integer.valueOf(registro.substring(6, 10));
+                    preco = Double.valueOf(registro.substring(10, 16).replace(',', '.'));
+                    horaMarcada = registro.substring(16, 35);
 
 
-
-                    listaLida.add(new Agendamento(idJogador,idQuadra,preco,horaMarcada));
-                }
-                else{
+                    listaLida.add(new Agendamento(idJogador, idQuadra, preco, horaMarcada));
+                } else {
                     System.out.println("Tipo de registro inválido");
                 }
                 //Le o proximo registro
                 registro = entrada.readLine();
             }
             entrada.close();
-        }
-        catch (IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao ler o arquivo: " + erro.getMessage());
         }
 
         System.out.println("\nConteúdo lido do arquivo");
-        for (Agendamento a:listaLida) {
+        for (Agendamento a : listaLida) {
             System.out.println(a);
         }
     }
@@ -607,7 +566,7 @@ public class Teste {
 
         while (lista.hasNext()) {
             CentroEsportivo centroEsportivo = (CentroEsportivo) lista.next();
-            if (centroEsportivo.getCidade().equals("São Paulo")){
+            if (centroEsportivo.getCidade().equals("São Paulo")) {
                 System.out.println(centroEsportivo);
             }
         }
@@ -623,19 +582,19 @@ public class Teste {
         ListaObj<Quadra> listaQuadraObj = new ListaObj<>(7);
         List<Quadra> listaQuadra = new ArrayList<>();
 
-        listaQuadraObj.adiciona(new Quadra(1,"Futebol",7,true));
-        listaQuadraObj.adiciona(new Quadra(2,"Basquete",2,true));
-        listaQuadraObj.adiciona(new Quadra(3,"Tenis",3,true));
-        listaQuadraObj.adiciona(new Quadra(4,"Volei",5,false));
+        listaQuadraObj.adiciona(new Quadra(1, "Futebol", 7, true, 1));
+        listaQuadraObj.adiciona(new Quadra(2, "Basquete", 2, true, 1));
+        listaQuadraObj.adiciona(new Quadra(3, "Tenis", 3, true, 1));
+        listaQuadraObj.adiciona(new Quadra(4, "Volei", 5, false, 1));
 
-        listaQuadra.add(new Quadra(1,"Futebol",7,true));
-        listaQuadra.add(new Quadra(2,"Basquete",2,true));
-        listaQuadra.add(new Quadra(3,"Tenis",3,true));
-        listaQuadra.add(new Quadra(4,"Volei",5,false));
+        listaQuadra.add(new Quadra(1, "Futebol", 7, true, 1));
+        listaQuadra.add(new Quadra(2, "Basquete", 2, true, 1));
+        listaQuadra.add(new Quadra(3, "Tenis", 3, true, 1));
+        listaQuadra.add(new Quadra(4, "Volei", 5, false, 1));
 
 //        lista.exibe();
 //
-        gravaArquivoCsvQuadra(listaQuadraObj,"quad");
+        gravaArquivoCsvQuadra(listaQuadraObj, "quad");
 
         leExibeArquivoCsvQuadra("quad");
 
@@ -647,23 +606,23 @@ public class Teste {
         ListaObj<Agendamento> listaAgendamentoObj = new ListaObj<>(7);
         List<Agendamento> listaAgendamento = new ArrayList<>();
 
-        listaAgendamentoObj.adiciona(new Agendamento(1,1,150.0,"2021-10-13 13:00:00"));
-        listaAgendamentoObj.adiciona(new Agendamento(2,2,130.5,"2021-10-13 13:00:00"));
-        listaAgendamentoObj.adiciona(new Agendamento(3,3,110.0,"2021-10-13 13:00:00"));
-        listaAgendamentoObj.adiciona(new Agendamento(4,1,150.0,"2021-10-13 14:00:00"));
-        listaAgendamentoObj.adiciona(new Agendamento(5,2,130.5,"2021-10-13 14:00:00"));
-        listaAgendamentoObj.adiciona(new Agendamento(6,1,150.0,"2021-10-13 15:00:00"));
+        listaAgendamentoObj.adiciona(new Agendamento(1, 1, 150.0, "2021-10-13 13:00:00"));
+        listaAgendamentoObj.adiciona(new Agendamento(2, 2, 130.5, "2021-10-13 13:00:00"));
+        listaAgendamentoObj.adiciona(new Agendamento(3, 3, 110.0, "2021-10-13 13:00:00"));
+        listaAgendamentoObj.adiciona(new Agendamento(4, 1, 150.0, "2021-10-13 14:00:00"));
+        listaAgendamentoObj.adiciona(new Agendamento(5, 2, 130.5, "2021-10-13 14:00:00"));
+        listaAgendamentoObj.adiciona(new Agendamento(6, 1, 150.0, "2021-10-13 15:00:00"));
 
-        listaAgendamento.add(new Agendamento(1,1,150.0,"2021-10-13 13:00:00"));
-        listaAgendamento.add(new Agendamento(2,2,130.5,"2021-10-13 13:00:00"));
-        listaAgendamento.add(new Agendamento(3,3,110.0,"2021-10-13 13:00:00"));
-        listaAgendamento.add(new Agendamento(4,1,150.0,"2021-10-13 14:00:00"));
-        listaAgendamento.add(new Agendamento(5,2,130.5,"2021-10-13 14:00:00"));
-        listaAgendamento.add(new Agendamento(6,1,150.0,"2021-10-13 15:00:00"));
+        listaAgendamento.add(new Agendamento(1, 1, 150.0, "2021-10-13 13:00:00"));
+        listaAgendamento.add(new Agendamento(2, 2, 130.5, "2021-10-13 13:00:00"));
+        listaAgendamento.add(new Agendamento(3, 3, 110.0, "2021-10-13 13:00:00"));
+        listaAgendamento.add(new Agendamento(4, 1, 150.0, "2021-10-13 14:00:00"));
+        listaAgendamento.add(new Agendamento(5, 2, 130.5, "2021-10-13 14:00:00"));
+        listaAgendamento.add(new Agendamento(6, 1, 150.0, "2021-10-13 15:00:00"));
 
         lista.exibe();
 
-        gravaArquivoCsvAgendamento(listaAgendamentoObj,"agend");
+        gravaArquivoCsvAgendamento(listaAgendamentoObj, "agend");
 
         leExibeArquivoCsvAgendamento("agend");
 

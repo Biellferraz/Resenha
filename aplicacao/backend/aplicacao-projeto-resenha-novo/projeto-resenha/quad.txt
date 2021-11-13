@@ -1,0 +1,6 @@
+00QUADRA13-11-2021 12:53:4701
+020001Futebol 07truenull
+020002Basquete02truenull
+020003Tenis   03truenull
+020004Volei   05falsenull
+0100004
