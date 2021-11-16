@@ -4,6 +4,7 @@ import logoQuadra from "../html-css-template/img/logo-quadra.svg";
 import TituloFormulario from "../components/titulo-form/TituloFormulario";
 import CampoFormularioExtended from "../components/campo-form/CampoFormularioExtended";
 import BotaoFormulario from "../components/botao-form/BotaoFormulario";
+import { Link } from "react-router-dom";
 
 
 function PaginaLogin() {
@@ -32,7 +33,9 @@ function PaginaLogin() {
         </head>
         <body class="imagem-login">
           <div class="header-login">
-            <img src={logo} alt="" />
+            <Link to={"/"}>
+              <img id="logoResenhaLogin" src={logo} alt="" />
+            </Link>
           </div>
 
           <div class="container-login">
@@ -47,7 +50,7 @@ function PaginaLogin() {
                     <CampoFormularioExtended nomeCampo="Senha" type="password" id="passwrd" name="password" />
                   </div>
                 </form>
-                <BotaoFormulario textoBotao="Entrar" textoFooter="Não possui conta ainda?" redirectFooter="CADASTRE-SE AGORA" />
+                <BotaoFormulario textoBotao="Entrar" textoFooter="Não possui conta ainda?" redirectFooter="CADASTRE-SE AGORA" destino="/cadastrar" />
               </div>
             </div>
           </div>

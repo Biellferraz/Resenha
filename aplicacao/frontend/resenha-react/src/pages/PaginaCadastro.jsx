@@ -5,6 +5,7 @@ import TituloFormulario from "../components/titulo-form/TituloFormulario";
 import CampoFormulario from "../components/campo-form/CampoFormulario";
 import CampoFormularioExtended from "../components/campo-form/CampoFormularioExtended";
 import BotaoFormulario from "../components/botao-form/BotaoFormulario";
+import { Link } from "react-router-dom";
 
 function PaginaCadastro() {
   return (
@@ -32,7 +33,9 @@ function PaginaCadastro() {
         </head>
         <body class="imagem-cadastro">
           <div class="header-cadastro">
-            <img src={logo} alt="" />
+            <Link to={"/"}>
+              <img id="logoResenhaCadastro" src={logo} alt="" />
+            </ Link>
           </div>
 
           <div class="container-cadastro">
@@ -58,7 +61,7 @@ function PaginaCadastro() {
                     <CampoFormulario nomeCampo="Telefone" type="number" id="telefone" name="telefone" />
                   </div>
                 </form>
-                <BotaoFormulario textoBotao="Criar Conta" textoFooter="Já possui login?" redirectFooter="ACESSE AGORA" />
+                <BotaoFormulario textoBotao="Criar Conta" textoFooter="Já possui login?" redirectFooter="ACESSE AGORA" destino="/login" />
               </div>
             </div>
           </div>

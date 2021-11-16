@@ -21,6 +21,16 @@ header {
     height: 65px;
 }
 
+#logoResenha {
+    height: 65px;
+    transition: 0.1s ease-in;
+}
+
+#logoResenha:hover {
+    height: 67px;
+    transition: 0.1s ease-out;
+}
+
 .nav-bar {
     width: 70%;
     height: 100%;
@@ -74,4 +84,10 @@ header {
     font-size: 14px;
     font-weight: 800;
     color: #F3FAFE;
+    cursor: pointer;
+}
+
+.nav-buttons label:hover {
+    color: #8FD5FE;
+    transition: 0.1s;
 }

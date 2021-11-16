@@ -1,5 +1,7 @@
 import React from "react";
 import './styles.css'
+import { Link } from "react-router-dom";
+
 function BotaoFormulario(props) {
     return (
         <>
@@ -8,7 +10,12 @@ function BotaoFormulario(props) {
                     <button>{props.textoBotao}</button>
                 </div>
                 <div class="button-form-footer">
-                    <label>{props.textoFooter} <b>{props.redirectFooter}</b></label>
+                    <label>
+                        {props.textoFooter}
+                        <Link to={props.destino} style={{ textDecoration: 'none' }}>
+                            <b> {props.redirectFooter}</b>
+                        </Link>
+                    </label>
                 </div>
             </div>
         </>

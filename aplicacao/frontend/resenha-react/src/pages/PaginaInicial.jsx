@@ -1,7 +1,7 @@
 import React from "react";
 import imgLogin from "../html-css-template/img/login.svg";
 import imgCadastro from "../html-css-template/img/cadastro.svg";
-import logoResenha from "../html-css-template/img/logo-resenha2.svg";
+import logoResenha from "../html-css-template/img/logo-resenha.svg";
 import camisaResenhaFrente from "../html-css-template/img/camisa-resenha-frente.svg";
 import resenhaLogoSecundaria from "../html-css-template/img/resenha-logo-secundaria.svg";
 import buttonArrow from "../html-css-template/img/button-arrow.svg";
@@ -39,6 +39,7 @@ import face from "../html-css-template/img/resenha-facebook.svg";
 import whats from "../html-css-template/img/resenha-whatsapp.svg";
 import resenhaPhone from "../html-css-template/img/resenha-phone.svg";
 import resenhaEmail from "../html-css-template/img/resenha-email.svg";
+import { Link } from "react-router-dom";
 
 function PaginaInicial() {
   return (
@@ -70,11 +71,7 @@ function PaginaInicial() {
           <section id="home">
             <header>
               <div class="logo">
-                <a
-                  href="#home"
-                  onmouseover="logoResenha.style='height:67px; transition: 0.1s ease-in'"
-                  onmouseleave="logoResenha.style='height:65px; transition: 0.1s ease-out'"
-                >
+                <a href="#home">
                   <img id="logoResenha" src={logoResenha} alt="Logo" />
                 </a>
               </div>
@@ -95,14 +92,18 @@ function PaginaInicial() {
                   </label>
                 </div>
                 <div class="nav-buttons">
-                  <div class="nav-buttons-field">
-                    <img src={imgCadastro} alt="Cadastro" />
-                    <label>EXPERIMENTE JÁ</label>
-                  </div>
-                  <div class="nav-buttons-field">
-                    <img src={imgLogin} alt="Login" />
-                    <label>LOGIN</label>
-                  </div>
+                  <Link to={"/cadastrar"}>
+                    <div class="nav-buttons-field">
+                      <img src={imgCadastro} alt="Cadastro" />
+                      <label>EXPERIMENTE JÁ</label>
+                    </div>
+                  </Link>
+                  <Link to={"/login"}>
+                    <div class="nav-buttons-field">
+                      <img src={imgLogin} alt="Login" />
+                      <label>LOGIN</label>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </header>
@@ -549,29 +550,29 @@ function PaginaInicial() {
             </div>
           </section>
           <footer>
-          <div class="footer-container">
-          <div class="footer-logo">
-                <img src={logoResenhaFull} alt="Logo Resenha Completo"/>
-            </div>
-            <div class="footer-contacts">
-            <div class="footer-social-medias">
-                    <img src={insta} alt="Instagram"/>
-                    <img src={face} alt="Facebook"/>
-                    <img src={whats} alt="Whatsapp"/>
+            <div class="footer-container">
+              <div class="footer-logo">
+                <img src={logoResenhaFull} alt="Logo Resenha Completo" />
+              </div>
+              <div class="footer-contacts">
+                <div class="footer-social-medias">
+                  <img src={insta} alt="Instagram" />
+                  <img src={face} alt="Facebook" />
+                  <img src={whats} alt="Whatsapp" />
                 </div>
                 <div class="footer-phone">
-                    <img src={resenhaPhone} alt="Telefone"/>
-                    <label>Contato: 4242-2424</label>
+                  <img src={resenhaPhone} alt="Telefone" />
+                  <label>Contato: 4242-2424</label>
                 </div>
                 <div class="footer-email">
-                    <img src={resenhaEmail} alt="E-mail"/>
-                    <label>E-mail: resenha@gmail.com</label>
+                  <img src={resenhaEmail} alt="E-mail" />
+                  <label>E-mail: resenha@gmail.com</label>
                 </div>
                 <div class="footer-copyright">
-                    <label>Copyright © resenha 2021</label>
+                  <label>Copyright © resenha 2021</label>
                 </div>
+              </div>
             </div>
-          </div>
           </footer>
         </body>
       </html>

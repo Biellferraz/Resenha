@@ -7,9 +7,9 @@ function Rotas() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path="/" component={PaginaInicial}/>
         <Route exact path="/login" component={PaginaLogin} />
         <Route exact path="/cadastrar" component={PaginaCadastro} />
-        <Route exact path="/inicial" component={PaginaInicial}/>
       </Switch>
     </BrowserRouter>
   );

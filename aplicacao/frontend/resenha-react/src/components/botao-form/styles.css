@@ -28,14 +28,20 @@
 .button-form-footer {
     margin-top: 7px;
     text-align: center;
+    text-decoration: none;
 }
 
 .button-form-footer label {
     font-size: 12px;
     font-weight: 800;
     color: #F3FAFE;
+    text-decoration: none;
+    
 }
 
 .button-form-footer b {
     color: #8FD5FE;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: none;
 }

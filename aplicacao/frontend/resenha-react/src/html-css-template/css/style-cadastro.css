@@ -25,6 +25,16 @@ body {
   border-radius: 0 10px 10px 0;
 }
 
+#logoResenhaCadastro {
+  height: 50px;
+  transition: 0.1s ease-in;
+}
+
+#logoResenhaCadastro:hover {
+  height: 52px;
+  transition: 0.1s ease-out;
+}
+
 .container-cadastro {
   display: flex;
   justify-content: center;
