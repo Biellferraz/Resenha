@@ -1,4 +1,6 @@
 import React from "react";
+import { Helmet } from 'react-helmet';
+import favicon from "../html-css-template/img/resenha-icon.ico";
 import logo from "../html-css-template/img/logo-resenha2.svg";
 import logoQuadra from "../html-css-template/img/logo-quadra.svg";
 import TituloFormulario from "../components/titulo-form/TituloFormulario";
@@ -10,6 +12,11 @@ import { Link } from "react-router-dom";
 function PaginaLogin() {
   return (
     <>
+      <Helmet>
+        <title>Login</title>
+        <link rel="icon" type="image/png" href={favicon} sizes="16x16" />
+      </Helmet>
+
       <html lang="en">
         <head>
           <meta charset="UTF-8" />
