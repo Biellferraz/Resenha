@@ -1,0 +1,9 @@
+{
+    "name": "projeto-resenha",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "node ./aplicacao/frontend/bin/www",
+        "postinstall": "cd aplicao && npm install"
+    }
+}
