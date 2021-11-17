@@ -1,0 +1,137 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80vw;
+    height: 100vh;
+    background-color: #F3FAFE;
+}
+
+.content-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70vw;
+    height: 72vh;
+}
+
+.content-body-quadras {
+    width: 45%;
+    height: 100%;
+}
+
+.content-body-agendamentos {
+    width: 45%;
+    height: 100%;
+}
+
+.quadras-header {
+    width: 100%;
+    height: 15%;
+}
+
+.quadras-header-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 70%;
+    height: 80%;
+}
+
+.quadras-header-img {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 15%;
+}
+
+.quadras-header-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    height: 70%;
+}
+
+.quadras-header-texto label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    color: #029EFB;
+}
+
+.quadras-header-texto select {
+    width: 100%;
+    height: 50%;
+    border: none;
+    border-bottom: 2px solid #0A0A0A;
+    font-weight: bold;
+    font-family: Spartan;
+    font-style: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #1B2024;
+}
+
+.quadras-header-texto option {
+    font-weight: bold;
+    font-family: Spartan;
+    font-style: normal;
+    font-size: 12px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.agendamentos-header {
+    width: 100%;
+    height: 15%;
+}
+
+.agendamentos-header-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 70%;
+    height: 80%;
+}
+
+.agendamentos-header-img {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 15%;
+}
+
+.agendamentos-header-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    height: 70%;
+}
+
+.agendamentos-header-texto label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1B2024;
+}
