@@ -33,8 +33,6 @@ function PaginaResenha() {
                 </head>
 
                 <body>
-                    <input type="checkbox" id="check" />
-
                     <div class="container">
                         {/* sidebar começo */}
                         <div class="sidebar">
@@ -124,6 +122,14 @@ function PaginaResenha() {
                                                     <option value="arena">Arena Poliesportivas</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="quadras-content">
+                                        <div class="card-quadra-futebol">
+
+                                            
+                                        </div>
+                                        <div class="card-quadra-tenis">
                                         </div>
                                     </div>
                                 </div>

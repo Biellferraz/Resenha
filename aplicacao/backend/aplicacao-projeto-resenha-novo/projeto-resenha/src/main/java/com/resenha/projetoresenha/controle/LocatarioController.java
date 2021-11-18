@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/locatarios")
+@CrossOrigin
 public class LocatarioController {
 
     @Autowired
@@ -28,6 +29,20 @@ public class LocatarioController {
     public ResponseEntity postUsuarios(@RequestBody Locatario novoLocatario) {
         repository.save(novoLocatario);
         return ResponseEntity.status(201).build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody Locatario locatarioInserido) {
+        Locatario locatarioEncontrado = repository.findByEmailAndSenha(locatarioInserido.getEmail(),
+                locatarioInserido.getSenha());
+        System.out.println(locatarioInserido.getEmail() + locatarioInserido.getSenha());
+
+        if (locatarioEncontrado == null) {
+            return ResponseEntity.status(404).build();
+        }
+
+        return ResponseEntity.status(200).body(locatarioEncontrado);
+
     }
 
     @GetMapping("/{id}")

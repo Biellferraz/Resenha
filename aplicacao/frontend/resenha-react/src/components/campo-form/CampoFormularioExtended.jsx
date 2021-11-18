@@ -5,7 +5,7 @@ function CampoFormularioExtended(props) {
         <>
             <div class="campo-form-extended">
                 <label>{props.nomeCampo}</label>
-                <input type={props.type} id={props.id} name={props.name} />
+                <input onChange={e => props.onChange} type={props.type} id={props.id} name={props.name} />
             </div>
         </>
     )

@@ -4,12 +4,49 @@ import favicon from "../html-css-template/img/resenha-icon.ico";
 import logo from "../html-css-template/img/logo-quadra.svg";
 import logoResenha from "../html-css-template/img/logo-resenha2.svg";
 import TituloFormulario from "../components/titulo-form/TituloFormulario";
-import CampoFormulario from "../components/campo-form/CampoFormulario";
-import CampoFormularioExtended from "../components/campo-form/CampoFormularioExtended";
 import BotaoFormulario from "../components/botao-form/BotaoFormulario";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import api from "../api";
 
 function PaginaCadastro() {
+
+  const [nomeDigitado, setNomeDigitado] = useState("");
+  const [sobrenomeDigitado, setSobrenomeDigitado] = useState("");
+  const [emailDigitado, setEmailDigitado] = useState("");
+  const [senhaDigitada, setSenhaDigitada] = useState("");
+  const [cpfDigitado, setCpfDigitado] = useState("");
+  const [dataNascimentoDigitado, setDataNascimentoDigitado] = useState("");
+  const [telefoneDigitado, setTelefoneDigitado] = useState("");
+
+  function Cadastrar(e) {
+    e.preventDefault();
+
+    console.log(nomeDigitado)
+    console.log(sobrenomeDigitado)
+    console.log(emailDigitado)
+    console.log(senhaDigitada)
+    console.log(cpfDigitado)
+    console.log(dataNascimentoDigitado)
+    console.log(telefoneDigitado)
+
+    api.post("/locatarios", {
+      nome: nomeDigitado,
+      sobrenome: sobrenomeDigitado,
+      email: emailDigitado,
+      senha: senhaDigitada,
+      cpf: cpfDigitado,
+      data_nasc: dataNascimentoDigitado,
+      telefone: telefoneDigitado,
+    }).then((resposta) => {
+      alert("Sucesso!");
+      console.log(resposta)
+    }).catch((erro) => {
+      alert("Erro ao Cadastrar!");
+      console.log(erro);
+    })
+  }
+
   return (
     <>
       <Helmet>
@@ -49,26 +86,53 @@ function PaginaCadastro() {
             <div class="corpo-cadastro">
               <div class="corpo-cadastro-container">
                 <TituloFormulario img={logoResenha} titulo="Resenha" subtitulo="Faça seu cadastro agora" />
-                <form class="campo-formulario-container">
-                  <div class="campo-nome">
-                    <CampoFormulario nomeCampo="Nome" type="text" id="nome" name="nome" />
-                    <CampoFormulario nomeCampo="Sobrenome" type="text" id="sobrenome" name="sobrenome" />
+                <form class="campo-formulario-container" onSubmit={Cadastrar}>
+                  <div class="inputs-form-container">
+                    <div class="campo-nome">
+                      <div class="campo-form">
+                        <label>Nome</label>
+                        <input type="text" id="nome" name="nome" onChange={e => setNomeDigitado(e.target.value)} />
+                      </div>
+                      <div class="campo-form">
+                        <label>Sobrenome</label>
+                        <input type="text" id="sobrenome" name="sobrenome" onChange={e => setSobrenomeDigitado(e.target.value)} />
+                      </div>
+                    </div>
+                    <div class="campo-email">
+                      <div class="campo-form-extended">
+                        <label>E-mail</label>
+                        <input type="email" id="email" name="email" onChange={e => setEmailDigitado(e.target.value)} />
+                      </div>
+                    </div>
+                    <div class="campo-senha">
+                      <div class="campo-form">
+                        <label>Senha</label>
+                        <input type="password" id="password" name="password" onChange={e => setSenhaDigitada(e.target.value)} />
+                      </div>
+                      <div class="campo-form">
+                        <label>Confirmar Senha</label>
+                        <input type="password" id="new_password" name="new_password" />
+                      </div>
+                    </div>
+                    <div class="campo-cpf-idade">
+                      <div class="campo-form">
+                        <label>CPF</label>
+                        <input type="number" id="cpf" name="cpf" onChange={e => setCpfDigitado(e.target.value)} />
+                      </div>
+                      <div class="campo-form">
+                        <label>Data de Nascimento</label>
+                        <input type="text" id="nascimento" name="nascimento" onChange={e => setDataNascimentoDigitado(e.target.value)} />
+                      </div>
+                    </div>
+                    <div class="campo-telefone">
+                      <div class="campo-form">
+                        <label>Telefone</label>
+                        <input type="number" id="telefone" name="telefone" onChange={e => setTelefoneDigitado(e.target.value)} />
+                      </div>
+                    </div>
                   </div>
-                  <div class="campo-email">
-                    <CampoFormularioExtended nomeCampo="E-mail" type="email" id="email" name="email" />
-                  </div>
-                  <div class="campo-senha">
-                    <CampoFormulario nomeCampo="Senha" type="password" id="senha" name="senha" />
-                    <CampoFormulario nomeCampo="Confirmar Senha" type="password" id="nova_senha" name="nova_senha" />
-                  </div>
-                  <div class="campo-cpf">
-                    <CampoFormulario nomeCampo="CPF" type="number" id="cpf" name="cpf" />
-                  </div>
-                  <div class="campo-telefone">
-                    <CampoFormulario nomeCampo="Telefone" type="number" id="telefone" name="telefone" />
-                  </div>
+                  <BotaoFormulario textoBotao="Criar Conta" textoFooter="Já possui login?" redirectFooter="ACESSE AGORA" destino="/login" />
                 </form>
-                <BotaoFormulario textoBotao="Criar Conta" textoFooter="Já possui login?" redirectFooter="ACESSE AGORA" destino="/login" />
               </div>
             </div>
           </div>

@@ -4,12 +4,32 @@ import favicon from "../html-css-template/img/resenha-icon.ico";
 import logo from "../html-css-template/img/logo-resenha2.svg";
 import logoQuadra from "../html-css-template/img/logo-quadra.svg";
 import TituloFormulario from "../components/titulo-form/TituloFormulario";
-import CampoFormularioExtended from "../components/campo-form/CampoFormularioExtended";
 import BotaoFormulario from "../components/botao-form/BotaoFormulario";
 import { Link } from "react-router-dom";
-
+import { useState } from "react";
+import api from "../api";
 
 function PaginaLogin() {
+
+  const [emailDigitado, setEmailDigitado] = useState("");
+  const [senhaDigitada, setSenhaDigitada] = useState("");
+
+  function Entrar(e) {
+    e.preventDefault();
+    console.log(emailDigitado)
+    console.log(senhaDigitada)
+
+    api.post("/locatarios/login", {
+      email: emailDigitado,
+      senha: senhaDigitada,
+    }).then((resposta) => {
+      alert("Sucesso!");
+    }).catch((erro) => {
+      alert("Erro ao logar!");
+      console.log(erro);
+    })
+  }
+
   return (
     <>
       <Helmet>
@@ -49,15 +69,21 @@ function PaginaLogin() {
             <div class="corpo-login">
               <div class="corpo-login-container">
                 <TituloFormulario img={logoQuadra} titulo="Resenha" subtitulo="Acesse já nossa aplicação" />
-                <form class="campo-form-login-container">
+                <form class="campo-form-login-container" onSubmit={Entrar}>
                   <div class="campo-email-login">
-                    <CampoFormularioExtended nomeCampo="E-mail" type="email" id="email" name="email" />
+                    <div class="campo-form-extended">
+                      <label>E-mail</label>
+                      <input type="email" id="email" name="email" onChange={e => setEmailDigitado(e.target.value)} />
+                    </div>
                   </div>
                   <div class="campo-senha-login">
-                    <CampoFormularioExtended nomeCampo="Senha" type="password" id="passwrd" name="password" />
+                    <div class="campo-form-extended">
+                      <label>Senha</label>
+                      <input type="password" id="password" name="password" onChange={e => setSenhaDigitada(e.target.value)} />
+                    </div>
                   </div>
+                  <BotaoFormulario textoBotao="Entrar" textoFooter="Não possui conta ainda?" redirectFooter="CADASTRE-SE AGORA" destino="/cadastrar" />
                 </form>
-                <BotaoFormulario textoBotao="Entrar" textoFooter="Não possui conta ainda?" redirectFooter="CADASTRE-SE AGORA" destino="/cadastrar" />
               </div>
             </div>
           </div>

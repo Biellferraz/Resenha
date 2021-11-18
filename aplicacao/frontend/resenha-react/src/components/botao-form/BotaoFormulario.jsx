@@ -7,7 +7,7 @@ function BotaoFormulario(props) {
         <>
             <div class="botao-formulario-container">
                 <div class="sendbutton-form">
-                    <button>{props.textoBotao}</button>
+                    <button type="submit">{props.textoBotao}</button>
                 </div>
                 <div class="button-form-footer">
                     <label>

@@ -4,5 +4,5 @@ import com.resenha.projetoresenha.dominio.Locatario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LocatarioRepository extends JpaRepository<Locatario, Integer> {
-
+    Locatario findByEmailAndSenha(String email, String senha);
 }
