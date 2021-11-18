@@ -98,6 +98,7 @@ body {
   margin-top: 25px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   color: #F3FAFE;
 }
 
@@ -161,4 +162,9 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* Colore para branco o ícone do calendário do input no formato Date */
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
