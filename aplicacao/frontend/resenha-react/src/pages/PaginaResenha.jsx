@@ -12,6 +12,15 @@ import calendario from "../html-css-template/img/calendar.svg";
 import logoQuadra from "../html-css-template/img/resenha-quadra-inicio.svg";
 import imgTaticas from "../html-css-template/img/tatico.svg";
 import imgAgendamento from "../html-css-template/img/agendamento-inicio.svg";
+import bolaFutebol from "../html-css-template/img/futball-ball.svg";
+import quadraFutebol from "../html-css-template/img/quadra-futebol.svg";
+import playerResenha from "../html-css-template/img/card-player.svg";
+import bolaTenis from "../html-css-template/img/tenis-ball.svg";
+import quadraTenis from "../html-css-template/img/quadra-tenis.svg";
+import bolaVolei from "../html-css-template/img/volei-ball.svg";
+import quadraVolei from "../html-css-template/img/quadra-volei.svg";
+import bolaBasquete from "../html-css-template/img/basquete-ball.svg";
+import quadraBasquete from "../html-css-template/img/quadra-basquete.svg";
 
 function PaginaResenha() {
     return (
@@ -33,7 +42,7 @@ function PaginaResenha() {
                 </head>
 
                 <body>
-                    <div class="container">
+                    <div class="container-inicio">
                         {/* sidebar começo */}
                         <div class="sidebar">
                             <center>
@@ -97,7 +106,7 @@ function PaginaResenha() {
                                         <label>Bem-Vindo <span>Usuário</span></label>
                                     </div>
                                     <div class="header-info-date">
-                                        <label>17 de Novembro de 2021</label>
+                                        <label>01 de Dezembro de 2021</label>
                                         <img src={calendario} alt="Calendário Resenha"></img>
                                     </div>
                                 </div>
@@ -119,17 +128,155 @@ function PaginaResenha() {
                                             <div class="quadras-header-texto">
                                                 <label>Quadras de</label>
                                                 <select name="quadras" id="quadras">
-                                                    <option value="arena">Arena Poliesportivas</option>
+                                                    <option value="arena" selected>Arena Poliesportiva</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="quadras-content">
                                         <div class="card-quadra-futebol">
-
-                                            
+                                            <div class="card-container">
+                                                <div class="card-header">
+                                                    <div class="card-header-title">
+                                                        <span>Quadra A1</span>
+                                                        <label>Futebol</label>
+                                                    </div>
+                                                    <div class="card-header-img">
+                                                        <img src={bolaFutebol} alt="Bola Futebol"></img>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="card-body-img">
+                                                        <img src={quadraFutebol} alt="Quadra Futebol"></img>
+                                                    </div>
+                                                    <div class="card-body-content">
+                                                        <select name="quadras" id="quadras">
+                                                            <option value="arena" selected>09:00</option>
+                                                            <option value="arena" selected>10:00</option>
+                                                            <option value="arena" selected>11:00</option>
+                                                            <option value="arena" selected>12:00</option>
+                                                            <option value="arena" selected>13:00</option>
+                                                        </select>
+                                                        <label>Agendada</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="card-footer-img">
+                                                        <img src={playerResenha} alt="Resenha"></img>
+                                                    </div>
+                                                    <div class="card-footer-player">
+                                                        <label>Nome do Usuário</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="card-quadra-tenis">
+                                            <div class="card-container">
+                                                <div class="card-header">
+                                                    <div class="card-header-title">
+                                                        <span>Quadra A2</span>
+                                                        <label>Tênis</label>
+                                                    </div>
+                                                    <div class="card-header-img">
+                                                        <img src={bolaTenis} alt="Bola Tênis"></img>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="card-body-img">
+                                                        <img src={quadraTenis} alt="Quadra Tênis"></img>
+                                                    </div>
+                                                    <div class="card-body-content">
+                                                        <select name="quadras" id="quadras">
+                                                            <option value="arena" selected>09:00</option>
+                                                            <option value="arena" selected>10:00</option>
+                                                            <option value="arena" selected>11:00</option>
+                                                            <option value="arena" selected>12:00</option>
+                                                            <option value="arena" selected>13:00</option>
+                                                        </select>
+                                                        <label>LIVRE</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="card-footer-img">
+                                                        <img src={playerResenha} alt="Resenha"></img>
+                                                    </div>
+                                                    <div class="card-footer-player">
+                                                        <label>Nome do Usuário</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-quadra-volei">
+                                            <div class="card-container">
+                                                <div class="card-header">
+                                                    <div class="card-header-title">
+                                                        <span>Quadra A2</span>
+                                                        <label>Tênis</label>
+                                                    </div>
+                                                    <div class="card-header-img">
+                                                        <img src={bolaVolei} alt="Bola Vôlei"></img>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="card-body-img">
+                                                        <img src={quadraVolei} alt="Quadra Vôlei"></img>
+                                                    </div>
+                                                    <div class="card-body-content">
+                                                        <select name="quadras" id="quadras">
+                                                            <option value="arena" selected>09:00</option>
+                                                            <option value="arena" selected>10:00</option>
+                                                            <option value="arena" selected>11:00</option>
+                                                            <option value="arena" selected>12:00</option>
+                                                            <option value="arena" selected>13:00</option>
+                                                        </select>
+                                                        <label>LIVRE</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="card-footer-img">
+                                                        <img src={playerResenha} alt="Resenha"></img>
+                                                    </div>
+                                                    <div class="card-footer-player">
+                                                        <label>Nome do Usuário</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-quadra-basquete">
+                                            <div class="card-container">
+                                                <div class="card-header">
+                                                    <div class="card-header-title">
+                                                        <span>Quadra A4</span>
+                                                        <label>Basquete</label>
+                                                    </div>
+                                                    <div class="card-header-img">
+                                                        <img src={bolaBasquete} alt="Bola Basquete"></img>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="card-body-img">
+                                                        <img src={quadraBasquete} alt="Quadra Basquete"></img>
+                                                    </div>
+                                                    <div class="card-body-content">
+                                                        <select name="quadras" id="quadras">
+                                                            <option value="arena" selected>09:00</option>
+                                                            <option value="arena" selected>10:00</option>
+                                                            <option value="arena" selected>11:00</option>
+                                                            <option value="arena" selected>12:00</option>
+                                                            <option value="arena" selected>13:00</option>
+                                                        </select>
+                                                        <label>LIVRE</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="card-footer-img">
+                                                        <img src={playerResenha} alt="Resenha"></img>
+                                                    </div>
+                                                    <div class="card-footer-player">
+                                                        <label>Nome do Usuário</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
