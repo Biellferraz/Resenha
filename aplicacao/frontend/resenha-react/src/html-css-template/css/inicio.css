@@ -1,4 +1,4 @@
-.container {
+.container-inicio {
     display: flex;
     flex-direction: row;
     width: 100vw;
@@ -26,7 +26,6 @@
 .content-body-quadras {
     width: 45%;
     height: 100%;
-    background-color: crimson;
 }
 
 .content-body-agendamentos {
@@ -37,7 +36,6 @@
 .quadras-header {
     width: 100%;
     height: 15%;
-    background-color: darkblue;
 }
 
 .quadras-header-title {
@@ -91,6 +89,176 @@
     font-family: Spartan;
     font-style: normal;
     font-size: 12px;
+}
+
+.quadras-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 85%;
+    overflow: scroll auto;
+    overflow-x: hidden;
+}
+
+.card-quadra-futebol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+    height: 32%;
+    margin-bottom: 30px;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+}
+
+.card-quadra-tenis {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+    height: 32%;
+    margin-bottom: 30px;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+}
+
+.card-quadra-volei {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+    height: 32%;
+    margin-bottom: 30px;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+}
+
+.card-quadra-basquete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+    height: 32%;
+    margin-bottom: 30px;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    height: 85%;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 25%;
+}
+
+.card-header-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.card-header-title label {
+    color: #0DA5FF;
+}
+
+.card-header-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+.card-body-img {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 40%;
+    height: 70%;
+}
+
+.card-body-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+    height: 70%;
+}
+
+.card-body-content select {
+    width: 60%;
+    height: 50%;
+    border: none;
+    border-bottom: 2px solid #0A0A0A;
+    font-weight: bold;
+    font-family: Spartan;
+    font-style: normal;
+    font-size: 10px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #1B2024;
+}
+
+.card-body-content option {
+    font-weight: bold;
+    font-family: Spartan;
+    font-style: normal;
+    font-size: 10px;
+}
+
+.card-body-content label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.card-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    height: 20%;
+}
+
+.card-footer-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+}
+
+.card-footer-player {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 10px;
+    color: #029EFB;
+}
+
+.card-footer-player label {
+    margin-top: 5px;
 }
 
 input:focus,
