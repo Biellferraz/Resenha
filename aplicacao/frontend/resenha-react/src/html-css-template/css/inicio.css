@@ -161,7 +161,7 @@
     height: 25%;
 }
 
-.card-header-title {
+.card-header-inicio-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -170,7 +170,7 @@
     font-size: 10px;
 }
 
-.card-header-title label {
+.card-header-inicio-title label {
     color: #0DA5FF;
 }
 
@@ -304,4 +304,149 @@ button:focus {
     font-size: 14px;
     line-height: 20px;
     color: #1B2024;
+}
+
+.agendamentos-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 85%;
+    overflow: scroll auto;
+    overflow-x: hidden;
+}
+
+.card-agendamento-futebol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 30px;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+}
+
+.card-agendamento-basquete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 30px;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+}
+
+.card-agendamento-volei {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 30px;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+}
+
+.card-agendamento-tenis {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 30px;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+}
+
+.card-agendamento-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+    height: 70%;
+}
+
+.card-agendamento-quadra {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 10%;
+    height: 100%;
+}
+
+.card-agendamento-quadra img {
+    height: 30px;
+}
+
+#quadra_volei {
+    height: 35px;
+}
+
+.card-agendamento-nome-quadra {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 20%;
+    height: 100%;
+}
+
+.card-agendamento-nome-quadra label {
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.card-agendamento-modalidade {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+}
+
+.card-agendamento-modalidade-text {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.card-agendamento-jogador {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+}
+
+.card-agendamento-jogador-text {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.card-agendamento-horario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: crimson;
+    width: 15%;
+    height: 70%;
+    border-radius: 5px;
+}
+
+.card-agendamento-horario label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: white;
 }

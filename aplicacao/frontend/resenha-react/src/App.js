@@ -8,6 +8,7 @@ import "../src/html-css-template/css/inicio.css";
 import "../src/html-css-template/css/header-resenha.css";
 import "../src/html-css-template/css/cadastrar-centros.css";
 import "../src/html-css-template/css/cadastrar-quadras.css";
+import "../src/html-css-template/css/agendamento.css";
 import Rotas from "./rotas";
 
 function App() {

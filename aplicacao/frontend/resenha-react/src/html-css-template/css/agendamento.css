@@ -1,0 +1,421 @@
+.content-body-agendamento {
+    width: 70vw;
+    height: 72vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.agendamento-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 20%;
+}
+
+.agendamento-select-centro {
+    width: 45%;
+    height: 100%;
+}
+
+.agendamento-select-quadra {
+    width: 45%;
+    height: 100%;
+}
+
+.select-centro-title {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+}
+
+.select-quadra-title {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+}
+
+.select-img {
+    width: 15%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.select-img img {
+    height: 35px;
+}
+
+.select-quadra-title img {
+    height: 32px;
+}
+
+.select-label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.select-centro-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+.select-centro-info select {
+    width: 100%;
+    height: 50%;
+    border: none;
+    border-bottom: 2px solid #0A0A0A;
+    font-weight: bold;
+    font-family: Spartan;
+    font-style: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #029EFB;
+}
+
+.select-quadra-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+.select-quadra-info select {
+    width: 100%;
+    height: 50%;
+    border: none;
+    border-bottom: 2px solid #0A0A0A;
+    font-weight: bold;
+    font-family: Spartan;
+    font-style: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #029EFB;
+}
+
+.agendamento-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75%;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+}
+
+.agendamento-body-container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 85%;
+}
+
+.agendamento-body-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 15%;
+}
+
+.agendamento-body-header-img {
+    display: flex;
+    align-items: center;
+    width: 7%;
+}
+
+.agendamento-body-header-img img {
+    height: 40px;
+}
+
+.agendamento-body-header-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 14px;
+    width: 30%;
+    text-transform: uppercase;
+}
+
+.agendamento-body-content {
+    width: 100%;
+    height: 70%;
+}
+
+.agendamento-body-quadra-A {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    width: 100%;
+    height: 60%;
+}
+
+.agendamento-quadra-A-img {
+    width: 15%;
+}
+
+.agendamento-quadra-A-img img {
+    height: 115px;
+}
+
+.agendamento-quadra-A-horarios {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 85%;
+    height: 80%;
+}
+
+.agendamento-quadra-A-title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 40%;
+}
+
+.agendamento-quadra-A-title label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    height: 100%;
+    margin: 4px 0 0 6px;
+}
+
+.agendamento-quadra-A-time {
+    display: flex;
+    flex-wrap: wrap;
+    height: 80%;
+}
+
+.agendamento-quadra-horario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #6CBD6A;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    width: 14%;
+    height: 30%;
+    margin-right: 15px;
+    color: #1B2024;
+}
+
+.agendamento-quadra-horario-selecionado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #6CBD6A;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    width: 14%;
+    height: 30%;
+    margin-right: 15px;
+    color: #F3FAFE;
+    background-color: #6CBD6A;
+}
+
+.agendamento-body-quadra-B {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 40%;
+}
+
+.agendamento-campo-nome-jogador {
+    width: 40%;
+    height: 100%;
+}
+
+.agendamento-campo-nome-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+}
+
+.agendamento-campo-nome-header img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.agendamento-campo-nome-header label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.agendamento-campo-nome-content {
+    width: 100%;
+    height: 30%;
+}
+
+.agendamento-campo-nome-content input {
+    background-color: transparent;
+    border: none;
+    font-family: Spartan;
+    font-weight: bold;
+    color: #029EFB;
+    border-bottom: 2px solid #0A0A0A;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.agendamento-campo-modalidade-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+}
+
+.agendamento-campo-modalidade-header img {
+    height: 26px;
+    margin-right: 10px;
+}
+
+.agendamento-campo-modalidade-header label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.agendamento-campo-modalidade-content {
+    width: 100%;
+    height: 30%;
+}
+
+.agendamento-campo-modalidade-content label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    width: 100%;
+    color: #616162F7;
+}
+
+.agendamento-campo-horario-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+}
+
+.agendamento-campo-horario-header img {
+    height: 25px;
+    margin-right: 10px;
+}
+
+.agendamento-campo-horario-header label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.agendamento-campo-horario-content {
+    width: 100%;
+    height: 30%;
+}
+
+.agendamento-campo-horario-content label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    width: 100%;
+    color: #616162F7;
+}
+
+.agendamento-campo-valor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 10%;
+    height: 100%;
+}
+
+.agendamento-campo-valor-header {
+    display: flex;
+    flex-direction: rowF;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+}
+
+.agendamento-campo-valor-header img {
+    height: 27px;
+    margin-right: 10px;
+}
+
+.agendamento-campo-valor-header label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.agendamento-campo-valor-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+}
+
+.agendamento-campo-valor-content label {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    width: 20%;
+    border-bottom: 2px solid #0A0A0A;
+    color: #1B2024;
+}
+
+.agendamento-campo-valor-content input {
+    background-color: transparent;
+    border: none;
+    font-family: Spartan;
+    font-weight: bold;
+    color: #029EFB;
+    border-bottom: 2px solid #0A0A0A;
+    text-transform: uppercase;
+    width: 60%;
+    padding-left: 10px;
+}
+
+.agendamento-body-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    height: 20%;
+}
+
+.agendamento-body-footer button {
+    width: 15%;
+    height: 70%;
+    font-family: Spartan;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: white;
+    background-color: #1B2024;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -3,7 +3,7 @@
     flex-direction: row;
     width: 100vw;
     height: 100vh;
-    
+
 }
 
 .content {
@@ -22,13 +22,13 @@
     justify-content: space-between;
     width: 70vw;
     height: 72vh;
-    
+
 }
 
 .quadras-content {
     display: flex;
     width: 100%;
-    
+
 }
 
 .content-body-quadra {
@@ -81,7 +81,7 @@
     margin-bottom: 50px;
     border: 2px solid #1B2024;
     border-radius: 5px;
-    
+
 }
 
 .card-quadra-body {
@@ -89,8 +89,8 @@
     justify-content: flex-end;
     flex-direction: column;
     width: 100%;
-    height: 65%; 
-    
+    height: 65%;
+
 }
 
 .card-quadra-body-A {
@@ -105,9 +105,8 @@
     flex-direction: column;
     justify-content: space-between;
     margin-right: 20px;
-    width: 25%;
+    width: 30%;
     height: 40%;
-    
 }
 
 .campo-quadra-centro option {
@@ -119,12 +118,12 @@
 
 }
 
-.campo-quadra-centro select{
+.campo-quadra-centro select {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
-    border:none;
+    border: none;
     border-bottom: 2px solid #0A0A0A;
     font-style: normal;
     font-weight: bold;
@@ -151,7 +150,7 @@
 
 .campo-quadra-nome input {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
     border-bottom: 2px solid #0A0A0A;
@@ -175,10 +174,10 @@
 
 .campo-modalidade select {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
-    border:none;
+    border: none;
     border-bottom: 2px solid #0A0A0A;
     font-style: normal;
     font-weight: bold;
@@ -204,13 +203,20 @@
 
 .campo-numero-quadra input {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
     border-bottom: 2px solid #0A0A0A;
 }
 
 .campo-numero-quadra label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.card-quadra-body input {
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
@@ -234,7 +240,7 @@
 
 }
 
-.card-quadra-footer-limpar button{
+.card-quadra-footer-limpar button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -248,7 +254,7 @@
     font-size: 12px;
     text-transform: uppercase;
 
-   
+
 }
 
 .card-quadra-footer-cadastrar {
@@ -273,5 +279,3 @@
     font-size: 12px;
     text-transform: uppercase;
 }
-
-

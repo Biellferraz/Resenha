@@ -3,7 +3,7 @@
     flex-direction: row;
     width: 100vw;
     height: 100vh;
-    
+
 }
 
 .content {
@@ -22,13 +22,13 @@
     justify-content: space-between;
     width: 70vw;
     height: 72vh;
-    
+
 }
 
 .centros-content {
     display: flex;
     width: 100%;
-    
+
 }
 
 .content-body-centros {
@@ -88,7 +88,7 @@
     justify-content: flex-end;
     flex-direction: column;
     width: 100%;
-    height: 60%; 
+    height: 60%;
 }
 
 .card-centro-body-A {
@@ -96,7 +96,7 @@
     flex-direction: row;
     height: 45%;
 
-    
+
 }
 
 .card-centro-body-B {
@@ -110,13 +110,13 @@
     flex-direction: column;
     justify-content: space-between;
     margin-right: 20px;
-    width: 20%;
+    width: 25%;
     height: 40%;
 }
 
 .campo-centro-nome input {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
     border-bottom: 2px solid #0A0A0A;
@@ -134,13 +134,13 @@
     flex-direction: column;
     justify-content: space-between;
     height: 40%;
-    width: 20%;
+    width: 25%;
     margin-right: 20px;
 }
 
 .campo-centro-telefone input {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
     border-bottom: 2px solid #0A0A0A;
@@ -158,13 +158,13 @@
     flex-direction: column;
     justify-content: space-between;
     height: 40%;
-    width: 20%;
+    width: 25%;
     margin-right: 20px;
 }
 
 .campo-centro-cep input {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
     border-bottom: 2px solid #0A0A0A;
@@ -182,13 +182,13 @@
     flex-direction: column;
     justify-content: space-between;
     height: 40%;
-    width: 20%;
+    width: 25%;
     margin-right: 20px;
 }
 
 .campo-centro-cnpj input {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
     border-bottom: 2px solid #0A0A0A;
@@ -206,13 +206,13 @@
     flex-direction: column;
     justify-content: space-between;
     height: 40%;
-    width: 20%;
+    width: 25%;
     margin-right: 20px;
 }
 
 .campo-centro-horario-abre input {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
     border-bottom: 2px solid #0A0A0A;
@@ -230,13 +230,13 @@
     flex-direction: column;
     justify-content: space-between;
     height: 40%;
-    width: 20%;
+    width: 25%;
     margin-right: 20px;
 }
 
 .campo-centro-horario-fecha input {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
     border-bottom: 2px solid #0A0A0A;
@@ -253,13 +253,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 25%;
     height: 40%;
     margin-right: 20px;
 }
 
 .campo-centro-numero-centro input {
     background-color: transparent;
-    border:none;
+    border: none;
     font-family: Spartan;
     color: #029EFB;
     border-bottom: 2px solid #0A0A0A;
@@ -270,6 +271,22 @@
     font-weight: bold;
     font-size: 12px;
     text-transform: uppercase;
+}
+
+.card-centro-body input {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.campo-centro-vazio {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;
+    height: 40%;
+    margin-right: 20px;
 }
 
 .card-centro-footer {
@@ -288,7 +305,7 @@
 
 }
 
-.card-centro-footer-limpar button{
+.card-centro-footer-limpar button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -301,8 +318,6 @@
     font-weight: bold;
     font-size: 12px;
     text-transform: uppercase;
-
-   
 }
 
 .card-centro-footer-cadastrar {
@@ -327,10 +342,3 @@
     font-size: 12px;
     text-transform: uppercase;
 }
-
-
-
-
-
-
-

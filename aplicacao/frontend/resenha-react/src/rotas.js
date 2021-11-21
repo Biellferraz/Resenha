@@ -4,8 +4,9 @@ import PaginaLogin from "./pages/PaginaLogin";
 import PaginaCadastro from "./pages/PaginaCadastro";
 import PaginaInicial from "./pages/PaginaInicial";
 import PaginaResenha from "./pages/PaginaResenha";
-import CadastrarCentro from "./pages/CadastrarCentros";
-import CadastrarQuadras from "./pages/CadastrarQuadras";
+import PaginaCadastrarCentro from "./pages/PaginaCadastrarCentros";
+import PaginaCadastrarQuadras from "./pages/PaginaCadastrarQuadras";
+import PaginaAgendamento from "./pages/PaginaAgendamento";
 
 function Rotas() {
   return (
@@ -16,8 +17,9 @@ function Rotas() {
         <Route exact path="/cadastrar" component={PaginaCadastro} />
         <Route exact path="/cadastrar" component={PaginaCadastro} />
         <Route exact path="/inicio" component={PaginaResenha} />
-        <Route exact path="/cadastrar-centros" component={CadastrarCentro} />
-        <Route exact path="/cadastrar-quadras" component={CadastrarQuadras} />
+        <Route exact path="/cadastrar-centros" component={PaginaCadastrarCentro} />
+        <Route exact path="/cadastrar-quadras" component={PaginaCadastrarQuadras} />
+        <Route exact path="/agendar" component={PaginaAgendamento} />
       </Switch>
     </BrowserRouter>
   );

@@ -214,7 +214,7 @@ html {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height:80%;
+    height: 80%;
 }
 
 .sobre-content-text-principal {
@@ -822,4 +822,3 @@ input::-webkit-inner-spin-button {
 }
 
 /* FIM CONTATO */
-

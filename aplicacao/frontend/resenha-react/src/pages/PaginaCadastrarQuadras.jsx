@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from 'react-helmet';
+import { Link } from "react-router-dom";
 import favicon from "../html-css-template/img/resenha-icon.ico";
 import logoResenha from "../html-css-template/img/logo-resenha.svg";
 import imgMenuInicio from "../html-css-template/img/inicio-menu.svg";
@@ -10,18 +11,6 @@ import imgMenuSair from "../html-css-template/img/botao-sair-menu-lateal.svg";
 import bolaResenha from "../html-css-template/img/ball.svg";
 import calendario from "../html-css-template/img/calendar.svg";
 import logoQuadra from "../html-css-template/img/resenha-quadra-inicio.svg";
-import imgTaticas from "../html-css-template/img/tatico.svg";
-import imgAgendamento from "../html-css-template/img/agendamento-inicio.svg";
-import bolaFutebol from "../html-css-template/img/futball-ball.svg";
-import quadraFutebol from "../html-css-template/img/quadra-futebol.svg";
-import playerResenha from "../html-css-template/img/card-player.svg";
-import bolaTenis from "../html-css-template/img/tenis-ball.svg";
-import quadraTenis from "../html-css-template/img/quadra-tenis.svg";
-import bolaVolei from "../html-css-template/img/volei-ball.svg";
-import quadraVolei from "../html-css-template/img/quadra-volei.svg";
-import bolaBasquete from "../html-css-template/img/basquete-ball.svg";
-import quadraBasquete from "../html-css-template/img/quadra-basquete.svg";
-import centroEsportivo from "../html-css-template/img/centro-esportivo.svg";
 import quadraEsportiva from "../html-css-template/img/quadra-esportiva-centro.svg";
 
 function CadastrarQuadras() {
@@ -53,37 +42,45 @@ function CadastrarQuadras() {
 
                             <div class="container-menu">
                                 <div class="menu-content">
-                                    <div class="inicio-menu" >
-                                        <div class="menu-img">
-                                            <img src={imgMenuInicio} alt="Imagem Menu Início" />
-                                        </div>
-                                        <div class="menu-text">
-                                            <label>INICIO</label>
-                                        </div>
-                                    </div>
-                                    <div class="agenda-menu">
-                                        <div class="menu-img">
-                                            <img src={imgMenuAgendar} alt="Imagem Menu Agendar" />
-                                        </div>
-                                        <div class="menu-text">
-                                            <label>AGENDAR HORARIO</label>
-                                        </div>
+                                    <div class="inicio-menu">
+                                        <Link to={"/inicio"} style={{ textDecoration: 'none' }}>
+                                            <div class="menu-img">
+                                                <img src={imgMenuInicio} alt="Imagem Menu Início" />
+                                            </div>
+                                            <div class="menu-text">
+                                                <label>INICIO</label>
+                                            </div>
+                                        </Link>
                                     </div>
                                     <div class="centro-menu">
-                                        <div class="menu-img">
-                                            <img src={imgMenuCentrosSelecionado} alt="Imagem Menu Cadastrar Centros" />
-                                        </div>
-                                        <div class="menu-text">
-                                            <label >CADASTRAR CENTROS</label>
-                                        </div>
+                                        <Link to={"/cadastrar-centros"} style={{ textDecoration: 'none' }}>
+                                            <div class="menu-img">
+                                                <img src={imgMenuCentrosSelecionado} alt="Imagem Menu Cadastrar Centros" />
+                                            </div>
+                                            <div class="menu-text">
+                                                <label>CADASTRAR CENTROS</label>
+                                            </div>
+                                        </Link>
                                     </div>
                                     <div class="quadras-menu">
-                                        <div class="menu-img">
-                                            <img src={imgMenuQuadras} alt="Imagem Menu Cadastrar Quadras" />
-                                        </div>
-                                        <div class="menu-text">
-                                            <label style={{ "color": "#8FD5FE" }}>CADASTRAR QUADRAS</label>
-                                        </div>
+                                        <Link to={"/cadastrar-quadras"} style={{ textDecoration: 'none' }}>
+                                            <div class="menu-img">
+                                                <img src={imgMenuQuadras} alt="Imagem Menu Cadastrar Quadras" />
+                                            </div>
+                                            <div class="menu-text">
+                                                <label style={{ "color": "#8FD5FE" }}>CADASTRAR QUADRAS</label>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                    <div class="agenda-menu">
+                                        <Link to={"/agendar"} style={{ textDecoration: 'none' }}>
+                                            <div class="menu-img">
+                                                <img src={imgMenuAgendar} alt="Imagem Menu Agendar" />
+                                            </div>
+                                            <div class="menu-text">
+                                                <label>AGENDAR HORARIO</label>
+                                            </div>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div class="menu-footer">
@@ -133,41 +130,41 @@ function CadastrarQuadras() {
                                                 </div>
                                                 <div class="card-quadra-body">
                                                     <div class="card-quadra-body-A">
-                                                    <div class="campo-quadra-centro">
-                                                    <label>SELECIONE UM CENTRO ESPORTIVO</label>
-                                                    <select name="centros" id="centros">
-                                                    <option value="centro-esportivo" selected>Arena Esportiva</option>
-                                                    <option value="centro-esportivo">ABC QUADRAS</option>
-                                                    <option value="centro-esportivo">Multiquadras</option>
-                                                    <option value="centro-esportivo">Playball</option>
-                                                    </select>
-                                                    
-                                                    </div>
-                                                    <div class="campo-quadra-nome">
-                                                    <label>Nome da quadra</label>
-                                                    <input type="text" />
-                                                    </div>
-                                                    <div class="campo-modalidade">
-                                                    <label>Modalidade</label>
-                                                    <select name="modalidade" id="modalidade">
-                                                    <option value="modalidades" selected>Futebol</option>
-                                                    <option value="modalidades">Volêi</option>
-                                                    <option value="modalidades">Basquete</option>
-                                                    <option value="modalidades">Tenis</option>
-                                                    </select>
-                                                    </div>
-                                                    <div class="campo-numero-quadra">
-                                                    <label>Nº da Quadra</label>
-                                                    <input type="text" />
-                                                    </div>
+                                                        <div class="campo-quadra-centro">
+                                                            <label>SELECIONE UM CENTRO ESPORTIVO</label>
+                                                            <select name="centros" id="centros">
+                                                                <option value="centro-esportivo" selected>Arena Esportiva</option>
+                                                                <option value="centro-esportivo">ABC QUADRAS</option>
+                                                                <option value="centro-esportivo">Multiquadras</option>
+                                                                <option value="centro-esportivo">Playball</option>
+                                                            </select>
+
+                                                        </div>
+                                                        <div class="campo-quadra-nome">
+                                                            <label>Nome da quadra</label>
+                                                            <input type="text" />
+                                                        </div>
+                                                        <div class="campo-modalidade">
+                                                            <label>Modalidade</label>
+                                                            <select name="modalidade" id="modalidade">
+                                                                <option value="modalidades" selected>Futebol</option>
+                                                                <option value="modalidades">Volêi</option>
+                                                                <option value="modalidades">Basquete</option>
+                                                                <option value="modalidades">Tenis</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="campo-numero-quadra">
+                                                            <label>Nº da Quadra</label>
+                                                            <input type="text" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="card-quadra-footer">
                                                     <div class="card-quadra-footer-limpar">
-                                                    <button>limpar</button>
+                                                        <button>limpar</button>
                                                     </div>
                                                     <div class="card-quadra-footer-cadastrar">
-                                                    <button>cadastrar</button>
+                                                        <button>cadastrar</button>
                                                     </div>
                                                 </div>
                                             </form>

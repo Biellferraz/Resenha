@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from 'react-helmet';
+import { Link } from "react-router-dom";
 import favicon from "../html-css-template/img/resenha-icon.ico";
 import logoResenha from "../html-css-template/img/logo-resenha.svg";
 import imgMenuInicioSelecionado from "../html-css-template/img/inicio-menu-azul.svg";
@@ -51,37 +52,45 @@ function PaginaResenha() {
 
                             <div class="container-menu">
                                 <div class="menu-content">
-                                    <div class="inicio-menu" >
-                                        <div class="menu-img">
-                                            <img src={imgMenuInicioSelecionado} alt="Imagem Menu Início" />
-                                        </div>
-                                        <div class="menu-text">
-                                            <label style={{ "color": "#8FD5FE" }}>INICIO</label>
-                                        </div>
-                                    </div>
-                                    <div class="agenda-menu">
-                                        <div class="menu-img">
-                                            <img src={imgMenuAgendar} alt="Imagem Menu Agendar" />
-                                        </div>
-                                        <div class="menu-text">
-                                            <label>AGENDAR HORARIO</label>
-                                        </div>
+                                    <div class="inicio-menu">
+                                        <Link to={"/inicio"} style={{ textDecoration: 'none' }}>
+                                            <div class="menu-img">
+                                                <img src={imgMenuInicioSelecionado} alt="Imagem Menu Início" />
+                                            </div>
+                                            <div class="menu-text">
+                                                <label style={{ "color": "#8FD5FE" }}>INICIO</label>
+                                            </div>
+                                        </Link>
                                     </div>
                                     <div class="centro-menu">
-                                        <div class="menu-img">
-                                            <img src={imgMenuCentros} alt="Imagem Menu Cadastrar Centros" />
-                                        </div>
-                                        <div class="menu-text">
-                                            <label>CADASTRAR CENTROS</label>
-                                        </div>
+                                        <Link to={"/cadastrar-centros"} style={{ textDecoration: 'none' }}>
+                                            <div class="menu-img">
+                                                <img src={imgMenuCentros} alt="Imagem Menu Cadastrar Centros" />
+                                            </div>
+                                            <div class="menu-text">
+                                                <label>CADASTRAR CENTROS</label>
+                                            </div>
+                                        </Link>
                                     </div>
                                     <div class="quadras-menu">
-                                        <div class="menu-img">
-                                            <img src={imgMenuQuadras} alt="Imagem Menu Cadastrar Quadras" />
-                                        </div>
-                                        <div class="menu-text">
-                                            <label>CADASTRAR QUADRAS</label>
-                                        </div>
+                                        <Link to={"/cadastrar-quadras"} style={{ textDecoration: 'none' }}>
+                                            <div class="menu-img">
+                                                <img src={imgMenuQuadras} alt="Imagem Menu Cadastrar Quadras" />
+                                            </div>
+                                            <div class="menu-text">
+                                                <label>CADASTRAR QUADRAS</label>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                    <div class="agenda-menu">
+                                        <Link to={"/agendar"} style={{ textDecoration: 'none' }}>
+                                            <div class="menu-img">
+                                                <img src={imgMenuAgendar} alt="Imagem Menu Agendar" />
+                                            </div>
+                                            <div class="menu-text">
+                                                <label>AGENDAR HORARIO</label>
+                                            </div>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div class="menu-footer">
@@ -137,7 +146,7 @@ function PaginaResenha() {
                                         <div class="card-quadra-futebol">
                                             <div class="card-container">
                                                 <div class="card-header">
-                                                    <div class="card-header-title">
+                                                    <div class="card-header-inicio-title">
                                                         <span>Quadra A1</span>
                                                         <label>Futebol</label>
                                                     </div>
@@ -173,7 +182,7 @@ function PaginaResenha() {
                                         <div class="card-quadra-tenis">
                                             <div class="card-container">
                                                 <div class="card-header">
-                                                    <div class="card-header-title">
+                                                    <div class="card-header-inicio-title">
                                                         <span>Quadra A2</span>
                                                         <label>Tênis</label>
                                                     </div>
@@ -209,7 +218,7 @@ function PaginaResenha() {
                                         <div class="card-quadra-volei">
                                             <div class="card-container">
                                                 <div class="card-header">
-                                                    <div class="card-header-title">
+                                                    <div class="card-header-inicio-title">
                                                         <span>Quadra A2</span>
                                                         <label>Tênis</label>
                                                     </div>
@@ -224,10 +233,10 @@ function PaginaResenha() {
                                                     <div class="card-body-content">
                                                         <select name="quadras" id="quadras">
                                                             <option value="arena" selected>09:00</option>
-                                                            <option value="arena" selected>10:00</option>
-                                                            <option value="arena" selected>11:00</option>
-                                                            <option value="arena" selected>12:00</option>
-                                                            <option value="arena" selected>13:00</option>
+                                                            <option value="arena">10:00</option>
+                                                            <option value="arena">11:00</option>
+                                                            <option value="arena">12:00</option>
+                                                            <option value="arena">13:00</option>
                                                         </select>
                                                         <label>LIVRE</label>
                                                     </div>
@@ -245,7 +254,7 @@ function PaginaResenha() {
                                         <div class="card-quadra-basquete">
                                             <div class="card-container">
                                                 <div class="card-header">
-                                                    <div class="card-header-title">
+                                                    <div class="card-header-inicio-title">
                                                         <span>Quadra A4</span>
                                                         <label>Basquete</label>
                                                     </div>
@@ -288,6 +297,112 @@ function PaginaResenha() {
                                             </div>
                                             <div class="agendamentos-header-texto">
                                                 <label><span style={{ "color": "#029EFB" }}>Agendamentos</span><br />Marcado</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="agendamentos-content">
+                                        <div class="card-agendamento-futebol">
+                                            <div class="card-agendamento-container">
+                                                <div class="card-agendamento-quadra">
+                                                    <img src={quadraFutebol} alt="Quadra Futebol"></img>
+                                                </div>
+                                                <div class="card-agendamento-nome-quadra">
+                                                    <label style={{ "color": "#029EFB" }}>Quadra</label>
+                                                    <label>Quadra A1</label>
+                                                </div>
+                                                <div class="card-agendamento-modalidade">
+                                                    <div class="card-agendamento-modalidade-text">
+                                                        <label style={{ "color": "#029EFB" }}>Modalidade</label>
+                                                        <label>Futebol</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-agendamento-jogador">
+                                                    <div class="card-agendamento-jogador-text">
+                                                        <label style={{ "color": "#029EFB" }}>Jog.Responsável</label>
+                                                        <label>Nome Jogador</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-agendamento-horario">
+                                                    <label>09:00</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-agendamento-basquete">
+                                            <div class="card-agendamento-container">
+                                                <div class="card-agendamento-quadra">
+                                                    <img src={quadraBasquete} alt="Quadra Basquete"></img>
+                                                </div>
+                                                <div class="card-agendamento-nome-quadra">
+                                                    <label style={{ "color": "#029EFB" }}>Quadra</label>
+                                                    <label>Quadra A1</label>
+                                                </div>
+                                                <div class="card-agendamento-modalidade">
+                                                    <div class="card-agendamento-modalidade-text">
+                                                        <label style={{ "color": "#029EFB" }}>Modalidade</label>
+                                                        <label>Basquete</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-agendamento-jogador">
+                                                    <div class="card-agendamento-jogador-text">
+                                                        <label style={{ "color": "#029EFB" }}>Jog.Responsável</label>
+                                                        <label>Nome Jogador</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-agendamento-horario">
+                                                    <label>10:00</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-agendamento-volei">
+                                            <div class="card-agendamento-container">
+                                                <div class="card-agendamento-quadra">
+                                                    <img src={quadraVolei} id="quadra_volei" alt="Quadra Vôlei"></img>
+                                                </div>
+                                                <div class="card-agendamento-nome-quadra">
+                                                    <label style={{ "color": "#029EFB" }}>Quadra</label>
+                                                    <label>Quadra A1</label>
+                                                </div>
+                                                <div class="card-agendamento-modalidade">
+                                                    <div class="card-agendamento-modalidade-text">
+                                                        <label style={{ "color": "#029EFB" }}>Modalidade</label>
+                                                        <label>Vôlei</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-agendamento-jogador">
+                                                    <div class="card-agendamento-jogador-text">
+                                                        <label style={{ "color": "#029EFB" }}>Jog.Responsável</label>
+                                                        <label>Nome Jogador</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-agendamento-horario">
+                                                    <label>11:00</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-agendamento-tenis">
+                                            <div class="card-agendamento-container">
+                                                <div class="card-agendamento-quadra">
+                                                    <img src={quadraTenis} alt="Quadra Tênis"></img>
+                                                </div>
+                                                <div class="card-agendamento-nome-quadra">
+                                                    <label style={{ "color": "#029EFB" }}>Quadra</label>
+                                                    <label>Quadra A1</label>
+                                                </div>
+                                                <div class="card-agendamento-modalidade">
+                                                    <div class="card-agendamento-modalidade-text">
+                                                        <label style={{ "color": "#029EFB" }}>Modalidade</label>
+                                                        <label>Tênis</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-agendamento-jogador">
+                                                    <div class="card-agendamento-jogador-text">
+                                                        <label style={{ "color": "#029EFB" }}>Jog.Responsável</label>
+                                                        <label>Nome Jogador</label>
+                                                    </div>
+                                                </div>
+                                                <div class="card-agendamento-horario">
+                                                    <label>12:00</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

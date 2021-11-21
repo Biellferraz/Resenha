@@ -166,4 +166,5 @@ function PaginaCadastro() {
     </>
   );
 }
+
 export default PaginaCadastro;

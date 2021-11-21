@@ -44,10 +44,6 @@ center {
     transition-property: background;
 }
 
-.sidebar a:hover {
-    background: #51b3ec;
-}
-
 .menu-content {
     display: flex;
     flex-direction: column;
@@ -60,6 +56,7 @@ center {
     font-weight: 800;
     font-size: 14px;
     line-height: 20px;
+    cursor: pointer;
 }
 
 .inicio-menu {
@@ -69,6 +66,15 @@ center {
     justify-content: flex-start;
     margin-bottom: 35px;
     height: 50px;
+}
+
+.inicio-menu a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    color: white;
 }
 
 .menu-img {
@@ -97,6 +103,15 @@ center {
     margin-bottom: 35px;
 }
 
+.agenda-menu a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+}
+
 .centro-menu {
     display: flex;
     flex-direction: row;
@@ -105,6 +120,19 @@ center {
     margin-bottom: 35px;
 }
 
+.centro-menu a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+}
+
+
+.centros-menu label {
+    margin-top: 10px;
+}
 
 .quadras-menu {
     display: flex;
@@ -112,6 +140,19 @@ center {
     align-items: center;
     height: 50px;
     margin-bottom: 35px;
+}
+
+.quadras-menu a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+}
+
+.quadras-menu label {
+    margin-top: 10px;
 }
 
 .quadras-menu .menu-img {
