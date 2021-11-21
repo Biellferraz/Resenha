@@ -6,6 +6,7 @@ import "../src/html-css-template/css/footer.css";
 import "../src/html-css-template/css/menu-lateral.css";
 import "../src/html-css-template/css/inicio.css";
 import "../src/html-css-template/css/header-resenha.css";
+import "../src/html-css-template/css/cadastrar-centros.css";
 import Rotas from "./rotas";
 
 function App() {

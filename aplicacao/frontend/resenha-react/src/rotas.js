@@ -4,6 +4,7 @@ import PaginaLogin from "./pages/PaginaLogin";
 import PaginaCadastro from "./pages/PaginaCadastro";
 import PaginaInicial from "./pages/PaginaInicial";
 import PaginaResenha from "./pages/PaginaResenha";
+import CadastrarCentro from "./pages/CadastrarCentros";
 
 function Rotas() {
   return (
@@ -14,6 +15,7 @@ function Rotas() {
         <Route exact path="/cadastrar" component={PaginaCadastro} />
         <Route exact path="/cadastrar" component={PaginaCadastro} />
         <Route exact path="/inicio" component={PaginaResenha} />
+        <Route exact path="/cadastrar-centros" component={CadastrarCentro} />
       </Switch>
     </BrowserRouter>
   );
