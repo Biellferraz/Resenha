@@ -1,0 +1,277 @@
+.container-inicio {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80vw;
+    height: 100vh;
+    background-color: #F3FAFE;
+}
+
+.content-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70vw;
+    height: 72vh;
+    
+}
+
+.quadras-content {
+    display: flex;
+    width: 100%;
+    
+}
+
+.content-body-quadra {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.card-quadra-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 90%;
+    width: 95%;
+}
+
+.card-quadra-header {
+    height: 20%;
+    width: 100%;
+}
+
+.card-header-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.card-header-title img {
+    margin-right: 20px;
+}
+
+.card-header-title span {
+    margin-top: 13px;
+}
+
+.card-cadastrar-quadra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+    margin-bottom: 50px;
+    border: 2px solid #1B2024;
+    border-radius: 5px;
+    
+}
+
+.card-quadra-body {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 100%;
+    height: 65%; 
+    
+}
+
+.card-quadra-body-A {
+    display: flex;
+    flex-direction: row;
+    height: 75%;
+
+}
+
+.campo-quadra-centro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 20px;
+    width: 25%;
+    height: 40%;
+    
+}
+
+.campo-quadra-centro option {
+    font-family: Spartan;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+
+}
+
+.campo-quadra-centro select{
+    background-color: transparent;
+    border:none;
+    font-family: Spartan;
+    color: #029EFB;
+    border:none;
+    border-bottom: 2px solid #0A0A0A;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+
+.campo-quadra-centro label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.campo-quadra-nome {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 20px;
+    width: 20%;
+    height: 40%;
+}
+
+.campo-quadra-nome input {
+    background-color: transparent;
+    border:none;
+    font-family: Spartan;
+    color: #029EFB;
+    border-bottom: 2px solid #0A0A0A;
+}
+
+.campo-quadra-nome label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.campo-modalidade {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 20px;
+    width: 20%;
+    height: 40%;
+}
+
+.campo-modalidade select {
+    background-color: transparent;
+    border:none;
+    font-family: Spartan;
+    color: #029EFB;
+    border:none;
+    border-bottom: 2px solid #0A0A0A;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.campo-modalidade label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.campo-numero-quadra {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 20px;
+    width: 20%;
+    height: 40%;
+}
+
+.campo-numero-quadra input {
+    background-color: transparent;
+    border:none;
+    font-family: Spartan;
+    color: #029EFB;
+    border-bottom: 2px solid #0A0A0A;
+}
+
+.campo-numero-quadra label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+
+.card-quadra-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.card-quadra-footer-limpar {
+    display: flex;
+    width: 10%;
+    height: 70%;
+    margin-right: 20px;
+
+}
+
+.card-quadra-footer-limpar button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-family: Spartan;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+
+   
+}
+
+.card-quadra-footer-cadastrar {
+    display: flex;
+    width: 10%;
+    height: 70%;
+
+}
+
+.card-quadra-footer-cadastrar button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #1B2024;
+    color: #F3FAFE;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-family: Spartan;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+
