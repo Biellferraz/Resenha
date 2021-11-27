@@ -3,7 +3,6 @@ package com.resenha.projetoresenha.controle;
 
 import com.resenha.projetoresenha.dominio.CentroEsportivo;
 import com.resenha.projetoresenha.repositorio.CentroEsportivoRepository;
-import com.resenha.projetoresenha.repositorio.ListaObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -18,7 +18,7 @@ public class Quadra {
     private Integer numero_quadra;
 
     @Column(name = "disponivel")
-    private Boolean disponivel;
+    private Integer disponivel;
 
     @Column(name = "fk_centro_esportivo")
     private Integer fk_centro_esportivo;
@@ -31,7 +31,7 @@ public class Quadra {
     public Quadra(Integer id,
                   String modalidade,
                   Integer numero_quadra,
-                  Boolean disponivel,
+                  Integer disponivel,
                   Integer fk_centro_esportivo) {
         super();
         this.id = id;
@@ -75,11 +75,11 @@ public class Quadra {
         this.numero_quadra = numero_quadra;
     }
 
-    public Boolean getDisponivel() {
+    public Integer getDisponivel() {
         return disponivel;
     }
 
-    public void setDisponivel(Boolean disponivel) {
+    public void setDisponivel(Integer disponivel) {
         this.disponivel = disponivel;
     }
 

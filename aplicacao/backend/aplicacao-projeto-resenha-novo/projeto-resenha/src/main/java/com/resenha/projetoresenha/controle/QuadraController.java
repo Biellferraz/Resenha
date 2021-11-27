@@ -1,13 +1,15 @@
 package com.resenha.projetoresenha.controle;
 
 
+
 import com.resenha.projetoresenha.dominio.Quadra;
-import com.resenha.projetoresenha.repositorio.ListaObj;
 import com.resenha.projetoresenha.repositorio.QuadraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,7 +21,7 @@ public class QuadraController {
 
     @GetMapping
     public ResponseEntity getQuadras() {
-        List<Quadra> quadraLista = (List<Quadra>) repository.findAll();
+        List<Quadra> quadraLista = repository.findAll();
         if (quadraLista.isEmpty()) {
             return ResponseEntity.status(204).build();
         }

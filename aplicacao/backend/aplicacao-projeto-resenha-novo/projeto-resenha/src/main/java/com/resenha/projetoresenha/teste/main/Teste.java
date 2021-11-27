@@ -4,10 +4,11 @@ package com.resenha.projetoresenha.teste.main;
 import com.resenha.projetoresenha.dominio.Agendamento;
 import com.resenha.projetoresenha.dominio.CentroEsportivo;
 import com.resenha.projetoresenha.dominio.Quadra;
-import com.resenha.projetoresenha.repositorio.ListaObj;
+import com.resenha.projetoresenha.listas.ListaObj;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class Teste {
@@ -239,7 +240,7 @@ public class Teste {
             corpo += String.format("%04d", q.getId());
             corpo += String.format("%-8.8s", q.getModalidade());
             corpo += String.format("%02d", q.getNumero_quadra());
-            corpo += String.format("%b", q.getDisponivel());
+            corpo += String.format("%d", q.getDisponivel());
             corpo += String.format("%04d", q.getFk_centro_esportivo());
 
             contaRegDados++;
@@ -259,8 +260,7 @@ public class Teste {
         BufferedReader entrada = null;
         String registro, tipoRegistro;
         String modalidade;
-        Integer id, numeroQuadra, fkCentroEsportivo;
-        Boolean disponivel;
+        Integer id, numeroQuadra, fk_centro_esportivo, disponivel;
         Integer qtdResgistrosGravados;
 
         List<Quadra> listaLida = new ArrayList<>();
@@ -301,10 +301,10 @@ public class Teste {
                     id = Integer.valueOf(registro.substring(2, 6));
                     modalidade = registro.substring(6, 14).trim();
                     numeroQuadra = Integer.valueOf(registro.substring(14, 16));
-                    disponivel = Boolean.valueOf(registro.substring(16, 18));
-                    fkCentroEsportivo = Integer.valueOf(registro.substring(19, 23));
+                    disponivel = Integer.valueOf(registro.substring(16,17));
+                    fk_centro_esportivo = Integer.valueOf(registro.substring(17, 21));
 
-                    listaLida.add(new Quadra(id, modalidade, numeroQuadra, disponivel, fkCentroEsportivo));
+                    listaLida.add(new Quadra(id, modalidade, numeroQuadra, disponivel, fk_centro_esportivo));
                 } else {
                     System.out.println("Tipo de registro inválido");
                 }
@@ -342,7 +342,7 @@ public class Teste {
         try {
             for (int i = 0; i < lista.getTamanho(); i++) {
                 Agendamento agend = lista.getElemento(i);
-                saida.format("%d;%d;%.2f;%s\n", agend.getIdJogador(), agend.getIdQuadra(), agend.getPreco(), agend.getHoraMarcada());
+                saida.format("%d;%d;%.2f;%s\n", agend.getFk_Jogador(), agend.getFk_Quadra(), agend.getPreco(), agend.getHora_Marcada());
             }
         } catch (FormatterClosedException erro) {
             System.out.println("Erro ao gravar no arquivo");
@@ -410,6 +410,138 @@ public class Teste {
         }
     }
 
+    public static void gravaRegistroCentroEsportivo(String registro, String nomeArq) {
+        BufferedWriter saida = null;
+
+        //Abre o arquivo
+        try {
+            saida = new BufferedWriter(new FileWriter(nomeArq, true));
+        } catch (IOException erro) {
+            System.out.println("Erro ao abrir o arquivo: " + erro.getMessage());
+        }
+
+        //Grava o registro e fecha o arquivo
+        try {
+            saida.append(registro + "\n");
+            saida.close();
+        } catch (IOException erro) {
+            System.out.println("Erro ao gravar o arquivo: " + erro.getMessage());
+        }
+
+    }
+
+    public static void gravaArquivoTxtCentroEsportivo(List<CentroEsportivo> lista, String nomeArq) {
+
+        //Monta o registro de reader
+        String header = "00CENTROESPORTIVO";
+        Date dataDeHoje = new Date();
+        SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        header += formataData.format(dataDeHoje);
+        header += "01";
+
+
+        //Grava o header
+        gravaRegistroCentroEsportivo(header, nomeArq);
+
+
+        Integer contaRegDados = 0;
+
+        //Monta e grava o corpo
+        for (CentroEsportivo c : lista) {
+            String corpo = "02";
+            corpo += String.format("%03d", c.getId());
+            corpo += String.format("%18.18s", c.getCnpj());
+            corpo += String.format("%9.9s", c.getCep());
+            corpo += String.format("%04d", c.getNumero());
+            corpo += String.format("%25.25s", c.getCidade());
+            corpo += String.format("%30.30s", c.getNome());
+            corpo += String.format("%5.5s", c.getHoraAbre());
+            corpo += String.format("%5.5s", c.getHoraFecha());
+            corpo += String.format("%14.14s", c.getTelefone());
+
+            contaRegDados++;
+
+            gravaRegistroCentroEsportivo(corpo, nomeArq);
+        }
+
+
+        //Monta e grava o registro de trailer
+        String trailer = "01";
+        trailer += String.format("%05d", contaRegDados);
+
+        gravaRegistroCentroEsportivo(trailer, nomeArq);
+    }
+
+    public static void leArquivoTxtCentroEsportivo(String nomeArq) {
+        BufferedReader entrada = null;
+        String registro, tipoRegistro;
+        String cnpj, cep, cidade, nome, horaAbre, horaFecha, telefone;
+        Integer id, numero;
+        Integer qtdResgistrosGravados;
+
+        List<CentroEsportivo> listaLida = new ArrayList<>();
+
+        //Abre o arquivo
+        try {
+            entrada = new BufferedReader(new FileReader(nomeArq));
+        } catch (IOException erro) {
+            System.out.println("Erro ao abrir o arquivo: " + erro.getMessage());
+        }
+
+
+        //Lê o arquivo
+        try {
+            //Lê o primeiro registro do arquivo
+            registro = entrada.readLine();
+            while (registro != null) {
+                //Enquanto não chegou ao final do arquivo
+                tipoRegistro = registro.substring(0, 2);
+
+                if (tipoRegistro.equals("00")) {
+                    System.out.println("\nÉ um registro de header");
+                    System.out.println("Tipo de arquivo: " + registro.substring(2, 17));
+                    System.out.println("Data/hora de gravação: " + registro.substring(13, 32));
+                    System.out.println("Versão do documento: " + registro.substring(32, 34));
+                } else if (tipoRegistro.equals("01")) {
+                    System.out.println("É um registro de trailer");
+                    qtdResgistrosGravados = Integer.valueOf(registro.substring(2, 7));
+                    if (qtdResgistrosGravados == listaLida.size()) {
+                        System.out.println("Quantidade de registros gravados compatível com quantidade lida");
+                    } else {
+                        System.out.println("Quantidade de registro gravados imcompatível com quantidade lida");
+                    }
+
+                } else if (tipoRegistro.equals("02")) {
+                    System.out.println("É um registro de corpo");
+                    id = Integer.valueOf(registro.substring(2, 5));
+                    cnpj = registro.substring(5, 23);
+                    cep = registro.substring(23, 32);
+                    numero = Integer.valueOf(registro.substring(32, 36));
+                    cidade = registro.substring(36, 61).trim();
+                    nome = registro.substring(61, 91).trim();
+                    horaAbre = registro.substring(91, 96);
+                    horaFecha = registro.substring(96, 101);
+                    telefone = registro.substring(101, 104);
+
+
+                    listaLida.add(new CentroEsportivo(id, cnpj, cep, numero, cidade, nome, horaAbre, horaFecha, telefone));
+                } else {
+                    System.out.println("Tipo de registro inválido");
+                }
+                //Le o proximo registro
+                registro = entrada.readLine();
+            }
+            entrada.close();
+        } catch (IOException erro) {
+            System.out.println("Erro ao ler o arquivo: " + erro.getMessage());
+        }
+
+        System.out.println("\nConteúdo lido do arquivo");
+        for (CentroEsportivo c : listaLida) {
+            System.out.println(c);
+        }
+    }
+
     public static void gravaRegistroAgendamento(String registro, String nomeArq) {
         BufferedWriter saida = null;
 
@@ -449,10 +581,10 @@ public class Teste {
         //Monta e grava o corpo
         for (Agendamento a : lista) {
             String corpo = "02";
-            corpo += String.format("%04d", a.getIdJogador());
-            corpo += String.format("%04d", a.getIdQuadra());
+            corpo += String.format("%04d", a.getFk_Jogador());
+            corpo += String.format("%04d", a.getFk_Quadra());
             corpo += String.format("%06.2f", a.getPreco());
-            corpo += String.format("%19.19s", a.getHoraMarcada());
+            corpo += String.format("%19.19s", a.getHora_Marcada());
 
             contaRegDados++;
 
@@ -470,8 +602,8 @@ public class Teste {
     public static void leArquivoTxtAgendamento(String nomeArq) {
         BufferedReader entrada = null;
         String registro, tipoRegistro;
-        String horaMarcada;
-        Integer idJogador, idQuadra;
+        LocalDateTime horaMarcada;
+        Integer id, idJogador, idQuadra;
         Double preco;
         Integer qtdResgistrosGravados;
 
@@ -509,13 +641,14 @@ public class Teste {
 
                 } else if (tipoRegistro.equals("02")) {
                     System.out.println("É um registro de corpo");
-                    idJogador = Integer.valueOf(registro.substring(2, 6));
-                    idQuadra = Integer.valueOf(registro.substring(6, 10));
-                    preco = Double.valueOf(registro.substring(10, 16).replace(',', '.'));
-                    horaMarcada = registro.substring(16, 35);
+                    id = Integer.valueOf(registro.substring(2, 6));
+                    idJogador = Integer.valueOf(registro.substring(6, 10));
+                    idQuadra = Integer.valueOf(registro.substring(14, 18));
+                    preco = Double.valueOf(registro.substring(18, 27).replace(',', '.'));
+                    horaMarcada = LocalDateTime.parse(registro.substring(27, 43));
 
 
-                    listaLida.add(new Agendamento(idJogador, idQuadra, preco, horaMarcada));
+                    listaLida.add(new Agendamento(id ,idJogador, idQuadra, preco, horaMarcada));
                 } else {
                     System.out.println("Tipo de registro inválido");
                 }
@@ -536,6 +669,7 @@ public class Teste {
     public static void main(String[] args) {
 
         ListaObj<CentroEsportivo> lista = new ListaObj<>(7);
+        List<CentroEsportivo> listaCentroEsportivo = new ArrayList<>();
 //        ArrayList<CentroEsportivo> centroEsportivos = new ArrayList<>();
 //
 //        centroEsportivos.add(new CentroEsportivo(1,"99.378.761/0001-49","01001-001",
@@ -564,6 +698,13 @@ public class Teste {
         lista.adiciona(new CentroEsportivo(3, "62.587.302/0001-65", "09220-140", 210,
                 "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137"));
 
+        listaCentroEsportivo.add(new CentroEsportivo(1, "99.378.761/0001-49", "01001-001",
+                2190, "Santo andré", "Afonso Quadras", "09:00", "22:00", "(11) 94002-8922"));
+        listaCentroEsportivo.add(new CentroEsportivo(2, "60.210.961/0001-52", "09220-440", 440,
+                "São Paulo", "Web Quadras Poliesportivas", "09:00", "18:00", "(11) 95271-7924"));
+        listaCentroEsportivo.add(new CentroEsportivo(3, "62.587.302/0001-65", "09220-140", 210,
+                "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137"));
+
         while (lista.hasNext()) {
             CentroEsportivo centroEsportivo = (CentroEsportivo) lista.next();
             if (centroEsportivo.getCidade().equals("São Paulo")) {
@@ -571,26 +712,29 @@ public class Teste {
             }
         }
 
-//
-//        lista.exibe();
-//
-//        gravaArquivoCsvCentroEsportivo(lista,"centroE");
-//
-//        leExibeArquivoCsvCentroEsportivo("centroE");
 
+        lista.exibe();
+
+        gravaArquivoCsvCentroEsportivo(lista,"centroE");
+
+        leExibeArquivoCsvCentroEsportivo("centroE");
+
+        gravaArquivoTxtCentroEsportivo(listaCentroEsportivo, "CentroE.txt");
+
+        leArquivoTxtCentroEsportivo("centroE.txt");
 
         ListaObj<Quadra> listaQuadraObj = new ListaObj<>(7);
         List<Quadra> listaQuadra = new ArrayList<>();
 
-        listaQuadraObj.adiciona(new Quadra(1, "Futebol", 7, true, 1));
-        listaQuadraObj.adiciona(new Quadra(2, "Basquete", 2, true, 1));
-        listaQuadraObj.adiciona(new Quadra(3, "Tenis", 3, true, 1));
-        listaQuadraObj.adiciona(new Quadra(4, "Volei", 5, false, 1));
+        listaQuadraObj.adiciona(new Quadra(1, "Futebol", 7, 1, 1));
+        listaQuadraObj.adiciona(new Quadra(2, "Basquete", 2, 1, 1));
+        listaQuadraObj.adiciona(new Quadra(3, "Tenis", 3, 1, 1));
+        listaQuadraObj.adiciona(new Quadra(4, "Volei", 5, 0, 1));
 
-        listaQuadra.add(new Quadra(1, "Futebol", 7, true, 1));
-        listaQuadra.add(new Quadra(2, "Basquete", 2, true, 1));
-        listaQuadra.add(new Quadra(3, "Tenis", 3, true, 1));
-        listaQuadra.add(new Quadra(4, "Volei", 5, false, 1));
+        listaQuadra.add(new Quadra(1, "Futebol", 7, 1, 1));
+        listaQuadra.add(new Quadra(2, "Basquete", 2, 1, 1));
+        listaQuadra.add(new Quadra(3, "Tenis", 3, 1, 1));
+        listaQuadra.add(new Quadra(4, "Volei", 5, 0, 1));
 
 //        lista.exibe();
 //
@@ -606,19 +750,19 @@ public class Teste {
         ListaObj<Agendamento> listaAgendamentoObj = new ListaObj<>(7);
         List<Agendamento> listaAgendamento = new ArrayList<>();
 
-        listaAgendamentoObj.adiciona(new Agendamento(1, 1, 150.0, "2021-10-13 13:00:00"));
-        listaAgendamentoObj.adiciona(new Agendamento(2, 2, 130.5, "2021-10-13 13:00:00"));
-        listaAgendamentoObj.adiciona(new Agendamento(3, 3, 110.0, "2021-10-13 13:00:00"));
-        listaAgendamentoObj.adiciona(new Agendamento(4, 1, 150.0, "2021-10-13 14:00:00"));
-        listaAgendamentoObj.adiciona(new Agendamento(5, 2, 130.5, "2021-10-13 14:00:00"));
-        listaAgendamentoObj.adiciona(new Agendamento(6, 1, 150.0, "2021-10-13 15:00:00"));
+        listaAgendamentoObj.adiciona(new Agendamento(1,1, 1, 150.0, LocalDateTime.of(2021,12,7,13,30)));
+        listaAgendamentoObj.adiciona(new Agendamento(2,2, 2, 130.5, LocalDateTime.of(2021,12,7,13,30)));
+        listaAgendamentoObj.adiciona(new Agendamento(3,3, 3, 110.0, LocalDateTime.of(2021,12,7,13,30)));
+        listaAgendamentoObj.adiciona(new Agendamento(4,4, 1, 150.0, LocalDateTime.of(2021,12,7,15,30)));
+        listaAgendamentoObj.adiciona(new Agendamento(5,5, 2, 130.5, LocalDateTime.of(2021,12,7,15,30)));
+        listaAgendamentoObj.adiciona(new Agendamento(6,6, 1, 150.0, LocalDateTime.of(2021,12,7,15,30)));
 
-        listaAgendamento.add(new Agendamento(1, 1, 150.0, "2021-10-13 13:00:00"));
-        listaAgendamento.add(new Agendamento(2, 2, 130.5, "2021-10-13 13:00:00"));
-        listaAgendamento.add(new Agendamento(3, 3, 110.0, "2021-10-13 13:00:00"));
-        listaAgendamento.add(new Agendamento(4, 1, 150.0, "2021-10-13 14:00:00"));
-        listaAgendamento.add(new Agendamento(5, 2, 130.5, "2021-10-13 14:00:00"));
-        listaAgendamento.add(new Agendamento(6, 1, 150.0, "2021-10-13 15:00:00"));
+        listaAgendamento.add(new Agendamento(1,1, 1, 150.0,  LocalDateTime.of(2021,12,7,13,30)));
+        listaAgendamento.add(new Agendamento(2,2, 2, 130.5,  LocalDateTime.of(2021,12,7,13,30)));
+        listaAgendamento.add(new Agendamento(3,3, 3, 110.0,  LocalDateTime.of(2021,12,7,13,30)));
+        listaAgendamento.add(new Agendamento(4,4, 1, 150.0, LocalDateTime.of(2021,12,7,15,30)));
+        listaAgendamento.add(new Agendamento(5,5, 2, 130.5, LocalDateTime.of(2021,12,7,15,30)));
+        listaAgendamento.add(new Agendamento(6,6, 1, 150.0, LocalDateTime.of(2021,12,7,15,30)));
 
         lista.exibe();
 
@@ -632,5 +776,3 @@ public class Teste {
     }
 
 }
-
-
