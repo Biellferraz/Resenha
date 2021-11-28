@@ -1,6 +1,7 @@
 package com.resenha.projetoresenha.dominio;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import java.time.LocalDateTime;
 
 @Entity
@@ -20,6 +21,7 @@ public class Agendamento {
     @Column(name = "preco")
     private Double preco;
 
+    @Future
     @Column(name = "hora_Marcada")
     private LocalDateTime hora_Marcada;
 

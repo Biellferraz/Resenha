@@ -40,33 +40,19 @@ class CentroEsportivoControllerTest {
 
     @Test
     public void get_comCentroEsportivo_status200comCorpo(){
-        List<CentroEsportivo> locatario = List.of(mock(CentroEsportivo.class), mock(CentroEsportivo.class));
+        List<CentroEsportivo> centroEsportivo = List.of(mock(CentroEsportivo.class), mock(CentroEsportivo.class));
 
-        when(repository.findAll()).thenReturn(locatario);
+        when(repository.findAll()).thenReturn(centroEsportivo);
 
         ResponseEntity resposta = controller.getCentroEsportivo();
 
         assertEquals(200, resposta.getStatusCodeValue());
 
-        assertEquals(locatario, resposta.getBody());
+        assertEquals(centroEsportivo, resposta.getBody());
     }
 
-//    @Test
-//    public void post_erroCentroEsportivo_status404(){
-//        CentroEsportivo centroEsportivo = mock(CentroEsportivo.class);
-//
-//        when(repository.save(CentroEsportivo));
-//
-//        ResponseEntity resposta = controller.postCentroEsportivo(centroEsportivo);
-//
-//        assertEquals(201,resposta.getStatusCodeValue());
-//
-//        assertEquals(centroEsportivo,resposta.getBody());
-//
-//    }
-
     @Test
-    public void post_centroEsportivo_status201(){
+    public void post_erroCentroEsportivo_status404(){
         CentroEsportivo centroEsportivo = mock(CentroEsportivo.class);
 
         when(repository.save(centroEsportivo));
@@ -77,6 +63,17 @@ class CentroEsportivoControllerTest {
 
         assertEquals(centroEsportivo,resposta.getBody());
 
+    }
+
+    @Test
+    public void post_centroEsportivo_status201(){
+        CentroEsportivo centroEsportivo = mock(CentroEsportivo.class);
+
+        when(repository.save(centroEsportivo));
+
+        ResponseEntity resposta = controller.postCentroEsportivo(centroEsportivo);
+
+        assertEquals(201,resposta.getStatusCodeValue());
     }
 
     @Test
@@ -131,9 +128,6 @@ class CentroEsportivoControllerTest {
         ResponseEntity resposta = controller.deleteCentroEsportivo(id);
 
         assertEquals(200,resposta.getStatusCodeValue());
-
-        assertEquals(centroEsportivo,resposta.getBody());
-
     }
 
     @Test
@@ -151,17 +145,15 @@ class CentroEsportivoControllerTest {
     }
 
     @Test
-    public void put_AlterandoId_status201(){
+    public void put_AlterandoId_status200(){
         CentroEsportivo centroEsportivo = mock(CentroEsportivo.class);
         Integer id = 101;
 
-        when(repository.findById(id)).thenReturn(Optional.of(centroEsportivo));
+        when(repository.existsById(id)).thenReturn(true);
 
         ResponseEntity resposta = controller.putCentroEsportivo(id,centroEsportivo);
 
-        assertEquals(201,resposta.getStatusCodeValue());
-
-        assertEquals(centroEsportivo,resposta.getBody());
+        assertEquals(200,resposta.getStatusCodeValue());
     }
 
 }

@@ -6,6 +6,7 @@ import com.resenha.projetoresenha.listas.FilaObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.resenha.projetoresenha.teste.main.Teste;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -21,7 +22,7 @@ public class AgendamentoController {
         private AgendamentoRepository repository;
 
         @GetMapping
-        public ResponseEntity getAgendmento() {
+        public ResponseEntity getAgendamento() {
             List<Agendamento> agendamentoLista = repository.findAll();
             if (agendamentoLista.isEmpty()) {
                 return ResponseEntity.status(204).build();
@@ -69,16 +70,33 @@ public class AgendamentoController {
         }
 
         @GetMapping("/relatorio/{id}")
-        public ResponseEntity getAgendamento(@PathVariable int id) {
+        public ResponseEntity getAgendamentoRelatorio(@PathVariable int id) {
             if (repository.existsById(id)) {
                 Agendamento agendamento = repository.findById(id).get();
                 return ResponseEntity
                         .status(200)
                         .header("content-type", "plain/text")
                         .body(String.format("\nRelatório do centros esportivos:\n  %s", agendamento.toString()));
+
+
             }
             return ResponseEntity.status(404).build();
         }
+
+//    @GetMapping("/relatorio/{id}")
+//    public ResponseEntity getAgendamentoRelatorio(@PathVariable int id) {
+//        if (repository.existsById(id)) {
+//            Agendamento agendamento = repository.findById(id).get();
+//            return ResponseEntity
+//                    .status(200)
+//                    .header("content-type", "plain/text")
+//                    .body(String.format("\nRelatório do centros esportivos:\n  %s",
+//                            Teste.gravaArquivoTxtAgendamento(agendamento, "agend")));
+//
+//
+//        }
+//        return ResponseEntity.status(404).build();
+//    }
 
 
 }

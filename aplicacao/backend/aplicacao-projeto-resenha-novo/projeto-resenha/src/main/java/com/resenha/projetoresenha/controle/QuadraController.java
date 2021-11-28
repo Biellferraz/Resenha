@@ -60,7 +60,7 @@ public class QuadraController {
     }
 
     @GetMapping("/relatorio/{id}")
-    public ResponseEntity getQuadra(@PathVariable int id) {
+    public ResponseEntity getQuadraRelatorio(@PathVariable int id) {
         if (repository.existsById(id)) {
             Quadra quadra = repository.findById(id).get();
             return ResponseEntity

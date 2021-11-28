@@ -75,26 +75,24 @@ class LocatarioControllerTest {
 
         assertEquals(201,resposta.getStatusCodeValue());
 
-        assertEquals(locatario,resposta.getBody());
-
     }
 
-//    @Test
-//    public void post_erroLoginLocatario_status404(){
-//        Locatario locatario = mock(Locatario.class);
-//
-//        String email = "email";
-//
-//        String senha = "Senha123";
-//
-//        when(repository.findByEmailAndSenha(email,senha));
-//
-//        ResponseEntity resposta = controller.login(locatario);
-//
-//        assertEquals(201,resposta.getStatusCodeValue());
-//
-//        assertEquals(locatario,resposta.getBody());
-//    }
+    @Test
+    public void post_erroLoginLocatario_status404(){
+        Locatario locatario = mock(Locatario.class);
+
+        String email = "email";
+
+        String senha = "Senha123";
+
+        when(repository.findByEmailAndSenha(email,senha));
+
+        ResponseEntity resposta = controller.login(locatario);
+
+        assertEquals(201,resposta.getStatusCodeValue());
+
+        assertEquals(locatario,resposta.getBody());
+    }
 
     @Test
     public void post_loginLocatario_status201(){
@@ -109,8 +107,6 @@ class LocatarioControllerTest {
         ResponseEntity resposta = controller.login(locatario);
 
         assertEquals(201,resposta.getStatusCodeValue());
-
-        assertEquals(locatario,resposta.getBody());
     }
 
     @Test
@@ -165,9 +161,6 @@ class LocatarioControllerTest {
         ResponseEntity resposta = controller.deleteUsuarios(id);
 
         assertEquals(200,resposta.getStatusCodeValue());
-
-        assertEquals(locatario,resposta.getBody());
-
     }
 
     @Test
@@ -185,17 +178,15 @@ class LocatarioControllerTest {
     }
 
     @Test
-    public void put_AlterandoId_status201(){
+    public void put_AlterandoId_status200(){
         Locatario locatario = mock(Locatario.class);
         Integer id = 101;
 
-        when(repository.findById(id)).thenReturn(Optional.of(locatario));
+        when(repository.existsById(id)).thenReturn(true);
 
         ResponseEntity resposta = controller.putUsuarios(id,locatario);
 
-        assertEquals(201,resposta.getStatusCodeValue());
-
-        assertEquals(locatario,resposta.getBody());
+        assertEquals(200,resposta.getStatusCodeValue());
     }
 
 }

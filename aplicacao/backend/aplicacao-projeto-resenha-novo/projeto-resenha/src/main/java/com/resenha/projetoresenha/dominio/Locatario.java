@@ -1,6 +1,9 @@
 package com.resenha.projetoresenha.dominio;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
@@ -12,24 +15,38 @@ public class Locatario {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @NotBlank
+    @NotNull
+    @Min(3)
+    @Max(50)
     @Column(name = "nome")
     private String nome;
 
+    @NotBlank
+    @NotNull
+    @Min(3)
+    @Max(25)
     @Column(name = "sobrenome")
     private String sobrenome;
 
+    @Email
     @Column(name = "email")
     private String email;
 
+    @NotNull
+    @Min(6)
     @Column(name = "senha")
     private String senha;
 
+    @CPF
     @Column(name = "cpf")
     private String cpf;
 
+    @NotNull
     @Column(name = "telefone")
     private String telefone;
 
+    @Past
     @Column(name = "data_nasc")
     private LocalDate data_nasc;
 

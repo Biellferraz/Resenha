@@ -1,6 +1,7 @@
 package com.resenha.projetoresenha.dominio;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 public class CentroEsportivo {
@@ -11,15 +12,24 @@ public class CentroEsportivo {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Pattern(regexp = "\\d{2}(.\\d{3})(.\\d{3})(/\\d{4})(-\\d{2})?",
+            message = "Digite um CNPJ válido")
     @Column(name = "cnpj")
     private String cnpj;
 
+    @Min(8)
+    @Max(8)
     @Column(name = "cep")
     private String cep;
 
+    @Min(1)
     @Column(name = "numero")
     private Integer numero;
 
+    @NotBlank
+    @NotNull
+    @Min(5)
+    @Max(50)
     @Column(name = "nome")
     private String nome;
 
@@ -35,6 +45,10 @@ public class CentroEsportivo {
     @Column(name = "fk_locatario")
     private Integer fk_locatario;
 
+    @NotNull
+    @NotBlank
+    @Min(4)
+    @Max(40)
     @Column(name = "cidade")
     private String cidade;
 

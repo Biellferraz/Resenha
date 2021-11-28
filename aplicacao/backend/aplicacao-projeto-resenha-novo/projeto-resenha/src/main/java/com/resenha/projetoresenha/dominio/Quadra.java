@@ -1,6 +1,9 @@
 package com.resenha.projetoresenha.dominio;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Quadra {
@@ -11,9 +14,12 @@ public class Quadra {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @NotNull
+    @NotBlank
     @Column(name = "modalidade")
     private String modalidade;
 
+    @Min(1)
     @Column(name = "numero_quadra")
     private Integer numero_quadra;
 
