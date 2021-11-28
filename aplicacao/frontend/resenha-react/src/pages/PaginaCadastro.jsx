@@ -31,6 +31,7 @@ function PaginaCadastro() {
   const nome = nomeDigitado;
   const sobrenome = sobrenomeDigitado;
 
+  // Variáveis booleanos para controle de validação dos campos
   let senhaValidada = false;
   let tamanhoSenhaValidado = false;
   let nomeValidado = false;
@@ -259,7 +260,7 @@ function PaginaCadastro() {
                     <div class="campo-cpf-idade">
                       <div class="campo-form">
                         <label>CPF</label>
-                        <input type="text" id="cpf" name="cpf" onInput={e => mascaraCPF(e.target)} onChange={e => setCpfDigitado(e.target.value)} required />
+                        <input type="cpf" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" maxLength="14" onInput={e => mascaraCPF(e.target)} onChange={e => setCpfDigitado(e.target.value)} required />
                       </div>
                       <div class="campo-form">
                         <label>Data de Nascimento</label>

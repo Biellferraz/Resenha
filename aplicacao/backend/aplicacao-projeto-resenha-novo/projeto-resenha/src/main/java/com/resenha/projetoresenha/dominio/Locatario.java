@@ -36,10 +36,12 @@ public class Locatario {
     @Column(name = "senha")
     private String senha;
 
+    @Size(min = 14, max = 14)
     @Column(name = "cpf")
     private String cpf;
 
     @NotNull
+    @Size(min = 15, max = 15)
     @Column(name = "telefone")
     private String telefone;
 
