@@ -83,13 +83,13 @@ function PaginaLogin() {
                   <div class="campo-email-login">
                     <div class="campo-form-extended">
                       <label>E-mail</label>
-                      <input type="email" id="email" name="email" onChange={e => setEmailDigitado(e.target.value)} />
+                      <input type="email" id="email" name="email" onChange={e => setEmailDigitado(e.target.value)} required />
                     </div>
                   </div>
                   <div class="campo-senha-login">
                     <div class="campo-form-extended">
                       <label>Senha</label>
-                      <input type="password" id="password" name="password" onChange={e => setSenhaDigitada(e.target.value)} />
+                      <input type="password" id="password" name="password" onChange={e => setSenhaDigitada(e.target.value)} required />
                     </div>
                   </div>
                   <BotaoFormulario textoBotao="Entrar" textoFooter="Não possui conta ainda?" redirectFooter="CADASTRE-SE AGORA" destino="/cadastrar" />

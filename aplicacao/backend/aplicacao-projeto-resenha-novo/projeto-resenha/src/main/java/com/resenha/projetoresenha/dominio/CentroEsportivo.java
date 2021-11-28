@@ -17,8 +17,7 @@ public class CentroEsportivo {
     @Column(name = "cnpj")
     private String cnpj;
 
-    @Min(8)
-    @Max(8)
+    @Size(min = 8, max = 8)
     @Column(name = "cep")
     private String cep;
 
@@ -28,8 +27,7 @@ public class CentroEsportivo {
 
     @NotBlank
     @NotNull
-    @Min(5)
-    @Max(50)
+    @Size(min = 5, max = 50)
     @Column(name = "nome")
     private String nome;
 
@@ -47,8 +45,7 @@ public class CentroEsportivo {
 
     @NotNull
     @NotBlank
-    @Min(4)
-    @Max(40)
+    @Size(min = 4, max = 40)
     @Column(name = "cidade")
     private String cidade;
 

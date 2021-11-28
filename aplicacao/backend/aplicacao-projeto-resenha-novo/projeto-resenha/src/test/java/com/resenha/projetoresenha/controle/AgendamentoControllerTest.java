@@ -40,26 +40,6 @@ class AgendamentoControllerTest {
         assertFalse(resposta.hasBody());
     }
 
-//    @Test
-//    public void get_comAgendamento_status200comCorpo(){
-//        List<Agendamento> agendamento = List.of(mock(Agendamento.class), mock(Agendamento.class));
-//
-//        FilaObj<Agendamento> agendamentoFilaObj  = new FilaObj<>(agendamento.size());
-//        LocalDateTime dataAtual = LocalDateTime.now();
-//        agendamento.stream()
-//                .filter((agendamentoLista) -> agendamentoLista.getHora_Marcada().isAfter(dataAtual) ||
-//                        agendamentoLista.getHora_Marcada().equals(dataAtual))
-//                .sorted(Comparator.comparing(Agendamento::getHora_Marcada, Comparator.naturalOrder()))
-//                .forEach(agendamentoFilaObj::insert);
-//        when(repository.findAll()).thenReturn(agendamentoFilaObj.toList());
-//
-//        ResponseEntity resposta = controller.getAgendamento();
-//
-//        assertEquals(200, resposta.getStatusCodeValue());
-//
-//        assertEquals(agendamentoFilaObj.toList(), resposta.getBody());
-//    }
-
     @Test
     public void getId_semAgendamento_status404(){
         Integer id = 101;

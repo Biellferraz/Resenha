@@ -17,15 +17,13 @@ public class Locatario {
 
     @NotBlank
     @NotNull
-    @Min(3)
-    @Max(50)
+    @Size(min = 3, max = 50)
     @Column(name = "nome")
     private String nome;
 
     @NotBlank
     @NotNull
-    @Min(3)
-    @Max(25)
+    @Size(min = 3, max = 25)
     @Column(name = "sobrenome")
     private String sobrenome;
 
@@ -34,11 +32,10 @@ public class Locatario {
     private String email;
 
     @NotNull
-    @Min(6)
+    @Size(min = 6)
     @Column(name = "senha")
     private String senha;
 
-    @CPF
     @Column(name = "cpf")
     private String cpf;
 

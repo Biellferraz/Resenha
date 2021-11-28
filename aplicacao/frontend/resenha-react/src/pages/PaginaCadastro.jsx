@@ -28,23 +28,131 @@ function PaginaCadastro() {
 
   const senha = senhaDigitada;
   const confirmarSenha = confirmarSenhaDigitada;
-  let senhaValidada = false;
+  const nome = nomeDigitado;
+  const sobrenome = sobrenomeDigitado;
 
-  function validarSenha() {
+  let senhaValidada = false;
+  let tamanhoSenhaValidado = false;
+  let nomeValidado = false;
+  let sobrenomeValidado = false;
+  let dataNascimentoValidada = false;
+
+  function validarConfirmarSenha() {
     if (senha === confirmarSenha) {
       senhaValidada = true;
+    }
+  }
+
+  function validarTamanhoSenha() {
+    if (senha.length >= 6) {
+      tamanhoSenhaValidado = true;
+    }
+  }
+
+  function validarNome() {
+    if (nome.length >= 3) {
+      nomeValidado = true;
+    }
+  }
+
+  function validarSobrenome() {
+    if (sobrenome.length >= 3) {
+      sobrenomeValidado = true;
+    }
+  }
+
+  function mascaraCPF(i) {
+    let v = i.value;
+
+    if (isNaN(v[v.length - 1])) {
+      i.value = v.substring(0, v.length - 1);
+      return;
+    }
+
+    i.setAttribute("maxlength", "14");
+    if (v.length === 3 || v.length === 7) i.value += ".";
+    if (v.length === 11) i.value += "-";
+  }
+
+  function mascaraTelefone(tel) {
+    let valor = tel.value;
+    valor = valor.replace(/\D/g, "")
+    valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
+    valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
+    tel.value = valor;
+    return;
+  }
+
+  function validarData(data) {
+    console.log(data);
+    var data_array = data.split("-");
+    var dia = data_array[2];
+    var mes = data_array[1];
+    var ano = data_array[0];
+
+    if (data_array[0].length !== 4) {
+      dia = data_array[0];
+      mes = data_array[1];
+      ano = data_array[2];
+    }
+
+    var hoje = new Date();
+    var d1 = hoje.getDate();
+    var m1 = hoje.getMonth() + 1;
+    var a1 = hoje.getFullYear();
+
+    d1 = new Date(a1, m1, d1);
+    var d2 = new Date(ano, mes, dia);
+
+    var diff = d2.getTime() - d1.getTime();
+    diff = diff / (1000 * 60 * 60 * 24);
+
+    if (diff <= 0) {
+      dataNascimentoValidada = true;
     }
   }
 
   function Cadastrar(e) {
     e.preventDefault();
 
-    validarSenha();
+    validarNome();
+    validarSobrenome();
+    validarTamanhoSenha();
+    validarConfirmarSenha();
+    validarData(dataNascimentoDigitado);
 
-    if (senhaValidada === false) {
+    if (nomeValidado === false) {
+      MySwal.fire({
+        title: 'Usuário não cadastrado!',
+        text: 'Nome deve possuir no mínimo 3 caracteres',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      })
+    } else if (sobrenomeValidado === false) {
+      MySwal.fire({
+        title: 'Usuário não cadastrado!',
+        text: 'Sobrenome deve possuir no mínimo 3 caracteres',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      })
+    } else if (tamanhoSenhaValidado === false) {
+      MySwal.fire({
+        title: 'Usuário não cadastrado!',
+        text: 'Senha deve possuir no mínimo 6 caracteres',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      })
+    } else if (senhaValidada === false) {
       MySwal.fire({
         title: 'Usuário não cadastrado!',
         text: 'As senhas inseridas nao conferem',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      })
+    } else if (dataNascimentoValidada === false) {
+      MySwal.fire({
+        title: 'Usuário não cadastrado!',
+        text: 'Data deve ser anterior ao dia de hoje',
         icon: 'error',
         confirmButtonText: 'Ok',
       })
@@ -79,31 +187,6 @@ function PaginaCadastro() {
         console.log(erro);
       })
     }
-  }
-
-  function mascaraCPF(i) {
-    console.log("Retorno Mascara", i);
-    console.log("Retorno Mascara", i.value);
-    let v = i.value;
-
-    if (isNaN(v[v.length - 1])) {
-      i.value = v.substring(0, v.length - 1);
-      return;
-    }
-
-    i.setAttribute("maxlength", "14");
-    if (v.length === 3 || v.length === 7) i.value += ".";
-    if (v.length === 11) i.value += "-";
-  }
-
-  function mascaraTelefone(tel) {
-    let valor = tel.value;
-    valor = valor.replace(/\D/g, "")
-    valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
-    valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
-    tel.value = valor
-    console.log("Retorno Mascara Telefone", tel.value)
-    return;
   }
 
   return (
