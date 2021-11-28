@@ -6,26 +6,36 @@ import logoQuadra from "../html-css-template/img/logo-quadra.svg";
 import TituloFormulario from "../components/titulo-form/TituloFormulario";
 import BotaoFormulario from "../components/botao-form/BotaoFormulario";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import { useState } from "react";
 import api from "../api";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 function PaginaLogin() {
+
+  const MySwal = withReactContent(Swal);
+  const history = useHistory();
 
   const [emailDigitado, setEmailDigitado] = useState("");
   const [senhaDigitada, setSenhaDigitada] = useState("");
 
   function Entrar(e) {
     e.preventDefault();
-    console.log(emailDigitado)
-    console.log(senhaDigitada)
 
     api.post("/locatarios/login", {
       email: emailDigitado,
       senha: senhaDigitada,
     }).then((resposta) => {
-      alert("Sucesso!");
+      sessionStorage.locatario = JSON.stringify(resposta.data);
+      history.push("/inicio");
     }).catch((erro) => {
-      alert("Erro ao logar!");
+      MySwal.fire({
+        title: 'Erro ao se conectar!',
+        text: 'E-mail e/ou senha inválido(s)',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      })
       console.log(erro);
     })
   }

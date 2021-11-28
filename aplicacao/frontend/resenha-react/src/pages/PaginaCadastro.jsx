@@ -7,44 +7,78 @@ import TituloFormulario from "../components/titulo-form/TituloFormulario";
 import BotaoFormulario from "../components/botao-form/BotaoFormulario";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useHistory } from "react-router";
 import api from "../api";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 function PaginaCadastro() {
+
+  const MySwal = withReactContent(Swal);
+  const history = useHistory();
 
   const [nomeDigitado, setNomeDigitado] = useState("");
   const [sobrenomeDigitado, setSobrenomeDigitado] = useState("");
   const [emailDigitado, setEmailDigitado] = useState("");
   const [senhaDigitada, setSenhaDigitada] = useState("");
+  const [confirmarSenhaDigitada, setConfirmarSenhaDigitada] = useState("");
   const [cpfDigitado, setCpfDigitado] = useState("");
   const [dataNascimentoDigitado, setDataNascimentoDigitado] = useState("");
   const [telefoneDigitado, setTelefoneDigitado] = useState("");
 
+  const senha = senhaDigitada;
+  const confirmarSenha = confirmarSenhaDigitada;
+  let senhaValidada = false;
+
+  function validarSenha() {
+    if (senha === confirmarSenha) {
+      senhaValidada = true;
+    }
+  }
+
   function Cadastrar(e) {
     e.preventDefault();
 
-    console.log(nomeDigitado)
-    console.log(sobrenomeDigitado)
-    console.log(emailDigitado)
-    console.log(senhaDigitada)
-    console.log(cpfDigitado)
-    console.log(dataNascimentoDigitado)
-    console.log(telefoneDigitado)
+    validarSenha();
 
-    api.post("/locatarios", {
-      nome: nomeDigitado,
-      sobrenome: sobrenomeDigitado,
-      email: emailDigitado,
-      senha: senhaDigitada,
-      cpf: cpfDigitado,
-      data_nasc: dataNascimentoDigitado,
-      telefone: telefoneDigitado,
-    }).then((resposta) => {
-      alert("Sucesso!");
-      console.log(resposta)
-    }).catch((erro) => {
-      alert("Erro ao Cadastrar!");
-      console.log(erro);
-    })
+    if (senhaValidada === false) {
+      MySwal.fire({
+        title: 'Usuário não cadastrado!',
+        text: 'As senhas inseridas nao conferem',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      })
+    } else {
+      api.post("/locatarios", {
+        nome: nomeDigitado,
+        sobrenome: sobrenomeDigitado,
+        email: emailDigitado,
+        senha: senhaDigitada,
+        cpf: cpfDigitado,
+        data_nasc: dataNascimentoDigitado,
+        telefone: telefoneDigitado,
+      }).then((resposta) => {
+        MySwal.fire({
+          title: 'Usuário cadastro com sucesso!',
+          text: 'Agora você pode conectar em nossa aplicação',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.push("/login");
+          }
+        })
+        console.log(resposta)
+      }).catch((erro) => {
+        MySwal.fire({
+          title: 'Usuário não cadastrado!',
+          text: 'Erro ao cadastrar no banco de dados',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        })
+        console.log(erro);
+      })
+    }
   }
 
   function mascaraCPF(i) {
@@ -136,7 +170,7 @@ function PaginaCadastro() {
                       </div>
                       <div class="campo-form">
                         <label>Confirmar Senha</label>
-                        <input type="password" id="new_password" name="new_password" required />
+                        <input type="password" id="new_password" name="new_password" onChange={e => setConfirmarSenhaDigitada(e.target.value)} required />
                       </div>
                     </div>
                     <div class="campo-cpf-idade">

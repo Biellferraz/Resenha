@@ -219,3 +219,11 @@ label #sidebar_btn:hover {
     width: 78%;
     height: 20%;
 }
+
+.sair-menu {
+    cursor: pointer;
+}
+
+.sair-menu label {
+    cursor: pointer;
+}

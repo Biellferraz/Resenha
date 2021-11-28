@@ -141,3 +141,34 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+/* Estilização do Sweet Alert */
+.swal2-container.swal2-center>.swal2-popup {
+  font-family: 'Spartan';
+  background-color: #F3FAFE;
+}
+
+.swal2-title {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  color: #1B2024 !important;
+}
+
+.swal2-html-container {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  color: #1B2024 !important;
+}
+
+.swal2-styled.swal2-confirm {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  background-color: #1B2024 !important;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  box-shadow: 0 0 0 3px rgb(27 32 36 / 50%) !important;
+}

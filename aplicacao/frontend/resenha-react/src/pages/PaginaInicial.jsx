@@ -481,7 +481,7 @@ function PaginaInicial() {
                       <div class="contato-form-header">
                         <div class="contato-form-title">
                           <img src={resenhaBall} alt="Resenha Form" />
-                          <label>Experimente Já!</label>
+                          <label>Entre em contato!</label>
                         </div>
                         <div class="contato-form-subtitle">
                           Preencha o formulário para contato via e-mail
