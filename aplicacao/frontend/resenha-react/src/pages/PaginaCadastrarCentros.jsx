@@ -242,11 +242,11 @@ function CadastrarCentros() {
                                                         </div>
                                                         <div class="campo-centro-cep">
                                                             <label>Cep</label>
-                                                            <input type="text" onInput={e => mascaraCEP((e.target), '#####-###')} maxlength="9" onChange={e => setCepCentroDigitado(e.target.value)} required />
+                                                            <input type="text" onInput={e => mascaraCEP((e.target), '#####-###')} maxLength="9" pattern="\d{5}-?\d{3}" onChange={e => setCepCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-cnpj">
                                                             <label>CNPJ</label>
-                                                            <input type="text" onInput={e => mascaraCNPJ(e.target)} maxlength="18" onChange={e => setCnpjCentroDigitado(e.target.value)} required />
+                                                            <input type="text" onInput={e => mascaraCNPJ(e.target)} maxLength="18" pattern="^(\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2})$" onChange={e => setCnpjCentroDigitado(e.target.value)} required />
                                                         </div>
                                                     </div>
                                                     <div class="card-centro-body-B">
