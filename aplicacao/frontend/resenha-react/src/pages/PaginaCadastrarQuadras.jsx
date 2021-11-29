@@ -24,9 +24,8 @@ function CadastrarQuadras() {
 
     const [centros, setCentros] = useState([]);
     const [selectCentroValue, setSelectCentroValue] = useState(1);
-    const [selectModalidadeValue, setSelectModalidadeValue] = useState(1);
+    const [selectModalidadeValue, setSelectModalidadeValue] = useState("Futebol");
     let [numeroQuadraDigitado, setNumeroQuadraDigitado] = useState("");
-    let [modalidadeInserida, setModalidadeInserida] = useState("");
     let fkLocatario;
 
     useEffect(() => {
@@ -66,12 +65,12 @@ function CadastrarQuadras() {
 
         console.log("Retorno do Centro Esportivo: ", selectCentroValue);
         console.log("Retorno do N° da Quadra: ", numeroQuadraDigitado);
-        console.log("Retorno da Modalidade: ", modalidadeInserida);
+        console.log("Retorno da Modalidade: ", selectModalidadeValue);
 
         api.post("/quadras", {
             numero_quadra: numeroQuadraDigitado,
-            modalidade: modalidadeInserida,
-            disponivel: true,
+            modalidade: selectModalidadeValue,
+            disponivel: 1,
             fk_centro_esportivo: selectCentroValue,
         }).then((resposta) => {
             MySwal.fire({
@@ -211,6 +210,7 @@ function CadastrarQuadras() {
                                                         <div class="campo-quadra-centro">
                                                             <label>SELECIONE UM CENTRO ESPORTIVO</label>
                                                             <select value={selectCentroValue} name="centros" id="centros" onChange={e => setSelectCentroValue(e.target.value)}>
+                                                                <option value="Selecione">Selecione</option>
                                                                 {
                                                                     centros.map((centro) => (
                                                                         <option value={centro.id} id="centro_selecionado">{centro.nome}</option>
@@ -226,10 +226,10 @@ function CadastrarQuadras() {
                                                         <div class="campo-modalidade">
                                                             <label>Modalidade</label>
                                                             <select value={selectModalidadeValue} name="modalidades" id="modalidade" onChange={e => setSelectModalidadeValue(e.target.value)}>
-                                                                <option value="modalidades" selected>Futebol</option>
-                                                                <option value="modalidades">Volêi</option>
-                                                                <option value="modalidades">Basquete</option>
-                                                                <option value="modalidades">Tenis</option>
+                                                                <option value="Futebol">Futebol</option>
+                                                                <option value="Vôlei">Volêi</option>
+                                                                <option value="Basquete">Basquete</option>
+                                                                <option value="Tênis">Tênis</option>
                                                             </select>
                                                         </div>
                                                     </div>

@@ -185,6 +185,15 @@
     text-transform: uppercase;
 }
 
+.campo-modalidade option {
+    font-family: Spartan;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+
+}
+
 .campo-modalidade label {
     font-style: normal;
     font-weight: bold;
