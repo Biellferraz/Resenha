@@ -41,7 +41,7 @@ public class CentroEsportivo {
     private String telefone;
 
     @Column(name = "fk_locatario")
-    private Integer fk_locatario;
+    private Integer fkLocatario;
 
     @NotNull
     @NotBlank
@@ -68,12 +68,12 @@ public class CentroEsportivo {
     }
 
     // Getters & Setters
-    public Integer getFk_locatario() {
-        return fk_locatario;
+    public Integer getFkLocatario() {
+        return fkLocatario;
     }
 
-    public void setFk_locatario(Integer fk_locatario) {
-        this.fk_locatario = fk_locatario;
+    public void setFkLocatario(Integer fkLocatario) {
+        this.fkLocatario = fkLocatario;
     }
 
     public Integer getId() {

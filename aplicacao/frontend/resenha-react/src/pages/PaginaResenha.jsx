@@ -37,6 +37,8 @@ function PaginaResenha() {
             logoff();
         } else {
             let nomeLocatario = JSON.parse(login_locatario).nome;
+            // let locatario = JSON.parse(login_locatario); REFATORAÇÃO DO BOMBZ 💣💣
+            // console.log("Locatario do BOMBZ:", locatario.nome);
             let sobrenomeLocatario = JSON.parse(login_locatario).sobrenome;
             let nome = document.getElementById("nome");
             let sobrenome = document.getElementById("sobrenome");
@@ -50,7 +52,6 @@ function PaginaResenha() {
         sessionStorage.clear();
         history.push("/login");
     }
-
 
     return (
         <>

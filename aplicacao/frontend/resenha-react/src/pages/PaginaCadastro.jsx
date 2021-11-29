@@ -26,6 +26,7 @@ function PaginaCadastro() {
   const [dataNascimentoDigitado, setDataNascimentoDigitado] = useState("");
   const [telefoneDigitado, setTelefoneDigitado] = useState("");
 
+  // Variável para verificação da valição dos campos
   const senha = senhaDigitada;
   const confirmarSenha = confirmarSenhaDigitada;
   const nome = nomeDigitado;

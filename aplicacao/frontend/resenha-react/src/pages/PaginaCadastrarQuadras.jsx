@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
+import api from "../api";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import favicon from "../html-css-template/img/resenha-icon.ico";
 import logoResenha from "../html-css-template/img/logo-resenha.svg";
 import imgMenuInicio from "../html-css-template/img/inicio-menu.svg";
@@ -14,6 +18,80 @@ import logoQuadra from "../html-css-template/img/resenha-quadra-inicio.svg";
 import quadraEsportiva from "../html-css-template/img/quadra-esportiva-centro.svg";
 
 function CadastrarQuadras() {
+    const MySwal = withReactContent(Swal);
+    const history = useHistory();
+
+
+    const [centros, setCentros] = useState([]);
+    const [selectCentroValue, setSelectCentroValue] = useState(1);
+    const [selectModalidadeValue, setSelectModalidadeValue] = useState(1);
+    let [numeroQuadraDigitado, setNumeroQuadraDigitado] = useState("");
+    let [modalidadeInserida, setModalidadeInserida] = useState("");
+    let fkLocatario;
+
+    useEffect(() => {
+        validarAutenticacao();
+        async function recuperarCentros() {
+            const resposta = await api.get(`/centros/recuperar-centros/${fkLocatario}`);
+            setCentros(resposta.data)
+            console.log("Retorno da Resposta", resposta.data);
+        }
+        recuperarCentros();
+    }, []);
+
+    function validarAutenticacao() {
+        let login_locatario = sessionStorage.locatario;
+        if (login_locatario === undefined) {
+            logoff();
+        } else {
+            let locatario = JSON.parse(login_locatario);
+            let nomeLocatario = locatario.nome;
+            let sobrenomeLocatario = locatario.sobrenome;
+            fkLocatario = locatario.id;
+            let nome = document.getElementById("nome");
+            let sobrenome = document.getElementById("sobrenome");
+
+            nome.innerHTML = `${nomeLocatario}`;
+            sobrenome.innerHTML = `${sobrenomeLocatario}`;
+        }
+    }
+
+    function logoff() {
+        sessionStorage.clear();
+        history.push("/login");
+    }
+
+    function Cadastrar(e) {
+        e.preventDefault();
+
+        console.log("Retorno do Centro Esportivo: ", selectCentroValue);
+        console.log("Retorno do N° da Quadra: ", numeroQuadraDigitado);
+        console.log("Retorno da Modalidade: ", modalidadeInserida);
+
+        api.post("/quadras", {
+            numero_quadra: numeroQuadraDigitado,
+            modalidade: modalidadeInserida,
+            disponivel: true,
+            fk_centro_esportivo: selectCentroValue,
+        }).then((resposta) => {
+            MySwal.fire({
+                title: 'Centro cadastro com sucesso!',
+                text: 'Agora você pode cadastrar suas quadras',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+            })
+            console.log(resposta);
+        }).catch((erro) => {
+            MySwal.fire({
+                title: 'Centro esportivo não cadastrado!',
+                text: 'Erro ao cadastrar no banco de dados',
+                icon: 'error',
+                confirmButtonText: 'Ok',
+            })
+            console.log(erro);
+        })
+    }
+
     return (
         <>
             <Helmet>
@@ -84,7 +162,7 @@ function CadastrarQuadras() {
                                     </div>
                                 </div>
                                 <div class="menu-footer">
-                                    <div class="sair-menu">
+                                    <div class="sair-menu" onClick={logoff}>
                                         <div class="menu-img">
                                             <img src={imgMenuSair} alt="Imagem Menu Sair" />
                                         </div>
@@ -102,7 +180,7 @@ function CadastrarQuadras() {
                                 <div class="header-info">
                                     <div class="header-info-username">
                                         <img src={bolaResenha} alt="Icone Resenha"></img>
-                                        <label>Bem-Vindo <span>Usuário</span></label>
+                                        <label>Bem-Vindo <span id="nome"></span> <span id="sobrenome"></span></label>
                                     </div>
                                     <div class="header-info-date">
                                         <label>01 de Dezembro de 2021</label>
@@ -121,7 +199,7 @@ function CadastrarQuadras() {
                                 <div class="content-body-quadra">
                                     <div class="quadras-content">
                                         <div class="card-cadastrar-quadra">
-                                            <form class="card-quadra-container">
+                                            <form class="card-quadra-container" onSubmit={Cadastrar}>
                                                 <div class="card-quadra-header">
                                                     <div class="card-header-title">
                                                         <img src={quadraEsportiva} alt="Quadra Esportiva" />
@@ -132,39 +210,36 @@ function CadastrarQuadras() {
                                                     <div class="card-quadra-body-A">
                                                         <div class="campo-quadra-centro">
                                                             <label>SELECIONE UM CENTRO ESPORTIVO</label>
-                                                            <select name="centros" id="centros">
-                                                                <option value="centro-esportivo" selected>Arena Esportiva</option>
-                                                                <option value="centro-esportivo">ABC QUADRAS</option>
-                                                                <option value="centro-esportivo">Multiquadras</option>
-                                                                <option value="centro-esportivo">Playball</option>
+                                                            <select value={selectCentroValue} name="centros" id="centros" onChange={e => setSelectCentroValue(e.target.value)}>
+                                                                {
+                                                                    centros.map((centro) => (
+                                                                        <option value={centro.id} id="centro_selecionado">{centro.nome}</option>
+                                                                    ))
+                                                                }
                                                             </select>
 
                                                         </div>
-                                                        <div class="campo-quadra-nome">
-                                                            <label>Nome da quadra</label>
-                                                            <input type="text" />
+                                                        <div class="campo-numero-quadra">
+                                                            <label>Nº da Quadra</label>
+                                                            <input type="text" onChange={e => setNumeroQuadraDigitado(e.target.value)} />
                                                         </div>
                                                         <div class="campo-modalidade">
                                                             <label>Modalidade</label>
-                                                            <select name="modalidade" id="modalidade">
+                                                            <select value={selectModalidadeValue} name="modalidades" id="modalidade" onChange={e => setSelectModalidadeValue(e.target.value)}>
                                                                 <option value="modalidades" selected>Futebol</option>
                                                                 <option value="modalidades">Volêi</option>
                                                                 <option value="modalidades">Basquete</option>
                                                                 <option value="modalidades">Tenis</option>
                                                             </select>
                                                         </div>
-                                                        <div class="campo-numero-quadra">
-                                                            <label>Nº da Quadra</label>
-                                                            <input type="text" />
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="card-quadra-footer">
                                                     <div class="card-quadra-footer-limpar">
-                                                        <button>limpar</button>
+                                                        <button type="reset">limpar</button>
                                                     </div>
                                                     <div class="card-quadra-footer-cadastrar">
-                                                        <button>cadastrar</button>
+                                                        <button type="submit">cadastrar</button>
                                                     </div>
                                                 </div>
                                             </form>

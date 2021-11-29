@@ -1,7 +1,6 @@
 package com.resenha.projetoresenha.controle;
 
 
-
 import com.resenha.projetoresenha.dominio.Quadra;
 import com.resenha.projetoresenha.repositorio.QuadraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/quadras")
+@CrossOrigin
 public class QuadraController {
 
     @Autowired

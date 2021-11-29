@@ -45,7 +45,7 @@ public class Locatario {
     @Column(name = "telefone")
     private String telefone;
 
-    @Past
+    @PastOrPresent
     @Column(name = "data_nasc")
     private LocalDate data_nasc;
 

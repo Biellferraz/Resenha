@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import favicon from "../html-css-template/img/resenha-icon.ico";
 import logoResenha from "../html-css-template/img/logo-resenha.svg";
 import imgMenuInicio from "../html-css-template/img/inicio-menu.svg";
@@ -22,6 +23,32 @@ import cadernoAgendamento from "../html-css-template/img/caderno-agendamento.svg
 import moeda from "../html-css-template/img/coin.svg";
 
 function PaginaAgendamento() {
+    const history = useHistory();
+
+    useEffect(() => {
+        validarAutenticacao();
+    });
+
+    function validarAutenticacao() {
+        let login_locatario = sessionStorage.locatario;
+        if (login_locatario === undefined) {
+            logoff();
+        } else {
+            let nomeLocatario = JSON.parse(login_locatario).nome;
+            let sobrenomeLocatario = JSON.parse(login_locatario).sobrenome;
+            let nome = document.getElementById("nome");
+            let sobrenome = document.getElementById("sobrenome");
+
+            nome.innerHTML = `${nomeLocatario}`;
+            sobrenome.innerHTML = `${sobrenomeLocatario}`;
+        }
+    }
+
+    function logoff() {
+        sessionStorage.clear();
+        history.push("/login");
+    }
+
     return (
         <>
             <Helmet>
@@ -92,7 +119,7 @@ function PaginaAgendamento() {
                                     </div>
                                 </div>
                                 <div class="menu-footer">
-                                    <div class="sair-menu">
+                                    <div class="sair-menu" onClick={logoff}>
                                         <div class="menu-img">
                                             <img src={imgMenuSair} alt="Imagem Menu Sair" />
                                         </div>
@@ -110,7 +137,7 @@ function PaginaAgendamento() {
                                 <div class="header-info">
                                     <div class="header-info-username">
                                         <img src={bolaResenha} alt="Icone Resenha"></img>
-                                        <label>Bem-Vindo <span>Usuário</span></label>
+                                        <label>Bem-Vindo <span id="nome"></span> <span id="sobrenome"></span></label>
                                     </div>
                                     <div class="header-info-date">
                                         <label>01 de Dezembro de 2021</label>

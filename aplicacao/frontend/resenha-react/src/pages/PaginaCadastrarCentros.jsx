@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
+import api from "../api";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import favicon from "../html-css-template/img/resenha-icon.ico";
 import logoResenha from "../html-css-template/img/logo-resenha.svg";
 import imgMenuInicio from "../html-css-template/img/inicio-menu.svg";
@@ -14,6 +18,81 @@ import logoQuadra from "../html-css-template/img/resenha-quadra-inicio.svg";
 import centroEsportivo from "../html-css-template/img/centro-esportivo.svg";
 
 function CadastrarCentros() {
+    const MySwal = withReactContent(Swal);
+    const history = useHistory();
+
+    let [nomeCentroDigitado, setNomeCentroDigitado] = useState("");
+    let [telefoneCentroDigitado, setTelefoneCentroDigitado] = useState("");
+    let [cepCentroDigitado, setCepCentroDigitado] = useState("");
+    let [cnpjCentroDigitado, setCnpjCentroDigitado] = useState("");
+    let [horarioAbreCentroDigitado, setHorarioAbreCentroDigitado] = useState("");
+    let [horarioFechaCentroDigitado, setHorarioFechaCentroDigitado] = useState("");
+    let [numeroCentroDigitado, setNumeroCentroDigitado] = useState("");
+    let [cidadeCentroDigitado, setCidadeCentroDigitado] = useState("");
+    let fkLocatario;
+
+    useEffect(() => {
+        validarAutenticacao();
+    });
+
+    function validarAutenticacao() {
+        let login_locatario = sessionStorage.locatario;
+        if (login_locatario === undefined) {
+            logoff();
+        } else {
+            let locatario = JSON.parse(login_locatario);
+            let nomeLocatario = locatario.nome;
+            let sobrenomeLocatario = locatario.sobrenome;
+            fkLocatario = locatario.id;
+            let nome = document.getElementById("nome");
+            let sobrenome = document.getElementById("sobrenome");
+            console.log(fkLocatario);
+
+            nome.innerHTML = `${nomeLocatario}`;
+            sobrenome.innerHTML = `${sobrenomeLocatario}`;
+            console.log("Nome do Centro ", nomeCentroDigitado)
+        }
+    }
+
+    function logoff() {
+        sessionStorage.clear();
+        history.push("/login");
+    }
+
+    function Cadastrar(e) {
+        e.preventDefault();
+        console.log("TESTE ABRE", horarioAbreCentroDigitado)
+        console.log("TESTE FECHA", horarioFechaCentroDigitado)
+
+        api.post("/centros", {
+            nome: nomeCentroDigitado,
+            telefone: telefoneCentroDigitado,
+            cep: cepCentroDigitado,
+            cnpj: cnpjCentroDigitado,
+            horaAbre: horarioAbreCentroDigitado,
+            horaFecha: horarioFechaCentroDigitado,
+            numero: numeroCentroDigitado,
+            cidade: cidadeCentroDigitado,
+            fkLocatario: fkLocatario,
+        }).then((resposta) => {
+            MySwal.fire({
+                title: 'Centro cadastro com sucesso!',
+                text: 'Agora você pode cadastrar suas quadras',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+            })
+            console.log(resposta);
+        }).catch((erro) => {
+            MySwal.fire({
+                title: 'Centro esportivo não cadastrado!',
+                text: 'Erro ao cadastrar no banco de dados',
+                icon: 'error',
+                confirmButtonText: 'Ok',
+            })
+            console.log(erro);
+        })
+    }
+
     return (
         <>
             <Helmet>
@@ -84,7 +163,7 @@ function CadastrarCentros() {
                                     </div>
                                 </div>
                                 <div class="menu-footer">
-                                    <div class="sair-menu">
+                                    <div class="sair-menu" onClick={logoff}>
                                         <div class="menu-img">
                                             <img src={imgMenuSair} alt="Imagem Menu Sair" />
                                         </div>
@@ -102,7 +181,7 @@ function CadastrarCentros() {
                                 <div class="header-info">
                                     <div class="header-info-username">
                                         <img src={bolaResenha} alt="Icone Resenha"></img>
-                                        <label>Bem-Vindo <span>Usuário</span></label>
+                                        <label>Bem-Vindo <span id="nome"></span> <span id="sobrenome"></span></label>
                                     </div>
                                     <div class="header-info-date">
                                         <label>01 de Dezembro de 2021</label>
@@ -121,7 +200,7 @@ function CadastrarCentros() {
                                 <div class="content-body-centros">
                                     <div class="centros-content">
                                         <div class="card-cadastrar-centros">
-                                            <form class="card-centro-container">
+                                            <form class="card-centro-container" onSubmit={Cadastrar}>
                                                 <div class="card-centro-header">
                                                     <div class="card-header-title">
                                                         <img src={centroEsportivo} alt="Centro Esportivo" />
@@ -132,44 +211,46 @@ function CadastrarCentros() {
                                                     <div class="card-centro-body-A">
                                                         <div class="campo-centro-nome">
                                                             <label>Nome do centro esportivo</label>
-                                                            <input type="text" />
+                                                            <input id="nome_centro" type="text" onChange={e => setNomeCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-telefone">
                                                             <label>Telefone</label>
-                                                            <input type="text" />
+                                                            <input type="text" onChange={e => setTelefoneCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-cep">
                                                             <label>Cep</label>
-                                                            <input type="text" />
+                                                            <input type="text" onChange={e => setCepCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-cnpj">
                                                             <label>CNPJ</label>
-                                                            <input type="text" />
+                                                            <input type="text" onChange={e => setCnpjCentroDigitado(e.target.value)} required />
                                                         </div>
                                                     </div>
                                                     <div class="card-centro-body-B">
                                                         <div class="campo-centro-horario-abre">
                                                             <label>Horario que abre</label>
-                                                            <input type="text" />
+                                                            <input type="text" onChange={e => setHorarioAbreCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-horario-fecha">
                                                             <label>Horario que fecha</label>
-                                                            <input type="text" />
+                                                            <input type="text" onChange={e => setHorarioFechaCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-numero-centro">
                                                             <label>Numero do Centro</label>
-                                                            <input type="text" />
+                                                            <input type="text" onChange={e => setNumeroCentroDigitado(e.target.value)} required />
                                                         </div>
-                                                        <div class="campo-centro-vazio">
+                                                        <div class="campo-centro-cidade">
+                                                            <label>Cidade</label>
+                                                            <input type="text" onChange={e => setCidadeCentroDigitado(e.target.value)} required />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="card-centro-footer">
                                                     <div class="card-centro-footer-limpar">
-                                                        <button>limpar</button>
+                                                        <button type="reset">limpar</button>
                                                     </div>
                                                     <div class="card-centro-footer-cadastrar">
-                                                        <button>cadastrar</button>
+                                                        <button type="submit">cadastrar</button>
                                                     </div>
                                                 </div>
                                             </form>

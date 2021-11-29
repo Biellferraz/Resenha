@@ -2,19 +2,63 @@ package com.resenha.projetoresenha.controle;
 
 
 import com.resenha.projetoresenha.dominio.CentroEsportivo;
+import com.resenha.projetoresenha.dominio.Locatario;
 import com.resenha.projetoresenha.repositorio.CentroEsportivoRepository;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
 @RequestMapping("/centros")
+@CrossOrigin
 public class CentroEsportivoController {
 
     @Autowired
     private CentroEsportivoRepository repository;
+
+    @GetMapping(value = "/exportar-txt", produces = "plain/text")
+    @ApiOperation(value = "Realiza a exportação de um arquivo com todos os centros esportivos")
+    public ResponseEntity<?> export() {
+
+        String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+        var filename = String.format("CentroE.txt");
+
+        try {
+            var file = new File(filename);
+            var path = Paths.get(file.getAbsolutePath());
+            var resource = new ByteArrayResource(Files.readAllBytes(path));
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.parseMediaType("plain/text"))
+                    .contentLength(file.length())
+                    .body(resource);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/recuperar-centros/{fk_locatario}")
+    public ResponseEntity getCentrosEsportivosDoLocatario(@PathVariable Integer fk_locatario) {
+        List<CentroEsportivo> centrosEncontrados = repository.findByFkLocatario(fk_locatario);
+
+        if (centrosEncontrados == null) {
+            return ResponseEntity.status(404).build();
+        }
+
+        return ResponseEntity.status(200).body(centrosEncontrados);
+    }
 
     @GetMapping
     public ResponseEntity getCentroEsportivo() {

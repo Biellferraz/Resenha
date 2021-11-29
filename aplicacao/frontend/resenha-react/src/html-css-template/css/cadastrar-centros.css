@@ -280,13 +280,29 @@
     text-transform: uppercase;
 }
 
-.campo-centro-vazio {
+.campo-centro-cidade {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 25%;
     height: 40%;
     margin-right: 20px;
+}
+
+.campo-centro-cidade input {
+    background-color: transparent;
+    border: none;
+    font-family: Spartan;
+    font-weight: bold;
+    color: #029EFB;
+    border-bottom: 2px solid #0A0A0A;
+}
+
+.campo-centro-cidade label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 
 .card-centro-footer {
@@ -318,6 +334,7 @@
     font-weight: bold;
     font-size: 12px;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 .card-centro-footer-cadastrar {
@@ -341,4 +358,5 @@
     font-weight: bold;
     font-size: 12px;
     text-transform: uppercase;
+    cursor: pointer;
 }
