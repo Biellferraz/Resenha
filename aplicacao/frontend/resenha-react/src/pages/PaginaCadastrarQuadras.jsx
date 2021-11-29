@@ -21,7 +21,6 @@ function CadastrarQuadras() {
     const MySwal = withReactContent(Swal);
     const history = useHistory();
 
-
     const [centros, setCentros] = useState([]);
     const [selectCentroValue, setSelectCentroValue] = useState(1);
     const [selectModalidadeValue, setSelectModalidadeValue] = useState("Futebol");
@@ -33,7 +32,6 @@ function CadastrarQuadras() {
         async function recuperarCentros() {
             const resposta = await api.get(`/centros/recuperar-centros/${fkLocatario}`);
             setCentros(resposta.data)
-            console.log("Retorno da Resposta", resposta.data);
         }
         recuperarCentros();
     }, []);
@@ -49,7 +47,6 @@ function CadastrarQuadras() {
             fkLocatario = locatario.id;
             let nome = document.getElementById("nome");
             let sobrenome = document.getElementById("sobrenome");
-
             nome.innerHTML = `${nomeLocatario}`;
             sobrenome.innerHTML = `${sobrenomeLocatario}`;
         }
@@ -63,10 +60,6 @@ function CadastrarQuadras() {
     function Cadastrar(e) {
         e.preventDefault();
 
-        console.log("Retorno do Centro Esportivo: ", selectCentroValue);
-        console.log("Retorno do N° da Quadra: ", numeroQuadraDigitado);
-        console.log("Retorno da Modalidade: ", selectModalidadeValue);
-
         api.post("/quadras", {
             numero_quadra: numeroQuadraDigitado,
             modalidade: selectModalidadeValue,
@@ -79,7 +72,6 @@ function CadastrarQuadras() {
                 icon: 'success',
                 confirmButtonText: 'Ok',
             })
-            console.log(resposta);
         }).catch((erro) => {
             MySwal.fire({
                 title: 'Centro esportivo não cadastrado!',

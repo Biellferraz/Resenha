@@ -262,8 +262,7 @@
     font-weight: bold;
     font-size: 12px;
     text-transform: uppercase;
-
-
+    cursor: pointer;
 }
 
 .card-quadra-footer-cadastrar {
@@ -287,4 +286,5 @@
     font-weight: bold;
     font-size: 12px;
     text-transform: uppercase;
+    cursor: pointer;
 }

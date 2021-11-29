@@ -26,13 +26,11 @@ function PaginaCadastro() {
   const [dataNascimentoDigitado, setDataNascimentoDigitado] = useState("");
   const [telefoneDigitado, setTelefoneDigitado] = useState("");
 
-  // Variável para verificação da valição dos campos
   const senha = senhaDigitada;
   const confirmarSenha = confirmarSenhaDigitada;
   const nome = nomeDigitado;
   const sobrenome = sobrenomeDigitado;
 
-  // Variáveis booleanos para controle de validação dos campos
   let senhaValidada = false;
   let tamanhoSenhaValidado = false;
   let nomeValidado = false;
@@ -86,7 +84,6 @@ function PaginaCadastro() {
   }
 
   function validarData(data) {
-    console.log(data);
     var data_array = data.split("-");
     var dia = data_array[2];
     var mes = data_array[1];
@@ -178,7 +175,6 @@ function PaginaCadastro() {
             history.push("/login");
           }
         })
-        console.log(resposta)
       }).catch((erro) => {
         MySwal.fire({
           title: 'Usuário não cadastrado!',

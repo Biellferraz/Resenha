@@ -46,11 +46,8 @@ function CadastrarCentros() {
             fkLocatario = locatario.id;
             let nome = document.getElementById("nome");
             let sobrenome = document.getElementById("sobrenome");
-            console.log(fkLocatario);
-
             nome.innerHTML = `${nomeLocatario}`;
             sobrenome.innerHTML = `${sobrenomeLocatario}`;
-            console.log("Nome do Centro ", nomeCentroDigitado)
         }
     }
 
@@ -61,8 +58,6 @@ function CadastrarCentros() {
 
     function Cadastrar(e) {
         e.preventDefault();
-        console.log("TESTE ABRE", horarioAbreCentroDigitado)
-        console.log("TESTE FECHA", horarioFechaCentroDigitado)
 
         api.post("/centros", {
             nome: nomeCentroDigitado,
@@ -81,7 +76,6 @@ function CadastrarCentros() {
                 icon: 'success',
                 confirmButtonText: 'Ok',
             })
-            console.log(resposta);
         }).catch((erro) => {
             MySwal.fire({
                 title: 'Centro esportivo não cadastrado!',
@@ -91,6 +85,35 @@ function CadastrarCentros() {
             })
             console.log(erro);
         })
+    }
+
+    function mascaraTelefone(tel) {
+        let valor = tel.value;
+        valor = valor.replace(/\D/g, "")
+        valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
+        valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
+        tel.value = valor;
+        return;
+    }
+
+    function mascaraCEP(t, mask) {
+        var i = t.value.length;
+        var saida = mask.substring(1, 0);
+        var texto = mask.substring(i);
+        if (texto.substring(0, 1) !== saida) {
+            t.value += texto.substring(0, 1);
+        }
+    }
+
+    function mascaraCNPJ(v) {
+        let valor = v.value;
+        // v = v.replace(/\D/g, "");
+        valor = valor.replace(/^(\d{2})(\d)/, "$1.$2");
+        valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+        valor = valor.replace(/\.(\d{3})(\d)/, ".$1/$2");
+        valor = valor.replace(/(\d{4})(\d)/, "$1-$2");
+        v.value = valor;
+        return;
     }
 
     return (
@@ -211,33 +234,33 @@ function CadastrarCentros() {
                                                     <div class="card-centro-body-A">
                                                         <div class="campo-centro-nome">
                                                             <label>Nome do centro esportivo</label>
-                                                            <input id="nome_centro" type="text" onChange={e => setNomeCentroDigitado(e.target.value)} required />
+                                                            <input id="nome_centro" type="text" onChange={e => setNomeCentroDigitado(e.target.value)} maxLength="50" required />
                                                         </div>
                                                         <div class="campo-centro-telefone">
                                                             <label>Telefone</label>
-                                                            <input type="text" onChange={e => setTelefoneCentroDigitado(e.target.value)} required />
+                                                            <input type="text" onInput={e => mascaraTelefone(e.target)} maxLength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}" onChange={e => setTelefoneCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-cep">
                                                             <label>Cep</label>
-                                                            <input type="text" onChange={e => setCepCentroDigitado(e.target.value)} required />
+                                                            <input type="text" onInput={e => mascaraCEP((e.target), '#####-###')} maxlength="9" onChange={e => setCepCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-cnpj">
                                                             <label>CNPJ</label>
-                                                            <input type="text" onChange={e => setCnpjCentroDigitado(e.target.value)} required />
+                                                            <input type="text" onInput={e => mascaraCNPJ(e.target)} maxlength="18" onChange={e => setCnpjCentroDigitado(e.target.value)} required />
                                                         </div>
                                                     </div>
                                                     <div class="card-centro-body-B">
                                                         <div class="campo-centro-horario-abre">
                                                             <label>Horario que abre</label>
-                                                            <input type="text" onChange={e => setHorarioAbreCentroDigitado(e.target.value)} required />
+                                                            <input type="time" pattern="([01][0-9]|2[0-3]):[0-5][0-9])" onChange={e => setHorarioAbreCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-horario-fecha">
                                                             <label>Horario que fecha</label>
-                                                            <input type="text" onChange={e => setHorarioFechaCentroDigitado(e.target.value)} required />
+                                                            <input type="time" pattern="([01][0-9]|2[0-3]):[0-5][0-9])" onChange={e => setHorarioFechaCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-numero-centro">
                                                             <label>Numero do Centro</label>
-                                                            <input type="text" onChange={e => setNumeroCentroDigitado(e.target.value)} required />
+                                                            <input type="number" onChange={e => setNumeroCentroDigitado(e.target.value)} required />
                                                         </div>
                                                         <div class="campo-centro-cidade">
                                                             <label>Cidade</label>

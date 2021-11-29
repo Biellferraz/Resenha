@@ -34,11 +34,11 @@ function PaginaAgendamento() {
         if (login_locatario === undefined) {
             logoff();
         } else {
-            let nomeLocatario = JSON.parse(login_locatario).nome;
-            let sobrenomeLocatario = JSON.parse(login_locatario).sobrenome;
+            let locatario = JSON.parse(login_locatario);
+            let nomeLocatario = locatario.nome;
+            let sobrenomeLocatario = locatario.sobrenome;
             let nome = document.getElementById("nome");
             let sobrenome = document.getElementById("sobrenome");
-
             nome.innerHTML = `${nomeLocatario}`;
             sobrenome.innerHTML = `${sobrenomeLocatario}`;
         }
