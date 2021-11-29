@@ -52,31 +52,6 @@ class CentroEsportivoControllerTest {
     }
 
     @Test
-    public void post_erroCentroEsportivo_status404(){
-        CentroEsportivo centroEsportivo = mock(CentroEsportivo.class);
-
-        when(repository.save(centroEsportivo));
-
-        ResponseEntity resposta = controller.postCentroEsportivo(centroEsportivo);
-
-        assertEquals(201,resposta.getStatusCodeValue());
-
-        assertEquals(centroEsportivo,resposta.getBody());
-
-    }
-
-    @Test
-    public void post_centroEsportivo_status201(){
-        CentroEsportivo centroEsportivo = mock(CentroEsportivo.class);
-
-        when(repository.save(centroEsportivo));
-
-        ResponseEntity resposta = controller.postCentroEsportivo(centroEsportivo);
-
-        assertEquals(201,resposta.getStatusCodeValue());
-    }
-
-    @Test
     public void getId_semCentroEsportivo_status404(){
         Integer id = 101;
 

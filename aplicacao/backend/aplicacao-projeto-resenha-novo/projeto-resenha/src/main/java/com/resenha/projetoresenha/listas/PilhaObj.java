@@ -1,5 +1,8 @@
 package com.resenha.projetoresenha.listas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PilhaObj<T> {
 
     // Atributos
@@ -73,6 +76,14 @@ public class PilhaObj<T> {
 
     public int getTopo(){
         return topo;
+    }
+
+    public List<T> toList() {
+        List<T> lista = new ArrayList<>();
+        for (int i = topo; i >= 0; i--) {
+            lista.add(pilha[i]);
+        }
+        return lista;
     }
 
 }

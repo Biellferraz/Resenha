@@ -1,6 +1,7 @@
 package com.resenha.projetoresenha.controle;
 
 import com.resenha.projetoresenha.dominio.Agendamento;
+import com.resenha.projetoresenha.listas.PilhaObj;
 import com.resenha.projetoresenha.repositorio.AgendamentoRepository;
 import com.resenha.projetoresenha.listas.FilaObj;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,22 @@ public class AgendamentoController {
             return ResponseEntity.status(200).body(agendamentoFilaObj.toList());
         }
 
+    @GetMapping("/ocorridos")
+    public ResponseEntity getAgendamentoOcorrido() {
+        List<Agendamento> agendamentoLista = repository.findAll();
+        if (agendamentoLista.isEmpty()) {
+            return ResponseEntity.status(204).build();
+        }
+        PilhaObj<Agendamento> agendamentoFilaObj  = new PilhaObj<>(agendamentoLista.size());
+        LocalDateTime dataAtual = LocalDateTime.now();
+        agendamentoLista.stream()
+                .filter((agendamento) -> agendamento.getHora_Marcada().isBefore(dataAtual) ||
+                        agendamento.getHora_Marcada().equals(dataAtual))
+                .sorted(Comparator.comparing(Agendamento::getHora_Marcada, Comparator.naturalOrder()))
+                .forEach(agendamentoFilaObj::push);
+        return ResponseEntity.status(200).body(agendamentoFilaObj.toList());
+    }
+
         @PostMapping
         public ResponseEntity postAgendamento(@RequestBody Agendamento novoAgendamento) {
             repository.save(novoAgendamento);
@@ -72,6 +89,7 @@ public class AgendamentoController {
         @GetMapping("/relatorio/{id}")
         public ResponseEntity getAgendamentoRelatorio(@PathVariable int id) {
             if (repository.existsById(id)) {
+                List<Agendamento> agendamentoLista = repository.findAll();
                 Agendamento agendamento = repository.findById(id).get();
                 return ResponseEntity
                         .status(200)

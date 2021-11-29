@@ -52,31 +52,6 @@ class QuadraControllerTest {
     }
 
     @Test
-    public void post_erroQuadra_status404(){
-        Quadra quadra = mock(Quadra.class);
-
-        when(repository.save(quadra));
-
-        ResponseEntity resposta = controller.postQuadra(quadra);
-
-        assertEquals(201,resposta.getStatusCodeValue());
-
-        assertEquals(quadra,resposta.getBody());
-
-    }
-
-    @Test
-    public void post_Quadra_status201(){
-        Quadra quadra = mock(Quadra.class);
-
-        when(repository.save(quadra));
-
-        ResponseEntity resposta = controller.postQuadra(quadra);
-
-        assertEquals(201,resposta.getStatusCodeValue());
-    }
-
-    @Test
     public void getId_semQuadra_status404(){
         Integer id = 101;
 
