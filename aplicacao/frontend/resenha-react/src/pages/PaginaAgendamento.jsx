@@ -39,20 +39,17 @@ function PaginaAgendamento() {
         async function recuperarCentros() {
             const resposta = await api.get(`/centros/recuperar-centros/${fkLocatario}`);
             setCentros(resposta.data)
-            console.log("Retorno dos Centros: ", resposta.data);
         }
         recuperarCentros();
-        console.log("Tentando encontrar o problema", quadras);
     }, [fkLocatario]);
 
     useEffect(() => {
         async function recuperarQuadras() {
             const resposta = await api.get(`/quadras/recuperar-quadras/${fkCentroEsportivo}`);
-            // setQuadras(resposta.data)
-            // console.log("Retorno das Quadras: ", resposta.data);
+            setQuadras(resposta.data)
         }
         recuperarQuadras();
-    }, [centros, fkCentroEsportivo]);
+    }, [fkCentroEsportivo, selectCentroValue]);
 
     function validarAutenticacao() {
         let login_locatario = sessionStorage.locatario;
