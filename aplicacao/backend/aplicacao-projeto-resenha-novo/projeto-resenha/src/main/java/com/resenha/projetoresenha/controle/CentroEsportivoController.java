@@ -27,27 +27,27 @@ public class CentroEsportivoController {
     @Autowired
     private CentroEsportivoRepository repository;
 
-    @GetMapping(value = "/exportar-txt", produces = "plain/text")
-    @ApiOperation(value = "Realiza a exportação de um arquivo com todos os centros esportivos")
-    public ResponseEntity<?> export() {
-
-        String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-        var filename = String.format("CentroE.txt");
-
-        try {
-            var file = new File(filename);
-            var path = Paths.get(file.getAbsolutePath());
-            var resource = new ByteArrayResource(Files.readAllBytes(path));
-            return ResponseEntity
-                    .ok()
-                    .contentType(MediaType.parseMediaType("plain/text"))
-                    .contentLength(file.length())
-                    .body(resource);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @GetMapping(value = "/exportar-txt", produces = "plain/text")
+//    @ApiOperation(value = "Realiza a exportação de um arquivo com todos os centros esportivos")
+//    public ResponseEntity<?> export() {
+//
+//        String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+//        var filename = String.format("CentroE.txt");
+//
+//        try {
+//            var file = new File(filename);
+//            var path = Paths.get(file.getAbsolutePath());
+//            var resource = new ByteArrayResource(Files.readAllBytes(path));
+//            return ResponseEntity
+//                    .ok()
+//                    .contentType(MediaType.parseMediaType("plain/text"))
+//                    .contentLength(file.length())
+//                    .body(resource);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
     @GetMapping("/recuperar-centros/{fk_locatario}")
     public ResponseEntity getCentrosEsportivosDoLocatario(@PathVariable Integer fk_locatario) {

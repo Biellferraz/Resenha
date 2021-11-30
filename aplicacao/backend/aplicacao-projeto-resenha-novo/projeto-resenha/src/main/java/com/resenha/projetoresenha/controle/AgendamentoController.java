@@ -4,11 +4,19 @@ import com.resenha.projetoresenha.dominio.Agendamento;
 import com.resenha.projetoresenha.listas.PilhaObj;
 import com.resenha.projetoresenha.repositorio.AgendamentoRepository;
 import com.resenha.projetoresenha.listas.FilaObj;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 
@@ -110,6 +118,28 @@ public class AgendamentoController {
             }
             return ResponseEntity.status(404).build();
         }
+
+    @GetMapping(value = "/exportar-txt", produces = "plain/text")
+    @ApiOperation(value = "Realiza a exportação de um arquivo com todos os centros esportivos")
+    public ResponseEntity<?> export() {
+
+        String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+        var filename = String.format("agend.txt");
+
+        try {
+            var file = new File(filename);
+            var path = Paths.get(file.getAbsolutePath());
+            var resource = new ByteArrayResource(Files.readAllBytes(path));
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.parseMediaType("plain/text"))
+                    .contentLength(file.length())
+                    .body(resource);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 //    @GetMapping("/relatorio/{id}")
 //    public ResponseEntity getAgendamentoRelatorio(@PathVariable int id) {
