@@ -10,13 +10,11 @@ function CardFutebol(props) {
                     </div>
                     <div class="card-agendamento-nome-quadra">
                         <label style={{ "color": "#029EFB" }}>Quadra</label>
-                        <label>{props.quadra}</label>
+                        <label>{props.id}</label>
                     </div>
-                    <div class="card-agendamento-modalidade">
-                        <div class="card-agendamento-modalidade-text">
-                            <label style={{ "color": "#029EFB" }}>Modalidade</label>
-                            <label>{props.modalidade}</label>
-                        </div>
+                    <div class="card-agendamento-nome-quadra">
+                        <label style={{ "color": "#029EFB" }}>Preço</label>
+                        <label>{props.preco}</label>
                     </div>
                     <div class="card-agendamento-horario">
                         <label>{props.horaMarcada}</label>
