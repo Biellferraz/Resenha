@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
+import api from "../api";
 import favicon from "../html-css-template/img/resenha-icon.ico";
 import logoResenha from "../html-css-template/img/logo-resenha.svg";
 import imgMenuInicio from "../html-css-template/img/inicio-menu.svg";
@@ -17,17 +18,41 @@ import bolaVolei from "../html-css-template/img/volei-ball.svg";
 import quadraVolei from "../html-css-template/img/quadra-volei.svg";
 import horario from "../html-css-template/img/clock.svg";
 import centroEsportivo from "../html-css-template/img/centro-esportivo.svg";
-import playerResenha from "../html-css-template/img/card-player.svg";
-import equipamento from "../html-css-template/img/equipamento.svg";
 import cadernoAgendamento from "../html-css-template/img/caderno-agendamento.svg";
 import moeda from "../html-css-template/img/coin.svg";
 
 function PaginaAgendamento() {
     const history = useHistory();
 
+    const [centros, setCentros] = useState([]);
+    const [quadras, setQuadras] = useState([]);
+    const [selectCentroValue, setSelectCentroValue] = useState(1);
+    const [selectQuadraValue, setSelectQuadraValue] = useState(1);
+    let fkLocatario;
+    let fkCentroEsportivo;
+
     useEffect(() => {
         validarAutenticacao();
     });
+
+    useEffect(() => {
+        async function recuperarCentros() {
+            const resposta = await api.get(`/centros/recuperar-centros/${fkLocatario}`);
+            setCentros(resposta.data)
+            console.log("Retorno dos Centros: ", resposta.data);
+        }
+        recuperarCentros();
+        console.log("Tentando encontrar o problema", quadras);
+    }, [fkLocatario]);
+
+    useEffect(() => {
+        async function recuperarQuadras() {
+            const resposta = await api.get(`/quadras/recuperar-quadras/${fkCentroEsportivo}`);
+            // setQuadras(resposta.data)
+            // console.log("Retorno das Quadras: ", resposta.data);
+        }
+        recuperarQuadras();
+    }, [centros, fkCentroEsportivo]);
 
     function validarAutenticacao() {
         let login_locatario = sessionStorage.locatario;
@@ -37,6 +62,9 @@ function PaginaAgendamento() {
             let locatario = JSON.parse(login_locatario);
             let nomeLocatario = locatario.nome;
             let sobrenomeLocatario = locatario.sobrenome;
+            fkLocatario = locatario.id;
+            sessionStorage.fkCentroEsportivo = selectCentroValue;
+            fkCentroEsportivo = sessionStorage.fkCentroEsportivo;
             let nome = document.getElementById("nome");
             let sobrenome = document.getElementById("sobrenome");
             nome.innerHTML = `${nomeLocatario}`;
@@ -164,8 +192,13 @@ function PaginaAgendamento() {
                                             </div>
                                         </div>
                                         <div class="select-centro-info">
-                                            <select name="centros" id="centros">
-                                                <option value="arena" selected>Arena Poliesportiva</option>
+                                            <select value={selectCentroValue} name="centros" id="centros" onChange={e => setSelectCentroValue(e.target.value)}>
+                                                <option value="Selecione">Selecione</option>
+                                                {
+                                                    centros.map((centro) => (
+                                                        <option value={centro.id} id="centro_selecionado">{centro.nome}</option>
+                                                    ))
+                                                }
                                             </select>
                                         </div>
                                     </div>
@@ -179,8 +212,12 @@ function PaginaAgendamento() {
                                             </div>
                                         </div>
                                         <div class="select-quadra-info">
-                                            <select name="quadras" id="quadras">
-                                                <option value="arena" selected>Arena Poliesportiva</option>
+                                            <select value={selectQuadraValue} name="quadras" id="quadras" onChange={e => setSelectQuadraValue(e.target.value)}>
+                                                {
+                                                    quadras.map((quadra) => (
+                                                        <option value={quadra.id} id="arma_selecionado">{quadra.numero_quadra}</option>
+                                                    ))
+                                                }
                                             </select>
                                         </div>
                                     </div>
@@ -241,24 +278,6 @@ function PaginaAgendamento() {
                                                 </div>
                                             </div>
                                             <div class="agendamento-body-quadra-B">
-                                                <div class="agendamento-campo-nome-jogador">
-                                                    <div class="agendamento-campo-nome-header">
-                                                        <img src={playerResenha} alt="Jogador Resenha"></img>
-                                                        <label>Nome do Jogador Responsável</label>
-                                                    </div>
-                                                    <div class="agendamento-campo-nome-content">
-                                                        <input type="text" name="nome_jogador_agendamento" id="nome_jogador_agendamento"></input>
-                                                    </div>
-                                                </div>
-                                                <div class="agendamento-campo-modalidade">
-                                                    <div class="agendamento-campo-modalidade-header">
-                                                        <img src={equipamento} alt="Modalidade"></img>
-                                                        <label>Modalidade</label>
-                                                    </div>
-                                                    <div class="agendamento-campo-modalidade-content">
-                                                        <label>Vôlei</label>
-                                                    </div>
-                                                </div>
                                                 <div class="agendamento-campo-horario">
                                                     <div class="agendamento-campo-horario-header">
                                                         <img src={cadernoAgendamento} alt="Horário Agendamento"></img>

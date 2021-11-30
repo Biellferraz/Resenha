@@ -241,7 +241,7 @@ public class Teste {
             corpo += String.format("%-8.8s", q.getModalidade());
             corpo += String.format("%02d", q.getNumero_quadra());
             corpo += String.format("%d", q.getDisponivel());
-            corpo += String.format("%04d", q.getFk_centro_esportivo());
+            corpo += String.format("%04d", q.getFkCentroEsportivo());
 
             contaRegDados++;
 
@@ -301,7 +301,7 @@ public class Teste {
                     id = Integer.valueOf(registro.substring(2, 6));
                     modalidade = registro.substring(6, 14).trim();
                     numeroQuadra = Integer.valueOf(registro.substring(14, 16));
-                    disponivel = Integer.valueOf(registro.substring(16,17));
+                    disponivel = Integer.valueOf(registro.substring(16, 17));
                     fk_centro_esportivo = Integer.valueOf(registro.substring(17, 21));
 
                     listaLida.add(new Quadra(id, modalidade, numeroQuadra, disponivel, fk_centro_esportivo));
@@ -648,7 +648,7 @@ public class Teste {
                     horaMarcada = LocalDateTime.parse(registro.substring(27, 43));
 
 
-                    listaLida.add(new Agendamento(id ,idJogador, idQuadra, preco, horaMarcada));
+                    listaLida.add(new Agendamento(id, idJogador, idQuadra, preco, horaMarcada));
                 } else {
                     System.out.println("Tipo de registro inválido");
                 }
@@ -715,7 +715,7 @@ public class Teste {
 
         lista.exibe();
 
-        gravaArquivoCsvCentroEsportivo(lista,"centroE");
+        gravaArquivoCsvCentroEsportivo(lista, "centroE");
 
         leExibeArquivoCsvCentroEsportivo("centroE");
 
@@ -750,19 +750,19 @@ public class Teste {
         ListaObj<Agendamento> listaAgendamentoObj = new ListaObj<>(7);
         List<Agendamento> listaAgendamento = new ArrayList<>();
 
-        listaAgendamentoObj.adiciona(new Agendamento(1,1, 1, 150.0, LocalDateTime.of(2021,12,7,13,30)));
-        listaAgendamentoObj.adiciona(new Agendamento(2,2, 2, 130.5, LocalDateTime.of(2021,12,7,13,30)));
-        listaAgendamentoObj.adiciona(new Agendamento(3,3, 3, 110.0, LocalDateTime.of(2021,12,7,13,30)));
-        listaAgendamentoObj.adiciona(new Agendamento(4,4, 1, 150.0, LocalDateTime.of(2021,12,7,15,30)));
-        listaAgendamentoObj.adiciona(new Agendamento(5,5, 2, 130.5, LocalDateTime.of(2021,12,7,15,30)));
-        listaAgendamentoObj.adiciona(new Agendamento(6,6, 1, 150.0, LocalDateTime.of(2021,12,7,15,30)));
+        listaAgendamentoObj.adiciona(new Agendamento(1, 1, 1, 150.0, LocalDateTime.of(2021, 12, 7, 13, 30)));
+        listaAgendamentoObj.adiciona(new Agendamento(2, 2, 2, 130.5, LocalDateTime.of(2021, 12, 7, 13, 30)));
+        listaAgendamentoObj.adiciona(new Agendamento(3, 3, 3, 110.0, LocalDateTime.of(2021, 12, 7, 13, 30)));
+        listaAgendamentoObj.adiciona(new Agendamento(4, 4, 1, 150.0, LocalDateTime.of(2021, 12, 7, 15, 30)));
+        listaAgendamentoObj.adiciona(new Agendamento(5, 5, 2, 130.5, LocalDateTime.of(2021, 12, 7, 15, 30)));
+        listaAgendamentoObj.adiciona(new Agendamento(6, 6, 1, 150.0, LocalDateTime.of(2021, 12, 7, 15, 30)));
 
-        listaAgendamento.add(new Agendamento(1,1, 1, 150.0,  LocalDateTime.of(2021,12,7,13,30)));
-        listaAgendamento.add(new Agendamento(2,2, 2, 130.5,  LocalDateTime.of(2021,12,7,13,30)));
-        listaAgendamento.add(new Agendamento(3,3, 3, 110.0,  LocalDateTime.of(2021,12,7,13,30)));
-        listaAgendamento.add(new Agendamento(4,4, 1, 150.0, LocalDateTime.of(2021,12,7,15,30)));
-        listaAgendamento.add(new Agendamento(5,5, 2, 130.5, LocalDateTime.of(2021,12,7,15,30)));
-        listaAgendamento.add(new Agendamento(6,6, 1, 150.0, LocalDateTime.of(2021,12,7,15,30)));
+        listaAgendamento.add(new Agendamento(1, 1, 1, 150.0, LocalDateTime.of(2021, 12, 7, 13, 30)));
+        listaAgendamento.add(new Agendamento(2, 2, 2, 130.5, LocalDateTime.of(2021, 12, 7, 13, 30)));
+        listaAgendamento.add(new Agendamento(3, 3, 3, 110.0, LocalDateTime.of(2021, 12, 7, 13, 30)));
+        listaAgendamento.add(new Agendamento(4, 4, 1, 150.0, LocalDateTime.of(2021, 12, 7, 15, 30)));
+        listaAgendamento.add(new Agendamento(5, 5, 2, 130.5, LocalDateTime.of(2021, 12, 7, 15, 30)));
+        listaAgendamento.add(new Agendamento(6, 6, 1, 150.0, LocalDateTime.of(2021, 12, 7, 15, 30)));
 
         lista.exibe();
 

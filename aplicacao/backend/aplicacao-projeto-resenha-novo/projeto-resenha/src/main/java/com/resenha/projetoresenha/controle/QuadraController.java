@@ -1,6 +1,7 @@
 package com.resenha.projetoresenha.controle;
 
 
+import com.resenha.projetoresenha.dominio.CentroEsportivo;
 import com.resenha.projetoresenha.dominio.Quadra;
 import com.resenha.projetoresenha.repositorio.QuadraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,17 @@ public class QuadraController {
 
     @Autowired
     private QuadraRepository repository;
+
+    @GetMapping("/recuperar-quadras/{fkCentroEsportivo}")
+    public ResponseEntity getQuadrasDoCentroEsportivo(@PathVariable Integer fkCentroEsportivo) {
+        List<Quadra> quadrasEncontradas = repository.findByFkCentroEsportivo(fkCentroEsportivo);
+
+        if (quadrasEncontradas == null) {
+            return ResponseEntity.status(404).build();
+        }
+
+        return ResponseEntity.status(200).body(quadrasEncontradas);
+    }
 
     @GetMapping
     public ResponseEntity getQuadras() {

@@ -27,7 +27,7 @@ public class Quadra {
     private Integer disponivel;
 
     @Column(name = "fk_centro_esportivo")
-    private Integer fk_centro_esportivo;
+    private Integer fkCentroEsportivo;
 
     // Construtores
     // Sobrescrita de Construtores para evidenciar para o Spring qual o Construtor Default
@@ -38,23 +38,23 @@ public class Quadra {
                   String modalidade,
                   Integer numero_quadra,
                   Integer disponivel,
-                  Integer fk_centro_esportivo) {
+                  Integer fkCentroEsportivo) {
         super();
         this.id = id;
         this.modalidade = modalidade;
         this.numero_quadra = numero_quadra;
         this.disponivel = disponivel;
-        this.fk_centro_esportivo = fk_centro_esportivo;
+        this.fkCentroEsportivo = fkCentroEsportivo;
     }
 
 
     // Getters & Setters
-    public Integer getFk_centro_esportivo() {
-        return fk_centro_esportivo;
+    public Integer getFkCentroEsportivo() {
+        return fkCentroEsportivo;
     }
 
-    public void setFk_centro_esportivo(Integer fk_centro_esportivo) {
-        this.fk_centro_esportivo = fk_centro_esportivo;
+    public void setFkCentroEsportivo(Integer fkCentroEsportivo) {
+        this.fkCentroEsportivo = fkCentroEsportivo;
     }
 
     public Integer getId() {

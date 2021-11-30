@@ -65,7 +65,7 @@ function CadastrarQuadras() {
             modalidade: selectModalidadeValue,
             disponivel: 1,
             fk_centro_esportivo: selectCentroValue,
-        }).then((resposta) => {
+        }).then(() => {
             MySwal.fire({
                 title: 'Centro cadastro com sucesso!',
                 text: 'Agora você pode cadastrar suas quadras',
