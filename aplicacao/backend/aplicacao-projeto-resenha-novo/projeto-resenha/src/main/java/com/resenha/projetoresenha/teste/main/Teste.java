@@ -342,7 +342,7 @@ public class Teste {
         try {
             for (int i = 0; i < lista.getTamanho(); i++) {
                 Agendamento agend = lista.getElemento(i);
-                saida.format("%d;%d;%.2f;%s\n", agend.getFk_Jogador(), agend.getFk_Quadra(), agend.getPreco(), agend.getHora_Marcada());
+                saida.format("%d;%d;%.2f;%s\n", agend.getFk_Jogador(), agend.getFkQuadra(), agend.getPreco(), agend.getHora_Marcada());
             }
         } catch (FormatterClosedException erro) {
             System.out.println("Erro ao gravar no arquivo");
@@ -582,7 +582,7 @@ public class Teste {
         for (Agendamento a : lista) {
             String corpo = "02";
             corpo += String.format("%04d", a.getFk_Jogador());
-            corpo += String.format("%04d", a.getFk_Quadra());
+            corpo += String.format("%04d", a.getFkQuadra());
             corpo += String.format("%06.2f", a.getPreco());
             corpo += String.format("%19.19s", a.getHora_Marcada());
 

@@ -1,7 +1,6 @@
 package com.resenha.projetoresenha.dominio;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,7 +12,7 @@ public class Agendamento {
     private Integer id;
 
     @Column(name = "fk_Quadra")
-    private Integer fk_Quadra;
+    private Integer fkQuadra;
 
     @Column(name = "fk_Jogador")
     private Integer fk_Jogador;
@@ -30,7 +29,7 @@ public class Agendamento {
 
     public Agendamento(Integer id, Integer idJogador, Integer idQuadra, Double preco, LocalDateTime horaMarcada) {
         this.id = id;
-        this.fk_Quadra = idQuadra;
+        this.fkQuadra = idQuadra;
         this.fk_Jogador = idJogador;
         this.preco = preco;
         this.hora_Marcada = horaMarcada;
@@ -44,12 +43,12 @@ public class Agendamento {
         this.id = id;
     }
 
-    public Integer getFk_Quadra() {
-        return fk_Quadra;
+    public Integer getFkQuadra() {
+        return fkQuadra;
     }
 
-    public void setFk_Quadra(Integer fk_Quadra) {
-        this.fk_Quadra = fk_Quadra;
+    public void setFkQuadra(Integer fkQuadra) {
+        this.fkQuadra = fkQuadra;
     }
 
     public Integer getFk_Jogador() {
@@ -80,7 +79,7 @@ public class Agendamento {
     public String toString() {
         return "\nAgendamento: " +
                 " id=" + id +
-                ", idQuadra=" + fk_Quadra +
+                ", idQuadra=" + fkQuadra +
                 ", idJogador=" + fk_Jogador +
                 ", preço=" + preco +
                 ", hora Marcada=" + hora_Marcada +

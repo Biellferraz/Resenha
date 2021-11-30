@@ -7,7 +7,6 @@ import com.resenha.projetoresenha.listas.FilaObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.resenha.projetoresenha.teste.main.Teste;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -15,13 +14,14 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/agendamento")
+@RequestMapping("/agendamentos")
 public class AgendamentoController {
 
 
         @Autowired
         private AgendamentoRepository repository;
 
+        @CrossOrigin
         @GetMapping
         public ResponseEntity getAgendamento() {
             List<Agendamento> agendamentoLista = repository.findAll();
@@ -78,13 +78,23 @@ public class AgendamentoController {
         public ResponseEntity putAgendamento(@PathVariable Integer id,
                                         @RequestBody Agendamento agendamentoAlterado) {
             if (repository.existsById(id)) {
-                agendamentoAlterado.setFk_Quadra(id);
+                agendamentoAlterado.setFkQuadra(id);
 
                 repository.save(agendamentoAlterado);
                 return ResponseEntity.status(200).build();
             }
             return ResponseEntity.status(404).build();
         }
+        @GetMapping("/recuperar-agendamentos/{fk_Quadra}")
+        public ResponseEntity getAgendamentosQuadra(@PathVariable Integer fk_Quadra) {
+            List<Agendamento> agendamentos = repository.findByFkQuadra(fk_Quadra);
+
+            if (agendamentos == null) {
+                return ResponseEntity.status(404).build();
+            }
+
+            return ResponseEntity.status(200).body(agendamentos);
+    }
 
         @GetMapping("/relatorio/{id}")
         public ResponseEntity getAgendamentoRelatorio(@PathVariable int id) {

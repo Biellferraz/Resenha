@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
@@ -23,13 +23,27 @@ import bolaVolei from "../html-css-template/img/volei-ball.svg";
 import quadraVolei from "../html-css-template/img/quadra-volei.svg";
 import bolaBasquete from "../html-css-template/img/basquete-ball.svg";
 import quadraBasquete from "../html-css-template/img/quadra-basquete.svg";
+import CardFutebol from "../components/CardFutebol";
+import api from "../api";
 
 function PaginaResenha() {
     const history = useHistory();
+    let [quadra, setQuadras] = useState("Quadras");
+    let [agendamento, setAgendamento] = useState("Agendamentos");
 
     useEffect(() => {
         validarAutenticacao();
     });
+    useEffect(() => {
+        async function recuperarAgendamentos() {
+            const resposta = await api.get(`/agendamentos`);
+            console.log('Get')
+            console.log(resposta.data)
+            setQuadras(resposta.data)
+            setAgendamento(resposta.data)
+        }
+        recuperarAgendamentos();
+    }, []);
 
     function validarAutenticacao() {
         let login_locatario = sessionStorage.locatario;
@@ -328,110 +342,11 @@ function PaginaResenha() {
                                         </div>
                                     </div>
                                     <div class="agendamentos-content">
-                                        <div class="card-agendamento-futebol">
-                                            <div class="card-agendamento-container">
-                                                <div class="card-agendamento-quadra">
-                                                    <img src={quadraFutebol} alt="Quadra Futebol"></img>
-                                                </div>
-                                                <div class="card-agendamento-nome-quadra">
-                                                    <label style={{ "color": "#029EFB" }}>Quadra</label>
-                                                    <label>Quadra A1</label>
-                                                </div>
-                                                <div class="card-agendamento-modalidade">
-                                                    <div class="card-agendamento-modalidade-text">
-                                                        <label style={{ "color": "#029EFB" }}>Modalidade</label>
-                                                        <label>Futebol</label>
-                                                    </div>
-                                                </div>
-                                                <div class="card-agendamento-jogador">
-                                                    <div class="card-agendamento-jogador-text">
-                                                        <label style={{ "color": "#029EFB" }}>Jog.Responsável</label>
-                                                        <label>Nome Jogador</label>
-                                                    </div>
-                                                </div>
-                                                <div class="card-agendamento-horario">
-                                                    <label>09:00</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-agendamento-basquete">
-                                            <div class="card-agendamento-container">
-                                                <div class="card-agendamento-quadra">
-                                                    <img src={quadraBasquete} alt="Quadra Basquete"></img>
-                                                </div>
-                                                <div class="card-agendamento-nome-quadra">
-                                                    <label style={{ "color": "#029EFB" }}>Quadra</label>
-                                                    <label>Quadra A1</label>
-                                                </div>
-                                                <div class="card-agendamento-modalidade">
-                                                    <div class="card-agendamento-modalidade-text">
-                                                        <label style={{ "color": "#029EFB" }}>Modalidade</label>
-                                                        <label>Basquete</label>
-                                                    </div>
-                                                </div>
-                                                <div class="card-agendamento-jogador">
-                                                    <div class="card-agendamento-jogador-text">
-                                                        <label style={{ "color": "#029EFB" }}>Jog.Responsável</label>
-                                                        <label>Nome Jogador</label>
-                                                    </div>
-                                                </div>
-                                                <div class="card-agendamento-horario">
-                                                    <label>10:00</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-agendamento-volei">
-                                            <div class="card-agendamento-container">
-                                                <div class="card-agendamento-quadra">
-                                                    <img src={quadraVolei} id="quadra_volei" alt="Quadra Vôlei"></img>
-                                                </div>
-                                                <div class="card-agendamento-nome-quadra">
-                                                    <label style={{ "color": "#029EFB" }}>Quadra</label>
-                                                    <label>Quadra A1</label>
-                                                </div>
-                                                <div class="card-agendamento-modalidade">
-                                                    <div class="card-agendamento-modalidade-text">
-                                                        <label style={{ "color": "#029EFB" }}>Modalidade</label>
-                                                        <label>Vôlei</label>
-                                                    </div>
-                                                </div>
-                                                <div class="card-agendamento-jogador">
-                                                    <div class="card-agendamento-jogador-text">
-                                                        <label style={{ "color": "#029EFB" }}>Jog.Responsável</label>
-                                                        <label>Nome Jogador</label>
-                                                    </div>
-                                                </div>
-                                                <div class="card-agendamento-horario">
-                                                    <label>11:00</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-agendamento-tenis">
-                                            <div class="card-agendamento-container">
-                                                <div class="card-agendamento-quadra">
-                                                    <img src={quadraTenis} alt="Quadra Tênis"></img>
-                                                </div>
-                                                <div class="card-agendamento-nome-quadra">
-                                                    <label style={{ "color": "#029EFB" }}>Quadra</label>
-                                                    <label>Quadra A1</label>
-                                                </div>
-                                                <div class="card-agendamento-modalidade">
-                                                    <div class="card-agendamento-modalidade-text">
-                                                        <label style={{ "color": "#029EFB" }}>Modalidade</label>
-                                                        <label>Tênis</label>
-                                                    </div>
-                                                </div>
-                                                <div class="card-agendamento-jogador">
-                                                    <div class="card-agendamento-jogador-text">
-                                                        <label style={{ "color": "#029EFB" }}>Jog.Responsável</label>
-                                                        <label>Nome Jogador</label>
-                                                    </div>
-                                                </div>
-                                                <div class="card-agendamento-horario">
-                                                    <label>12:00</label>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <CardFutebol
+                                        quadra={quadra.nome}
+                                        modalidade={quadra.modalidade}
+                                        horaMarcada={agendamento.horaMarcada}
+                                        />
                                     </div>
                                 </div>
                             </div>
