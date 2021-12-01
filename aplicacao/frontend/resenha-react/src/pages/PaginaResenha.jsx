@@ -25,9 +25,19 @@ import bolaBasquete from "../html-css-template/img/basquete-ball.svg";
 import quadraBasquete from "../html-css-template/img/quadra-basquete.svg";
 import CardFutebol from "../components/CardFutebol";
 import api from "../api";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import CardQuadra from "../components/CardQuadra";
+
 
 function PaginaResenha() {
   const history = useHistory();
+  const MySwal = withReactContent(Swal);
+  const [centros, setCentros] = useState([]);
+  const [selectCentroValue, setSelectCentroValue] = useState(1);
+  const [quadras, setQuadras] = useState([]);
+
+
   let [agendamento, setAgendamento] = useState([]);
 
   useEffect(() => {
@@ -42,6 +52,29 @@ function PaginaResenha() {
     recuperarAgendamentos();
   }, []);
 
+
+  
+  function baixarAgendamentos(e) {
+    e.preventDefault();
+
+    api.get("/agendamentos/relatorios", {
+    }).then(() => {
+      MySwal.fire({
+        title: 'Download realizado com sucesso!',
+        text: 'Agora você pode visualizar o download',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+      })
+    }).catch((erro) => {
+      MySwal.fire({
+        title: 'Não foi possível fazer o download',
+        text: 'Erro ao fazer download do arquivo',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      })
+      console.log(erro);
+    })
+  }
   function validarAutenticacao() {
     let login_locatario = sessionStorage.locatario;
     if (login_locatario === undefined) {
@@ -60,6 +93,15 @@ function PaginaResenha() {
   function logoff() {
     sessionStorage.clear();
     history.push("/login");
+  }
+
+  function disponivel() {
+    if (quadras.disponivel = 1) {
+      return "Disponivel";
+    }
+    else{
+      return "Ocupada"
+    }
   }
 
   return (
@@ -198,195 +240,25 @@ function PaginaResenha() {
                       </div>
                       <div class="quadras-header-texto">
                         <label>Quadras de</label>
-                        <select name="quadras" id="quadras">
-                          <option value="arena" selected>
-                            Arena Poliesportiva
-                          </option>
+                        <select value={selectCentroValue} name="centros" id="centros" onChange={e => setSelectCentroValue(e.target.value)}>
+                          <option value="Selecione">Selecione</option>
+                          {
+                            centros.map((centro) => (
+                              <option value={centro.id} id="centro_selecionado">{centro.nome}</option>
+                            ))
+                          }
                         </select>
                       </div>
                     </div>
                   </div>
-                  <div class="quadras-content">
-                    <div class="card-quadra-futebol">
-                      <div class="card-container">
-                        <div class="card-header">
-                          <div class="card-header-inicio-title">
-                            <span>Quadra A1</span>
-                            <label>Futebol</label>
-                          </div>
-                          <div class="card-header-img">
-                            <img src={bolaFutebol} alt="Bola Futebol"></img>
-                          </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="card-body-img">
-                            <img src={quadraFutebol} alt="Quadra Futebol"></img>
-                          </div>
-                          <div class="card-body-content">
-                            <select name="quadras" id="quadras">
-                              <option value="arena" selected>
-                                09:00
-                              </option>
-                              <option value="arena" selected>
-                                10:00
-                              </option>
-                              <option value="arena" selected>
-                                11:00
-                              </option>
-                              <option value="arena" selected>
-                                12:00
-                              </option>
-                              <option value="arena" selected>
-                                13:00
-                              </option>
-                            </select>
-                            <label>Agendada</label>
-                          </div>
-                        </div>
-                        <div class="card-footer">
-                          <div class="card-footer-img">
-                            <img src={playerResenha} alt="Resenha"></img>
-                          </div>
-                          <div class="card-footer-player">
-                            <label>Nome do Usuário</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-quadra-tenis">
-                      <div class="card-container">
-                        <div class="card-header">
-                          <div class="card-header-inicio-title">
-                            <span>Quadra A2</span>
-                            <label>Tênis</label>
-                          </div>
-                          <div class="card-header-img">
-                            <img src={bolaTenis} alt="Bola Tênis"></img>
-                          </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="card-body-img">
-                            <img src={quadraTenis} alt="Quadra Tênis"></img>
-                          </div>
-                          <div class="card-body-content">
-                            <select name="quadras" id="quadras">
-                              <option value="arena" selected>
-                                09:00
-                              </option>
-                              <option value="arena" selected>
-                                10:00
-                              </option>
-                              <option value="arena" selected>
-                                11:00
-                              </option>
-                              <option value="arena" selected>
-                                12:00
-                              </option>
-                              <option value="arena" selected>
-                                13:00
-                              </option>
-                            </select>
-                            <label>LIVRE</label>
-                          </div>
-                        </div>
-                        <div class="card-footer">
-                          <div class="card-footer-img">
-                            <img src={playerResenha} alt="Resenha"></img>
-                          </div>
-                          <div class="card-footer-player">
-                            <label>Nome do Usuário</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-quadra-volei">
-                      <div class="card-container">
-                        <div class="card-header">
-                          <div class="card-header-inicio-title">
-                            <span>Quadra A2</span>
-                            <label>Tênis</label>
-                          </div>
-                          <div class="card-header-img">
-                            <img src={bolaVolei} alt="Bola Vôlei"></img>
-                          </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="card-body-img">
-                            <img src={quadraVolei} alt="Quadra Vôlei"></img>
-                          </div>
-                          <div class="card-body-content">
-                            <select name="quadras" id="quadras">
-                              <option value="arena" selected>
-                                09:00
-                              </option>
-                              <option value="arena">10:00</option>
-                              <option value="arena">11:00</option>
-                              <option value="arena">12:00</option>
-                              <option value="arena">13:00</option>
-                            </select>
-                            <label>LIVRE</label>
-                          </div>
-                        </div>
-                        <div class="card-footer">
-                          <div class="card-footer-img">
-                            <img src={playerResenha} alt="Resenha"></img>
-                          </div>
-                          <div class="card-footer-player">
-                            <label>Nome do Usuário</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-quadra-basquete">
-                      <div class="card-container">
-                        <div class="card-header">
-                          <div class="card-header-inicio-title">
-                            <span>Quadra A4</span>
-                            <label>Basquete</label>
-                          </div>
-                          <div class="card-header-img">
-                            <img src={bolaBasquete} alt="Bola Basquete"></img>
-                          </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="card-body-img">
-                            <img
-                              src={quadraBasquete}
-                              alt="Quadra Basquete"
-                            ></img>
-                          </div>
-                          <div class="card-body-content">
-                            <select name="quadras" id="quadras">
-                              <option value="arena" selected>
-                                09:00
-                              </option>
-                              <option value="arena" selected>
-                                10:00
-                              </option>
-                              <option value="arena" selected>
-                                11:00
-                              </option>
-                              <option value="arena" selected>
-                                12:00
-                              </option>
-                              <option value="arena" selected>
-                                13:00
-                              </option>
-                            </select>
-                            <label>LIVRE</label>
-                          </div>
-                        </div>
-                        <div class="card-footer">
-                          <div class="card-footer-img">
-                            <img src={playerResenha} alt="Resenha"></img>
-                          </div>
-                          <div class="card-footer-player">
-                            <label>Nome do Usuário</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {quadras.map((quadras) => (
+                  <CardQuadra
+                  numero={quadras.numero_quadra}
+                  modalidade={quadras.modalidade}
+                  dispornivel={disponivel}
+                  />
+                  ))
+}
                 </div>
                 <div class="content-body-agendamentos">
                   <div class="agendamentos-header">
@@ -400,6 +272,12 @@ function PaginaResenha() {
                           <br />
                           Marcado
                         </label>
+
+                      </div>
+                      <div class="baixar-agendamentos">
+                        <button style={{ color: "#029EFB" }} onClick={baixarAgendamentos} type="submit">Baixar Agendamentos
+                        </button>
+                        <br />
                       </div>
                     </div>
                   </div>

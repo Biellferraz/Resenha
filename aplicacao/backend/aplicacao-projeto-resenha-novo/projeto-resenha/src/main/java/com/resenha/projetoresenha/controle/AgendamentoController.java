@@ -4,6 +4,7 @@ import com.resenha.projetoresenha.dominio.Agendamento;
 import com.resenha.projetoresenha.listas.PilhaObj;
 import com.resenha.projetoresenha.repositorio.AgendamentoRepository;
 import com.resenha.projetoresenha.listas.FilaObj;
+import com.resenha.projetoresenha.teste.main.Teste;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -124,7 +125,7 @@ public class AgendamentoController {
     public ResponseEntity<?> export() {
 
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-        var filename = String.format("agend.txt");
+        var filename = String.format("agend");
 
         try {
             var file = new File(filename);
@@ -141,20 +142,18 @@ public class AgendamentoController {
         }
     }
 
-//    @GetMapping("/relatorio/{id}")
-//    public ResponseEntity getAgendamentoRelatorio(@PathVariable int id) {
-//        if (repository.existsById(id)) {
-//            Agendamento agendamento = repository.findById(id).get();
-//            return ResponseEntity
-//                    .status(200)
-//                    .header("content-type", "plain/text")
-//                    .body(String.format("\nRelatório do centros esportivos:\n  %s",
-//                            Teste.gravaArquivoTxtAgendamento(agendamento, "agend")));
-//
-//
-//        }
-//        return ResponseEntity.status(404).build();
-//    }
+    @GetMapping("/relatorios")
+    public ResponseEntity getAgendamentoRelatorio() {
+        if (!repository.equals(0)) {
+            List<Agendamento> agendamento = repository.findAll();
+            Teste.gravaArquivoTxtAgendamento(agendamento, "agend");
+            return ResponseEntity
+                    .status(200)
+                    .header("content-type", "plain/text")
+                    .body(String.format("\nRelatório do agendamentos:\n  %s", agendamento.toString()));
+        }
+        return ResponseEntity.status(404).build();
+    }
 
 
 }

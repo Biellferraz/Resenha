@@ -272,13 +272,17 @@ button:focus {
     width: 100%;
     height: 15%;
 }
+.baixar-agendamentos  {
+    display: flex;
+    align-items: center;
+}
 
 .agendamentos-header-title {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    width: 70%;
+    width: 100%;
     height: 80%;
 }
 

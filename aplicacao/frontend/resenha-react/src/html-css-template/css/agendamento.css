@@ -5,6 +5,23 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.baixar-agendamentos button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #1B2024;
+    color: #F3FAFE;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-family: Spartan;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+    right: 40px;
+}
 
 .agendamento-header {
     display: flex;
