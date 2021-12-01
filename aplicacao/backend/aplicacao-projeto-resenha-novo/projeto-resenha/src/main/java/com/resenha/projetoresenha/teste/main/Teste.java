@@ -521,7 +521,7 @@ public class Teste {
                     nome = registro.substring(61, 91).trim();
                     horaAbre = registro.substring(91, 96);
                     horaFecha = registro.substring(96, 101);
-                    telefone = registro.substring(101, 104);
+                    telefone = registro.substring(101, 115);
 
 
                     listaLida.add(new CentroEsportivo(id, cnpj, cep, numero, cidade, nome, horaAbre, horaFecha, telefone));
@@ -581,6 +581,7 @@ public class Teste {
         //Monta e grava o corpo
         for (Agendamento a : lista) {
             String corpo = "02";
+            corpo += String.format("%04d", a.getId());
             corpo += String.format("%04d", a.getFk_Jogador());
             corpo += String.format("%04d", a.getFkQuadra());
             corpo += String.format("%06.2f", a.getPreco());
@@ -770,9 +771,9 @@ public class Teste {
 
         leExibeArquivoCsvAgendamento("agend");
 
-        gravaArquivoTxtAgendamento(listaAgendamento, "agend");
+        gravaArquivoTxtAgendamento(listaAgendamento, "agend.txt");
 
-        leArquivoTxtAgendamento("agend");
+        leArquivoTxtAgendamento("agend.txt");
     }
 
 }

@@ -51,64 +51,6 @@ class LocatarioControllerTest {
         assertEquals(locatario, resposta.getBody());
     }
 
-//    @Test
-//    public void post_erroLocatario_status404(){
-//        Locatario locatario = mock(Locatario.class);
-//
-//        when(repository.save(locatario));
-//
-//        ResponseEntity resposta = controller.postUsuarios(locatario);
-//
-//        assertEquals(201,resposta.getStatusCodeValue());
-//
-//        assertEquals(locatario,resposta.getBody());
-//
-//    }
-
-    @Test
-    public void post_Locatario_status201(){
-        Locatario locatario = mock(Locatario.class);
-
-        when(repository.save(locatario));
-
-        ResponseEntity resposta = controller.postUsuarios(locatario);
-
-        assertEquals(201,resposta.getStatusCodeValue());
-
-    }
-
-    @Test
-    public void post_erroLoginLocatario_status404(){
-        Locatario locatario = mock(Locatario.class);
-
-        String email = "email";
-
-        String senha = "Senha123";
-
-        when(repository.findByEmailAndSenha(email,senha));
-
-        ResponseEntity resposta = controller.login(locatario);
-
-        assertEquals(201,resposta.getStatusCodeValue());
-
-        assertEquals(locatario,resposta.getBody());
-    }
-
-    @Test
-    public void post_loginLocatario_status201(){
-        Locatario locatario = mock(Locatario.class);
-
-        String email = "email";
-
-        String senha = "Senha123";
-
-        when(repository.findByEmailAndSenha(email,senha));
-
-        ResponseEntity resposta = controller.login(locatario);
-
-        assertEquals(201,resposta.getStatusCodeValue());
-    }
-
     @Test
     public void getId_semLocatario_status404(){
         Integer id = 101;
