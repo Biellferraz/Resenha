@@ -85,16 +85,16 @@ function PaginaAgendamento() {
 
             let nome = document.getElementById("nome");
             let sobrenome = document.getElementById("sobrenome");
-            let numeroQuadraRecuperado = document.getElementById("numero_quadra");
-            let modalidadeRecuperado = document.getElementById("modalidade_quadra");
+            // let numeroQuadraRecuperado = document.getElementById("numero_quadra");
+            // let modalidadeRecuperado = document.getElementById("modalidade_quadra");
 
-            let numeroQuadra = quadra.numero_quadra;
-            let modalidade = quadra.modalidade;
+            // let numeroQuadra = quadra.numero_quadra;
+            // let modalidade = quadra.modalidade;
 
             nome.innerHTML = `${nomeLocatario}`;
             sobrenome.innerHTML = `${sobrenomeLocatario}`;
-            numeroQuadraRecuperado.innerHTML = `${numeroQuadra}`;
-            modalidadeRecuperado.innerHTML = `${modalidade}`;
+            // numeroQuadraRecuperado.innerHTML = `${numeroQuadra}`;
+            // modalidadeRecuperado.innerHTML = `${modalidade}`;
         }
     }
 
@@ -277,7 +277,7 @@ function PaginaAgendamento() {
                                 </div>
                                 <div class="agendamento-body">
                                     <form class="agendamento-body-container" onSubmit={Agendar}>
-                                        <div class="agendamento-body-header">
+                                        {/* <div class="agendamento-body-header">
                                             <div class="agendamento-body-header-img">
                                                 <img src={bolaVolei} alt=""></img>
                                             </div>
@@ -285,7 +285,7 @@ function PaginaAgendamento() {
                                                 <label>Quadra <span id="numero_quadra"></span></label>
                                                 <label style={{ "color": "#029EFB" }}><span id="modalidade_quadra"></span></label>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div class="agendamento-body-content">
                                             <div class="agendamento-body-quadra-A">
                                                 <div class="agendamento-quadra-A-img">
@@ -337,7 +337,7 @@ function PaginaAgendamento() {
                                                         <label>Horário</label>
                                                     </div>
                                                     <div class="agendamento-campo-horario-content">
-                                                        <input type="datetime-local" name="valor_agendamento" id="valor_agendamento" onChange={e => setHoraDataDigitada(e.target.value)} required></input>
+                                                        <input type="datetime-local" name="horario_agendamento" id="horario_agendamento" onChange={e => setHoraDataDigitada(e.target.value)} required></input>
                                                     </div>
                                                 </div>
                                                 <div class="agendamento-campo-valor">
