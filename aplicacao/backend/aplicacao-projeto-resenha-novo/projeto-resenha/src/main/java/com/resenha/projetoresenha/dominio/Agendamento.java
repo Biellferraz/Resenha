@@ -1,6 +1,7 @@
 package com.resenha.projetoresenha.dominio;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,15 +12,19 @@ public class Agendamento {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @NotNull
     @Column(name = "fk_Quadra")
     private Integer fkQuadra;
 
+    @NotNull
     @Column(name = "fk_Jogador")
     private Integer fk_Jogador;
 
+    @NotNull
     @Column(name = "preco")
     private Double preco;
 
+    @NotNull
     @Column(name = "hora_Marcada")
     private LocalDateTime hora_Marcada;
 
