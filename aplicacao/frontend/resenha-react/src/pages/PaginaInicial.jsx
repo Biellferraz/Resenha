@@ -217,7 +217,7 @@ function PaginaInicial() {
                     <p>
                       Como INTERMEDIÁRIOS, cuidamos e assumimos a
                       responsabilidade de estabelecer o melhor contato possivel
-                      entre o locatários e seus jogadoresaa
+                      entre o locatários e seus jogadores
                     </p>
                   </div>
                 </div>

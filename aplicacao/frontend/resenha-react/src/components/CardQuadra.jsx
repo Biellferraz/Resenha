@@ -6,7 +6,7 @@ import playerResenha from "../html-css-template/img/card-player.svg";
 function CardQuadra(props) {
     return (
         <>
-             <div class="card-container">
+             <div class="card-container" >
                         <div class="card-header">
                           <div class="card-header-inicio-title">
                             <span>Quadra {props.numero}</span>

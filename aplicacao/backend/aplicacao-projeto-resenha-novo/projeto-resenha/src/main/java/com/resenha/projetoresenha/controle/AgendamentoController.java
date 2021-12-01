@@ -145,12 +145,18 @@ public class AgendamentoController {
     public ResponseEntity getAgendamentoRelatorio() {
         if (!repository.equals(0)) {
             List<Agendamento> agendamento = repository.findAll();
-            Teste.gravaArquivoTxtAgendamento(agendamento, "agend");
+            Teste.gravaArquivoTxtAgendamento(agendamento, "agendamento      " );
             return ResponseEntity
                     .status(200)
                     .header("content-type", "plain/text")
                     .body(String.format("\nRelatório do agendamentos:\n  %s", agendamento.toString()));
         }
         return ResponseEntity.status(404).build();
+    }
+    @GetMapping("/exportar-registro")
+    public ResponseEntity exportarRegistro() {
+        List<Agendamento> exportacao = repository.findAll();
+        Teste.gravaArquivoTxtAgendamento(exportacao, "agendamento.txt");
+        return ResponseEntity.status(200).build();
     }
 }

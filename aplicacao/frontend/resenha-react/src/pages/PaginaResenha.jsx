@@ -25,24 +25,27 @@ import bolaBasquete from "../html-css-template/img/basquete-ball.svg";
 import quadraBasquete from "../html-css-template/img/quadra-basquete.svg";
 import CardFutebol from "../components/CardFutebol";
 import api from "../api";
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import CardQuadra from "../components/CardQuadra";
 
-
 function PaginaResenha() {
+  let fkLocatario;
+  const [download, setDownload] = useState("");
+  const urlToDownload = api.get("/agendamentos/exportar-registro")
+  const [count, setCount] = useState(0);
   const history = useHistory();
   const MySwal = withReactContent(Swal);
   const [centros, setCentros] = useState([]);
   const [selectCentroValue, setSelectCentroValue] = useState(1);
   const [quadras, setQuadras] = useState([]);
-
+  const [agendamentoPassado, setAgendamentosAnteriores] = useState([]);
+  let proximoAgendamento
 
   let [agendamento, setAgendamento] = useState([]);
 
   useEffect(() => {
     validarAutenticacao();
-
   });
   useEffect(() => {
     async function recuperarAgendamentos() {
@@ -51,29 +54,49 @@ function PaginaResenha() {
     }
     recuperarAgendamentos();
   }, []);
+  useEffect(() => {
+    async function recuperarAgendamentosAnteriores() {
+      const resposta = await api.get(`/agendamentos/ocorridos/`);
+      setAgendamentosAnteriores(resposta.data);
+    }
+    recuperarAgendamentosAnteriores();
+  }, []);
+  useEffect(() => {
+    async function recuperarCentros() {
+      const resposta = await api.get(
+        `/centros/recuperar-centros/${fkLocatario}`
+      );
+      setCentros(resposta.data);
+    }
+    recuperarCentros();
+  }, []);
+  function agendamentosAnteriores() {
+      proximoAgendamento.style = 'display:block';
+      
+  }
 
-
-  
   function baixarAgendamentos(e) {
     e.preventDefault();
 
-    api.get("/agendamentos/relatorios", {
-    }).then(() => {
-      MySwal.fire({
-        title: 'Download realizado com sucesso!',
-        text: 'Agora você pode visualizar o download',
-        icon: 'success',
-        confirmButtonText: 'Ok',
+    api
+      .get("/agendamentos/relatorios", {})
+      .then(() => {
+        MySwal.fire({
+          title: "Download realizado com sucesso!",
+          text: "Agora você pode visualizar o download",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
       })
-    }).catch((erro) => {
-      MySwal.fire({
-        title: 'Não foi possível fazer o download',
-        text: 'Erro ao fazer download do arquivo',
-        icon: 'error',
-        confirmButtonText: 'Ok',
-      })
-      console.log(erro);
-    })
+      .catch((erro) => {
+        MySwal.fire({
+          title: "Não foi possível fazer o download",
+          text: "Erro ao fazer download do arquivo",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+        console.log(erro);
+      });
   }
   function validarAutenticacao() {
     let login_locatario = sessionStorage.locatario;
@@ -85,6 +108,7 @@ function PaginaResenha() {
       let sobrenomeLocatario = locatario.sobrenome;
       let nome = document.getElementById("nome");
       let sobrenome = document.getElementById("sobrenome");
+      fkLocatario = locatario.id;
       nome.innerHTML = `${nomeLocatario}`;
       sobrenome.innerHTML = `${sobrenomeLocatario}`;
     }
@@ -96,11 +120,10 @@ function PaginaResenha() {
   }
 
   function disponivel() {
-    if (quadras.disponivel = 1) {
+    if ((quadras.disponivel = 1)) {
       return "Disponivel";
-    }
-    else{
-      return "Ocupada"
+    } else {
+      return "Ocupada";
     }
   }
 
@@ -239,26 +262,36 @@ function PaginaResenha() {
                         <img src={imgTaticas} alt="Táticas"></img>
                       </div>
                       <div class="quadras-header-texto">
-                        <label>Quadras de</label>
-                        <select value={selectCentroValue} name="centros" id="centros" onChange={e => setSelectCentroValue(e.target.value)}>
+                      <label>
+                          <span style={{ color: "#029EFB" }}>Agendamentos</span>
+                          <br />
+                          <span style={{ color: "black" }} >Antigos  </span>
+                        </label>
+                        {/* <select
+                          value={selectCentroValue}
+                          name="centros"
+                          id="centros"
+                          onChange={(e) => setSelectCentroValue(e.target.value)}
+                        >
                           <option value="Selecione">Selecione</option>
-                          {
-                            centros.map((centro) => (
-                              <option value={centro.id} id="centro_selecionado">{centro.nome}</option>
-                            ))
-                          }
-                        </select>
+                          {centros.map((centro) => (
+                            <option value={centro.id} id="centro_selecionado">
+                              {centro.nome}
+                            </option>
+                          ))}
+                        </select> */}
                       </div>
                     </div>
                   </div>
-                  {quadras.map((quadras) => (
-                  <CardQuadra
-                  numero={quadras.numero_quadra}
-                  modalidade={quadras.modalidade}
-                  dispornivel={disponivel}
-                  />
-                  ))
-}
+                  <div class="agendamentos-contents">
+                    {agendamentoPassado.map((agendamento) => (
+                      <CardFutebol
+                        preco={agendamento.preco}
+                        horaMarcada={agendamento.hora_Marcada}
+                        id={agendamento.id}
+                      />
+                    ))}
+                  </div>
                 </div>
                 <div class="content-body-agendamentos">
                   <div class="agendamentos-header">
@@ -272,12 +305,28 @@ function PaginaResenha() {
                           <br />
                           Marcado
                         </label>
-
-                      </div>
+                      </div>        
                       <div class="baixar-agendamentos">
-                        <button style={{ color: "#029EFB" }} onClick={baixarAgendamentos} type="submit">Baixar Agendamentos
-                        </button>
+                        <p>
+                          <button
+                            onClick={() => {
+                              setDownload(urlToDownload);
+                              setCount((old) => old + 1);
+                            }}
+                          >
+                            Download
+                          </button>
+                        </p>
+                        <p>{download}</p>
+                        {download && (
+                          <iframe
+                            src={download + "?c=" + count}
+                            style={{ display: "none" }}
+                          ></iframe>
+                        )}
                         <br />
+                        <p>{download}</p>
+                        {download && <iframe src={download}></iframe>}
                       </div>
                     </div>
                   </div>

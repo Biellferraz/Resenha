@@ -45,22 +45,25 @@
     align-items: center;
     width: 70%;
     height: 80%;
+
 }
 
 .quadras-header-img {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 15%;
+    width: 30%;
 }
 
 .quadras-header-texto {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
     align-items: flex-start;
     width: 80%;
     height: 70%;
+    top: 5%;
+
 }
 
 .quadras-header-texto label {
@@ -68,9 +71,10 @@
     font-weight: bold;
     font-size: 14px;
     color: #029EFB;
+    top: 5%;
 }
 
-.quadras-header-texto select {
+/* .quadras-header-texto select {
     width: 100%;
     height: 50%;
     border: none;
@@ -82,14 +86,14 @@
     text-transform: uppercase;
     background-color: transparent;
     color: #1B2024;
-}
+} */
 
-.quadras-header-texto option {
+/* .quadras-header-texto option {
     font-weight: bold;
     font-family: Spartan;
     font-style: normal;
     font-size: 12px;
-}
+} */
 
 .quadras-content {
     display: flex;
@@ -311,6 +315,15 @@ button:focus {
 }
 
 .agendamentos-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 85%;
+    overflow: scroll auto;
+    overflow-x: hidden;
+}
+.agendamentos-contents{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
