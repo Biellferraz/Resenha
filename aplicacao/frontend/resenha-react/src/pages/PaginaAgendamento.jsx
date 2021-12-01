@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import api from "../api";
 import favicon from "../html-css-template/img/resenha-icon.ico";
 import logoResenha from "../html-css-template/img/logo-resenha.svg";
@@ -22,12 +24,19 @@ import cadernoAgendamento from "../html-css-template/img/caderno-agendamento.svg
 import moeda from "../html-css-template/img/coin.svg";
 
 function PaginaAgendamento() {
+    const MySwal = withReactContent(Swal);
     const history = useHistory();
 
     const [centros, setCentros] = useState([]);
     const [quadras, setQuadras] = useState([]);
+    const [quadra, setQuadra] = useState([]);
+
     const [selectCentroValue, setSelectCentroValue] = useState(1);
     const [selectQuadraValue, setSelectQuadraValue] = useState(1);
+
+    const [horaDataDigitada, setHoraDataDigitada] = useState("");
+    const [precoDigitado, setPrecoDigitado] = useState("");
+
     let fkLocatario;
     let fkCentroEsportivo;
 
@@ -36,9 +45,18 @@ function PaginaAgendamento() {
     });
 
     useEffect(() => {
+        async function recuperarUmaQuadra() {
+            const resposta = await api.get(`/quadras/${selectQuadraValue}`);
+            setQuadra(resposta.data);
+            sessionStorage.quadra = JSON.stringify(resposta.data);
+        }
+        recuperarUmaQuadra();
+    }, [selectQuadraValue]);
+
+    useEffect(() => {
         async function recuperarCentros() {
             const resposta = await api.get(`/centros/recuperar-centros/${fkLocatario}`);
-            setCentros(resposta.data)
+            setCentros(resposta.data);
         }
         recuperarCentros();
     }, [fkLocatario]);
@@ -57,16 +75,53 @@ function PaginaAgendamento() {
             logoff();
         } else {
             let locatario = JSON.parse(login_locatario);
+
             let nomeLocatario = locatario.nome;
             let sobrenomeLocatario = locatario.sobrenome;
+
             fkLocatario = locatario.id;
             sessionStorage.fkCentroEsportivo = selectCentroValue;
             fkCentroEsportivo = sessionStorage.fkCentroEsportivo;
+
             let nome = document.getElementById("nome");
             let sobrenome = document.getElementById("sobrenome");
+            let numeroQuadraRecuperado = document.getElementById("numero_quadra");
+            let modalidadeRecuperado = document.getElementById("modalidade_quadra");
+
+            let numeroQuadra = quadra.numero_quadra;
+            let modalidade = quadra.modalidade;
+
             nome.innerHTML = `${nomeLocatario}`;
             sobrenome.innerHTML = `${sobrenomeLocatario}`;
+            numeroQuadraRecuperado.innerHTML = `${numeroQuadra}`;
+            modalidadeRecuperado.innerHTML = `${modalidade}`;
         }
+    }
+
+    function Agendar(e) {
+        e.preventDefault();
+
+        api.post("/agendamentos", {
+            hora_Marcada: horaDataDigitada,
+            preco: precoDigitado,
+            fkQuadra: quadra.id,
+            fk_Jogador: 103
+        }).then(() => {
+            MySwal.fire({
+                title: 'Agendado com sucesso!',
+                text: 'Agora você pode visualizar seus agendamentos',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+            })
+        }).catch((erro) => {
+            MySwal.fire({
+                title: 'Agendamento não realizado!',
+                text: 'Erro ao agendar no banco de dados',
+                icon: 'error',
+                confirmButtonText: 'Ok',
+            })
+            console.log(erro);
+        })
     }
 
     function logoff() {
@@ -199,7 +254,7 @@ function PaginaAgendamento() {
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="agendamento-select-quadra">
+                                    <div class="agendamento-select-quadra" id="select_quadra">
                                         <div class="select-quadra-title">
                                             <div class="select-img">
                                                 <img src={quadraAgendamento} alt="Quadra"></img>
@@ -210,6 +265,7 @@ function PaginaAgendamento() {
                                         </div>
                                         <div class="select-quadra-info">
                                             <select value={selectQuadraValue} name="quadras" id="quadras" onChange={e => setSelectQuadraValue(e.target.value)}>
+                                                <option value="Selecione">Selecione</option>
                                                 {
                                                     quadras.map((quadra) => (
                                                         <option value={quadra.id} id="arma_selecionado">{quadra.numero_quadra}</option>
@@ -220,14 +276,14 @@ function PaginaAgendamento() {
                                     </div>
                                 </div>
                                 <div class="agendamento-body">
-                                    <div class="agendamento-body-container">
+                                    <form class="agendamento-body-container" onSubmit={Agendar}>
                                         <div class="agendamento-body-header">
                                             <div class="agendamento-body-header-img">
                                                 <img src={bolaVolei} alt=""></img>
                                             </div>
                                             <div class="agendamento-body-header-title">
-                                                <label>Quadra C2</label>
-                                                <label style={{ "color": "#029EFB" }}>Vôlei</label>
+                                                <label>Quadra <span id="numero_quadra"></span></label>
+                                                <label style={{ "color": "#029EFB" }}><span id="modalidade_quadra"></span></label>
                                             </div>
                                         </div>
                                         <div class="agendamento-body-content">
@@ -238,7 +294,7 @@ function PaginaAgendamento() {
                                                 <div class="agendamento-quadra-A-horarios">
                                                     <div class="agendamento-quadra-A-title">
                                                         <img src={horario} alt="Horário"></img>
-                                                        <label>Horários disponíveis:</label>
+                                                        <label>Horários da Quadra:</label>
                                                     </div>
                                                     <div class="agendamento-quadra-A-time">
                                                         <div class="agendamento-quadra-horario">
@@ -256,7 +312,7 @@ function PaginaAgendamento() {
                                                         <div class="agendamento-quadra-horario">
                                                             <label>13:00 - 14:00</label>
                                                         </div>
-                                                        <div class="agendamento-quadra-horario-selecionado">
+                                                        <div class="agendamento-quadra-horario">
                                                             <label>14:00 - 15:00</label>
                                                         </div>
                                                         <div class="agendamento-quadra-horario">
@@ -281,7 +337,7 @@ function PaginaAgendamento() {
                                                         <label>Horário</label>
                                                     </div>
                                                     <div class="agendamento-campo-horario-content">
-                                                        <label>13:00 - 14:00</label>
+                                                        <input type="datetime-local" name="valor_agendamento" id="valor_agendamento" onChange={e => setHoraDataDigitada(e.target.value)} required></input>
                                                     </div>
                                                 </div>
                                                 <div class="agendamento-campo-valor">
@@ -291,15 +347,15 @@ function PaginaAgendamento() {
                                                     </div>
                                                     <div class="agendamento-campo-valor-content">
                                                         <label>R$</label>
-                                                        <input type="number" name="valor_agendamento" id="valor_agendamento"></input>
+                                                        <input type="number" name="valor_agendamento" id="valor_agendamento" onChange={e => setPrecoDigitado(e.target.value)} required></input>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="agendamento-body-footer">
-                                            <button>Agendar</button>
+                                            <button type="submit">Agendar</button>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

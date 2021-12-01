@@ -29,12 +29,18 @@ function CadastrarQuadras() {
 
     useEffect(() => {
         validarAutenticacao();
+        console.log(centros)
+        console.log(selectCentroValue)
+    });
+
+    useEffect(() => {
         async function recuperarCentros() {
             const resposta = await api.get(`/centros/recuperar-centros/${fkLocatario}`);
+            console.log()
             setCentros(resposta.data)
         }
         recuperarCentros();
-    }, []);
+    }, [fkLocatario]);
 
     function validarAutenticacao() {
         let login_locatario = sessionStorage.locatario;
@@ -64,17 +70,17 @@ function CadastrarQuadras() {
             numero_quadra: numeroQuadraDigitado,
             modalidade: selectModalidadeValue,
             disponivel: 1,
-            fk_centro_esportivo: selectCentroValue,
+            fkCentroEsportivo: selectCentroValue,
         }).then(() => {
             MySwal.fire({
-                title: 'Centro cadastro com sucesso!',
-                text: 'Agora você pode cadastrar suas quadras',
+                title: 'Quadra cadastrada com sucesso!',
+                text: 'Agora você pode fazer seus agendamentos',
                 icon: 'success',
                 confirmButtonText: 'Ok',
             })
         }).catch((erro) => {
             MySwal.fire({
-                title: 'Centro esportivo não cadastrado!',
+                title: 'Quadra não cadastrada!',
                 text: 'Erro ao cadastrar no banco de dados',
                 icon: 'error',
                 confirmButtonText: 'Ok',
