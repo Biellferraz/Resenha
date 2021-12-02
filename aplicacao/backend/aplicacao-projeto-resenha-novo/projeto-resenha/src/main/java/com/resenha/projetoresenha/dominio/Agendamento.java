@@ -1,6 +1,7 @@
 package com.resenha.projetoresenha.dominio;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -24,6 +25,7 @@ public class Agendamento {
     @Column(name = "preco")
     private Double preco;
 
+    @Future
     @NotNull
     @Column(name = "hora_Marcada")
     private LocalDateTime hora_Marcada;

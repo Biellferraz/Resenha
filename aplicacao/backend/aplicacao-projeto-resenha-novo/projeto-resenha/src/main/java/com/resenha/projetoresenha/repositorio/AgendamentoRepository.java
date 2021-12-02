@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface AgendamentoRepository extends JpaRepository<Agendamento,Integer> {
+public interface AgendamentoRepository extends JpaRepository<Agendamento, Integer> {
     List<Agendamento> findByFkQuadra(Integer fk_Quadra);
 }

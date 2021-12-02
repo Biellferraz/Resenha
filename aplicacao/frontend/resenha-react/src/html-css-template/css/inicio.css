@@ -456,7 +456,7 @@ button:focus {
     justify-content: center;
     align-items: center;
     background-color: crimson;
-    width: 15%;
+    width: 40%;
     height: 70%;
     border-radius: 5px;
 }

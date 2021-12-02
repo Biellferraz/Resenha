@@ -7,8 +7,10 @@ import com.resenha.projetoresenha.dominio.Quadra;
 import com.resenha.projetoresenha.listas.ListaObj;
 
 import java.io.*;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 
 public class Teste {
@@ -542,43 +544,23 @@ public class Teste {
         }
     }
 
-    public static void gravaRegistroAgendamento(String registro, String nomeArq) {
-        BufferedWriter saida = null;
-
-        //Abre o arquivo
-        try {
-            saida = new BufferedWriter(new FileWriter(nomeArq, true));
-        } catch (IOException erro) {
-            System.out.println("Erro ao abrir o arquivo: " + erro.getMessage());
-        }
-
-        //Grava o registro e fecha o arquivo
-        try {
-            saida.append(registro + "\n");
-            saida.close();
-        } catch (IOException erro) {
-            System.out.println("Erro ao gravar o arquivo: " + erro.getMessage());
-        }
-
-    }
-
-    public static void gravaArquivoTxtAgendamento(List<Agendamento> lista, String nomeArq) {
-
-        //Monta o registro de reader
+    public static String gravaArquivoTxtAgendamento(List<Agendamento> lista, String nomeArq) {
+        Integer contaRegDados = 0;
+        String relatorio = "";
         String header = "00AGENDAMENTO";
         Date dataDeHoje = new Date();
+
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(dataDeHoje.toInstant(), ZoneId.of("America/Sao_Paulo"));
+        dataDeHoje = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss", Locale.GERMANY);
+        String horaAtual = df.format(dataDeHoje);
+
         SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        header += formataData.format(dataDeHoje);
+        header += dataDeHoje;
         header += "01";
+        relatorio += header + "\n";
 
-
-        //Grava o header
-        gravaRegistroAgendamento(header, nomeArq);
-
-
-        Integer contaRegDados = 0;
-
-        //Monta e grava o corpo
         for (Agendamento a : lista) {
             String corpo = "02";
             corpo += String.format("%04d", a.getId());
@@ -586,18 +568,15 @@ public class Teste {
             corpo += String.format("%04d", a.getFkQuadra());
             corpo += String.format("%06.2f", a.getPreco());
             corpo += String.format("%19.19s", a.getHora_Marcada());
-
+            relatorio += corpo + "\n";
             contaRegDados++;
-
-            gravaRegistroAgendamento(corpo, nomeArq);
         }
 
-
-        //Monta e grava o registro de trailer
         String trailer = "01";
         trailer += String.format("%05d", contaRegDados);
+        relatorio += trailer;
 
-        gravaRegistroAgendamento(trailer, nomeArq);
+        return relatorio;
     }
 
     public static void leArquivoTxtAgendamento(String nomeArq) {

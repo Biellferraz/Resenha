@@ -28,11 +28,12 @@ import api from "../api";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import CardQuadra from "../components/CardQuadra";
+import { apiUrl } from "../api"
 
 function PaginaResenha() {
   let fkLocatario;
   const [download, setDownload] = useState("");
-  const urlToDownload = api.get("/agendamentos/exportar-registro")
+  const urlToDownload = api.get("<localhost:80800>/agendamentos/exportar-txt</localhost:80800>")
   const [count, setCount] = useState(0);
   const history = useHistory();
   const MySwal = withReactContent(Swal);
@@ -71,8 +72,8 @@ function PaginaResenha() {
     recuperarCentros();
   }, []);
   function agendamentosAnteriores() {
-      proximoAgendamento.style = 'display:block';
-      
+    proximoAgendamento.style = 'display:block';
+
   }
 
   function baixarAgendamentos(e) {
@@ -262,7 +263,7 @@ function PaginaResenha() {
                         <img src={imgTaticas} alt="Táticas"></img>
                       </div>
                       <div class="quadras-header-texto">
-                      <label>
+                        <label>
                           <span style={{ color: "#029EFB" }}>Agendamentos</span>
                           <br />
                           <span style={{ color: "black" }} >Antigos  </span>
@@ -305,7 +306,7 @@ function PaginaResenha() {
                           <br />
                           Marcado
                         </label>
-                      </div>        
+                      </div>
                       <div class="baixar-agendamentos">
                         <p>
                           <button
