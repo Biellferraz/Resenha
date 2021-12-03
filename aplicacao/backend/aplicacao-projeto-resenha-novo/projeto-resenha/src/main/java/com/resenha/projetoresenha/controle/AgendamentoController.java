@@ -1,15 +1,21 @@
 package com.resenha.projetoresenha.controle;
 
 import com.resenha.projetoresenha.dominio.Agendamento;
+import com.resenha.projetoresenha.dominio.CentroEsportivo;
 import com.resenha.projetoresenha.dominio.Locatario;
+import com.resenha.projetoresenha.dominio.Quadra;
 import com.resenha.projetoresenha.listas.PilhaObj;
 import com.resenha.projetoresenha.repositorio.AgendamentoRepository;
 import com.resenha.projetoresenha.listas.FilaObj;
+import com.resenha.projetoresenha.repositorio.CentroEsportivoRepository;
 import com.resenha.projetoresenha.repositorio.LocatarioRepository;
+import com.resenha.projetoresenha.repositorio.QuadraRepository;
 import com.resenha.projetoresenha.resposta.AgendamentoResponse;
 import com.resenha.projetoresenha.teste.main.Teste;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +31,14 @@ public class AgendamentoController {
 
     @Autowired
     private AgendamentoRepository repository;
+
+    @Autowired
+    private CentroEsportivoRepository repositoryCentro;
+
+    @Autowired
+    private QuadraRepository repositoryQuadra;
+
+    @Autowired
     private LocatarioRepository locatarioRepository;
 
     @GetMapping("/teste")
@@ -35,9 +49,9 @@ public class AgendamentoController {
         return ResponseEntity.status(200).body(agendamentosResponse);
     }
 
-    @GetMapping
-    public ResponseEntity getAgendamento() {
-        List<Agendamento> agendamentoLista = repository.findAll();
+    @GetMapping("/marcados/{id}")
+    public ResponseEntity getAgendamentosMarcados(@PathVariable Integer id) {
+        List<Agendamento> agendamentoLista = exportar(id);
         if (agendamentoLista.isEmpty()) {
             return ResponseEntity.status(204).build();
         }
@@ -52,9 +66,9 @@ public class AgendamentoController {
         return ResponseEntity.status(200).body(agendamentoFilaObj.toList());
     }
 
-    @GetMapping("/ocorridos")
-    public ResponseEntity getAgendamentoOcorrido() {
-        List<Agendamento> agendamentoLista = repository.findAll();
+    @GetMapping("/ocorridos/{id}")
+    public ResponseEntity getAgendamentoOcorrido(@PathVariable Integer id) {
+        List<Agendamento> agendamentoLista = exportar(id);
         if (agendamentoLista.isEmpty()) {
             return ResponseEntity.status(204).build();
         }
@@ -140,26 +154,27 @@ public class AgendamentoController {
 //        headers.add("Content-Disposition", String.format("attachment; filename = resenha.txt"));
 //        return new ResponseEntity<>(relatorio, headers, HttpStatus.OK);
 //
-////
+//
 //    }
 
-    @GetMapping("/relatorios")
-    public ResponseEntity getAgendamentoRelatorio() {
-        if (!repository.equals(0)) {
-            List<Agendamento> agendamento = repository.findAll();
-            Teste.gravaArquivoTxtAgendamento(agendamento, "agendamento");
-            return ResponseEntity
-                    .status(200)
-                    .header("content-type", "plain/text")
-                    .body(String.format("\nRelatório do agendamentos:\n  %s", agendamento.toString()));
+    public List<Agendamento> exportar(Integer id){
+        CentroEsportivo centro = repositoryCentro.findById(id).get();
+        List<Quadra> quadras = repositoryQuadra.findByFkCentroEsportivo(centro.getId());
+        List<Agendamento> agendamentos = new ArrayList<>();
+        for (Quadra quadra : quadras) {
+            List<Agendamento> auxiliar = repository.findByFkQuadra(quadra.getId());
+            for (Agendamento agend : auxiliar) {
+                agendamentos.add(agend);
+            }
         }
-        return ResponseEntity.status(404).build();
+        return agendamentos;
     }
 
-    @GetMapping("/exportar-registro")
-    public ResponseEntity exportarRegistro() {
-        List<Agendamento> exportacao = repository.findAll();
-        Teste.gravaArquivoTxtAgendamento(exportacao, "agendamento.txt");
-        return ResponseEntity.status(200).build();
+    @GetMapping(value = "/exportar/{id}" , produces = "text/plain")
+    public ResponseEntity exportarRegistro(@PathVariable Integer id, CentroEsportivo centroEsportivo) {
+        String exportar = Teste.gravaArquivoTxtAgendamento(exportar(id),"agend.txt");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-disponition",String.format("attachment, filename = s%-agendamento.txt", centroEsportivo.getNome()));
+        return new ResponseEntity<>(exportar,headers, HttpStatus.OK);
     }
 }

@@ -29,9 +29,11 @@ class AgendamentoControllerTest {
 
     @Test
     public void get_semAgendamento_status204SemCorpo(){
+        Integer id = 101;
+
         when(repository.findAll()).thenReturn(new ArrayList<>());
 
-        ResponseEntity resposta = controller.getAgendamento();
+        ResponseEntity resposta = controller.getAgendamento(id);
 
         assertEquals(204, resposta.getStatusCodeValue());
 
