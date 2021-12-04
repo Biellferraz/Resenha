@@ -598,12 +598,14 @@ public class Teste {
                 System.out.println("\nsou um header");
             } else if (line.substring(0, 2).equals("02")) {
                 contador = 1;
+                agendamento = new Agendamento();
                 id = Integer.valueOf(line.substring(2, 7));
                 idJogador = Integer.valueOf(line.substring(7, 10));
                 idQuadra = Integer.valueOf(line.substring(10, 14));
                 preco = Double.valueOf(line.substring(14, 20).replace(',', '.'));
                 horaMarcada = LocalDateTime.parse(line.substring(20, 36));
 
+                line = scanner.nextLine();
 
                 agendamento.setId(id);
                 agendamento.setFk_Jogador(idJogador);
