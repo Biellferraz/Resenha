@@ -8,6 +8,7 @@ import com.resenha.projetoresenha.listas.ListaObj;
 
 import java.io.*;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -563,11 +564,11 @@ public class Teste {
 
         for (Agendamento a : lista) {
             String corpo = "02";
-            corpo += String.format("%04d", a.getId());
-            corpo += String.format("%04d", a.getFk_Jogador());
-            corpo += String.format("%04d", a.getFkQuadra());
-            corpo += String.format("%06.2f", a.getPreco());
-            corpo += String.format("%19.19s", a.getHora_Marcada());
+            corpo += String.format("%5d", a.getId());
+            corpo += String.format("%3d", a.getFk_Jogador());
+            corpo += String.format("%4d", a.getFkQuadra());
+            corpo += String.format("%05.2f", a.getPreco());
+            corpo += String.format("%16.16s", a.getHora_Marcada());
             relatorio += corpo + "\n";
             contaRegDados++;
         }
@@ -579,71 +580,51 @@ public class Teste {
         return relatorio;
     }
 
-    public static void leArquivoTxtAgendamento(String nomeArq) {
-        BufferedReader entrada = null;
-        String registro, tipoRegistro;
+    public static List<Agendamento> leArquivoTxtAgendamento(String conteudo) throws ParseException {
         LocalDateTime horaMarcada;
         Integer id, idJogador, idQuadra;
         Double preco;
-        Integer qtdResgistrosGravados;
-
-        List<Agendamento> listaLida = new ArrayList<>();
-
-        //Abre o arquivo
-        try {
-            entrada = new BufferedReader(new FileReader(nomeArq));
-        } catch (IOException erro) {
-            System.out.println("Erro ao abrir o arquivo: " + erro.getMessage());
-        }
 
 
-        //Lê o arquivo
-        try {
-            //Lê o primeiro registro do arquivo
-            registro = entrada.readLine();
-            while (registro != null) {
-                //Enquanto não chegou ao final do arquivo
-                tipoRegistro = registro.substring(0, 2);
-
-                if (tipoRegistro.equals("00")) {
-                    System.out.println("\nÉ um registro de header");
-                    System.out.println("Tipo de arquivo: " + registro.substring(2, 13));
-                    System.out.println("Data/hora de gravação: " + registro.substring(13, 32));
-                    System.out.println("Versão do documento: " + registro.substring(32, 34));
-                } else if (tipoRegistro.equals("01")) {
-                    System.out.println("É um registro de trailer");
-                    qtdResgistrosGravados = Integer.valueOf(registro.substring(2, 7));
-                    if (qtdResgistrosGravados == listaLida.size()) {
-                        System.out.println("Quantidade de registros gravados compatível com quantidade lida");
-                    } else {
-                        System.out.println("Quantidade de registro gravados imcompatível com quantidade lida");
-                    }
-
-                } else if (tipoRegistro.equals("02")) {
-                    System.out.println("É um registro de corpo");
-                    id = Integer.valueOf(registro.substring(2, 6));
-                    idJogador = Integer.valueOf(registro.substring(6, 10));
-                    idQuadra = Integer.valueOf(registro.substring(14, 18));
-                    preco = Double.valueOf(registro.substring(18, 27).replace(',', '.'));
-                    horaMarcada = LocalDateTime.parse(registro.substring(27, 43));
+        List<Agendamento> agendamentos = new ArrayList<>();
 
 
-                    listaLida.add(new Agendamento(id, idJogador, idQuadra, preco, horaMarcada));
-                } else {
-                    System.out.println("Tipo de registro inválido");
-                }
-                //Le o proximo registro
-                registro = entrada.readLine();
+        Scanner scanner = new Scanner(conteudo);
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            Agendamento agendamento = new Agendamento();
+            Integer contador = 0;
+            if(line.substring(0, 2).equals("00")) {
+                System.out.println("\nsou um header");
+            } else if (line.substring(0, 2).equals("02")) {
+                contador = 1;
+                id = Integer.valueOf(line.substring(2, 7));
+                idJogador = Integer.valueOf(line.substring(7, 10));
+                idQuadra = Integer.valueOf(line.substring(10, 14));
+                preco = Double.valueOf(line.substring(14, 20).replace(',', '.'));
+                horaMarcada = LocalDateTime.parse(line.substring(20, 36));
+
+
+                agendamento.setId(id);
+                agendamento.setFk_Jogador(idJogador);
+                agendamento.setFkQuadra(idQuadra);
+                agendamento.setPreco(preco);
+                agendamento.setHora_Marcada(horaMarcada);
+
+            } else if (line.substring(0, 2).equals("01")) {
+                System.out.println("\nsou trailer");
+            } else {
+                System.out.println("\ntipo de registro inválido");
             }
-            entrada.close();
-        } catch (IOException erro) {
-            System.out.println("Erro ao ler o arquivo: " + erro.getMessage());
-        }
 
-        System.out.println("\nConteúdo lido do arquivo");
-        for (Agendamento a : listaLida) {
-            System.out.println(a);
+            if(contador > 0) {
+                agendamentos.add(agendamento);
+            }
+
         }
+        scanner.close();
+
+        return agendamentos;
     }
 
     public static void main(String[] args) {
@@ -752,7 +733,7 @@ public class Teste {
 
         gravaArquivoTxtAgendamento(listaAgendamento, "agend.txt");
 
-        leArquivoTxtAgendamento("agend.txt");
+
     }
 
 }

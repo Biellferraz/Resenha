@@ -18,7 +18,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -157,7 +160,8 @@ public class AgendamentoController {
 //
 //    }
 
-    public List<Agendamento> exportar(Integer id) {
+
+    public List<Agendamento> exportar(Integer id){
         CentroEsportivo centro = repositoryCentro.findById(id).get();
         List<Quadra> quadras = repositoryQuadra.findByFkCentroEsportivo(centro.getId());
         List<Agendamento> agendamentos = new ArrayList<>();
@@ -176,5 +180,34 @@ public class AgendamentoController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", String.format("attachment; filename = %s-agendamento.txt", centroEsportivo.getNome()));
         return new ResponseEntity<>(exportar, headers, HttpStatus.OK);
+
+    }
+
+//    @GetMapping(value = "/exportar/{id}" , produces = "text/plain")
+//    public ResponseEntity exportarRegistro(@PathVariable Integer id, CentroEsportivo centroEsportivo) {
+//        String exportar = Teste.gravaArquivoTxtAgendamento(exportar(id),"agendamento.txt");
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("Content-Disposition",String.format("attachment, filename = agendamento.txt"));
+//        return new ResponseEntity<>(exportar,headers, HttpStatus.OK);
+//    }
+
+    @PostMapping("/importacao")
+    public ResponseEntity importarRegistro(
+    @RequestParam MultipartFile arquivo)throws IOException {
+        String conteudo = new String(arquivo.getBytes());
+        List<Agendamento> agendamentos = null;
+        try{
+            agendamentos = Teste.leArquivoTxtAgendamento(conteudo);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        if (agendamentos == null) {
+            return ResponseEntity.status(204).build();
+        }
+        for (Agendamento agendamento : agendamentos) {
+            repository.save(agendamento);
+
+        }
+        return ResponseEntity.status(201).body(agendamentos);
     }
 }
