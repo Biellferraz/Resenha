@@ -18,7 +18,6 @@ import CardFutebol from "../components/CardFutebol";
 import api from "../api";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import CardQuadra from "../components/CardQuadra";
 import { apiUrl } from "../api"
 
 function PaginaResenha() {
@@ -39,6 +38,7 @@ function PaginaResenha() {
   useEffect(() => {
     validarAutenticacao();
   });
+
   useEffect(() => {
     async function recuperarAgendamentos() {
       const resposta = await api.get(`/agendamentos/`);
@@ -46,6 +46,7 @@ function PaginaResenha() {
     }
     recuperarAgendamentos();
   }, []);
+
   useEffect(() => {
     async function recuperarAgendamentosAnteriores() {
       const resposta = await api.get(`/agendamentos/ocorridos/`);
@@ -53,6 +54,7 @@ function PaginaResenha() {
     }
     recuperarAgendamentosAnteriores();
   }, []);
+
   useEffect(() => {
     async function recuperarCentros() {
       const resposta = await api.get(
@@ -62,6 +64,7 @@ function PaginaResenha() {
     }
     recuperarCentros();
   }, []);
+
   function agendamentosAnteriores() {
     proximoAgendamento.style = 'display:block';
 

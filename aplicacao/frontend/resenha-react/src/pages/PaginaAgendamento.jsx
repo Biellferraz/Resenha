@@ -21,6 +21,7 @@ import horario from "../html-css-template/img/clock.svg";
 import centroEsportivo from "../html-css-template/img/centro-esportivo.svg";
 import cadernoAgendamento from "../html-css-template/img/caderno-agendamento.svg";
 import moeda from "../html-css-template/img/coin.svg";
+import HorarioAgendamento from "../components/HorarioAgendamento";
 
 function PaginaAgendamento() {
     const MySwal = withReactContent(Swal);
@@ -68,6 +69,14 @@ function PaginaAgendamento() {
         recuperarQuadras();
     }, [fkCentroEsportivo, selectCentroValue]);
 
+    useEffect(() => {
+        async function recuperarHorarios() {
+            const resposta = await api.get(`/agendamentos/horarios/5003/2021-12-05`);
+            setCentros(resposta.data);
+        }
+        recuperarCentros();
+    }, [fkLocatario]);
+
     function validarAutenticacao() {
         let login_locatario = sessionStorage.locatario;
         if (login_locatario === undefined) {
@@ -88,6 +97,10 @@ function PaginaAgendamento() {
             nome.innerHTML = `${nomeLocatario}`;
             sobrenome.innerHTML = `${sobrenomeLocatario}`;
         }
+    }
+
+    function RecuperarHorarios() {
+
     }
 
 
@@ -290,36 +303,7 @@ function PaginaAgendamento() {
                                                         <label>Horários da Quadra:</label>
                                                     </div>
                                                     <div class="agendamento-quadra-A-time">
-                                                        <div class="agendamento-quadra-horario">
-                                                            <label>09:00 - 10:00</label>
-                                                        </div>
-                                                        <div class="agendamento-quadra-horario">
-                                                            <label>10:00 - 11:00</label>
-                                                        </div>
-                                                        <div class="agendamento-quadra-horario">
-                                                            <label>11:00 - 12:00</label>
-                                                        </div>
-                                                        <div class="agendamento-quadra-horario">
-                                                            <label>12:00 - 13:00</label>
-                                                        </div>
-                                                        <div class="agendamento-quadra-horario">
-                                                            <label>13:00 - 14:00</label>
-                                                        </div>
-                                                        <div class="agendamento-quadra-horario">
-                                                            <label>14:00 - 15:00</label>
-                                                        </div>
-                                                        <div class="agendamento-quadra-horario">
-                                                            <label>15:00 - 16:00</label>
-                                                        </div>
-                                                        <div class="agendamento-quadra-horario">
-                                                            <label>16:00 - 17:00</label>
-                                                        </div>
-                                                        <div class="agendamento-quadra-horario">
-                                                            <label>17:00 - 18:00</label>
-                                                        </div>
-                                                        <div class="agendamento-quadra-horario">
-                                                            <label>18:00 - 19:00</label>
-                                                        </div>
+                                                        <HorarioAgendamento horarioInicial="10:00" horarioFinal="11:00" />
                                                     </div>
                                                 </div>
                                             </div>
