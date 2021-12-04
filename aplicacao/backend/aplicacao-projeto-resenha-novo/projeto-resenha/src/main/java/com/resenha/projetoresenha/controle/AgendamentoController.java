@@ -157,7 +157,7 @@ public class AgendamentoController {
 //
 //    }
 
-    public List<Agendamento> exportar(Integer id){
+    public List<Agendamento> exportar(Integer id) {
         CentroEsportivo centro = repositoryCentro.findById(id).get();
         List<Quadra> quadras = repositoryQuadra.findByFkCentroEsportivo(centro.getId());
         List<Agendamento> agendamentos = new ArrayList<>();
@@ -170,11 +170,11 @@ public class AgendamentoController {
         return agendamentos;
     }
 
-    @GetMapping(value = "/exportar/{id}" , produces = "text/plain")
+    @GetMapping(value = "/exportar/{id}", produces = "text/plain")
     public ResponseEntity exportarRegistro(@PathVariable Integer id, CentroEsportivo centroEsportivo) {
-        String exportar = Teste.gravaArquivoTxtAgendamento(exportar(id),"agend.txt");
+        String exportar = Teste.gravaArquivoTxtAgendamento(exportar(id), "agendamento.txt");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-disponition",String.format("attachment, filename = s%-agendamento.txt", centroEsportivo.getNome()));
-        return new ResponseEntity<>(exportar,headers, HttpStatus.OK);
+        headers.add("Content-Disposition", String.format("attachment; filename = %s-agendamento.txt", centroEsportivo.getNome()));
+        return new ResponseEntity<>(exportar, headers, HttpStatus.OK);
     }
 }
