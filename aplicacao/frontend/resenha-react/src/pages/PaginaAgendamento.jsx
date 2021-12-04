@@ -16,7 +16,6 @@ import bolaResenha from "../html-css-template/img/ball.svg";
 import calendario from "../html-css-template/img/calendar.svg";
 import logoQuadra from "../html-css-template/img/resenha-quadra-inicio.svg";
 import quadraAgendamento from "../html-css-template/img/quadra-agendamento.svg";
-import bolaVolei from "../html-css-template/img/volei-ball.svg";
 import quadraVolei from "../html-css-template/img/quadra-volei.svg";
 import horario from "../html-css-template/img/clock.svg";
 import centroEsportivo from "../html-css-template/img/centro-esportivo.svg";
@@ -39,9 +38,6 @@ function PaginaAgendamento() {
 
     let fkLocatario;
     let fkCentroEsportivo;
-    let dataAtual;
-
-    let dataNascimentoValidada = false;
 
     useEffect(() => {
         validarAutenticacao();
@@ -88,107 +84,37 @@ function PaginaAgendamento() {
 
             let nome = document.getElementById("nome");
             let sobrenome = document.getElementById("sobrenome");
-            // let numeroQuadraRecuperado = document.getElementById("numero_quadra");
-            // let modalidadeRecuperado = document.getElementById("modalidade_quadra");
-
-            // let numeroQuadra = quadra.numero_quadra;
-            // let modalidade = quadra.modalidade;
 
             nome.innerHTML = `${nomeLocatario}`;
             sobrenome.innerHTML = `${sobrenomeLocatario}`;
-            // numeroQuadraRecuperado.innerHTML = `${numeroQuadra}`;
-            // modalidadeRecuperado.innerHTML = `${modalidade}`;
         }
     }
-
-    // function validarData(data) {
-    //     var data_array = data.split("-");
-    //     var dia = data_array[2];
-    //     var mes = data_array[1];
-    //     var ano = data_array[0];
-
-    //     if (data_array[0].length !== 4) {
-    //         dia = data_array[0];
-    //         mes = data_array[1];
-    //         ano = data_array[2];
-    //     }
-
-    //     var hoje = new Date();
-    //     var d1 = hoje.getDate();
-    //     var m1 = hoje.getMonth() + 1;
-    //     var a1 = hoje.getFullYear();
-
-    //     d1 = new Date(a1, m1, d1);
-    //     var d2 = new Date(ano, mes, dia);
-
-    //     var diff = d2.getTime() - d1.getTime();
-    //     diff = diff / (1000 * 60 * 60 * 24);
-
-    //     console.log("Retorno do Diff", diff);
-    //     if (diff !== 0) {
-    //         dataNascimentoValidada = true;
-    //     }
-    // }
-
 
 
     function Agendar(e) {
         e.preventDefault();
 
-        // validarData(horaDataDigitada);
-
-        var data = new Date();
-
-        // Guarda cada pedaço em uma variável
-        var dia = data.getDate();           // 1-31
-        var dia_sem = data.getDay();            // 0-6 (zero=domingo)
-        var mes = data.getMonth();          // 0-11 (zero=janeiro)
-        var ano2 = data.getYear();           // 2 dígitos
-        var ano4 = data.getFullYear();       // 4 dígitos
-        var hora = data.getHours();          // 0-23
-        var min = data.getMinutes();        // 0-59
-        var seg = data.getSeconds();        // 0-59
-        var mseg = data.getMilliseconds();   // 0-999
-        var tz = data.getTimezoneOffset(); // em minutos
-
-        // Formata a data e a hora (note o mês + 1)
-        var str_data = dia + '/' + (mes + 1) + '/' + ano4;
-        var str_hora = hora + ':' + min + ':' + seg;
-
-        // Mostra o resultado
-        alert('Hoje é ' + str_data + ' às ' + str_hora);
-
-
-        if (dataNascimentoValidada === true) {
+        api.post("/agendamentos", {
+            hora_Marcada: horaDataDigitada,
+            preco: precoDigitado,
+            fkQuadra: quadra.id,
+            fk_Jogador: 103
+        }).then(() => {
+            MySwal.fire({
+                title: 'Agendado com sucesso!',
+                text: 'Agora você pode visualizar seus agendamentos',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+            })
+        }).catch((erro) => {
             MySwal.fire({
                 title: 'Agendamento não realizado!',
-                text: 'Data deve ser depois do dia de hoje',
+                text: 'Erro ao agendar no banco de dados',
                 icon: 'error',
                 confirmButtonText: 'Ok',
             })
-        } else {
-            api.post("/agendamentos", {
-                hora_Marcada: horaDataDigitada,
-                preco: precoDigitado,
-                fkQuadra: quadra.id,
-                fk_Jogador: 103
-            }).then(() => {
-                MySwal.fire({
-                    title: 'Agendado com sucesso!',
-                    text: 'Agora você pode visualizar seus agendamentos',
-                    icon: 'success',
-                    confirmButtonText: 'Ok',
-                })
-            }).catch((erro) => {
-                MySwal.fire({
-                    title: 'Agendamento não realizado!',
-                    text: 'Erro ao agendar no banco de dados',
-                    icon: 'error',
-                    confirmButtonText: 'Ok',
-                })
-                console.log(erro);
-            })
-        }
+            console.log(erro);
+        })
     }
 
     function logoff() {
@@ -401,10 +327,19 @@ function PaginaAgendamento() {
                                                 <div class="agendamento-campo-horario">
                                                     <div class="agendamento-campo-horario-header">
                                                         <img src={cadernoAgendamento} alt="Horário Agendamento"></img>
+                                                        <label>SELECIONE O DIA</label>
+                                                    </div>
+                                                    <div class="agendamento-campo-horario-content">
+                                                        <input type="datetime" name="data_agendamento" id="horario_agendamento" onChange={e => setHoraDataDigitada(e.target.value)} required></input>
+                                                    </div>
+                                                </div>
+                                                <div class="agendamento-campo-horario">
+                                                    <div class="agendamento-campo-horario-header">
+                                                        <img src={cadernoAgendamento} alt="Horário Agendamento"></img>
                                                         <label>Horário</label>
                                                     </div>
                                                     <div class="agendamento-campo-horario-content">
-                                                        <input type="datetime-local" name="horario_agendamento" id="horario_agendamento" onChange={e => setHoraDataDigitada(e.target.value)} required></input>
+                                                        <labe></labe>
                                                     </div>
                                                 </div>
                                                 <div class="agendamento-campo-valor">

@@ -25,12 +25,12 @@ public class Agendamento {
     @Column(name = "preco")
     private Double preco;
 
-    @Future
+    @Future(message = "A data inserida deve ser futura")
     @NotNull
     @Column(name = "hora_Marcada")
     private LocalDateTime hora_Marcada;
 
-    public Agendamento(){
+    public Agendamento() {
 
     }
 
