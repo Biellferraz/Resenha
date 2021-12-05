@@ -10,6 +10,7 @@
     "eslint-plugin-react-hooks": "^4.2.1-beta-0cc724c77-20211125",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-file-reader": "^1.1.4",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "^4.0.3",

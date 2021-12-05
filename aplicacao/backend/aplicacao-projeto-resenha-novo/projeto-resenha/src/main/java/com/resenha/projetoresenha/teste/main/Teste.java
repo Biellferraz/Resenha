@@ -567,7 +567,7 @@ public class Teste {
             corpo += String.format("%5d", a.getId());
             corpo += String.format("%3d", a.getFk_Jogador());
             corpo += String.format("%4d", a.getFkQuadra());
-            corpo += String.format("%05.2f", a.getPreco());
+            corpo += String.format("%06.2f", a.getPreco());
             corpo += String.format("%16.16s", a.getHora_Marcada());
             relatorio += corpo + "\n";
             contaRegDados++;

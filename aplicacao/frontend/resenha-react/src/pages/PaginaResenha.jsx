@@ -18,21 +18,19 @@ import CardFutebol from "../components/CardFutebol";
 import api from "../api";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { apiUrl } from "../api"
+import { apiUrl } from "../api";
+
 
 function PaginaResenha() {
   let fkLocatario;
   let fkCentroEsportivo;
-  const [download, setDownload] = useState("");
-  // const urlToDownload = api.get("<localhost:80800>/agendamentos/exportar-txt</localhost:80800>")
-  const [count, setCount] = useState(0);
   const history = useHistory();
   const MySwal = withReactContent(Swal);
   const [centros, setCentros] = useState([]);
   const [selectCentroValue, setSelectCentroValue] = useState(1);
   const [quadras, setQuadras] = useState([]);
   const [agendamentosPassados, setAgendamentosPassados] = useState([]);
-  let proximoAgendamento
+  let proximoAgendamento;
 
   const [agendamentos, setAgendamentos] = useState([]);
 
@@ -40,15 +38,16 @@ function PaginaResenha() {
     validarAutenticacao();
   });
 
-  function testeDownload() {  
+  function testeDownload() {
     window.location.href = `http://localhost:8080/agendamentos/exportar/${fkCentroEsportivo}`;
-    
   }
 
   useEffect(() => {
     async function recuperarAgendamentos() {
-      const respostaAgendamentosMarcados = await api.get(`/agendamentos/marcados/${fkCentroEsportivo}`);
-      console.log("agendamentos/marcados", respostaAgendamentosMarcados)
+      const respostaAgendamentosMarcados = await api.get(
+        `/agendamentos/marcados/${fkCentroEsportivo}`
+      );
+      console.log("agendamentos/marcados", respostaAgendamentosMarcados);
       if (respostaAgendamentosMarcados.status === 204) {
         MySwal.fire({
           title: "Agendamentos não encontrados",
@@ -66,7 +65,10 @@ function PaginaResenha() {
         });
         setAgendamentos([]);
       } else {
-        console.log("agendamentos/marcados retorno tamanho", respostaAgendamentosMarcados.data.length)
+        console.log(
+          "agendamentos/marcados retorno tamanho",
+          respostaAgendamentosMarcados.data.length
+        );
         setAgendamentos(respostaAgendamentosMarcados.data);
       }
     }
@@ -75,8 +77,10 @@ function PaginaResenha() {
 
   useEffect(() => {
     async function recuperarAgendamentosAnteriores() {
-      const respostaAgendamentosOcorridos = await api.get(`/agendamentos/ocorridos/${fkCentroEsportivo}`);
-      console.log("agendamentos/ocorridos", respostaAgendamentosOcorridos)
+      const respostaAgendamentosOcorridos = await api.get(
+        `/agendamentos/ocorridos/${fkCentroEsportivo}`
+      );
+      console.log("agendamentos/ocorridos", respostaAgendamentosOcorridos);
       if (respostaAgendamentosOcorridos.status === 204) {
         MySwal.fire({
           title: "Agendamentos não encontrados",
@@ -94,7 +98,10 @@ function PaginaResenha() {
         });
         setAgendamentosPassados([]);
       } else {
-        console.log("agendamentos/ocorridos", respostaAgendamentosOcorridos.data)
+        console.log(
+          "agendamentos/ocorridos",
+          respostaAgendamentosOcorridos.data
+        );
         setAgendamentosPassados(respostaAgendamentosOcorridos.data);
       }
     }
@@ -112,8 +119,7 @@ function PaginaResenha() {
   }, []);
 
   function agendamentosAnteriores() {
-    proximoAgendamento.style = 'display:block';
-
+    proximoAgendamento.style = "display:block";
   }
 
   function baixarAgendamentos(e) {
@@ -169,6 +175,8 @@ function PaginaResenha() {
       return "Ocupada";
     }
   }
+
+
 
   return (
     <>
@@ -301,15 +309,19 @@ function PaginaResenha() {
                 <div class="content-body-header">
                   <div class="campo-quadra-centro">
                     <label>SELECIONE UM CENTRO ESPORTIVO</label>
-                    <select value={selectCentroValue} name="centros" id="centros" onChange={e => setSelectCentroValue(e.target.value)}>
+                    <select
+                      value={selectCentroValue}
+                      name="centros"
+                      id="centros"
+                      onChange={(e) => setSelectCentroValue(e.target.value)}
+                    >
                       <option value="Selecione">Selecione</option>
-                      {
-                        centros.map((centro) => (
-                          <option value={centro.id} id="centro_selecionado">{centro.nome}</option>
-                        ))
-                      }
+                      {centros.map((centro) => (
+                        <option value={centro.id} id="centro_selecionado">
+                          {centro.nome}
+                        </option>
+                      ))}
                     </select>
-
                   </div>
                 </div>
                 <div class="content-body-quadras">
@@ -322,7 +334,7 @@ function PaginaResenha() {
                         <label>
                           <span style={{ color: "#029EFB" }}>Agendamentos</span>
                           <br />
-                          <span style={{ color: "black" }} >Antigos  </span>
+                          <span style={{ color: "black" }}>Antigos </span>
                         </label>
                       </div>
                     </div>
@@ -350,8 +362,18 @@ function PaginaResenha() {
                           Marcado
                         </label>
                       </div>
+                      <div class="importar-agendamentos">
+                        <button>
+                          {" "}
+                          Importar Agendamentos
+                        </button>
+                      </div>
+                      
                       <div class="baixar-agendamentos">
-                        <button onClick={testeDownload}> Baixar Agendamentos</button>
+                        <button onClick={testeDownload}>
+                          {" "}
+                          Baixar Agendamentos
+                        </button>
                       </div>
                     </div>
                   </div>

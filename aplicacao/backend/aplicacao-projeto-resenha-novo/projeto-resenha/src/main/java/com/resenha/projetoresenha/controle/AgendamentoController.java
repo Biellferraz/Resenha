@@ -154,12 +154,20 @@ public class AgendamentoController {
         return agendamentos;
     }
 
+    public String nomeCentroEsportivo(Integer id){
+        CentroEsportivo centroEsportivo = repositoryCentro.findById(id).get();
+        return centroEsportivo.getNome();
+    }
+
     @GetMapping(value = "/exportar/{id}", produces = "text/plain")
     public ResponseEntity exportarRegistro(@PathVariable Integer id, CentroEsportivo centroEsportivo) {
-        String exportar = Teste.gravaArquivoTxtAgendamento(exportar(id), "agendamento.txt");
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", String.format("attachment; filename = %s-agendamento.txt", centroEsportivo.getNome()));
-        return new ResponseEntity<>(exportar, headers, HttpStatus.OK);
+        if (!(exportar(id) == null)) {
+            String exportar = Teste.gravaArquivoTxtAgendamento(exportar(id), "agendamento.txt");
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Disposition", String.format("attachment; filename = %s-agendamento.txt", nomeCentroEsportivo(id)));
+            return new ResponseEntity<>(exportar, headers, HttpStatus.OK);
+        }
+        return ResponseEntity.status(204).build();
     }
 
     @PostMapping("/importacao")
