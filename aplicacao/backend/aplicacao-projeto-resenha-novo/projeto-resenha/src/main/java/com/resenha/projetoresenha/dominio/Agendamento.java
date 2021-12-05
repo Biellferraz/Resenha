@@ -2,6 +2,7 @@ package com.resenha.projetoresenha.dominio;
 
 import javax.persistence.*;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -25,13 +26,20 @@ public class Agendamento {
     @Column(name = "preco")
     private Double preco;
 
-    @Future(message = "A data inserida deve ser futura")
+    @FutureOrPresent(message = "A data inserida deve ser futura")
     @NotNull
     @Column(name = "hora_Marcada")
     private LocalDateTime hora_Marcada;
 
     public Agendamento() {
 
+    }
+
+    public Agendamento(Integer fkQuadra, Integer fk_Jogador, Double preco, LocalDateTime hora_Marcada) {
+        this.fkQuadra = fkQuadra;
+        this.fk_Jogador = fk_Jogador;
+        this.preco = preco;
+        this.hora_Marcada = hora_Marcada;
     }
 
     public Agendamento(Integer id, Integer idJogador, Integer idQuadra, Double preco, LocalDateTime horaMarcada) {

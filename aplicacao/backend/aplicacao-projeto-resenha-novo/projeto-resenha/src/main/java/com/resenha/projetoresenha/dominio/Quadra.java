@@ -39,7 +39,6 @@ public class Quadra {
                   Integer numero_quadra,
                   Integer disponivel,
                   Integer fkCentroEsportivo) {
-        super();
         this.id = id;
         this.modalidade = modalidade;
         this.numero_quadra = numero_quadra;

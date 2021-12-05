@@ -2,7 +2,6 @@ package com.resenha.projetoresenha.controle;
 
 import com.resenha.projetoresenha.dominio.Agendamento;
 import com.resenha.projetoresenha.dominio.CentroEsportivo;
-import com.resenha.projetoresenha.dominio.Locatario;
 import com.resenha.projetoresenha.dominio.Quadra;
 import com.resenha.projetoresenha.listas.PilhaObj;
 import com.resenha.projetoresenha.repositorio.AgendamentoRepository;
@@ -10,9 +9,9 @@ import com.resenha.projetoresenha.listas.FilaObj;
 import com.resenha.projetoresenha.repositorio.CentroEsportivoRepository;
 import com.resenha.projetoresenha.repositorio.LocatarioRepository;
 import com.resenha.projetoresenha.repositorio.QuadraRepository;
+import com.resenha.projetoresenha.requisicao.AgendamentoRequisicao;
 import com.resenha.projetoresenha.resposta.AgendamentoResponse;
 import com.resenha.projetoresenha.teste.main.Teste;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,7 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -86,8 +87,20 @@ public class AgendamentoController {
     }
 
     @PostMapping
-    public ResponseEntity postAgendamento(@RequestBody Agendamento novoAgendamento) {
-        repository.save(novoAgendamento);
+    public ResponseEntity postAgendamento(@RequestBody AgendamentoRequisicao novoAgendamento) {
+
+        LocalDate data = LocalDate.parse(novoAgendamento.getData());
+        LocalTime hora = LocalTime.parse(novoAgendamento.getHora());
+        LocalDateTime dtHrAtendimento = LocalDateTime.of(data.getYear(), data.getMonth().getValue(), data.getDayOfMonth(), hora.getHour(), 0);
+
+        Agendamento agendamento = new Agendamento(
+                novoAgendamento.getIdQuadra(),
+                novoAgendamento.getIdJogador(),
+                novoAgendamento.getPreco(),
+                dtHrAtendimento
+        );
+
+        repository.save(agendamento);
         return ResponseEntity.status(201).build();
     }
 
@@ -161,7 +174,7 @@ public class AgendamentoController {
 //    }
 
 
-    public List<Agendamento> exportar(Integer id){
+    public List<Agendamento> exportar(Integer id) {
         CentroEsportivo centro = repositoryCentro.findById(id).get();
         List<Quadra> quadras = repositoryQuadra.findByFkCentroEsportivo(centro.getId());
         List<Agendamento> agendamentos = new ArrayList<>();
@@ -180,25 +193,16 @@ public class AgendamentoController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", String.format("attachment; filename = %s-agendamento.txt", centroEsportivo.getNome()));
         return new ResponseEntity<>(exportar, headers, HttpStatus.OK);
-
     }
-
-//    @GetMapping(value = "/exportar/{id}" , produces = "text/plain")
-//    public ResponseEntity exportarRegistro(@PathVariable Integer id, CentroEsportivo centroEsportivo) {
-//        String exportar = Teste.gravaArquivoTxtAgendamento(exportar(id),"agendamento.txt");
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add("Content-Disposition",String.format("attachment, filename = agendamento.txt"));
-//        return new ResponseEntity<>(exportar,headers, HttpStatus.OK);
-//    }
 
     @PostMapping("/importacao")
     public ResponseEntity importarRegistro(
-    @RequestParam MultipartFile arquivo)throws IOException {
+            @RequestParam MultipartFile arquivo) throws IOException {
         String conteudo = new String(arquivo.getBytes());
         List<Agendamento> agendamentos = null;
-        try{
+        try {
             agendamentos = Teste.leArquivoTxtAgendamento(conteudo);
-        }catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         if (agendamentos == null) {
@@ -206,8 +210,53 @@ public class AgendamentoController {
         }
         for (Agendamento agendamento : agendamentos) {
             repository.save(agendamento);
-
         }
         return ResponseEntity.status(201).body(agendamentos);
+    }
+
+    @GetMapping("/horarios/{idQuadra}/{dia}")
+    public ResponseEntity<List<LocalTime>> getHorarios(@PathVariable Integer idQuadra,
+                                                       @PathVariable String dia) {
+        List<Agendamento> horariosOcupados = repository.findHorarioAgendamentoByFkQuadra(idQuadra);
+        List<LocalTime> horariosTrabalho = addHours();
+        List<LocalTime> horariosLivres = new ArrayList<>();
+
+        horariosTrabalho.forEach(hrTrabalho -> {
+            horariosLivres.add(hrTrabalho);
+
+            horariosOcupados.forEach(hrOcuped -> {
+                        LocalTime horaOcupadaDaVez = LocalTime.of(hrOcuped.getHora_Marcada().getHour(), 0);
+                        LocalDate diaOcupadoDaVez = LocalDate.of(hrOcuped.getHora_Marcada().getYear(), hrOcuped.getHora_Marcada().getMonth().getValue(), hrOcuped.getHora_Marcada().getDayOfMonth());
+                        if (horaOcupadaDaVez.equals(hrTrabalho) && diaOcupadoDaVez.equals(LocalDate.parse(dia))) {
+                            horariosLivres.remove(hrTrabalho);
+                        }
+                    }
+            );
+        });
+
+        if (horariosLivres.isEmpty()) {
+            return ResponseEntity.status(204).build();
+        }
+
+        return ResponseEntity.status(200).body(horariosLivres);
+    }
+
+
+    private List<LocalTime> addHours() {
+        LocalTime horas;
+        List<LocalTime> allHours = new ArrayList<>();
+        int result = 0;
+
+        try {
+            for (int i = 8; i < 18; i++) {
+                horas = LocalTime.of(i, 0);
+
+                allHours.add(horas);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return allHours;
     }
 }
