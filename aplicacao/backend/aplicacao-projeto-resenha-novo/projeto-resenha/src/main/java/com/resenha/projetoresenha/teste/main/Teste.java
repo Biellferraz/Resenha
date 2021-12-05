@@ -452,7 +452,7 @@ public class Teste {
         //Monta e grava o corpo
         for (CentroEsportivo c : lista) {
             String corpo = "02";
-            corpo += String.format("%03d", c.getId());
+            corpo += String.format("%04d", c.getId());
             corpo += String.format("%18.18s", c.getCnpj());
             corpo += String.format("%9.9s", c.getCep());
             corpo += String.format("%04d", c.getNumero());
@@ -648,14 +648,14 @@ public class Teste {
                 contador = 1;
                 centroEsportivo = new CentroEsportivo();
                 id = Integer.valueOf(line.substring(2, 6));
-                cnpj = line.substring(6, 24);
-                cep = line.substring(24, 33);
+                cnpj = line.substring(6, 24).trim();
+                cep = line.substring(24, 33).trim();
                 numero = Integer.valueOf(line.substring(33, 37));
                 cidade = line.substring(37, 62).trim();
                 nome = line.substring(62, 92).trim();
                 horaAbre = line.substring(92, 97);
                 horaFecha = line.substring(97, 102);
-                telefone = line.substring(102, 106);
+                telefone = line.substring(102, 106).trim();
 
                 line = scanner.nextLine();
 
@@ -684,6 +684,58 @@ public class Teste {
         scanner.close();
 
         return centroEsportivos;
+    }
+
+    public static void main(String[] args) {
+
+        ListaObj<CentroEsportivo> lista = new ListaObj<>(7);
+        List<CentroEsportivo> listaCentroEsportivo = new ArrayList<>();
+        //        ArrayList<CentroEsportivo> centroEsportivos = new ArrayList<>();
+        //
+        //        centroEsportivos.add(new CentroEsportivo(1,"99.378.761/0001-49","01001-001",
+        //                2190,"Santo andré","Afonso Quadras","09:00","22:00","(11) 94002-8922"));
+        //        centroEsportivos.add(new CentroEsportivo(2,"60.210.961/0001-52","09220-440",440,
+        //                "São Paulo","Web Quadras Poliesportivas","09:00","18:00","(11) 95271-7924"));
+        //        centroEsportivos.add(new CentroEsportivo(3,"62.587.302/0001-65","09220-140",210,
+        //                "São Paulo","Quadras Barra Funda","08:00","18:00","(11) 99119-1137"));
+
+        //        Iterator<CentroEsportivo> it = centroEsportivos.iterator();
+        //
+        //        while (it.hasNext()){
+        //            CentroEsportivo cidade = it.next();
+        //            if (cidade.getCidade().equals("São Paulo")) {
+        //                System.out.println(cidade);
+        //            }
+        //        }
+
+        //        System.out.println(centroEsportivos);
+
+
+        lista.adiciona(new CentroEsportivo(1, "99.378.761/0001-49", "01001-001",
+                2190, "Santo andré", "Afonso Quadras", "09:00", "22:00", "(11) 94002-8922"));
+        lista.adiciona(new CentroEsportivo(2, "60.210.961/0001-52", "09220-440", 440,
+                "São Paulo", "Web Quadras Poliesportivas", "09:00", "18:00", "(11) 95271-7924"));
+        lista.adiciona(new CentroEsportivo(3, "62.587.302/0001-65", "09220-140", 210,
+                "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137"));
+
+        listaCentroEsportivo.add(new CentroEsportivo(1, "99.378.761/0001-49", "01001-001",
+                2190, "Santo andré", "Afonso Quadras", "09:00", "22:00", "(11) 94002-8922"));
+        listaCentroEsportivo.add(new CentroEsportivo(2, "60.210.961/0001-52", "09220-440", 440,
+                "São Paulo", "Web Quadras Poliesportivas", "09:00", "18:00", "(11) 95271-7924"));
+        listaCentroEsportivo.add(new CentroEsportivo(3, "62.587.302/0001-65", "09220-140", 210,
+                "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137"));
+
+//        while (lista.hasNext()) {
+//            CentroEsportivo centroEsportivo = (CentroEsportivo) lista.next();
+//            if (centroEsportivo.getCidade().equals("São Paulo")) {
+//                System.out.println(centroEsportivo);
+//            }
+//        }
+//
+//
+//        lista.exibe();
+
+        gravaArquivoTxtCentroEsportivo(listaCentroEsportivo, "CentroE.txt");
     }
 
 }
