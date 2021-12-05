@@ -160,7 +160,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 15%;
+    height: 30%;
 }
 
 .agendamento-body-header-img {
@@ -193,7 +193,7 @@
     flex-direction: row;
     margin-top: 10px;
     width: 100%;
-    height: 60%;
+    height: 70%;
 }
 
 .agendamento-quadra-A-img {
@@ -209,14 +209,14 @@
     flex-direction: column;
     text-align: center;
     width: 85%;
-    height: 80%;
+    height: 100%;
 }
 
 .agendamento-quadra-A-title {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    height: 40%;
+    height: 20%;
 }
 
 .agendamento-quadra-A-title label {
@@ -230,7 +230,7 @@
 .agendamento-quadra-A-time {
     display: flex;
     flex-wrap: wrap;
-    height: 80%;
+    height: 90%;
 }
 
 .agendamento-quadra-horario {
@@ -241,8 +241,8 @@
     border-radius: 5px;
     font-weight: bold;
     font-size: 12px;
-    width: 14%;
-    height: 30%;
+    width: 20%;
+    height: 20%;
     margin-right: 15px;
     color: #1b2024;
 }
