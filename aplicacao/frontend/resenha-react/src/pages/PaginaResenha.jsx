@@ -48,40 +48,58 @@ function PaginaResenha() {
   useEffect(() => {
     async function recuperarAgendamentos() {
       const respostaAgendamentosMarcados = await api.get(`/agendamentos/marcados/${fkCentroEsportivo}`);
-       if (respostaAgendamentosMarcados.data===undefined) {
+      console.log("agendamentos/marcados", respostaAgendamentosMarcados)
+      if (respostaAgendamentosMarcados.status === 204) {
         MySwal.fire({
           title: "Agendamentos não encontrados",
+          text: "Esse centro esportivo não possui agendamentos",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+        setAgendamentos([]);
+      } else if (respostaAgendamentosMarcados.data.length === 0) {
+        MySwal.fire({
+          title: "Sem agendamentos marcados",
           text: "Esse centro esportivo não possui agendamentos marcados para o futuro",
           icon: "error",
           confirmButtonText: "Ok",
         });
-       } else {
-        setAgendamentos( respostaAgendamentosMarcados.data);
-       }
-      console.log("agendamentos/marcados",respostaAgendamentosMarcados.status)
+        setAgendamentos([]);
+      } else {
+        console.log("agendamentos/marcados retorno tamanho", respostaAgendamentosMarcados.data.length)
+        setAgendamentos(respostaAgendamentosMarcados.data);
+      }
     }
     recuperarAgendamentos();
-  }, [fkCentroEsportivo,selectCentroValue]);
+  }, [fkCentroEsportivo, selectCentroValue]);
 
   useEffect(() => {
     async function recuperarAgendamentosAnteriores() {
       const respostaAgendamentosOcorridos = await api.get(`/agendamentos/ocorridos/${fkCentroEsportivo}`);
-      console.log("agendamentos/ocorridos", respostaAgendamentosOcorridos.status)
-      if (respostaAgendamentosOcorridos.data===undefined) {
+      console.log("agendamentos/ocorridos", respostaAgendamentosOcorridos)
+      if (respostaAgendamentosOcorridos.status === 204) {
         MySwal.fire({
           title: "Agendamentos não encontrados",
+          text: "Esse centro esportivo não possui agendamentos",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+        setAgendamentosPassados([]);
+      } else if (respostaAgendamentosOcorridos.data.length === 0) {
+        MySwal.fire({
+          title: "Sem agendamentos ocorridos",
           text: "Esse centro esportivo não possui um historico de agendamentos",
           icon: "error",
           confirmButtonText: "Ok",
         });
-       } else { 
+        setAgendamentosPassados([]);
+      } else {
         console.log("agendamentos/ocorridos", respostaAgendamentosOcorridos.data)
-        setAgendamentosPassados( respostaAgendamentosOcorridos.data);
-       }
-      // setAgendamentosPassados(resposta.data);
+        setAgendamentosPassados(respostaAgendamentosOcorridos.data);
+      }
     }
     recuperarAgendamentosAnteriores();
-  }, [fkCentroEsportivo,selectCentroValue]);
+  }, [fkCentroEsportivo, selectCentroValue]);
 
   useEffect(() => {
     async function recuperarCentros() {
