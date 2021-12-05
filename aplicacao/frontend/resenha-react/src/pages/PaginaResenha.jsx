@@ -22,6 +22,7 @@ import { apiUrl } from "../api"
 
 function PaginaResenha() {
   let fkLocatario;
+  let fkCentroEsportivo;
   const [download, setDownload] = useState("");
   const urlToDownload = api.get("<localhost:80800>/agendamentos/exportar-txt</localhost:80800>")
   const [count, setCount] = useState(0);
@@ -30,10 +31,10 @@ function PaginaResenha() {
   const [centros, setCentros] = useState([]);
   const [selectCentroValue, setSelectCentroValue] = useState(1);
   const [quadras, setQuadras] = useState([]);
-  const [agendamentoPassado, setAgendamentosAnteriores] = useState([]);
+  const [agendamentosPassados, setAgendamentosPassados] = useState([]);
   let proximoAgendamento
 
-  let [agendamento, setAgendamento] = useState([]);
+  const [agendamentos, setAgendamentos] = useState([]);
 
   useEffect(() => {
     validarAutenticacao();
@@ -41,19 +42,41 @@ function PaginaResenha() {
 
   useEffect(() => {
     async function recuperarAgendamentos() {
-      const resposta = await api.get(`/agendamentos/`);
-      setAgendamento(resposta.data);
+      const respostaAgendamentosMarcados = await api.get(`/agendamentos/marcados/${fkCentroEsportivo}`);
+       if (respostaAgendamentosMarcados.data===undefined) {
+        MySwal.fire({
+          title: "Agendamentos não encontrados",
+          text: "Esse centro esportivo não possui agendamentos marcados para o futuro",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+       } else {
+        setAgendamentos( respostaAgendamentosMarcados.data);
+       }
+      console.log("agendamentos/marcados",respostaAgendamentosMarcados.status)
     }
     recuperarAgendamentos();
-  }, []);
+  }, [fkCentroEsportivo,selectCentroValue]);
 
   useEffect(() => {
     async function recuperarAgendamentosAnteriores() {
-      const resposta = await api.get(`/agendamentos/ocorridos/`);
-      setAgendamentosAnteriores(resposta.data);
+      const respostaAgendamentosOcorridos = await api.get(`/agendamentos/ocorridos/${fkCentroEsportivo}`);
+      console.log("agendamentos/ocorridos", respostaAgendamentosOcorridos.status)
+      if (respostaAgendamentosOcorridos.data===undefined) {
+        MySwal.fire({
+          title: "Agendamentos não encontrados",
+          text: "Esse centro esportivo não possui um historico de agendamentos",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+       } else { 
+        console.log("agendamentos/ocorridos", respostaAgendamentosOcorridos.data)
+        setAgendamentosPassados( respostaAgendamentosOcorridos.data);
+       }
+      // setAgendamentosPassados(resposta.data);
     }
     recuperarAgendamentosAnteriores();
-  }, []);
+  }, [fkCentroEsportivo,selectCentroValue]);
 
   useEffect(() => {
     async function recuperarCentros() {
@@ -104,6 +127,8 @@ function PaginaResenha() {
       let nome = document.getElementById("nome");
       let sobrenome = document.getElementById("sobrenome");
       fkLocatario = locatario.id;
+      sessionStorage.fkCentroEsportivo = selectCentroValue;
+      fkCentroEsportivo = sessionStorage.fkCentroEsportivo;
       nome.innerHTML = `${nomeLocatario}`;
       sobrenome.innerHTML = `${sobrenomeLocatario}`;
     }
@@ -250,6 +275,20 @@ function PaginaResenha() {
                 </div>
               </div>
               <div class="content-body">
+                <div class="content-body-header">
+                  <div class="campo-quadra-centro">
+                    <label>SELECIONE UM CENTRO ESPORTIVO</label>
+                    <select value={selectCentroValue} name="centros" id="centros" onChange={e => setSelectCentroValue(e.target.value)}>
+                      <option value="Selecione">Selecione</option>
+                      {
+                        centros.map((centro) => (
+                          <option value={centro.id} id="centro_selecionado">{centro.nome}</option>
+                        ))
+                      }
+                    </select>
+
+                  </div>
+                </div>
                 <div class="content-body-quadras">
                   <div class="quadras-header">
                     <div class="quadras-header-title">
@@ -262,24 +301,11 @@ function PaginaResenha() {
                           <br />
                           <span style={{ color: "black" }} >Antigos  </span>
                         </label>
-                        {/* <select
-                          value={selectCentroValue}
-                          name="centros"
-                          id="centros"
-                          onChange={(e) => setSelectCentroValue(e.target.value)}
-                        >
-                          <option value="Selecione">Selecione</option>
-                          {centros.map((centro) => (
-                            <option value={centro.id} id="centro_selecionado">
-                              {centro.nome}
-                            </option>
-                          ))}
-                        </select> */}
                       </div>
                     </div>
                   </div>
                   <div class="agendamentos-contents">
-                    {agendamentoPassado.map((agendamento) => (
+                    {agendamentosPassados.map((agendamento) => (
                       <CardFutebol
                         preco={agendamento.preco}
                         horaMarcada={agendamento.hora_Marcada}
@@ -326,7 +352,7 @@ function PaginaResenha() {
                     </div>
                   </div>
                   <div class="agendamentos-content">
-                    {agendamento.map((agendamento) => (
+                    {agendamentos.map((agendamento) => (
                       <CardFutebol
                         preco={agendamento.preco}
                         horaMarcada={agendamento.hora_Marcada}
