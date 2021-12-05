@@ -71,16 +71,4 @@ public class QuadraController {
         return ResponseEntity.status(404).build();
     }
 
-    @GetMapping("/relatorio/{id}")
-    public ResponseEntity getQuadraRelatorio(@PathVariable int id) {
-        if (repository.existsById(id)) {
-            Quadra quadra = repository.findById(id).get();
-            return ResponseEntity
-                    .status(200)
-                    .header("content-type", "plain/text")
-                    .body(String.format("\nRelatório do centros esportivos:\n  %s", quadra.toString()));
-        }
-        return ResponseEntity.status(404).build();
-    }
-
 }

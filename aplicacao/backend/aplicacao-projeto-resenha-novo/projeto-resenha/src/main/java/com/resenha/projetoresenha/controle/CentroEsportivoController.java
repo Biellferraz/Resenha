@@ -27,28 +27,6 @@ public class CentroEsportivoController {
     @Autowired
     private CentroEsportivoRepository repository;
 
-//    @GetMapping(value = "/exportar-txt", produces = "plain/text")
-//    @ApiOperation(value = "Realiza a exportação de um arquivo com todos os centros esportivos")
-//    public ResponseEntity<?> export() {
-//
-//        String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-//        var filename = String.format("CentroE.txt");
-//
-//        try {
-//            var file = new File(filename);
-//            var path = Paths.get(file.getAbsolutePath());
-//            var resource = new ByteArrayResource(Files.readAllBytes(path));
-//            return ResponseEntity
-//                    .ok()
-//                    .contentType(MediaType.parseMediaType("plain/text"))
-//                    .contentLength(file.length())
-//                    .body(resource);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
-
     @GetMapping("/recuperar-centros/{fk_locatario}")
     public ResponseEntity getCentrosEsportivosDoLocatario(@PathVariable Integer fk_locatario) {
         List<CentroEsportivo> centrosEncontrados = repository.findByFkLocatario(fk_locatario);
@@ -96,18 +74,6 @@ public class CentroEsportivoController {
             centroEsportivoAlterado.setId(id);
             repository.save(centroEsportivoAlterado);
             return ResponseEntity.status(200).build();
-        }
-        return ResponseEntity.status(404).build();
-    }
-
-    @GetMapping("/relatorio/{id}")
-    public ResponseEntity getRelatorioCentroEsportivo(@PathVariable int id) {
-        if (repository.existsById(id)) {
-            CentroEsportivo centroEsportivo = repository.findById(id).get();
-            return ResponseEntity
-                    .status(200)
-                    .header("content-type", "plain/text")
-                    .body(String.format("\nRelatório do centros esportivos:\n  %s", centroEsportivo.toString()));
         }
         return ResponseEntity.status(404).build();
     }

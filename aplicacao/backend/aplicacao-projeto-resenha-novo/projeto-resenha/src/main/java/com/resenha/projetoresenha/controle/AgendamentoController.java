@@ -141,39 +141,6 @@ public class AgendamentoController {
         return ResponseEntity.status(200).body(agendamentos);
     }
 
-    @GetMapping("/relatorio/{id}")
-    public ResponseEntity getAgendamentoRelatorio(@PathVariable int id) {
-        if (repository.existsById(id)) {
-            List<Agendamento> agendamentoLista = repository.findAll();
-            Agendamento agendamento = repository.findById(id).get();
-            return ResponseEntity
-                    .status(200)
-                    .header("content-type", "plain/text")
-                    .body(String.format("\nRelatório do centros esportivos:\n  %s", agendamento.toString()));
-        }
-        return ResponseEntity.status(404).build();
-    }
-
-//    @GetMapping(value = "/exportar-txt", produces = "text/plain")
-//    @ApiOperation(value = "Realiza a exportação de um arquivo com todos os centros esportivos")
-//    public ResponseEntity<String> export() {
-//
-//        List
-//
-//        Agendamento agendamento = repository.findBy
-//
-//        List<Agendamento> lista = null;
-//
-//        String relatorio = Teste.gravaArquivoTxtAgendamento(lista);
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add("Content-Disposition", String.format("attachment; filename = resenha.txt"));
-//        return new ResponseEntity<>(relatorio, headers, HttpStatus.OK);
-//
-//
-//    }
-
-
     public List<Agendamento> exportar(Integer id) {
         CentroEsportivo centro = repositoryCentro.findById(id).get();
         List<Quadra> quadras = repositoryQuadra.findByFkCentroEsportivo(centro.getId());
