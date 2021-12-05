@@ -174,19 +174,16 @@ public class AgendamentoController {
     public ResponseEntity importarRegistro(
             @RequestParam MultipartFile arquivo) throws IOException {
         String conteudo = new String(arquivo.getBytes());
-        List<Agendamento> agendamentos = null;
-        try {
-            agendamentos = Teste.leArquivoTxtAgendamento(conteudo);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        if (agendamentos == null) {
+        List<CentroEsportivo> centroEsportivos = null;
+            centroEsportivos = Teste.leArquivoTxtCentroEsportivo(conteudo);
+
+        if (centroEsportivos == null) {
             return ResponseEntity.status(204).build();
         }
-        for (Agendamento agendamento : agendamentos) {
-            repository.save(agendamento);
+        for (CentroEsportivo centroEsportivo : centroEsportivos) {
+            repositoryCentro.save(centroEsportivo);
         }
-        return ResponseEntity.status(201).body(agendamentos);
+        return ResponseEntity.status(201).body(centroEsportivos);
     }
 
     @GetMapping("/horarios/{idQuadra}/{dia}")
