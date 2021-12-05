@@ -24,7 +24,7 @@ function PaginaResenha() {
   let fkLocatario;
   let fkCentroEsportivo;
   const [download, setDownload] = useState("");
-  const urlToDownload = api.get("<localhost:80800>/agendamentos/exportar-txt</localhost:80800>")
+  // const urlToDownload = api.get("<localhost:80800>/agendamentos/exportar-txt</localhost:80800>")
   const [count, setCount] = useState(0);
   const history = useHistory();
   const MySwal = withReactContent(Swal);
@@ -39,6 +39,11 @@ function PaginaResenha() {
   useEffect(() => {
     validarAutenticacao();
   });
+
+  function testeDownload() {  
+    window.location.href = `http://localhost:8080/agendamentos/exportar/${fkCentroEsportivo}`;
+    
+  }
 
   useEffect(() => {
     async function recuperarAgendamentos() {
@@ -328,26 +333,7 @@ function PaginaResenha() {
                         </label>
                       </div>
                       <div class="baixar-agendamentos">
-                        <p>
-                          <button
-                            onClick={() => {
-                              setDownload(urlToDownload);
-                              setCount((old) => old + 1);
-                            }}
-                          >
-                            Download
-                          </button>
-                        </p>
-                        <p>{download}</p>
-                        {download && (
-                          <iframe
-                            src={download + "?c=" + count}
-                            style={{ display: "none" }}
-                          ></iframe>
-                        )}
-                        <br />
-                        <p>{download}</p>
-                        {download && <iframe src={download}></iframe>}
+                        <button onClick={testeDownload}> Baixar Agendamentos</button>
                       </div>
                     </div>
                   </div>
