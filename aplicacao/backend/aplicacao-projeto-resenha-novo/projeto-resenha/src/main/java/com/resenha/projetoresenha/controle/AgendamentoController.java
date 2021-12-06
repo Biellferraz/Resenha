@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -87,7 +88,7 @@ public class AgendamentoController {
     }
 
     @PostMapping
-    public ResponseEntity postAgendamento(@RequestBody AgendamentoRequisicao novoAgendamento) {
+    public ResponseEntity postAgendamento(@RequestBody @Valid AgendamentoRequisicao novoAgendamento) {
 
         LocalDate data = LocalDate.parse(novoAgendamento.getData());
         LocalTime hora = LocalTime.parse(novoAgendamento.getHora());
@@ -99,6 +100,8 @@ public class AgendamentoController {
                 novoAgendamento.getPreco(),
                 dtHrAtendimento
         );
+
+        System.out.println(novoAgendamento);
 
         repository.save(agendamento);
         return ResponseEntity.status(201).build();
@@ -164,7 +167,7 @@ public class AgendamentoController {
         if (!(exportar(id) == null)) {
             String exportar = Teste.gravaArquivoTxtAgendamento(exportar(id), "agendamento.txt");
             HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-Disposition", String.format("attachment; filename = %s-agendamento.txt", nomeCentroEsportivo(id)));
+            headers.add("Content-Disposition", String.format("attachment; filename = %s-agendamentos.txt", nomeCentroEsportivo(id)));
             return new ResponseEntity<>(exportar, headers, HttpStatus.OK);
         }
         return ResponseEntity.status(204).build();

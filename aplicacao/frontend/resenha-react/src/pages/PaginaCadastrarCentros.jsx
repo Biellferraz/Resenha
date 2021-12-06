@@ -206,7 +206,7 @@ function CadastrarCentros() {
                                         <label>Bem-Vindo <span id="nome"></span> <span id="sobrenome"></span></label>
                                     </div>
                                     <div class="header-info-date">
-                                        <label>01 de Dezembro de 2021</label>
+                                        <label>06 de Dezembro de 2021</label>
                                         <img src={calendario} alt="Calendário Resenha"></img>
                                     </div>
                                 </div>

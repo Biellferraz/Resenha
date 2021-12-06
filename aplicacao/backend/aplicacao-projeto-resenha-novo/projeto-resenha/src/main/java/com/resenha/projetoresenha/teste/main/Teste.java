@@ -585,9 +585,7 @@ public class Teste {
         Integer id, idJogador, idQuadra;
         Double preco;
 
-
         List<Agendamento> agendamentos = new ArrayList<>();
-
 
         Scanner scanner = new Scanner(conteudo);
         while (scanner.hasNextLine()) {

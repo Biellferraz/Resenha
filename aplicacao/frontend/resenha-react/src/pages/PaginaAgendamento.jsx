@@ -15,8 +15,7 @@ import imgMenuSair from "../html-css-template/img/botao-sair-menu-lateal.svg";
 import bolaResenha from "../html-css-template/img/ball.svg";
 import calendario from "../html-css-template/img/calendar.svg";
 import logoQuadra from "../html-css-template/img/resenha-quadra-inicio.svg";
-import quadraAgendamento from "../html-css-template/img/quadra-agendamento.svg";
-import quadraVolei from "../html-css-template/img/quadra-volei.svg";
+import quadraAgendamento from "../html-css-template/img/quadra-agendamento.svg"
 import horario from "../html-css-template/img/clock.svg";
 import centroEsportivo from "../html-css-template/img/centro-esportivo.svg";
 import cadernoAgendamento from "../html-css-template/img/caderno-agendamento.svg";
@@ -31,12 +30,11 @@ function PaginaAgendamento() {
     const [quadras, setQuadras] = useState([]);
     const [quadra, setQuadra] = useState([]);
     const [horarios, setHorarios] = useState([]);
-    const [horariosResposta, setHorariosResposta] = useState([]);
 
     const [selectCentroValue, setSelectCentroValue] = useState(1);
     const [selectQuadraValue, setSelectQuadraValue] = useState(1);
+    const [selectHorarioValue, setSelectHorarioValue] = useState();
 
-    const [horaDataDigitada, setHoraDataDigitada] = useState("");
     const [dataDigitada, setDataDigitada] = useState("");
     const [precoDigitado, setPrecoDigitado] = useState("")
 
@@ -75,21 +73,12 @@ function PaginaAgendamento() {
     useEffect(() => {
         async function recuperarHorarios() {
             const resposta = await api.get(`/agendamentos/horarios/${quadra.id}/${dataDigitada}`);
-            console.log("Recuperando horários: ", resposta.data, dataDigitada)
             const aux = resposta.data.map(hour => ({ hour, selected: false }))
             setHorarios(aux)
             sessionStorage.quadra = JSON.stringify(resposta.data);
         }
         recuperarHorarios();
     }, [dataDigitada, quadra.id]);
-
-    // const format = (hora) => {
-    //     if (hora) {
-    //         const hourArray = String(hora).split(":", 2);
-    //         return (`${hourArray[0]} : ${hourArray[1]}`
-    //         )
-    //     }
-    // }
 
     function validarAutenticacao() {
         let login_locatario = sessionStorage.locatario;
@@ -113,23 +102,15 @@ function PaginaAgendamento() {
         }
     }
 
-    const format = (hora) => {
-        if (hora) {
-            const hourArray = hora.split(":")
-            return (
-                `${hourArray[0]}:${hourArray[1]}`
-            )
-        }
-    }
-
     function Agendar(e) {
         e.preventDefault();
 
         api.post("/agendamentos", {
-            hora_Marcada: horaDataDigitada,
+            data: dataDigitada,
+            hora: selectHorarioValue,
             preco: precoDigitado,
-            fkQuadra: quadra.id,
-            fk_Jogador: 103
+            idQuadra: quadra.id,
+            idJogador: 103
         }).then(() => {
             MySwal.fire({
                 title: 'Agendado com sucesso!',
@@ -144,8 +125,11 @@ function PaginaAgendamento() {
                 icon: 'error',
                 confirmButtonText: 'Ok',
             })
-            console.log(erro);
         })
+    }
+
+    function selecionarHorario(horario) {
+        setSelectHorarioValue(horario);
     }
 
     function logoff() {
@@ -244,7 +228,7 @@ function PaginaAgendamento() {
                                         <label>Bem-Vindo <span id="nome"></span> <span id="sobrenome"></span></label>
                                     </div>
                                     <div class="header-info-date">
-                                        <label>01 de Dezembro de 2021</label>
+                                        <label>06 de Dezembro de 2021</label>
                                         <img src={calendario} alt="Calendário Resenha"></img>
                                     </div>
                                 </div>
@@ -302,12 +286,12 @@ function PaginaAgendamento() {
                                 <div class="agendamento-body">
                                     <form class="agendamento-body-container" onSubmit={Agendar}>
                                         <div class="agendamento-body-header">
-                                            <div class="agendamento-campo-horario">
-                                                <div class="agendamento-campo-horario-header">
-                                                    <img src={cadernoAgendamento} alt="Horário Agendamento"></img>
+                                            <div class="agendamento-campo-dia">
+                                                <div class="agendamento-campo-dia-header">
+                                                    <img src={calendario} alt="Horário Agendamento"></img>
                                                     <label>SELECIONE O DIA</label>
                                                 </div>
-                                                <div class="agendamento-campo-horario-content">
+                                                <div class="agendamento-campo-dia-content">
                                                     <input type="date" name="data_agendamento" id="horario_agendamento" onChange={e => setDataDigitada(e.target.value)} required></input>
                                                 </div>
                                             </div>
@@ -315,7 +299,7 @@ function PaginaAgendamento() {
                                         <div class="agendamento-body-content">
                                             <div class="agendamento-body-quadra-A">
                                                 <div class="agendamento-quadra-A-img">
-                                                    <img src={quadraVolei} alt=""></img>
+                                                    <img src={quadraAgendamento} alt=""></img>
                                                 </div>
                                                 <div class="agendamento-quadra-A-horarios">
                                                     <div class="agendamento-quadra-A-title">
@@ -325,8 +309,7 @@ function PaginaAgendamento() {
                                                     <div class="agendamento-quadra-A-time">
                                                         {
                                                             horarios.map((item, index) => (
-                                                                // console.log(item.hour, index, typeof(item.hour))
-                                                                <HorarioAgendamento horarioInicial={item.hour} horarioFinal={typeof (horarios[index + 1]) !== 'undefined' ? horarios[index + 1].hour : "18:00:00"} />
+                                                                <HorarioAgendamento funcao={() => selecionarHorario(item.hour)} horarioInicial={item.hour} horarioFinal={typeof (horarios[index + 1]) !== 'undefined' ? horarios[index + 1].hour : "18:00:00"} />
                                                             ))
                                                         }
                                                     </div>
@@ -339,7 +322,7 @@ function PaginaAgendamento() {
                                                         <label>Horário</label>
                                                     </div>
                                                     <div class="agendamento-campo-horario-content">
-                                                        <label></label>
+                                                        <input type="text" name="campo_horario_agendamento" value={selectHorarioValue} id="campo_horario_agendamento" onChange={e => setSelectHorarioValue(e.target.value)}></input>
                                                     </div>
                                                 </div>
                                                 <div class="agendamento-campo-valor">
@@ -352,10 +335,10 @@ function PaginaAgendamento() {
                                                         <input type="number" name="valor_agendamento" id="valor_agendamento" onChange={e => setPrecoDigitado(e.target.value)} required></input>
                                                     </div>
                                                 </div>
+                                                <div class="agendamento-body-footer">
+                                                    <button type="submit">Agendar</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="agendamento-body-footer">
-                                            <button type="submit">Agendar</button>
                                         </div>
                                     </form>
                                 </div>

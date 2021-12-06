@@ -47,7 +47,6 @@ function PaginaResenha() {
       const respostaAgendamentosMarcados = await api.get(
         `/agendamentos/marcados/${fkCentroEsportivo}`
       );
-      console.log("agendamentos/marcados", respostaAgendamentosMarcados);
       if (respostaAgendamentosMarcados.status === 204) {
         MySwal.fire({
           title: "Agendamentos não encontrados",
@@ -65,10 +64,6 @@ function PaginaResenha() {
         });
         setAgendamentos([]);
       } else {
-        console.log(
-          "agendamentos/marcados retorno tamanho",
-          respostaAgendamentosMarcados.data.length
-        );
         setAgendamentos(respostaAgendamentosMarcados.data);
       }
     }
@@ -80,7 +75,6 @@ function PaginaResenha() {
       const respostaAgendamentosOcorridos = await api.get(
         `/agendamentos/ocorridos/${fkCentroEsportivo}`
       );
-      console.log("agendamentos/ocorridos", respostaAgendamentosOcorridos);
       if (respostaAgendamentosOcorridos.status === 204) {
         MySwal.fire({
           title: "Agendamentos não encontrados",
@@ -98,10 +92,6 @@ function PaginaResenha() {
         });
         setAgendamentosPassados([]);
       } else {
-        console.log(
-          "agendamentos/ocorridos",
-          respostaAgendamentosOcorridos.data
-        );
         setAgendamentosPassados(respostaAgendamentosOcorridos.data);
       }
     }
@@ -293,7 +283,7 @@ function PaginaResenha() {
                     </label>
                   </div>
                   <div class="header-info-date">
-                    <label>01 de Dezembro de 2021</label>
+                    <label>06 de Dezembro de 2021</label>
                     <img src={calendario} alt="Calendário Resenha"></img>
                   </div>
                 </div>
@@ -368,7 +358,7 @@ function PaginaResenha() {
                           Importar Agendamentos
                         </button>
                       </div>
-                      
+
                       <div class="baixar-agendamentos">
                         <button onClick={testeDownload}>
                           {" "}

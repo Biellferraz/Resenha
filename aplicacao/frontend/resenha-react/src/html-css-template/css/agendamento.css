@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
 .baixar-agendamentos button {
     display: flex;
     justify-content: center;
@@ -170,14 +171,14 @@
     display: flex;
     flex-direction: column;
     width: 95%;
-    height: 85%;
+    height: 90%;
 }
 
 .agendamento-body-header {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 30%;
+    height: 20%;
 }
 
 .agendamento-body-header-img {
@@ -202,7 +203,7 @@
 
 .agendamento-body-content {
     width: 100%;
-    height: 70%;
+    height: 73%;
 }
 
 .agendamento-body-quadra-A {
@@ -218,7 +219,7 @@
 }
 
 .agendamento-quadra-A-img img {
-    height: 115px;
+    height: 95px;
 }
 
 .agendamento-quadra-A-horarios {
@@ -276,18 +277,69 @@
     height: 30%;
     margin-right: 15px;
     color: #f3fafe;
-    background-color: #6cbd6a;
 }
 
 .agendamento-body-quadra-B {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+}
+
+.agendamento-campo-dia {
+    background-color: transparent;
+    border: none;
+    font-family: Spartan;
+    font-weight: bold;
+    color: #1b2024;
+    border-bottom: 2px solid #0a0a0a;
+    text-transform: uppercase;
+    width: 20%;
+    height: 80%;
+}
+
+.agendamento-campo-dia-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 100%;
     height: 40%;
 }
 
+.agendamento-campo-dia-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+}
+
+.agendamento-campo-dia-header label {
+    font-weight: bold;
+    font-size: 12px;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+.agendamento-campo-dia-content input {
+    background-color: transparent;
+    border: none;
+    font-family: Spartan;
+    font-weight: bold;
+    color: #029efb;
+    text-transform: uppercase;
+    width: 100%;
+    height: 70%;
+}
+
+.agendamento-campo-dia-content ::-webkit-calendar-picker-indicator {
+    filter: invert(0);
+}
+
 .agendamento-campo-horario {
     margin-right: 40px;
+    height: 100%;
 }
 
 .agendamento-campo-horario-header {
@@ -330,8 +382,7 @@
     border: none;
     font-family: Spartan;
     font-weight: bold;
-    color: #029efb;
-    border-bottom: 2px solid #0a0a0a;
+    color: #616162f7;
     text-transform: uppercase;
     width: 100%;
     height: 70%;
@@ -351,7 +402,7 @@
 
 .agendamento-campo-valor-header {
     display: flex;
-    flex-direction: rowF;
+    flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     width: 100%;
@@ -405,14 +456,14 @@
 .agendamento-body-footer {
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
     width: 100%;
-    height: 20%;
+    height: 80%;
 }
 
 .agendamento-body-footer button {
     width: 15%;
-    height: 70%;
+    height: 60%;
     font-family: Spartan;
     font-weight: bold;
     font-size: 12px;
