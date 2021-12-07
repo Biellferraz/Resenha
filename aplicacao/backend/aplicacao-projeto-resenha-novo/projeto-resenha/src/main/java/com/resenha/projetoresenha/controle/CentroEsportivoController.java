@@ -4,12 +4,14 @@ package com.resenha.projetoresenha.controle;
 import com.resenha.projetoresenha.dominio.CentroEsportivo;
 import com.resenha.projetoresenha.dominio.Locatario;
 import com.resenha.projetoresenha.repositorio.CentroEsportivoRepository;
+import com.resenha.projetoresenha.teste.main.Teste;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -76,6 +78,22 @@ public class CentroEsportivoController {
             return ResponseEntity.status(200).build();
         }
         return ResponseEntity.status(404).build();
+    }
+
+    @PostMapping("/importacao")
+    public ResponseEntity importarRegistro(
+            @RequestParam MultipartFile arquivo) throws IOException {
+        String conteudo = new String(arquivo.getBytes());
+        List<CentroEsportivo> centroEsportivos = null;
+        centroEsportivos = Teste.leArquivoTxtCentroEsportivo(conteudo);
+
+        if (centroEsportivos == null) {
+            return ResponseEntity.status(204).build();
+        }
+        for (CentroEsportivo centroEsportivo : centroEsportivos) {
+            repository.save(centroEsportivo);
+        }
+        return ResponseEntity.status(201).body(centroEsportivos);
     }
 
 }

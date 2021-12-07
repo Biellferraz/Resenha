@@ -173,22 +173,6 @@ public class AgendamentoController {
         return ResponseEntity.status(204).build();
     }
 
-    @PostMapping("/importacao")
-    public ResponseEntity importarRegistro(
-            @RequestParam MultipartFile arquivo) throws IOException {
-        String conteudo = new String(arquivo.getBytes());
-        List<CentroEsportivo> centroEsportivos = null;
-            centroEsportivos = Teste.leArquivoTxtCentroEsportivo(conteudo);
-
-        if (centroEsportivos == null) {
-            return ResponseEntity.status(204).build();
-        }
-        for (CentroEsportivo centroEsportivo : centroEsportivos) {
-            repositoryCentro.save(centroEsportivo);
-        }
-        return ResponseEntity.status(201).body(centroEsportivos);
-    }
-
     @GetMapping("/horarios/{idQuadra}/{dia}")
     public ResponseEntity<List<LocalTime>> getHorarios(@PathVariable Integer idQuadra,
                                                        @PathVariable String dia) {
