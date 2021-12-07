@@ -629,7 +629,7 @@ public class Teste {
 
     public static List<CentroEsportivo> leArquivoTxtCentroEsportivo(String conteudo){
         String cnpj, cep, cidade, nome, horaAbre, horaFecha, telefone;
-        Integer id, numero;
+        Integer id, numero,fkLocatario;
 
 
         List<CentroEsportivo> centroEsportivos = new ArrayList<>();
@@ -654,6 +654,7 @@ public class Teste {
                 horaAbre = line.substring(92, 97);
                 horaFecha = line.substring(97, 102);
                 telefone = line.substring(102, 106).trim();
+                fkLocatario = Integer.valueOf(line.substring(106,108));
 
                 line = scanner.nextLine();
 
@@ -666,6 +667,7 @@ public class Teste {
                 centroEsportivo.setHoraAbre(horaAbre);
                 centroEsportivo.setHoraFecha(horaFecha);
                 centroEsportivo.setTelefone(telefone);
+                centroEsportivo.setFkLocatario(fkLocatario);
 
 
             } else if (line.substring(0, 2).equals("01")) {
@@ -710,18 +712,18 @@ public class Teste {
 
 
         lista.adiciona(new CentroEsportivo(1, "99.378.761/0001-49", "01001-001",
-                2190, "Santo andré", "Afonso Quadras", "09:00", "22:00", "(11) 94002-8922"));
+                2190, "Santo andré", "Afonso Quadras", "09:00", "22:00", "(11) 94002-8922",84));
         lista.adiciona(new CentroEsportivo(2, "60.210.961/0001-52", "09220-440", 440,
-                "São Paulo", "Web Quadras Poliesportivas", "09:00", "18:00", "(11) 95271-7924"));
+                "São Paulo", "Web Quadras Poliesportivas", "09:00", "18:00", "(11) 95271-7924",84));
         lista.adiciona(new CentroEsportivo(3, "62.587.302/0001-65", "09220-140", 210,
-                "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137"));
+                "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137",84));
 
         listaCentroEsportivo.add(new CentroEsportivo(1, "99.378.761/0001-49", "01001-001",
-                2190, "Santo andré", "Afonso Quadras", "09:00", "22:00", "(11) 94002-8922"));
+                2190, "Santo andré", "Afonso Quadras", "09:00", "22:00", "(11) 94002-8922",84));
         listaCentroEsportivo.add(new CentroEsportivo(2, "60.210.961/0001-52", "09220-440", 440,
-                "São Paulo", "Web Quadras Poliesportivas", "09:00", "18:00", "(11) 95271-7924"));
+                "São Paulo", "Web Quadras Poliesportivas", "09:00", "18:00", "(11) 95271-7924",84));
         listaCentroEsportivo.add(new CentroEsportivo(3, "62.587.302/0001-65", "09220-140", 210,
-                "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137"));
+                "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137",84));
 
 //        while (lista.hasNext()) {
 //            CentroEsportivo centroEsportivo = (CentroEsportivo) lista.next();

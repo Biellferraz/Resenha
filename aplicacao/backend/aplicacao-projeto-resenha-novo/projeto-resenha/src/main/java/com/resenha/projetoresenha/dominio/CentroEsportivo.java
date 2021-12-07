@@ -55,7 +55,7 @@ public class CentroEsportivo {
     }
 
     public CentroEsportivo(Integer id, String cnpj, String cep, Integer numero, String cidade, String nome,
-                           String horaAbre, String horaFecha, String telefone) {
+                           String horaAbre, String horaFecha, String telefone, Integer fkLocatario) {
         this.id = id;
         this.cnpj = cnpj;
         this.cep = cep;
@@ -65,6 +65,7 @@ public class CentroEsportivo {
         this.horaAbre = horaAbre;
         this.horaFecha = horaFecha;
         this.telefone = telefone;
+        this.fkLocatario = fkLocatario;
     }
 
     // Getters & Setters
