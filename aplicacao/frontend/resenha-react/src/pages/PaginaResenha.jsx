@@ -193,77 +193,77 @@ function PaginaResenha() {
         </head>
 
         <body>
-          <div class="container-inicio">
+          <div className="container-inicio">
             {/* sidebar começo */}
-            <div class="sidebar">
+            <div className="sidebar">
               <center>
-                <img src={logoResenha} class="image" alt="Logo Resenha" />
+                <img src={logoResenha} className="image" alt="Logo Resenha" />
               </center>
 
-              <div class="container-menu">
-                <div class="menu-content">
-                  <div class="inicio-menu">
+              <div className="container-menu">
+                <div className="menu-content">
+                  <div className="inicio-menu">
                     <Link to={"/inicio"} style={{ textDecoration: "none" }}>
-                      <div class="menu-img">
+                      <div className="menu-img">
                         <img
                           src={imgMenuInicioSelecionado}
                           alt="Imagem Menu Início"
                         />
                       </div>
-                      <div class="menu-text">
+                      <div className="menu-text">
                         <label style={{ color: "#8FD5FE" }}>INICIO</label>
                       </div>
                     </Link>
                   </div>
-                  <div class="centro-menu">
+                  <div className="centro-menu">
                     <Link
                       to={"/cadastrar-centros"}
                       style={{ textDecoration: "none" }}
                     >
-                      <div class="menu-img">
+                      <div className="menu-img">
                         <img
                           src={imgMenuCentros}
                           alt="Imagem Menu Cadastrar Centros"
                         />
                       </div>
-                      <div class="menu-text">
+                      <div className="menu-text">
                         <label>CADASTRAR CENTROS</label>
                       </div>
                     </Link>
                   </div>
-                  <div class="quadras-menu">
+                  <div className="quadras-menu">
                     <Link
                       to={"/cadastrar-quadras"}
                       style={{ textDecoration: "none" }}
                     >
-                      <div class="menu-img">
+                      <div className="menu-img">
                         <img
                           src={imgMenuQuadras}
                           alt="Imagem Menu Cadastrar Quadras"
                         />
                       </div>
-                      <div class="menu-text">
+                      <div className="menu-text">
                         <label>CADASTRAR QUADRAS</label>
                       </div>
                     </Link>
                   </div>
-                  <div class="agenda-menu">
+                  <div className="agenda-menu">
                     <Link to={"/agendar"} style={{ textDecoration: "none" }}>
-                      <div class="menu-img">
+                      <div className="menu-img">
                         <img src={imgMenuAgendar} alt="Imagem Menu Agendar" />
                       </div>
-                      <div class="menu-text">
+                      <div className="menu-text">
                         <label>AGENDAR HORARIO</label>
                       </div>
                     </Link>
                   </div>
                 </div>
-                <div class="menu-footer">
-                  <div class="sair-menu" onClick={logoff}>
-                    <div class="menu-img">
+                <div className="menu-footer">
+                  <div className="sair-menu" onClick={logoff}>
+                    <div className="menu-img">
                       <img src={imgMenuSair} alt="Imagem Menu Sair" />
                     </div>
-                    <div class="menu-text">
+                    <div className="menu-text">
                       <label>SAIR</label>
                     </div>
                   </div>
@@ -272,32 +272,32 @@ function PaginaResenha() {
             </div>
             {/* sidebar final */}
 
-            <div class="content">
-              <div class="content-header">
-                <div class="header-info">
-                  <div class="header-info-username">
+            <div className="content">
+              <div className="content-header">
+                <div className="header-info">
+                  <div className="header-info-username">
                     <img src={bolaResenha} alt="Icone Resenha"></img>
                     <label>
                       Bem-Vindo <span id="nome"></span>{" "}
                       <span id="sobrenome"></span>
                     </label>
                   </div>
-                  <div class="header-info-date">
+                  <div className="header-info-date">
                     <label>06 de Dezembro de 2021</label>
                     <img src={calendario} alt="Calendário Resenha"></img>
                   </div>
                 </div>
-                <div class="header-line">
-                  <div class="line"></div>
-                  <div class="line-img">
+                <div className="header-line">
+                  <div className="line"></div>
+                  <div className="line-img">
                     <img src={logoQuadra} alt="Quadra Logo Resenha"></img>
                   </div>
-                  <div class="line"></div>
+                  <div className="line"></div>
                 </div>
               </div>
-              <div class="content-body">
-                <div class="content-body-header">
-                  <div class="campo-quadra-centro">
+              <div className="content-body">
+                <div className="content-body-header">
+                  <div className="campo-quadra-centro">
                     <label>SELECIONE UM CENTRO ESPORTIVO</label>
                     <select
                       value={selectCentroValue}
@@ -313,14 +313,24 @@ function PaginaResenha() {
                       ))}
                     </select>
                   </div>
+                  {/* <div > */}
+                  <div className='btn-group'>
+                    <button className="importar-agendamentos">
+                      Importar Centros Esportivos
+                    </button>
+                    <button className="baixar-agendamentos" onClick={testeDownload}>
+                      Exportar Agendamentos
+                    </button>
+                  </div>
+
                 </div>
-                <div class="content-body-quadras">
-                  <div class="quadras-header">
-                    <div class="quadras-header-title">
-                      <div class="quadras-header-img">
+                <div className="content-body-quadras">
+                  <div className="quadras-header">
+                    <div className="quadras-header-title">
+                      <div className="quadras-header-img">
                         <img src={imgTaticas} alt="Táticas"></img>
                       </div>
-                      <div class="quadras-header-texto">
+                      <div className="quadras-header-texto">
                         <label>
                           <span style={{ color: "#029EFB" }}>Agendamentos</span>
                           <br />
@@ -329,7 +339,7 @@ function PaginaResenha() {
                       </div>
                     </div>
                   </div>
-                  <div class="agendamentos-contents">
+                  <div className="agendamentos-contents">
                     {agendamentosPassados.map((agendamento) => (
                       <CardFutebol
                         preco={agendamento.preco}
@@ -339,35 +349,22 @@ function PaginaResenha() {
                     ))}
                   </div>
                 </div>
-                <div class="content-body-agendamentos">
-                  <div class="agendamentos-header">
-                    <div class="agendamentos-header-title">
-                      <div class="agendamentos-header-img">
+                <div className="content-body-agendamentos">
+                  <div className="agendamentos-header">
+                    <div className="agendamentos-header-title">
+                      <div className="agendamentos-header-img">
                         <img src={imgAgendamento} alt="Táticas"></img>
                       </div>
-                      <div class="agendamentos-header-texto">
+                      <div className="agendamentos-header-texto">
                         <label>
                           <span style={{ color: "#029EFB" }}>Agendamentos</span>
                           <br />
                           Marcado
                         </label>
                       </div>
-                      <div class="importar-agendamentos">
-                        <button>
-                          {" "}
-                          Importar Agendamentos
-                        </button>
-                      </div>
-
-                      <div class="baixar-agendamentos">
-                        <button onClick={testeDownload}>
-                          {" "}
-                          Baixar Agendamentos
-                        </button>
-                      </div>
                     </div>
                   </div>
-                  <div class="agendamentos-content">
+                  <div className="agendamentos-content">
                     {agendamentos.map((agendamento) => (
                       <CardFutebol
                         preco={agendamento.preco}

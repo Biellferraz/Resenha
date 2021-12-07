@@ -23,7 +23,9 @@
     cursor: pointer;
     right: 40px;
 }
+
 .importar-agendamentos button {
+    background-color: aqua;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,14 +214,16 @@
     margin-top: 10px;
     width: 100%;
     height: 70%;
+    /* background-color: blueviolet; */
 }
 
 .agendamento-quadra-A-img {
-    width: 15%;
+    width: 30%;
+    /* background-color: brown; */
 }
 
 .agendamento-quadra-A-img img {
-    height: 95px;
+    height: 150px;
 }
 
 .agendamento-quadra-A-horarios {
@@ -259,7 +263,7 @@
     border-radius: 5px;
     font-weight: bold;
     font-size: 12px;
-    width: 20%;
+    width: 22%;
     height: 20%;
     margin-right: 15px;
     color: #1b2024;
@@ -284,7 +288,8 @@
     flex-direction: row;
     align-items: center;
     width: 100%;
-    height: 30%;
+    height: 40%;
+    /* background-color: burlywood; */
 }
 
 .agendamento-campo-dia {

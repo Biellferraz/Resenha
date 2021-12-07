@@ -29,14 +29,11 @@ function CadastrarQuadras() {
 
     useEffect(() => {
         validarAutenticacao();
-        console.log(centros)
-        console.log(selectCentroValue)
     });
 
     useEffect(() => {
         async function recuperarCentros() {
             const resposta = await api.get(`/centros/recuperar-centros/${fkLocatario}`);
-            console.log()
             setCentros(resposta.data)
         }
         recuperarCentros();

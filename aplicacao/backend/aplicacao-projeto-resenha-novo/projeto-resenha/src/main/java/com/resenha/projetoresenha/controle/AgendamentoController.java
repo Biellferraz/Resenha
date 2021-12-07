@@ -157,7 +157,7 @@ public class AgendamentoController {
         return agendamentos;
     }
 
-    public String nomeCentroEsportivo(Integer id){
+    public String nomeCentroEsportivo(Integer id) {
         CentroEsportivo centroEsportivo = repositoryCentro.findById(id).get();
         return centroEsportivo.getNome();
     }
@@ -171,6 +171,22 @@ public class AgendamentoController {
             return new ResponseEntity<>(exportar, headers, HttpStatus.OK);
         }
         return ResponseEntity.status(204).build();
+    }
+
+    @PostMapping("/importacao")
+    public ResponseEntity importarRegistro(
+            @RequestParam MultipartFile arquivo) throws IOException {
+        String conteudo = new String(arquivo.getBytes());
+        List<CentroEsportivo> centroEsportivos = null;
+        centroEsportivos = Teste.leArquivoTxtCentroEsportivo(conteudo);
+
+        if (centroEsportivos == null) {
+            return ResponseEntity.status(204).build();
+        }
+        for (CentroEsportivo centroEsportivo : centroEsportivos) {
+            repositoryCentro.save(centroEsportivo);
+        }
+        return ResponseEntity.status(201).body(centroEsportivos);
     }
 
     @GetMapping("/horarios/{idQuadra}/{dia}")

@@ -121,7 +121,7 @@ function PaginaAgendamento() {
         }).catch((erro) => {
             MySwal.fire({
                 title: 'Agendamento não realizado!',
-                text: 'Erro ao agendar no banco de dados',
+                text: 'Deve ser uma data inserida no futuro',
                 icon: 'error',
                 confirmButtonText: 'Ok',
             })
