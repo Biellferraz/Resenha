@@ -430,120 +430,7 @@ public class Teste {
         } catch (IOException erro) {
             System.out.println("Erro ao gravar o arquivo: " + erro.getMessage());
         }
-
     }
-
-    public static void gravaArquivoTxtCentroEsportivo(List<CentroEsportivo> lista, String nomeArq) {
-
-        //Monta o registro de reader
-        String header = "00CENTROESPORTIVO";
-        Date dataDeHoje = new Date();
-        SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        header += formataData.format(dataDeHoje);
-        header += "01";
-
-
-        //Grava o header
-        gravaRegistroCentroEsportivo(header, nomeArq);
-
-
-        Integer contaRegDados = 0;
-
-        //Monta e grava o corpo
-        for (CentroEsportivo c : lista) {
-            String corpo = "02";
-            corpo += String.format("%04d", c.getId());
-            corpo += String.format("%18.18s", c.getCnpj());
-            corpo += String.format("%9.9s", c.getCep());
-            corpo += String.format("%04d", c.getNumero());
-            corpo += String.format("%25.25s", c.getCidade());
-            corpo += String.format("%30.30s", c.getNome());
-            corpo += String.format("%5.5s", c.getHoraAbre());
-            corpo += String.format("%5.5s", c.getHoraFecha());
-            corpo += String.format("%14.14s", c.getTelefone());
-
-            contaRegDados++;
-
-            gravaRegistroCentroEsportivo(corpo, nomeArq);
-        }
-
-
-        //Monta e grava o registro de trailer
-        String trailer = "01";
-        trailer += String.format("%05d", contaRegDados);
-
-        gravaRegistroCentroEsportivo(trailer, nomeArq);
-    }
-
-//    public static void leArquivoTxtCentroEsportivo(String nomeArq) {
-//        BufferedReader entrada = null;
-//        String registro, tipoRegistro;
-//        String cnpj, cep, cidade, nome, horaAbre, horaFecha, telefone;
-//        Integer id, numero;
-//        Integer qtdResgistrosGravados;
-//
-//        List<CentroEsportivo> listaLida = new ArrayList<>();
-//
-//        //Abre o arquivo
-//        try {
-//            entrada = new BufferedReader(new FileReader(nomeArq));
-//        } catch (IOException erro) {
-//            System.out.println("Erro ao abrir o arquivo: " + erro.getMessage());
-//        }
-//
-//
-//        //Lê o arquivo
-//        try {
-//            //Lê o primeiro registro do arquivo
-//            registro = entrada.readLine();
-//            while (registro != null) {
-//                //Enquanto não chegou ao final do arquivo
-//                tipoRegistro = registro.substring(0, 2);
-//
-//                if (tipoRegistro.equals("00")) {
-//                    System.out.println("\nÉ um registro de header");
-//                    System.out.println("Tipo de arquivo: " + registro.substring(2, 17));
-//                    System.out.println("Data/hora de gravação: " + registro.substring(13, 32));
-//                    System.out.println("Versão do documento: " + registro.substring(32, 34));
-//                } else if (tipoRegistro.equals("01")) {
-//                    System.out.println("É um registro de trailer");
-//                    qtdResgistrosGravados = Integer.valueOf(registro.substring(2, 7));
-//                    if (qtdResgistrosGravados == listaLida.size()) {
-//                        System.out.println("Quantidade de registros gravados compatível com quantidade lida");
-//                    } else {
-//                        System.out.println("Quantidade de registro gravados imcompatível com quantidade lida");
-//                    }
-//
-//                } else if (tipoRegistro.equals("02")) {
-//                    System.out.println("É um registro de corpo");
-//                    id = Integer.valueOf(registro.substring(2, 5));
-//                    cnpj = registro.substring(5, 23);
-//                    cep = registro.substring(23, 32);
-//                    numero = Integer.valueOf(registro.substring(32, 36));
-//                    cidade = registro.substring(36, 61).trim();
-//                    nome = registro.substring(61, 91).trim();
-//                    horaAbre = registro.substring(91, 96);
-//                    horaFecha = registro.substring(96, 101);
-//                    telefone = registro.substring(101, 115);
-//
-//
-//                    listaLida.add(new CentroEsportivo(id, cnpj, cep, numero, cidade, nome, horaAbre, horaFecha, telefone));
-//                } else {
-//                    System.out.println("Tipo de registro inválido");
-//                }
-//                //Le o proximo registro
-//                registro = entrada.readLine();
-//            }
-//            entrada.close();
-//        } catch (IOException erro) {
-//            System.out.println("Erro ao ler o arquivo: " + erro.getMessage());
-//        }
-//
-//        System.out.println("\nConteúdo lido do arquivo");
-//        for (CentroEsportivo c : listaLida) {
-//            System.out.println(c);
-//        }
-//    }
 
     public static String gravaArquivoTxtAgendamento(List<Agendamento> lista, String nomeArq) {
         Integer contaRegDados = 0;
@@ -592,7 +479,7 @@ public class Teste {
             String line = scanner.nextLine();
             Agendamento agendamento = new Agendamento();
             Integer contador = 0;
-            if(line.substring(0, 2).equals("00")) {
+            if (line.substring(0, 2).equals("00")) {
                 System.out.println("\nsou um header");
             } else if (line.substring(0, 2).equals("02")) {
                 contador = 1;
@@ -617,7 +504,7 @@ public class Teste {
                 System.out.println("\ntipo de registro inválido");
             }
 
-            if(contador > 0) {
+            if (contador > 0) {
                 agendamentos.add(agendamento);
             }
 
@@ -627,20 +514,60 @@ public class Teste {
         return agendamentos;
     }
 
-    public static List<CentroEsportivo> leArquivoTxtCentroEsportivo(String conteudo){
-        String cnpj, cep, cidade, nome, horaAbre, horaFecha, telefone;
-        Integer id, numero,fkLocatario;
+    public static void gravaArquivoTxtCentroEsportivo(List<CentroEsportivo> lista, String nomeArq) {
 
+        //Monta o registro de reader
+        String header = "00CENTROESPORTIVO";
+        Date dataDeHoje = new Date();
+        SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        header += formataData.format(dataDeHoje);
+        header += "01";
+
+
+        //Grava o header
+        gravaRegistroCentroEsportivo(header, nomeArq);
+
+
+        Integer contaRegDados = 0;
+
+        //Monta e grava o corpo
+        for (CentroEsportivo c : lista) {
+            String corpo = "02";
+            corpo += String.format("%04d", c.getId());
+            corpo += String.format("%18.18s", c.getCnpj());
+            corpo += String.format("%9.9s", c.getCep());
+            corpo += String.format("%04d", c.getNumero());
+            corpo += String.format("%25.25s", c.getCidade());
+            corpo += String.format("%30.30s", c.getNome());
+            corpo += String.format("%5.5s", c.getHoraAbre());
+            corpo += String.format("%5.5s", c.getHoraFecha());
+            corpo += String.format("%15.15s", c.getTelefone());
+
+            contaRegDados++;
+
+            gravaRegistroCentroEsportivo(corpo, nomeArq);
+        }
+
+
+        //Monta e grava o registro de trailer
+        String trailer = "01";
+        trailer += String.format("%05d", contaRegDados);
+
+        gravaRegistroCentroEsportivo(trailer, nomeArq);
+    }
+
+    public static List<CentroEsportivo> leArquivoTxtCentroEsportivo(String conteudo, Integer fkLocatario) {
+        String cnpj, cep, cidade, nome, horaAbre, horaFecha, telefone;
+        Integer id, numero;
 
         List<CentroEsportivo> centroEsportivos = new ArrayList<>();
-
 
         Scanner scanner = new Scanner(conteudo);
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             CentroEsportivo centroEsportivo = new CentroEsportivo();
             Integer contador = 0;
-            if(line.substring(0, 2).equals("00")) {
+            if (line.substring(0, 2).equals("00")) {
                 System.out.println("\nsou um header");
             } else if (line.substring(0, 2).equals("02")) {
                 contador = 1;
@@ -653,8 +580,7 @@ public class Teste {
                 nome = line.substring(62, 92).trim();
                 horaAbre = line.substring(92, 97);
                 horaFecha = line.substring(97, 102);
-                telefone = line.substring(102, 106).trim();
-                fkLocatario = Integer.valueOf(line.substring(106,108));
+                telefone = line.substring(102, 117).trim();
 
                 line = scanner.nextLine();
 
@@ -669,20 +595,17 @@ public class Teste {
                 centroEsportivo.setTelefone(telefone);
                 centroEsportivo.setFkLocatario(fkLocatario);
 
-
             } else if (line.substring(0, 2).equals("01")) {
                 System.out.println("\nsou trailer");
             } else {
                 System.out.println("\ntipo de registro inválido");
             }
 
-            if(contador > 0) {
+            if (contador > 0) {
                 centroEsportivos.add(centroEsportivo);
             }
-
         }
         scanner.close();
-
         return centroEsportivos;
     }
 
@@ -690,50 +613,28 @@ public class Teste {
 
         ListaObj<CentroEsportivo> lista = new ListaObj<>(7);
         List<CentroEsportivo> listaCentroEsportivo = new ArrayList<>();
-        //        ArrayList<CentroEsportivo> centroEsportivos = new ArrayList<>();
-        //
-        //        centroEsportivos.add(new CentroEsportivo(1,"99.378.761/0001-49","01001-001",
-        //                2190,"Santo andré","Afonso Quadras","09:00","22:00","(11) 94002-8922"));
-        //        centroEsportivos.add(new CentroEsportivo(2,"60.210.961/0001-52","09220-440",440,
-        //                "São Paulo","Web Quadras Poliesportivas","09:00","18:00","(11) 95271-7924"));
-        //        centroEsportivos.add(new CentroEsportivo(3,"62.587.302/0001-65","09220-140",210,
-        //                "São Paulo","Quadras Barra Funda","08:00","18:00","(11) 99119-1137"));
-
-        //        Iterator<CentroEsportivo> it = centroEsportivos.iterator();
-        //
-        //        while (it.hasNext()){
-        //            CentroEsportivo cidade = it.next();
-        //            if (cidade.getCidade().equals("São Paulo")) {
-        //                System.out.println(cidade);
-        //            }
-        //        }
-
-        //        System.out.println(centroEsportivos);
-
 
         lista.adiciona(new CentroEsportivo(1, "99.378.761/0001-49", "01001-001",
-                2190, "Santo andré", "Afonso Quadras", "09:00", "22:00", "(11) 94002-8922",84));
+                2190, "Santo andré", "Afonso Quadras", "09:00", "22:00", "(11) 94002-8922"));
         lista.adiciona(new CentroEsportivo(2, "60.210.961/0001-52", "09220-440", 440,
-                "São Paulo", "Web Quadras Poliesportivas", "09:00", "18:00", "(11) 95271-7924",84));
+                "São Paulo", "Web Quadras Poliesportivas", "09:00", "18:00", "(11) 95271-7924"));
         lista.adiciona(new CentroEsportivo(3, "62.587.302/0001-65", "09220-140", 210,
-                "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137",84));
+                "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137"));
 
-        listaCentroEsportivo.add(new CentroEsportivo(1, "99.378.761/0001-49", "01001-001",
-                2190, "Santo andré", "Afonso Quadras", "09:00", "22:00", "(11) 94002-8922",84));
-        listaCentroEsportivo.add(new CentroEsportivo(2, "60.210.961/0001-52", "09220-440", 440,
-                "São Paulo", "Web Quadras Poliesportivas", "09:00", "18:00", "(11) 95271-7924",84));
-        listaCentroEsportivo.add(new CentroEsportivo(3, "62.587.302/0001-65", "09220-140", 210,
-                "São Paulo", "Quadras Barra Funda", "08:00", "18:00", "(11) 99119-1137",84));
+        listaCentroEsportivo.add(new CentroEsportivo(1089, "42.343.252/5256-26", "12355-235",
+                160, "São Paulo", "Playball", "09:00", "18:00", "(12) 51231-2312"));
 
-//        while (lista.hasNext()) {
-//            CentroEsportivo centroEsportivo = (CentroEsportivo) lista.next();
-//            if (centroEsportivo.getCidade().equals("São Paulo")) {
-//                System.out.println(centroEsportivo);
-//            }
-//        }
-//
-//
-//        lista.exibe();
+        listaCentroEsportivo.add(new CentroEsportivo(1090, "42.343.252/5256-26", "12355-235",
+                160, "São Paulo", "Ferraz Multisports", "08:00", "18:00", "(12) 51231-2312"));
+
+        listaCentroEsportivo.add(new CentroEsportivo(1091, "31.258.585/1823-12", "13212-391", 450,
+                "São Paulo", "Sports Web", "08:00", "18:00", "(11) 52313-1231"));
+
+        listaCentroEsportivo.add(new CentroEsportivo(1092, "12.556.131/2321-31", "12312-988", 300,
+                "São Paulo", "Leiva Pro Club", "08:00", "18:00", "(11) 93828-3823"));
+
+        listaCentroEsportivo.add(new CentroEsportivo(1092, "12.556.131/2321-31", "12312-988", 300,
+                "São Paulo", "Pimenta Soccer", "08:00", "18:00", "(11) 93828-3823"));
 
         gravaArquivoTxtCentroEsportivo(listaCentroEsportivo, "CentroE.txt");
     }

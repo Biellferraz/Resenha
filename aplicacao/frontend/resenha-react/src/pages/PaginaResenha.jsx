@@ -18,7 +18,6 @@ import CardFutebol from "../components/CardFutebol";
 import api from "../api";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { apiUrl } from "../api";
 
 
 function PaginaResenha() {
@@ -28,9 +27,7 @@ function PaginaResenha() {
   const MySwal = withReactContent(Swal);
   const [centros, setCentros] = useState([]);
   const [selectCentroValue, setSelectCentroValue] = useState(1);
-  const [quadras, setQuadras] = useState([]);
   const [agendamentosPassados, setAgendamentosPassados] = useState([]);
-  let proximoAgendamento;
 
   const [agendamentos, setAgendamentos] = useState([]);
 
@@ -108,33 +105,6 @@ function PaginaResenha() {
     recuperarCentros();
   }, []);
 
-  function agendamentosAnteriores() {
-    proximoAgendamento.style = "display:block";
-  }
-
-  function baixarAgendamentos(e) {
-    e.preventDefault();
-
-    api
-      .get("/agendamentos/relatorios", {})
-      .then(() => {
-        MySwal.fire({
-          title: "Download realizado com sucesso!",
-          text: "Agora você pode visualizar o download",
-          icon: "success",
-          confirmButtonText: "Ok",
-        });
-      })
-      .catch((erro) => {
-        MySwal.fire({
-          title: "Não foi possível fazer o download",
-          text: "Erro ao fazer download do arquivo",
-          icon: "error",
-          confirmButtonText: "Ok",
-        });
-        console.log(erro);
-      });
-  }
   function validarAutenticacao() {
     let login_locatario = sessionStorage.locatario;
     if (login_locatario === undefined) {
@@ -157,16 +127,6 @@ function PaginaResenha() {
     sessionStorage.clear();
     history.push("/login");
   }
-
-  function disponivel() {
-    if ((quadras.disponivel = 1)) {
-      return "Disponivel";
-    } else {
-      return "Ocupada";
-    }
-  }
-
-
 
   return (
     <>
@@ -283,7 +243,7 @@ function PaginaResenha() {
                     </label>
                   </div>
                   <div className="header-info-date">
-                    <label>06 de Dezembro de 2021</label>
+                    <label>08 de Dezembro de 2021</label>
                     <img src={calendario} alt="Calendário Resenha"></img>
                   </div>
                 </div>
@@ -315,14 +275,10 @@ function PaginaResenha() {
                   </div>
                   {/* <div > */}
                   <div className='btn-group'>
-                    <button className="importar-agendamentos">
-                      Importar Centros Esportivos
-                    </button>
                     <button className="baixar-agendamentos" onClick={testeDownload}>
                       Exportar Agendamentos
                     </button>
                   </div>
-
                 </div>
                 <div className="content-body-quadras">
                   <div className="quadras-header">
@@ -334,7 +290,7 @@ function PaginaResenha() {
                         <label>
                           <span style={{ color: "#029EFB" }}>Agendamentos</span>
                           <br />
-                          <span style={{ color: "black" }}>Antigos </span>
+                          <span style={{ color: "black" }}>Antigos</span>
                         </label>
                       </div>
                     </div>
@@ -359,7 +315,7 @@ function PaginaResenha() {
                         <label>
                           <span style={{ color: "#029EFB" }}>Agendamentos</span>
                           <br />
-                          Marcado
+                          Marcados
                         </label>
                       </div>
                     </div>

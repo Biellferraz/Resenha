@@ -80,12 +80,12 @@ public class CentroEsportivoController {
         return ResponseEntity.status(404).build();
     }
 
-    @PostMapping("/importacao")
+    @PostMapping("/importacao/{fkLocatario}")
     public ResponseEntity importarRegistro(
-            @RequestParam MultipartFile arquivo) throws IOException {
+            @PathVariable Integer fkLocatario, @RequestParam MultipartFile arquivo) throws IOException {
         String conteudo = new String(arquivo.getBytes());
         List<CentroEsportivo> centroEsportivos = null;
-        centroEsportivos = Teste.leArquivoTxtCentroEsportivo(conteudo);
+        centroEsportivos = Teste.leArquivoTxtCentroEsportivo(conteudo, fkLocatario);
 
         if (centroEsportivos == null) {
             return ResponseEntity.status(204).build();

@@ -266,15 +266,14 @@ button:focus {
 
 .btn-group {
     display: flex;
-    justify-content: space-between;
-    width: 30%;
+    justify-content: flex-end;
+    width: 50%;
     height: 80%;
-    /* background-color: blue; */
 }
 
 .btn-group button {
     display: flex;
-    width: 45%;
+    width: 25%;
     justify-content: center;
     align-items: center;
     background-color: #1B2024;

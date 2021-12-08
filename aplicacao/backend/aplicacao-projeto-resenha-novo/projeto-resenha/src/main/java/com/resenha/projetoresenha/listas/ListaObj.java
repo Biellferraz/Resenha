@@ -1,6 +1,6 @@
 package com.resenha.projetoresenha.listas;
 
-public class ListaObj <T> implements Iterator {
+public class ListaObj<T> implements Iterator {
 
     // Atributos
     private T[] vetor;
@@ -14,6 +14,7 @@ public class ListaObj <T> implements Iterator {
         nroElem = 0;
         posicao = 0;
     }
+
     public ListaObj(T[] vetor) {
         this.vetor = vetor;
     }
@@ -32,8 +33,7 @@ public class ListaObj <T> implements Iterator {
     public void exibe() {
         if (nroElem == 0) {
             System.out.println("\nA lista está vazia.");
-        }
-        else {
+        } else {
             System.out.println("\nElementos da lista:");
             for (int i = 0; i < nroElem; i++) {
                 System.out.print(vetor[i]);
@@ -42,14 +42,14 @@ public class ListaObj <T> implements Iterator {
         }
     }
 
-    public Object next(){
+    public Object next() {
         T var = vetor[posicao];
         posicao++;
         return var;
     }
 
-    public boolean hasNext(){
-        if (nroElem >= vetor.length || vetor[posicao] == null){
+    public boolean hasNext() {
+        if (nroElem >= vetor.length || vetor[posicao] == null) {
             return false;
         }
         return true;
@@ -64,7 +64,7 @@ public class ListaObj <T> implements Iterator {
         return -1;
     }
 
-    public boolean removePeloIndice (int indice) {
+    public boolean removePeloIndice(int indice) {
         if (indice < 0 || indice >= nroElem) {
             System.out.println("\nÍndice inválido!");
             return false;
@@ -72,7 +72,7 @@ public class ListaObj <T> implements Iterator {
         // Loop para "deslocar para a esquerda" os elementos do vetor
         // sobrescrevendo o elemento removido
         for (int i = indice; i < nroElem - 1; i++) {
-            vetor[i] = vetor[i+1];
+            vetor[i] = vetor[i + 1];
         }
         nroElem--;
         return true;

@@ -17,11 +17,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -77,13 +74,13 @@ public class AgendamentoController {
         if (agendamentoLista.isEmpty()) {
             return ResponseEntity.status(204).build();
         }
-        PilhaObj<Agendamento> agendamentoFilaObj = new PilhaObj<>(agendamentoLista.size());
+        PilhaObj<AgendamentoResponse> agendamentoFilaObj = new PilhaObj<>(agendamentoLista.size());
         LocalDateTime dataAtual = LocalDateTime.now();
         agendamentoLista.stream()
                 .filter((agendamento) -> agendamento.getHora_Marcada().isBefore(dataAtual) ||
                         agendamento.getHora_Marcada().equals(dataAtual))
                 .sorted(Comparator.comparing(Agendamento::getHora_Marcada, Comparator.naturalOrder()))
-                .forEach(agendamentoFilaObj::push);
+                .forEach(agendamento -> agendamentoFilaObj.push(new AgendamentoResponse(agendamento)));
         return ResponseEntity.status(200).body(agendamentoFilaObj.toList());
     }
 
@@ -171,22 +168,6 @@ public class AgendamentoController {
             return new ResponseEntity<>(exportar, headers, HttpStatus.OK);
         }
         return ResponseEntity.status(204).build();
-    }
-
-    @PostMapping("/importacao")
-    public ResponseEntity importarRegistro(
-            @RequestParam MultipartFile arquivo) throws IOException {
-        String conteudo = new String(arquivo.getBytes());
-        List<CentroEsportivo> centroEsportivos = null;
-        centroEsportivos = Teste.leArquivoTxtCentroEsportivo(conteudo);
-
-        if (centroEsportivos == null) {
-            return ResponseEntity.status(204).build();
-        }
-        for (CentroEsportivo centroEsportivo : centroEsportivos) {
-            repositoryCentro.save(centroEsportivo);
-        }
-        return ResponseEntity.status(201).body(centroEsportivos);
     }
 
     @GetMapping("/horarios/{idQuadra}/{dia}")

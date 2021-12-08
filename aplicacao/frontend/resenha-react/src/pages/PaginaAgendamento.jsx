@@ -156,62 +156,62 @@ function PaginaAgendamento() {
                 </head>
 
                 <body>
-                    <div class="container-inicio">
+                    <div className="container-inicio">
                         {/* sidebar começo */}
-                        <div class="sidebar">
+                        <div className="sidebar">
                             <center>
-                                <img src={logoResenha} class="image" alt="Logo Resenha" />
+                                <img src={logoResenha} className="image" alt="Logo Resenha" />
                             </center>
 
-                            <div class="container-menu">
-                                <div class="menu-content">
-                                    <div class="inicio-menu">
+                            <div className="container-menu">
+                                <div className="menu-content">
+                                    <div className="inicio-menu">
                                         <Link to={"/inicio"} style={{ textDecoration: 'none' }}>
-                                            <div class="menu-img">
+                                            <div className="menu-img">
                                                 <img src={imgMenuInicio} alt="Imagem Menu Início" />
                                             </div>
-                                            <div class="menu-text">
+                                            <div className="menu-text">
                                                 <label>INICIO</label>
                                             </div>
                                         </Link>
                                     </div>
-                                    <div class="centro-menu">
+                                    <div className="centro-menu">
                                         <Link to={"/cadastrar-centros"} style={{ textDecoration: 'none' }}>
-                                            <div class="menu-img">
+                                            <div className="menu-img">
                                                 <img src={imgMenuCentros} alt="Imagem Menu Cadastrar Centros" />
                                             </div>
-                                            <div class="menu-text">
+                                            <div className="menu-text">
                                                 <label>CADASTRAR CENTROS</label>
                                             </div>
                                         </Link>
                                     </div>
-                                    <div class="quadras-menu">
+                                    <div className="quadras-menu">
                                         <Link to={"/cadastrar-quadras"} style={{ textDecoration: 'none' }}>
-                                            <div class="menu-img">
+                                            <div className="menu-img">
                                                 <img src={imgMenuQuadras} alt="Imagem Menu Cadastrar Quadras" />
                                             </div>
-                                            <div class="menu-text">
+                                            <div className="menu-text">
                                                 <label>CADASTRAR QUADRAS</label>
                                             </div>
                                         </Link>
                                     </div>
-                                    <div class="agenda-menu">
+                                    <div className="agenda-menu">
                                         <Link to={"/agendar"} style={{ textDecoration: 'none' }}>
-                                            <div class="menu-img">
+                                            <div className="menu-img">
                                                 <img src={imgMenuAgendarSelecionado} alt="Imagem Menu Agendar" />
                                             </div>
-                                            <div class="menu-text">
+                                            <div className="menu-text">
                                                 <label style={{ "color": "#8FD5FE" }}>AGENDAR HORARIO</label>
                                             </div>
                                         </Link>
                                     </div>
                                 </div>
-                                <div class="menu-footer">
-                                    <div class="sair-menu" onClick={logoff}>
-                                        <div class="menu-img">
+                                <div className="menu-footer">
+                                    <div className="sair-menu" onClick={logoff}>
+                                        <div className="menu-img">
                                             <img src={imgMenuSair} alt="Imagem Menu Sair" />
                                         </div>
-                                        <div class="menu-text">
+                                        <div className="menu-text">
                                             <label>SAIR</label>
                                         </div>
                                     </div>
@@ -220,38 +220,38 @@ function PaginaAgendamento() {
                         </div>
                         {/* sidebar final */}
 
-                        <div class="content">
-                            <div class="content-header">
-                                <div class="header-info">
-                                    <div class="header-info-username">
+                        <div className="content">
+                            <div className="content-header">
+                                <div className="header-info">
+                                    <div className="header-info-username">
                                         <img src={bolaResenha} alt="Icone Resenha"></img>
                                         <label>Bem-Vindo <span id="nome"></span> <span id="sobrenome"></span></label>
                                     </div>
-                                    <div class="header-info-date">
-                                        <label>06 de Dezembro de 2021</label>
+                                    <div className="header-info-date">
+                                        <label>08 de Dezembro de 2021</label>
                                         <img src={calendario} alt="Calendário Resenha"></img>
                                     </div>
                                 </div>
-                                <div class="header-line">
-                                    <div class="line"></div>
-                                    <div class="line-img">
+                                <div className="header-line">
+                                    <div className="line"></div>
+                                    <div className="line-img">
                                         <img src={logoQuadra} alt="Quadra Logo Resenha"></img>
                                     </div>
-                                    <div class="line"></div>
+                                    <div className="line"></div>
                                 </div>
                             </div>
-                            <div class="content-body-agendamento">
-                                <div class="agendamento-header">
-                                    <div class="agendamento-select-centro">
-                                        <div class="select-centro-title">
-                                            <div class="select-img">
+                            <div className="content-body-agendamento">
+                                <div className="agendamento-header">
+                                    <div className="agendamento-select-centro">
+                                        <div className="select-centro-title">
+                                            <div className="select-img">
                                                 <img src={centroEsportivo} alt="Centro Esportivo"></img>
                                             </div>
-                                            <div class="select-label">
+                                            <div className="select-label">
                                                 <label>Selecione um centro esportivo</label>
                                             </div>
                                         </div>
-                                        <div class="select-centro-info">
+                                        <div className="select-centro-info">
                                             <select value={selectCentroValue} name="centros" id="centros" onChange={e => setSelectCentroValue(e.target.value)}>
                                                 <option value="Selecione">Selecione</option>
                                                 {
@@ -262,16 +262,16 @@ function PaginaAgendamento() {
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="agendamento-select-quadra" id="select_quadra">
-                                        <div class="select-quadra-title">
-                                            <div class="select-img">
+                                    <div className="agendamento-select-quadra" id="select_quadra">
+                                        <div className="select-quadra-title">
+                                            <div className="select-img">
                                                 <img src={quadraAgendamento} alt="Quadra"></img>
                                             </div>
-                                            <div class="select-label">
+                                            <div className="select-label">
                                                 <label>Selecione uma Quadra</label>
                                             </div>
                                         </div>
-                                        <div class="select-quadra-info">
+                                        <div className="select-quadra-info">
                                             <select value={selectQuadraValue} name="quadras" id="quadras" onChange={e => setSelectQuadraValue(e.target.value)}>
                                                 <option value="Selecione">Selecione</option>
                                                 {
@@ -283,30 +283,30 @@ function PaginaAgendamento() {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="agendamento-body">
-                                    <form class="agendamento-body-container" onSubmit={Agendar}>
-                                        <div class="agendamento-body-header">
-                                            <div class="agendamento-campo-dia">
-                                                <div class="agendamento-campo-dia-header">
+                                <div className="agendamento-body">
+                                    <form className="agendamento-body-container" onSubmit={Agendar}>
+                                        <div className="agendamento-body-header">
+                                            <div className="agendamento-campo-dia">
+                                                <div className="agendamento-campo-dia-header">
                                                     <img src={calendario} alt="Horário Agendamento"></img>
                                                     <label>SELECIONE O DIA</label>
                                                 </div>
-                                                <div class="agendamento-campo-dia-content">
+                                                <div className="agendamento-campo-dia-content">
                                                     <input type="date" name="data_agendamento" id="horario_agendamento" onChange={e => setDataDigitada(e.target.value)} required></input>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="agendamento-body-content">
-                                            <div class="agendamento-body-quadra-A">
-                                                <div class="agendamento-quadra-A-img">
+                                        <div className="agendamento-body-content">
+                                            <div className="agendamento-body-quadra-A">
+                                                <div className="agendamento-quadra-A-img">
                                                     <img src={quadraAgendamento} alt=""></img>
                                                 </div>
-                                                <div class="agendamento-quadra-A-horarios">
-                                                    <div class="agendamento-quadra-A-title">
+                                                <div className="agendamento-quadra-A-horarios">
+                                                    <div className="agendamento-quadra-A-title">
                                                         <img src={horario} alt="Horário"></img>
                                                         <label>Horários da Quadra:</label>
                                                     </div>
-                                                    <div class="agendamento-quadra-A-time">
+                                                    <div className="agendamento-quadra-A-time">
                                                         {
                                                             horarios.map((item, index) => (
                                                                 <HorarioAgendamento funcao={() => selecionarHorario(item.hour)} horarioInicial={item.hour} horarioFinal={typeof (horarios[index + 1]) !== 'undefined' ? horarios[index + 1].hour : "18:00:00"} />
@@ -315,27 +315,27 @@ function PaginaAgendamento() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="agendamento-body-quadra-B">
-                                                <div class="agendamento-campo-horario">
-                                                    <div class="agendamento-campo-horario-header">
+                                            <div className="agendamento-body-quadra-B">
+                                                <div className="agendamento-campo-horario">
+                                                    <div className="agendamento-campo-horario-header">
                                                         <img src={cadernoAgendamento} alt="Horário Agendamento"></img>
                                                         <label>Horário</label>
                                                     </div>
-                                                    <div class="agendamento-campo-horario-content">
+                                                    <div className="agendamento-campo-horario-content">
                                                         <input type="text" name="campo_horario_agendamento" value={selectHorarioValue} id="campo_horario_agendamento" onChange={e => setSelectHorarioValue(e.target.value)}></input>
                                                     </div>
                                                 </div>
-                                                <div class="agendamento-campo-valor">
-                                                    <div class="agendamento-campo-valor-header">
+                                                <div className="agendamento-campo-valor">
+                                                    <div className="agendamento-campo-valor-header">
                                                         <img src={moeda} alt="Valor"></img>
                                                         <label>Valor</label>
                                                     </div>
-                                                    <div class="agendamento-campo-valor-content">
+                                                    <div className="agendamento-campo-valor-content">
                                                         <label>R$</label>
                                                         <input type="number" name="valor_agendamento" id="valor_agendamento" onChange={e => setPrecoDigitado(e.target.value)} required></input>
                                                     </div>
                                                 </div>
-                                                <div class="agendamento-body-footer">
+                                                <div className="agendamento-body-footer">
                                                     <button type="submit">Agendar</button>
                                                 </div>
                                             </div>

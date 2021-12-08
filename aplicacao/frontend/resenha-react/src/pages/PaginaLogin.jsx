@@ -68,26 +68,26 @@ function PaginaLogin() {
             rel="stylesheet"
           />
         </head>
-        <body class="imagem-login">
-          <div class="header-login">
+        <body className="imagem-login">
+          <div className="header-login">
             <Link to={"/"}>
               <img id="logoResenhaLogin" src={logo} alt="" />
             </Link>
           </div>
 
-          <div class="container-login">
-            <div class="corpo-login">
-              <div class="corpo-login-container">
+          <div className="container-login">
+            <div className="corpo-login">
+              <div className="corpo-login-container">
                 <TituloFormulario img={logoQuadra} titulo="Resenha" subtitulo="Acesse já nossa aplicação" />
-                <form class="campo-form-login-container" onSubmit={Entrar}>
-                  <div class="campo-email-login">
-                    <div class="campo-form-extended">
+                <form className="campo-form-login-container" onSubmit={Entrar}>
+                  <div className="campo-email-login">
+                    <div className="campo-form-extended">
                       <label>E-mail</label>
                       <input type="email" id="email" name="email" onChange={e => setEmailDigitado(e.target.value)} required />
                     </div>
                   </div>
-                  <div class="campo-senha-login">
-                    <div class="campo-form-extended">
+                  <div className="campo-senha-login">
+                    <div className="campo-form-extended">
                       <label>Senha</label>
                       <input type="password" id="password" name="password" onChange={e => setSenhaDigitada(e.target.value)} required />
                     </div>

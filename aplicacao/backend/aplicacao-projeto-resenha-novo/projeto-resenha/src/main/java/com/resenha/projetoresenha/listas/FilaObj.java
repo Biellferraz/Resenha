@@ -6,7 +6,6 @@ import java.util.List;
 public class FilaObj<T> {
 
 
-
     // Atributos
     private T[] fila;
     private int tamanho;
@@ -30,8 +29,7 @@ public class FilaObj<T> {
     public void insert(T info) {
         if (isFull()) {
             System.out.println("Fila cheia!");
-        }
-        else {
+        } else {
             fila[tamanho++] = info;
         }
     }
@@ -58,18 +56,18 @@ public class FilaObj<T> {
         }
         return primeiro;
     }
+
     public void exibe() {
         if (isEmpty()) {
             System.out.println("Pilha vazia");
-        }
-        else {
+        } else {
             for (int i = 0; i < tamanho; i++) {
                 System.out.print(fila[i]);
             }
         }
     }
 
-    public int getTamanho(){
+    public int getTamanho() {
         return tamanho;
     }
 

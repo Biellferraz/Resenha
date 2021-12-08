@@ -77,14 +77,14 @@ function PaginaInicial() {
         <body>
           <section id="home">
             <header>
-              <div class="logo">
+              <div className="logo">
                 <a href="#home">
                   <img id="logoResenha" src={logoResenha} alt="Logo" />
                 </a>
               </div>
 
-              <div class="nav-bar">
-                <div class="nav-options">
+              <div className="nav-bar">
+                <div className="nav-options">
                   <label>
                     <a href="#sobre">SOBRE</a>
                   </label>
@@ -98,15 +98,15 @@ function PaginaInicial() {
                     <a href="#contato">ENTRE EM CONTATO</a>
                   </label>
                 </div>
-                <div class="nav-buttons">
+                <div className="nav-buttons">
                   <Link to={"/cadastrar"}>
-                    <div class="nav-buttons-field">
+                    <div className="nav-buttons-field">
                       <img src={imgCadastro} alt="Cadastro" />
                       <label>EXPERIMENTE JÁ</label>
                     </div>
                   </Link>
                   <Link to={"/login"}>
-                    <div class="nav-buttons-field">
+                    <div className="nav-buttons-field">
                       <img src={imgLogin} alt="Login" />
                       <label>LOGIN</label>
                     </div>
@@ -114,41 +114,41 @@ function PaginaInicial() {
                 </div>
               </div>
             </header>
-            <div class="sub-header">
+            <div className="sub-header">
               <label>
                 DEIXE O RESENHA
                 <br />
                 CUIDAR DE SEU JOGO
               </label>
             </div>
-            <div class="home">
-              <div class="home-img1">
+            <div className="home">
+              <div className="home-img1">
                 <img src={camisaResenhaFrente} alt="Camisa Resenha Frente" />
               </div>
-              <div class="home-content">
-                <div class="home-content-header">
+              <div className="home-content">
+                <div className="home-content-header">
                   <label>
                     APLICAÇÃO PARA LOCAÇÃO E<br />
                     AGENDAMENTO DE QUADRAS ESPORTIVAS
                   </label>
                 </div>
-                <div class="home-content-divider">
-                  <div class="divider-container">
-                    <div class="divider-line">
+                <div className="home-content-divider">
+                  <div className="divider-container">
+                    <div className="divider-line">
                       <label>.</label>
                     </div>
-                    <div class="divider-img">
+                    <div className="divider-img">
                       <img
                         src={resenhaLogoSecundaria}
                         alt="Logo Resenha Secundário"
                       />
                     </div>
-                    <div class="divider-line">
+                    <div className="divider-line">
                       <label>.</label>
                     </div>
                   </div>
                 </div>
-                <div class="home-content-text">
+                <div className="home-content-text">
                   <p />
                   Automatização do sistema dos Locatários
                   <br />e busca por quadras de esporte com horários
@@ -156,42 +156,42 @@ function PaginaInicial() {
                   disponíveis nas regiões dos Jogadores
                   <p />
                 </div>
-                <div class="home-content-button">
+                <div className="home-content-button">
                   <a href="#sobre">
-                    <label class="home-button">SAIBA MAIS</label>
+                    <label className="home-button">SAIBA MAIS</label>
                   </a>
-                  <div class="home-arrow-button">
+                  <div className="home-arrow-button">
                     <img src={buttonArrow} alt="Arrow Button" />
                   </div>
                 </div>
               </div>
-              <div class="home-img2">
+              <div className="home-img2">
                 <img src={camisaResenhaAtras} alt="Camisa Resenha Atrás" />
               </div>
             </div>
           </section>
           <section id="sobre">
-            <div class="sobre">
-              <div class="sobre-content2">
-                <div class="logo-sobre">
-                  <div class="logo-solo">
+            <div className="sobre">
+              <div className="sobre-content2">
+                <div className="logo-sobre">
+                  <div className="logo-solo">
                     <img src={logoSolo} alt="logo-solo" />
                   </div>
-                  <div class="sobre-content">
-                    <div class="sobre-content-header">
+                  <div className="sobre-content">
+                    <div className="sobre-content-header">
                       <label>O QUE É O RESENHA?</label>
                     </div>
                   </div>
                 </div>
-                <div class="sobre-content-text-principal">
-                  <div class="sobre-content-text">
+                <div className="sobre-content-text-principal">
+                  <div className="sobre-content-text">
                     <label>
                       O RESENHA é um grupo que tem como objetivo proporcionar a
                       melhor experiência para os donos de quadras e jogadores
                       com relação a locação de quadras esportivas
                     </label>
                   </div>
-                  <div class="sobre-content-text2">
+                  <div className="sobre-content-text2">
                     <div>
                       <img src={agenda} alt="agenda-logo" />
                     </div>
@@ -200,7 +200,7 @@ function PaginaInicial() {
                       gerenciamento de horários e de uso em suas quadras
                     </p>
                   </div>
-                  <div class="sobre-content-text3">
+                  <div className="sobre-content-text3">
                     <div>
                       <img src={coneLogo} alt="cone-logo3" />
                     </div>
@@ -210,7 +210,7 @@ function PaginaInicial() {
                       informações e seus horários
                     </p>
                   </div>
-                  <div class="sobre-content-text4">
+                  <div className="sobre-content-text4">
                     <div>
                       <img src={bolaLogo} alt="bola-logo4" />
                     </div>
@@ -222,24 +222,24 @@ function PaginaInicial() {
                   </div>
                 </div>
               </div>
-              <div class="sobre-img">
+              <div className="sobre-img">
                 <img src={quadraSobre} alt="Quadra esportiva" />
               </div>
             </div>
           </section>
           <section id="funcionalidades">
-            <div class="funcionalidades">
-              <div class="funcionalidades-container">
-                <div class="funcionalidades-header">
-                  <div class="funcionalidades-header-container">
+            <div className="funcionalidades">
+              <div className="funcionalidades-container">
+                <div className="funcionalidades-header">
+                  <div className="funcionalidades-header-container">
                     <img src={imgFlag} alt="Flag Funcionalidades" />
                     <label>Funcionalidades</label>
                   </div>
                 </div>
-                <div class="funcionalidades-content">
-                  <div class="funcionalidades-content-box-A">
-                    <div class="funcionalidades-box-header">
-                      <div class="funcionalidades-box-header-container">
+                <div className="funcionalidades-content">
+                  <div className="funcionalidades-content-box-A">
+                    <div className="funcionalidades-box-header">
+                      <div className="funcionalidades-box-header-container">
                         <img
                           src={funcionanlidadeAgendamento}
                           alt="Flag Funcionalidades"
@@ -247,15 +247,15 @@ function PaginaInicial() {
                         <label>Agendamentos</label>
                       </div>
                     </div>
-                    <p class="funcionalidades-box-text">
+                    <p className="funcionalidades-box-text">
                       Como LOCATÁRIO, gerencie o agendamento de horários de uso
                       em suas quadras esportivas de forma mais rápida e
                       eficiente de acordo com a preferência dos JOGADORES
                     </p>
                   </div>
-                  <div class="funcionalidades-content-box-B">
-                    <div class="funcionalidades-box-header">
-                      <div class="funcionalidades-box-header-container">
+                  <div className="funcionalidades-content-box-B">
+                    <div className="funcionalidades-box-header">
+                      <div className="funcionalidades-box-header-container">
                         <img
                           src={funcionanlidadeQuadra}
                           alt="Flag Funcionalidades"
@@ -263,15 +263,15 @@ function PaginaInicial() {
                         <label>Gerenciamento de Quadras</label>
                       </div>
                     </div>
-                    <p class="funcionalidades-box-text">
+                    <p className="funcionalidades-box-text">
                       Você como LOCATÁRIO que possui mais de um tipo de quadra
                       esportiva, faça o gerenciamento de cada uma delas de
                       acordo com sua modalidade
                     </p>
                   </div>
-                  <div class="funcionalidades-content-box-A">
-                    <div class="funcionalidades-box-header">
-                      <div class="funcionalidades-box-header-container">
+                  <div className="funcionalidades-content-box-A">
+                    <div className="funcionalidades-box-header">
+                      <div className="funcionalidades-box-header-container">
                         <img
                           src={funcionanlidadeAluguel}
                           alt="Flag Funcionalidades"
@@ -279,15 +279,15 @@ function PaginaInicial() {
                         <label>Aluguel de Equipamentos</label>
                       </div>
                     </div>
-                    <p class="funcionalidades-box-text">
+                    <p className="funcionalidades-box-text">
                       Como LOCATÁRIO, tenha o controle total dos empréstimos de
                       equipamentos sediados pelo seu centro esportivo de forma
                       mais prática
                     </p>
                   </div>
-                  <div class="funcionalidades-content-box-B">
-                    <div class="funcionalidades-box-header">
-                      <div class="funcionalidades-box-header-container">
+                  <div className="funcionalidades-content-box-B">
+                    <div className="funcionalidades-box-header">
+                      <div className="funcionalidades-box-header-container">
                         <img
                           src={funcionanlidadeRegiao}
                           alt="Flag Funcionalidades"
@@ -295,15 +295,15 @@ function PaginaInicial() {
                         <label>Quadras na Região</label>
                       </div>
                     </div>
-                    <p class="funcionalidades-box-text">
+                    <p className="funcionalidades-box-text">
                       Como JOGADOR, faça a das melhores quadras esportivas
                       disponíveis em sua região de acordo com sua preferência e
                       modalidade
                     </p>
                   </div>
-                  <div class="funcionalidades-content-box-A">
-                    <div class="funcionalidades-box-header">
-                      <div class="funcionalidades-box-header-container">
+                  <div className="funcionalidades-content-box-A">
+                    <div className="funcionalidades-box-header">
+                      <div className="funcionalidades-box-header-container">
                         <img
                           src={funcionanlidadeBoleto}
                           alt="Flag Funcionalidades"
@@ -311,14 +311,14 @@ function PaginaInicial() {
                         <label>Emissão de Boletos</label>
                       </div>
                     </div>
-                    <p class="funcionalidades-box-text">
+                    <p className="funcionalidades-box-text">
                       Como LOCATÁRIO, faça as cobranças através da emissão de
                       boletos para seus jogadores avulsos ou mensalistas.
                     </p>
                   </div>
-                  <div class="funcionalidades-content-box-B">
-                    <div class="funcionalidades-box-header">
-                      <div class="funcionalidades-box-header-container">
+                  <div className="funcionalidades-content-box-B">
+                    <div className="funcionalidades-box-header">
+                      <div className="funcionalidades-box-header-container">
                         <img
                           src={funcionanlidadeContato}
                           alt="Flag Funcionalidades"
@@ -326,7 +326,7 @@ function PaginaInicial() {
                         <label>Informações & Contatos</label>
                       </div>
                     </div>
-                    <p class="funcionalidades-box-text">
+                    <p className="funcionalidades-box-text">
                       Como JOGADOR, tenha a sua disposição todas as informações
                       necessárias e formas de contato das quadras que você
                       encontrar e p ossuir interesse
@@ -337,28 +337,28 @@ function PaginaInicial() {
             </div>
           </section>
           <section id="equipe">
-            <div class="equipe">
-              <div class="logo-equipe">
-                <div class="logo-solo">
+            <div className="equipe">
+              <div className="logo-equipe">
+                <div className="logo-solo">
                   <img src={logoSoloEquipe} alt="logo-solo" />
                 </div>
-                <div class="equipe-content">
-                  <div class="equipe-content-header">
+                <div className="equipe-content">
+                  <div className="equipe-content-header">
                     <label>NOSSA EQUIPE</label>
                   </div>
                 </div>
               </div>
-              <div class="equipe-fotos">
-                <div class="container-equipe">
-                  <div class="equipe-fotos">
+              <div className="equipe-fotos">
+                <div className="container-equipe">
+                  <div className="equipe-fotos">
                     <img src={ferraz} alt="" />
-                    <div class="equipe-content-fotos">
-                      <div class="equipe-content-username">
+                    <div className="equipe-content-fotos">
+                      <div className="equipe-content-username">
                         <h4>
                           <b>Gabriel Ferraz</b>
                         </h4>
                       </div>
-                      <div class="equipe-content-midia">
+                      <div className="equipe-content-midia">
                         <a
                           href="https://github.com/Biellferraz"
                           rel="github"
@@ -378,15 +378,15 @@ function PaginaInicial() {
                       </div>
                     </div>
                   </div>
-                  <div class="equipe-fotos">
+                  <div className="equipe-fotos">
                     <img src={gw} alt="" />
-                    <div class="equipe-content-fotos">
-                      <div class="equipe-content-username">
+                    <div className="equipe-content-fotos">
+                      <div className="equipe-content-username">
                         <h4>
                           <b>Gabriel Wesley</b>
                         </h4>
                       </div>
-                      <div class="equipe-content-midia">
+                      <div className="equipe-content-midia">
                         <a
                           href="https://github.com/gabrielwesley1"
                           rel="github"
@@ -406,15 +406,15 @@ function PaginaInicial() {
                       </div>
                     </div>
                   </div>
-                  <div class="equipe-fotos">
+                  <div className="equipe-fotos">
                     <img src={pedrao} alt="" />
-                    <div class="equipe-content-fotos">
-                      <div class="equipe-content-username">
+                    <div className="equipe-content-fotos">
+                      <div className="equipe-content-username">
                         <h4>
                           <b>Pedro Leiva</b>
                         </h4>
                       </div>
-                      <div class="equipe-content-midia">
+                      <div className="equipe-content-midia">
                         <a
                           href="https://github.com/PedroLeiva"
                           rel="github"
@@ -434,15 +434,15 @@ function PaginaInicial() {
                       </div>
                     </div>
                   </div>
-                  <div class="equipe-fotos">
+                  <div className="equipe-fotos">
                     <img src={vini} alt="" />
-                    <div class="equipe-content-fotos">
-                      <div class="equipe-content-username">
+                    <div className="equipe-content-fotos">
+                      <div className="equipe-content-username">
                         <h4>
                           <b>Vinicius Oliveira</b>
                         </h4>
                       </div>
-                      <div class="equipe-content-midia">
+                      <div className="equipe-content-midia">
                         <a
                           href="https://github.com/akzv-oliveira"
                           rel="github"
@@ -467,29 +467,29 @@ function PaginaInicial() {
             </div>
           </section>
           <section id="contato">
-            <div class="contato">
-              <div class="contato-container">
-                <div class="contato-container-side-A">
-                  <div class="contato-slogan">
+            <div className="contato">
+              <div className="contato-container">
+                <div className="contato-container-side-A">
+                  <div className="contato-slogan">
                     <img src={logoResenhaContato} alt="Logo Resenha" />
                     <label>Entre em contato conosco</label>
                   </div>
                 </div>
-                <div class="contato-container-side-B">
-                  <div class="contato-form">
-                    <div class="contato-form-container">
-                      <div class="contato-form-header">
-                        <div class="contato-form-title">
+                <div className="contato-container-side-B">
+                  <div className="contato-form">
+                    <div className="contato-form-container">
+                      <div className="contato-form-header">
+                        <div className="contato-form-title">
                           <img src={resenhaBall} alt="Resenha Form" />
                           <label>Entre em contato!</label>
                         </div>
-                        <div class="contato-form-subtitle">
+                        <div className="contato-form-subtitle">
                           Preencha o formulário para contato via e-mail
                         </div>
                       </div>
-                      <form class="contato-form-body">
-                        <div class="contato-form-inputs">
-                          <div class="contato-form-nome">
+                      <form className="contato-form-body">
+                        <div className="contato-form-inputs">
+                          <div className="contato-form-nome">
                             <label for="nome">Nome *</label>
                             <input
                               autocomplete="off"
@@ -498,7 +498,7 @@ function PaginaInicial() {
                               name="nome"
                             />
                           </div>
-                          <div class="contato-form-email">
+                          <div className="contato-form-email">
                             <label for="email">E-mail *</label>
                             <input
                               autocomplete="off"
@@ -507,7 +507,7 @@ function PaginaInicial() {
                               name="email"
                             />
                           </div>
-                          <div class="contato-form-telefone">
+                          <div className="contato-form-telefone">
                             <label for="telefone">Telefone *</label>
                             <input
                               autocomplete="off"
@@ -516,8 +516,8 @@ function PaginaInicial() {
                               name="telefone"
                             />
                           </div>
-                          <div class="contato-form-cep">
-                            <div class="contato-form-cidade">
+                          <div className="contato-form-cep">
+                            <div className="contato-form-cidade">
                               <label for="cidade">Cidade *</label>
                               <input
                                 autocomplete="off"
@@ -526,7 +526,7 @@ function PaginaInicial() {
                                 name="cidade"
                               />
                             </div>
-                            <div class="contato-form-uf">
+                            <div className="contato-form-uf">
                               <label for="uf">UF *</label>
                               <input
                                 autocomplete="off"
@@ -536,17 +536,17 @@ function PaginaInicial() {
                               />
                             </div>
                           </div>
-                          <div class="contato-form-msg">
+                          <div className="contato-form-msg">
                             <label for="mensagem">Mensagem</label>
                             <textarea id="mensagem" name="mensagem"></textarea>
                           </div>
                         </div>
                       </form>
-                      <div class="contato-form-buttons">
-                        <div class="contato-form-sendbutton">
+                      <div className="contato-form-buttons">
+                        <div className="contato-form-sendbutton">
                           <button>Enviar</button>
                         </div>
-                        <div class="contato-form-clearbutton">
+                        <div className="contato-form-clearbutton">
                           <button>Limpar</button>
                         </div>
                       </div>
@@ -557,25 +557,25 @@ function PaginaInicial() {
             </div>
           </section>
           <footer>
-            <div class="footer-container">
-              <div class="footer-logo">
+            <div className="footer-container">
+              <div className="footer-logo">
                 <img src={logoResenhaFull} alt="Logo Resenha Completo" />
               </div>
-              <div class="footer-contacts">
-                <div class="footer-social-medias">
+              <div className="footer-contacts">
+                <div className="footer-social-medias">
                   <img src={insta} alt="Instagram" />
                   <img src={face} alt="Facebook" />
                   <img src={whats} alt="Whatsapp" />
                 </div>
-                <div class="footer-phone">
+                <div className="footer-phone">
                   <img src={resenhaPhone} alt="Telefone" />
                   <label>Contato: 4242-2424</label>
                 </div>
-                <div class="footer-email">
+                <div className="footer-email">
                   <img src={resenhaEmail} alt="E-mail" />
                   <label>E-mail: resenha@gmail.com</label>
                 </div>
-                <div class="footer-copyright">
+                <div className="footer-copyright">
                   <label>Copyright © resenha 2021</label>
                 </div>
               </div>

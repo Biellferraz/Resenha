@@ -30,14 +30,13 @@ public class PilhaObj<T> {
     }
 
     public Boolean isFull() {
-        return topo == pilha.length-1;
+        return topo == pilha.length - 1;
     }
 
     public void push(T info) {
         if (isFull()) {
             System.out.println("Pilha cheia!");
-        }
-        else {
+        } else {
 //            topo++;
 //            pilha[topo] = info;
             // as 2 instruções acima equivalem a esta abaixo:
@@ -66,15 +65,14 @@ public class PilhaObj<T> {
     public void exibe() {
         if (isEmpty()) {
             System.out.println("Pilha vazia");
-        }
-        else {
+        } else {
             for (int i = topo; i >= 0; i--) {
                 System.out.println(pilha[i]);
             }
         }
     }
 
-    public int getTopo(){
+    public int getTopo() {
         return topo;
     }
 

@@ -215,57 +215,57 @@ function PaginaCadastro() {
             rel="stylesheet"
           />
         </head>
-        <body class="imagem-cadastro">
-          <div class="header-cadastro">
+        <body className="imagem-cadastro">
+          <div className="header-cadastro">
             <Link to={"/"}>
               <img id="logoResenhaCadastro" src={logo} alt="" />
             </ Link>
           </div>
 
-          <div class="container-cadastro">
-            <div class="corpo-cadastro">
-              <div class="corpo-cadastro-container">
+          <div className="container-cadastro">
+            <div className="corpo-cadastro">
+              <div className="corpo-cadastro-container">
                 <TituloFormulario img={logoResenha} titulo="Resenha" subtitulo="Faça seu cadastro agora" />
-                <form class="campo-formulario-container" onSubmit={Cadastrar}>
-                  <div class="inputs-form-container">
-                    <div class="campo-nome">
-                      <div class="campo-form">
+                <form className="campo-formulario-container" onSubmit={Cadastrar}>
+                  <div className="inputs-form-container">
+                    <div className="campo-nome">
+                      <div className="campo-form">
                         <label>Nome</label>
                         <input type="text" id="nome" name="nome" onChange={e => setNomeDigitado(e.target.value)} required />
                       </div>
-                      <div class="campo-form">
+                      <div className="campo-form">
                         <label>Sobrenome</label>
                         <input type="text" id="sobrenome" name="sobrenome" onChange={e => setSobrenomeDigitado(e.target.value)} required />
                       </div>
                     </div>
-                    <div class="campo-email">
-                      <div class="campo-form-extended">
+                    <div className="campo-email">
+                      <div className="campo-form-extended">
                         <label>E-mail</label>
                         <input type="email" id="email" name="email" onChange={e => setEmailDigitado(e.target.value)} required />
                       </div>
                     </div>
-                    <div class="campo-senha">
-                      <div class="campo-form">
+                    <div className="campo-senha">
+                      <div className="campo-form">
                         <label>Senha</label>
                         <input type="password" id="password" name="password" onChange={e => setSenhaDigitada(e.target.value)} required />
                       </div>
-                      <div class="campo-form">
+                      <div className="campo-form">
                         <label>Confirmar Senha</label>
                         <input type="password" id="new_password" name="new_password" onChange={e => setConfirmarSenhaDigitada(e.target.value)} required />
                       </div>
                     </div>
-                    <div class="campo-cpf-idade">
-                      <div class="campo-form">
+                    <div className="campo-cpf-idade">
+                      <div className="campo-form">
                         <label>CPF</label>
                         <input type="cpf" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" maxLength="14" onInput={e => mascaraCPF(e.target)} onChange={e => setCpfDigitado(e.target.value)} required />
                       </div>
-                      <div class="campo-form">
+                      <div className="campo-form">
                         <label>Data de Nascimento</label>
                         <input type="date" id="nascimento" name="nascimento" onChange={e => setDataNascimentoDigitado(e.target.value)} required />
                       </div>
                     </div>
-                    <div class="campo-telefone">
-                      <div class="campo-form">
+                    <div className="campo-telefone">
+                      <div className="campo-form">
                         <label>Telefone</label>
                         <input type="text" id="telefone" name="telefone" onInput={e => mascaraTelefone(e.target)} maxLength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}" onChange={e => setTelefoneDigitado(e.target.value)} required />
                       </div>

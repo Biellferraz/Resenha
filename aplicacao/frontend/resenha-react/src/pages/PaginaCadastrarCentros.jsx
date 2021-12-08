@@ -115,6 +115,31 @@ function CadastrarCentros() {
         return;
     }
 
+    function importarCentros() {
+        var formData = new FormData();
+        var imagefile = document.querySelector('#file');
+        formData.append("arquivo", imagefile.files[0]);
+        api.post(`/centros/importacao/${fkLocatario}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(() => {
+            MySwal.fire({
+                title: "Centros importados com sucesso!",
+                text: "Seu documento de layout foi lido com sucesso",
+                icon: "success",
+                confirmButtonText: "Ok",
+            });
+        }).catch(() => {
+            MySwal.fire({
+                title: "Erro ao cadastrar centros",
+                text: "Não foi possível ler seu documento de layout",
+                icon: "error",
+                confirmButtonText: "Ok",
+            });
+        })
+    }
+
     return (
         <>
             <Helmet>
@@ -134,62 +159,62 @@ function CadastrarCentros() {
                 </head>
 
                 <body>
-                    <div class="container-inicio">
+                    <div className="container-inicio">
                         {/* sidebar começo */}
-                        <div class="sidebar">
+                        <div className="sidebar">
                             <center>
-                                <img src={logoResenha} class="image" alt="Logo Resenha" />
+                                <img src={logoResenha} className="image" alt="Logo Resenha" />
                             </center>
 
-                            <div class="container-menu">
-                                <div class="menu-content">
-                                    <div class="inicio-menu">
+                            <div className="container-menu">
+                                <div className="menu-content">
+                                    <div className="inicio-menu">
                                         <Link to={"/inicio"} style={{ textDecoration: 'none' }}>
-                                            <div class="menu-img">
+                                            <div className="menu-img">
                                                 <img src={imgMenuInicio} alt="Imagem Menu Início" />
                                             </div>
-                                            <div class="menu-text">
+                                            <div className="menu-text">
                                                 <label>INICIO</label>
                                             </div>
                                         </Link>
                                     </div>
-                                    <div class="centro-menu">
+                                    <div className="centro-menu">
                                         <Link to={"/cadastrar-centros"} style={{ textDecoration: 'none' }}>
-                                            <div class="menu-img">
+                                            <div className="menu-img">
                                                 <img src={imgMenuCentrosSelecionado} alt="Imagem Menu Cadastrar Centros" />
                                             </div>
-                                            <div class="menu-text">
+                                            <div className="menu-text">
                                                 <label style={{ "color": "#8FD5FE" }}>CADASTRAR CENTROS</label>
                                             </div>
                                         </Link>
                                     </div>
-                                    <div class="quadras-menu">
+                                    <div className="quadras-menu">
                                         <Link to={"/cadastrar-quadras"} style={{ textDecoration: 'none' }}>
-                                            <div class="menu-img">
+                                            <div className="menu-img">
                                                 <img src={imgMenuQuadras} alt="Imagem Menu Cadastrar Quadras" />
                                             </div>
-                                            <div class="menu-text">
+                                            <div className="menu-text">
                                                 <label>CADASTRAR QUADRAS</label>
                                             </div>
                                         </Link>
                                     </div>
-                                    <div class="agenda-menu">
+                                    <div className="agenda-menu">
                                         <Link to={"/agendar"} style={{ textDecoration: 'none' }}>
-                                            <div class="menu-img">
+                                            <div className="menu-img">
                                                 <img src={imgMenuAgendar} alt="Imagem Menu Agendar" />
                                             </div>
-                                            <div class="menu-text">
+                                            <div className="menu-text">
                                                 <label>AGENDAR HORARIO</label>
                                             </div>
                                         </Link>
                                     </div>
                                 </div>
-                                <div class="menu-footer">
-                                    <div class="sair-menu" onClick={logoff}>
-                                        <div class="menu-img">
+                                <div className="menu-footer">
+                                    <div className="sair-menu" onClick={logoff}>
+                                        <div className="menu-img">
                                             <img src={imgMenuSair} alt="Imagem Menu Sair" />
                                         </div>
-                                        <div class="menu-text">
+                                        <div className="menu-text">
                                             <label>SAIR</label>
                                         </div>
                                     </div>
@@ -198,81 +223,87 @@ function CadastrarCentros() {
                         </div>
                         {/* sidebar final */}
 
-                        <div class="content">
-                            <div class="content-header">
-                                <div class="header-info">
-                                    <div class="header-info-username">
+                        <div className="content">
+                            <div className="content-header">
+                                <div className="header-info">
+                                    <div className="header-info-username">
                                         <img src={bolaResenha} alt="Icone Resenha"></img>
                                         <label>Bem-Vindo <span id="nome"></span> <span id="sobrenome"></span></label>
                                     </div>
-                                    <div class="header-info-date">
-                                        <label>06 de Dezembro de 2021</label>
+                                    <div className="header-info-date">
+                                        <label>08 de Dezembro de 2021</label>
                                         <img src={calendario} alt="Calendário Resenha"></img>
                                     </div>
                                 </div>
-                                <div class="header-line">
-                                    <div class="line"></div>
-                                    <div class="line-img">
+                                <div className="header-line">
+                                    <div className="line"></div>
+                                    <div className="line-img">
                                         <img src={logoQuadra} alt="Quadra Logo Resenha"></img>
                                     </div>
-                                    <div class="line"></div>
+                                    <div className="line"></div>
                                 </div>
                             </div>
-                            <div class="content-body">
-                                <div class="content-body-centros">
-                                    <div class="centros-content">
-                                        <div class="card-cadastrar-centros">
-                                            <form class="card-centro-container" onSubmit={Cadastrar}>
-                                                <div class="card-centro-header">
-                                                    <div class="card-header-title">
+                            <div className="content-body">
+                                <div className="content-body-centros">
+                                    <div className="centros-content">
+                                        <div className="card-cadastrar-centros">
+                                            <form className="card-centro-container" onSubmit={Cadastrar}>
+                                                <div className="card-centro-header">
+                                                    <div className="card-header-title">
                                                         <img src={centroEsportivo} alt="Centro Esportivo" />
                                                         <span>CADASTRO DE CENTROS ESPORTIVOS</span>
                                                     </div>
                                                 </div>
-                                                <div class="card-centro-body">
-                                                    <div class="card-centro-body-A">
-                                                        <div class="campo-centro-nome">
+                                                <div className="card-centro-body">
+                                                    <div className="card-centro-body-A">
+                                                        <div className="campo-centro-nome">
                                                             <label>Nome do centro esportivo</label>
                                                             <input id="nome_centro" type="text" onChange={e => setNomeCentroDigitado(e.target.value)} maxLength="50" required />
                                                         </div>
-                                                        <div class="campo-centro-telefone">
+                                                        <div className="campo-centro-telefone">
                                                             <label>Telefone</label>
                                                             <input type="text" onInput={e => mascaraTelefone(e.target)} maxLength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}" onChange={e => setTelefoneCentroDigitado(e.target.value)} required />
                                                         </div>
-                                                        <div class="campo-centro-cep">
+                                                        <div className="campo-centro-cep">
                                                             <label>Cep</label>
                                                             <input type="text" onInput={e => mascaraCEP((e.target), '#####-###')} maxLength="9" pattern="\d{5}-?\d{3}" onChange={e => setCepCentroDigitado(e.target.value)} required />
                                                         </div>
-                                                        <div class="campo-centro-cnpj">
+                                                        <div className="campo-centro-cnpj">
                                                             <label>CNPJ</label>
                                                             <input type="text" onInput={e => mascaraCNPJ(e.target)} maxLength="18" pattern="^(\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2})$" onChange={e => setCnpjCentroDigitado(e.target.value)} required />
                                                         </div>
                                                     </div>
-                                                    <div class="card-centro-body-B">
-                                                        <div class="campo-centro-horario-abre">
+                                                    <div className="card-centro-body-B">
+                                                        <div className="campo-centro-horario-abre">
                                                             <label>Horario que abre</label>
                                                             <input type="time" pattern="([01][0-9]|2[0-3]):[0-5][0-9])" onChange={e => setHorarioAbreCentroDigitado(e.target.value)} required />
                                                         </div>
-                                                        <div class="campo-centro-horario-fecha">
+                                                        <div className="campo-centro-horario-fecha">
                                                             <label>Horario que fecha</label>
                                                             <input type="time" pattern="([01][0-9]|2[0-3]):[0-5][0-9])" onChange={e => setHorarioFechaCentroDigitado(e.target.value)} required />
                                                         </div>
-                                                        <div class="campo-centro-numero-centro">
+                                                        <div className="campo-centro-numero-centro">
                                                             <label>Numero do Centro</label>
                                                             <input type="number" onChange={e => setNumeroCentroDigitado(e.target.value)} required />
                                                         </div>
-                                                        <div class="campo-centro-cidade">
+                                                        <div className="campo-centro-cidade">
                                                             <label>Cidade</label>
                                                             <input type="text" onChange={e => setCidadeCentroDigitado(e.target.value)} required />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-centro-footer">
-                                                    <div class="card-centro-footer-limpar">
-                                                        <button type="reset">limpar</button>
-                                                    </div>
-                                                    <div class="card-centro-footer-cadastrar">
-                                                        <button type="submit">cadastrar</button>
+                                                <div className="card-centro-footer">
+                                                    <form className='importar-agendamentos' id="uploadForm" enctype="multipart/form-data" onChange={importarCentros}>
+                                                        <label>importar Centros Esportivos</label>
+                                                        <input type="file" id="file" name="file" />
+                                                    </form>
+                                                    <div className="footer-buttons">
+                                                        <div className="card-centro-footer-limpar">
+                                                            <button type="reset">limpar</button>
+                                                        </div>
+                                                        <div className="card-centro-footer-cadastrar">
+                                                            <button type="submit">cadastrar</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>

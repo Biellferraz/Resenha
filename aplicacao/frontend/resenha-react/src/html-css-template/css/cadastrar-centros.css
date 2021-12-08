@@ -307,15 +307,51 @@
 
 .card-centro-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 20%;
 }
 
+.card-centro-footer label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    color: #1B2024;
+    border-radius: 5px;
+    font-family: Spartan;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.footer-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+}
+
+.importar-agendamentos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+}
+
+.importar-agendamentos label {
+    font-size: 14px;
+}
+
 .card-centro-footer-limpar {
     display: flex;
-    width: 10%;
+    width: 50%;
     height: 50%;
     margin-right: 20px;
 
@@ -339,7 +375,7 @@
 
 .card-centro-footer-cadastrar {
     display: flex;
-    width: 10%;
+    width: 50%;
     height: 50%;
 
 }
