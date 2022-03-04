@@ -1,0 +1,78 @@
+Justificativas 
+
+Dificuldades de encontrar quadras para alugar
+necessidade de encontrar clientes para alugar a quadra
+Dificuldade de gestão do locatario para o seu negocio
+
+
+Obejetivo Smart
+
+Desenvolver um aplicativo mobile para Donos de quadras Anuciarem Suas quadras e centros esportivos para alugar para jogos e de maneira rapida e facil de alugar 
+com diversas formas de pagamento 
+
+Beneficios
+
+Facilidade de encontrar e marcar horarios em quadras e centros esportivos para o jogador
+Diversas forma de pagamento para o jogador
+melhorar a gestão do proprietario para o seu negocio 
+
+
+
+Produto
+
+Ajudar o jogador a localizar quadras/Centros esportivos em sua região
+
+Agilizar o agendamento e o pagamento dentro do app
+
+Melhorar a gestão do locatario (desejavel)
+
+
+
+Requisitos
+
+agendamento
+Localização
+pagamento
+perfil de usuario
+
+
+
+Stakeholders ou interessados
+
+Pessoas querendo participar de atividades esportivas
+
+Equipe 
+
+Bruno Ricardo
+Gabriel Ferras
+Gabriel Wesley
+Jailson Vitor Domingos
+Jean Sousa Silva
+Mathias
+Pedro Leiva
+
+Premissas 
+
+Fessor
+
+
+Grupo de entregas
+
+Facilitar a vida do locatario e dos jogadores
+
+
+Restrições​
+
+​Nenhuma(porem alinhas antes)
+
+Riscos 
+
+Nenhum (alinhar antes)
+
+Linha do Tempo 
+
+Alinhas Com pessoal
+
+custos 
+
+Nenhum
