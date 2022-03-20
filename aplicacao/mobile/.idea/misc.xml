@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/vitor/OneDrive/Documentos/GitHub/Resenha/aplicacao/mobile/app/src/main/res/drawable/ic_logo_resenha.xml" value="0.2555" />
+        <entry key="..\:/Users/vitor/OneDrive/Documentos/GitHub/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/vitor/OneDrive/Documentos/GitHub/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_tela_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14175724637681159" />
       </map>
     </option>

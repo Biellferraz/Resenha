@@ -6,13 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/background"
+        android:orientation="vertical">
+        <!-- _______________________________________________ -->
+        <!--Linear responsavel pelo logo-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_logo_resenha" />
+
+        </LinearLayout>
+        <!--FIM da Linear responsavel pelo LOGO-->
+        <!-- _______________________________________________ -->
+        <!-- INICIO da Linear responsavel pelas dimensões do botão-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="100dp">
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:text="Criar conta"
+                android:shadowRadius="60"
+                android:shadowColor="@color/blue_resenha"
+                android:backgroundTint="@color/transaparent"
+                android:textColor="@color/white"
+                android:onClick="criarConta"
+                />
+
+        </LinearLayout>
+<!--        INICIO da segunda LINEAR do SEGUNDO botão-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:text="Fazer Login"
+                android:shadowRadius="60"
+                android:shadowColor="@color/blue_resenha"
+                android:backgroundTint="@color/transaparent"
+                android:textColor="@color/white"
+                android:onClick="login"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
