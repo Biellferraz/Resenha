@@ -106,6 +106,7 @@
                 android:text="Cadastre-se agora"
                 android:textColor="@color/blue_resenha"
                 android:backgroundTint="@color/transaparent"
+                android:onClick="cadastro"
                 android:textSize="12dp"
                 />
         </LinearLayout>

@@ -12,9 +12,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun login(v: View){
-        val telaLogin: Intent = Intent(baseContext,TelaLogin::class.java)
+        val telaLogin: Intent = Intent(baseContext,TelaInicial::class.java)
 
         startActivity(telaLogin)
+    }
+    fun criarConta(v: View){
+        val telaCadastro: Intent = Intent(baseContext,TelaCadastro::class.java)
+
+        startActivity(telaCadastro)
     }
 
 }
