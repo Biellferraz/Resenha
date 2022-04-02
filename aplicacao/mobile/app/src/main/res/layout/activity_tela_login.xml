@@ -87,28 +87,28 @@
                 android:textColor="@color/white"
                 />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
             <TextView
-                android:textAlignment="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Não possui uma conta ainda?"
-                />
+                    android:textAlignment="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Não possui uma conta ainda?" />
+
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cadastre-se agora"
-                android:textColor="@color/blue_resenha"
-                android:backgroundTint="@color/transaparent"
-                android:onClick="cadastro"
-                android:textSize="12dp"
-                />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cadastre-se agora"
+                    android:textColor="@color/blue_resenha"
+                    android:backgroundTint="@color/transaparent"
+                    android:onClick="cadastro"
+                    android:textSize="12dp" />
         </LinearLayout>
 
     </LinearLayout>

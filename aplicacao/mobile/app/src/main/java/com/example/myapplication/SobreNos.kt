@@ -1,11 +1,11 @@
 package com.example.myapplication
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 
-class TelaInicial : AppCompatActivity() {
+class SobreNos : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tela_inicial)
+        setContentView(R.layout.activity_sobre_nos)
     }
 }
