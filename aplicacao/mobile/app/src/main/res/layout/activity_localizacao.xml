@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".TelaErro">
-
-    <!--    Linar que pega a tela toda-->
+        tools:context=".Localizacao">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -30,24 +29,16 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="539dp"
                 android:layout_marginTop="110dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
-            <ImageView
-                    android:layout_width="186dp"
-                    android:layout_height="178dp"
-                    android:src="@drawable/ic_erro" />
 
-            <TextView
+            <com.google.android.gms.maps.MapView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/blue_resenha2"
-                    android:text="!OOPS error 404 \n pagina não encontrada!"
-                    android:textAlignment="center"
-                    android:textSize="24.84sp" />
-
+                    android:layout_height="484dp"
+                    android:id="@+id/mapView2" />
         </LinearLayout>
 
     </LinearLayout>

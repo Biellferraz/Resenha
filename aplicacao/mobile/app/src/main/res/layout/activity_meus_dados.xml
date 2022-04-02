@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MeusDados">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/background"
+            android:orientation="vertical">
+
+
+        <!--        linear da imagem-->
+        <LinearLayout
+                android:layout_width="71.48dp"
+                android:layout_height="54.41dp"
+                android:gravity="center">
+
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_logo_resenha2" />
+
+        </LinearLayout>
+
+        <!--linear do texto meus dados-->
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="50dp"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="Meus dados"
+                    android:textStyle="bold"
+                    android:textSize="24.84sp" />
+
+
+        </LinearLayout>
+
+
+        <!--linear que vai segurar todas as infos da pessoa-->
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp">
+
+
+            <!--linear que vai segurar apenas o nome da pessoa-->
+            <LinearLayout
+                    android:layout_width="295dp"
+                    android:layout_height="53dp"
+                    android:layout_marginTop="19dp">
+
+                <EditText
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Nome de Preferência" />
+
+            </LinearLayout>
+
+            <!--linar que vai sergurar o email-->
+            <LinearLayout
+                    android:layout_width="295dp"
+                    android:layout_height="53dp"
+                    android:layout_marginTop="33dp">
+
+                <EditText
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="E-mail:" />
+
+
+            </LinearLayout>
+
+            <!--linar que vai sergurar o telefone-->
+            <LinearLayout
+                    android:layout_width="295dp"
+                    android:layout_height="53dp"
+                    android:layout_marginTop="33dp">
+
+                <EditText
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Telefone: " />
+
+            </LinearLayout>
+
+            <!--linar que vai sergurar a senha-->
+            <LinearLayout
+                    android:layout_width="295dp"
+                    android:layout_height="53dp"
+                    android:layout_marginTop="33dp">
+
+                <EditText
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:inputType="textPassword"
+                        android:layout_height="wrap_content"
+                        android:hint="alterar senha de acesso: " />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="150dp">
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/blue_resenha2"
+                    android:text="Salvar" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

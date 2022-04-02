@@ -10,6 +10,17 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
         <activity
+                android:name=".MeusDados"
+                android:exported="false" />
+        <activity
+                android:name=".Pagamento"
+                android:exported="false"
+                android:label="@string/title_activity_pagamento"
+                android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+                android:name=".Localizacao"
+                android:exported="false" />
+        <activity
                 android:name=".SobreNos"
                 android:exported="false" />
         <activity
