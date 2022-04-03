@@ -3,6 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/drawable/basquete_background.xml" value="0.1935" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/drawable/futebol_background.xml" value="0.1935" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/drawable/ic_basquete_1.xml" value="0.1935" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/drawable/ic_erro.xml" value="0.1935" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/drawable/ic_futebol_1.xml" value="0.1935" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1935" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/drawable/ic_logo_resenha.xml" value="0.1935" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/drawable/ic_logo_resenha2.xml" value="0.1935" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/drawable/tenis_background.xml" value="0.1935" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_avalie_app.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_localizacao.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_main.xml" value="0.15443840579710144" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_meus_dados.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_pagamento.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_sobre_nos.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_tela_cadastro.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_tela_de_opcoes.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_tela_erro.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_tela_inicial.xml" value="0.15443840579710144" />
+        <entry key="..\:/Users/bruno/Documents/Grupo 3 Resenha/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_tela_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mathias.de.carvalho/Desktop/Git/Resenha/aplicacao/mobile/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.305" />
         <entry key="..\:/Users/mathias.de.carvalho/Desktop/Git/Resenha/aplicacao/mobile/app/src/main/res/drawable/ic_erro.xml" value="0.305" />
         <entry key="..\:/Users/mathias.de.carvalho/Desktop/Git/Resenha/aplicacao/mobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.305" />
