@@ -11,6 +11,11 @@ class TelaDeOpcoes : AppCompatActivity() {
         setContentView(R.layout.activity_tela_de_opcoes)
     }
 
+    fun tela(v: View){
+        val tela: Intent= Intent(baseContext,Pagamento::class.java)
+        startActivity(tela)
+    }
+
 //
 //    fun modalidadeFutebol(v: View){
 //        val telaFut: Intent = Intent(

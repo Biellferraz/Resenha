@@ -60,7 +60,9 @@
                     android:layout_width="295dp"
                     android:layout_height="53dp"
                     android:background="@drawable/textview_border"
-                    android:layout_marginTop="19dp">
+                    android:layout_marginTop="19dp"
+                    android:onClick="pix"
+                    >
 
                 <ImageView
                         android:layout_width="wrap_content"
@@ -82,7 +84,9 @@
                     android:layout_width="295dp"
                     android:layout_height="53dp"
                     android:background="@drawable/textview_border"
-                    android:layout_marginTop="33dp">
+                    android:layout_marginTop="33dp"
+                    android:onClick="visa"
+                    >
 
                 <ImageView
                         android:layout_width="wrap_content"
@@ -122,7 +126,9 @@
                     android:layout_width="295dp"
                     android:layout_height="53dp"
                     android:background="@drawable/textview_border"
-                    android:layout_marginTop="33dp">
+                    android:layout_marginTop="33dp"
+                    android:onClick="masterCard"
+                    >
 
                 <ImageView
                         android:layout_width="wrap_content"

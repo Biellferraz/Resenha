@@ -128,7 +128,9 @@
                     android:layout_height="match_parent"
                     android:textColor="@color/white"
                     android:backgroundTint="@color/blue_resenha2"
-                    android:text="Salvar" />
+                    android:text="Salvar"
+                    android:onClick="salvar"
+                    />
         </LinearLayout>
 
     </LinearLayout>

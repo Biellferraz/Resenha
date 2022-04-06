@@ -48,6 +48,12 @@
                         android:textSize="24.84sp" />
             </LinearLayout>
 
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:onClick="modalidadeFutebol"
+                    >
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -62,8 +68,15 @@
                     android:layout_height="170dp"
                     android:src="@drawable/futebol"
                     android:layout_marginLeft="60dp"
-                    android:onClick="modalidadeFutebol"/>
+                    />
+            </LinearLayout>
 
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:onClick="modalidadeBasquete"
+                >
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,8 +91,15 @@
                     android:layout_height="170dp"
                     android:src="@drawable/basquete"
                     android:layout_marginLeft="60dp"
-                    android:onClick="modalidadeBasquete"/>
+                    />
+        </LinearLayout>
 
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:onClick="modalidadeTenis"
+                >
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,8 +114,15 @@
                     android:layout_height="170dp"
                     android:src="@drawable/tenis"
                     android:layout_marginLeft="60dp"
-                    android:onClick="modalidadeTenis"/>
+                    />
+        </LinearLayout>
 
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:onClick="modalidadeVolei"
+                >
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -110,7 +137,15 @@
                     android:layout_height="170dp"
                     android:layout_marginLeft="60dp"
                     android:src="@drawable/volei"
-                    android:onClick="modalidadeTenis"/>
+                    />
+        </LinearLayout>
+
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pesquisa"
+                    android:onClick="tela"
+                    />
 
         </LinearLayout>
     </ScrollView>

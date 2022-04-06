@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun login(v: View){
-        val telaLogin: Intent = Intent(baseContext,TelaInicial::class.java)
+        val telaLogin: Intent = Intent(baseContext,TelaDeOpcoes::class.java)
 
         startActivity(telaLogin)
     }
