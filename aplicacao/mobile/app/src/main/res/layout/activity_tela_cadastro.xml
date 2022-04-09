@@ -54,6 +54,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:hint="NOME"
+                    android:inputType="textPersonName"
                     android:backgroundTint="@color/blue_resenha" />
 
             <EditText
@@ -62,6 +63,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:hint="SOBRENOME"
+                    android:inputType="textPersonName"
                     android:backgroundTint="@color/blue_resenha" />
         </LinearLayout>
 
@@ -112,6 +114,7 @@
                     android:id="@+id/et_cpf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="CPF"
                     android:backgroundTint="@color/blue_resenha" />
         </LinearLayout>
@@ -125,6 +128,7 @@
                     android:id="@+id/et_telefone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="TELEFONE"
                     android:backgroundTint="@color/blue_resenha" />
         </LinearLayout>

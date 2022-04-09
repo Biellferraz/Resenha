@@ -63,6 +63,7 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:hint="SENHA"
+                    android:inputType="textPassword"
                     android:backgroundTint="@color/blue_resenha"
                     />
 
