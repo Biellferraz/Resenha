@@ -37,7 +37,12 @@
                     android:textStyle="bold"
                     android:textSize="22dp" />
         </LinearLayout>
-
+<LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,6 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="EMAIL"
+                    android:inputType="textEmailAddress"
                     android:backgroundTint="@color/blue_resenha" />
         </LinearLayout>
 
@@ -84,6 +90,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:hint="SENHA"
+                    android:inputType="textPassword"
                     android:backgroundTint="@color/blue_resenha" />
 
             <EditText
@@ -92,6 +99,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:hint="CONFIRMAR SENHA"
+                    android:inputType="textPassword"
                     android:backgroundTint="@color/blue_resenha" />
         </LinearLayout>
 
@@ -120,6 +128,8 @@
                     android:hint="TELEFONE"
                     android:backgroundTint="@color/blue_resenha" />
         </LinearLayout>
+
+</LinearLayout>
 
         <LinearLayout
                 android:layout_width="match_parent"

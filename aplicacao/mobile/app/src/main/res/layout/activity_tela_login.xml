@@ -31,7 +31,12 @@
         </LinearLayout>
 
 <!--INICIO Linear responsavel pelo campo de email-->
-
+<LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+    >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +46,7 @@
 
             <EditText
                 android:id="@+id/et_email"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="E-MAIL"
                 android:backgroundTint="@color/blue_resenha"
@@ -60,12 +65,14 @@
 
             <EditText
                 android:id="@+id/et_senha"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="SENHA"
                 android:backgroundTint="@color/blue_resenha"
                 />
         </LinearLayout>
+
+</LinearLayout>
 
         <!-- INICIO da Linear responsavel pelas dimensões do botão-->
 
