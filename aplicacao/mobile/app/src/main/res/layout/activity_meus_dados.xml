@@ -129,8 +129,7 @@
                     android:textColor="@color/white"
                     android:backgroundTint="@color/blue_resenha2"
                     android:text="Salvar"
-                    android:onClick="salvar"
-                    />
+                    android:onClick="salvar" />
         </LinearLayout>
 
     </LinearLayout>
