@@ -1,9 +1,9 @@
 package com.example.myapplication
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 
 class TelaDeOpcoes : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,20 +11,24 @@ class TelaDeOpcoes : AppCompatActivity() {
         setContentView(R.layout.activity_tela_de_opcoes)
     }
 
-    fun tela(v: View){
-        val tela: Intent= Intent(baseContext,Pagamento::class.java)
+    fun tela(v: View) {
+        val tela: Intent = Intent(baseContext, Pagamento::class.java)
         startActivity(tela)
     }
 
-//
-//    fun modalidadeFutebol(v: View){
-//        val telaFut: Intent = Intent(
-//            baseContext,
-//            TelaFut::class.java
-//        )
+
+    fun modalidadeFutebol(v: View) {
+        val telaFut: Intent = Intent(
+            baseContext,
+            TelaLogin::class.java
+        )
 //        telaFut.putExtra("nome_usuario", "Caio")
-//        startActivity(telaFut)
-//    }
+
+        val agendamento: Intent = Intent(baseContext, Agendamento::class.java)
+        startActivity(agendamento)
+    }
+
+
 //    fun modalidadeBasquete(v: View){
 //        val telaBasq: Intent = Intent(
 //            baseContext,

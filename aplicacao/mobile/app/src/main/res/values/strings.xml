@@ -13,10 +13,50 @@
     <string name="selected_item">Selected item:</string>
 
     <string-array name="modalidade">
-        <item></item>
+        <item>Selecione o item:</item>
         <item>futebol</item>
         <item>Volei</item>
         <item>Basquete</item>
         <item>Tênis</item>
     </string-array>
+
+    <string-array name="horarios">
+
+        <item>Selecione um horario:</item>
+        <item>09:00</item>
+        <item>09:30</item>
+        <item>10:00</item>
+        <item>10:30</item>
+        <item>11:00</item>
+        <item>11:30</item>
+        <item>12:00</item>
+        <item>12:30</item>
+        <item>13:00</item>
+        <item>13:30</item>
+        <item>14:00</item>
+    </string-array>
+
+    <string-array name="quadra">
+        <item>Selecione uma quadra:</item>
+        <item>quadra c2</item>
+        <item>quadra c3</item>
+        <item>quadra t1</item>
+        <item>quadra t2</item>
+    </string-array>
+
+    <string-array name="centro">
+        <item>Selecione um centro:</item>
+        <item>Poliesportiva</item>
+        <item>Grama natural</item>
+        <item>Grama sintetica</item>
+    </string-array>
+
+    <style name="corTextoSpinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textColor">@color/blue_resenha2</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
 </resources>
