@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -99,5 +100,13 @@ class Agendamento : AppCompatActivity() {
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
+
+
+    }
+
+    fun agendar(v: View) {
+        val pagamento: Intent = Intent(baseContext, PagamentoDesejavel::class.java)
+
+        startActivity(pagamento)
     }
 }

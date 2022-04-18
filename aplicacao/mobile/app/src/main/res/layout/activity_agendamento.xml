@@ -225,6 +225,7 @@
                             android:layout_height="match_parent"
                             android:backgroundTint="@color/blue_resenha2"
                             android:text="AGENDAR"
+                            android:onClick="agendar"
                             android:textColor="@color/white" />
                 </LinearLayout>
 
