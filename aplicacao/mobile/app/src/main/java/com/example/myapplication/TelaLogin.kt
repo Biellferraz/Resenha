@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import com.example.myapplication.rest.Rest
 
 class TelaLogin : AppCompatActivity() {
     private lateinit var et_email: EditText;
@@ -32,7 +33,8 @@ class TelaLogin : AppCompatActivity() {
         val telainicial: Intent = Intent(baseContext,TelaInicial::class.java)
 
 
-        if (et_email.text.toString().trim().equals("Resenha@Gmail") && et_senha.text.toString().equals("123456")){
+        if (et_email.text.toString().trim().equals("Resenha@Gmail")
+            && et_senha.text.toString().equals("123456")){
             Toast.makeText(
                 baseContext,
                 et_email.text.toString(),
