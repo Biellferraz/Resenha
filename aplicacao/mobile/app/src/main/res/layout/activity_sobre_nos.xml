@@ -5,10 +5,14 @@
         android:layout_height="match_parent"
         tools:context=".SobreNos">
 
-    <LinearLayout
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/background"
+            android:orientation="vertical">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
 
@@ -54,5 +58,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
