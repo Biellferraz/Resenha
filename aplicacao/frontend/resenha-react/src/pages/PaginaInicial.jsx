@@ -30,9 +30,21 @@ import lnGw from "../html-css-template/img/icon-linkedin.svg";
 import pedrao from "../html-css-template/img/fotos-equipe/pedrao.png";
 import gitPedrao from "../html-css-template/img/icon-github.svg";
 import lnPedrao from "../html-css-template/img/icon-linkedin.svg";
-import vini from "../html-css-template/img/fotos-equipe/vini.png";
-import gitVini from "../html-css-template/img/icon-github.svg";
-import lnVini from "../html-css-template/img/icon-linkedin.svg";
+// import vini from "../html-css-template/img/fotos-equipe/vini.png";
+// import gitVini from "../html-css-template/img/icon-github.svg";
+// import lnVini from "../html-css-template/img/icon-linkedin.svg";
+import bruno from "../html-css-template/img/fotos-equipe/bruno.png";
+import gitBruno from "../html-css-template/img/icon-github.svg";
+import lnBruno from "../html-css-template/img/icon-linkedin.svg";
+import jean from "../html-css-template/img/fotos-equipe/jean.png";
+import gitJean from "../html-css-template/img/icon-github.svg";
+import lnJean from "../html-css-template/img/icon-linkedin.svg";
+import jailson from "../html-css-template/img/fotos-equipe/jailson.png";
+import gitJailson from "../html-css-template/img/icon-github.svg";
+import lnJailson from "../html-css-template/img/icon-linkedin.svg";
+import mathias from "../html-css-template/img/fotos-equipe/mathias.png"
+import gitMathias from "../html-css-template/img/icon-github.svg";
+import lnMathias from "../html-css-template/img/icon-linkedin.svg";
 import logoResenhaContato from "../html-css-template/img/logo-resenha.svg";
 import resenhaBall from "../html-css-template/img/resenha-ball.svg";
 import logoResenhaFull from "../html-css-template/img/logo-resenha-full.svg";
@@ -350,6 +362,34 @@ function PaginaInicial() {
               </div>
               <div className="equipe-fotos">
                 <div className="container-equipe">
+                <div className="equipe-fotos">
+                    <img src={bruno} alt="" />
+                    <div className="equipe-content-fotos">
+                      <div className="equipe-content-username">
+                        <h4>
+                          <b>Bruno Ricardo</b>
+                        </h4>
+                      </div>
+                      <div className="equipe-content-midia">
+                        <a
+                          href="https://github.com/BrunoRGSilva"
+                          rel="github"
+                          target="_blank"
+                        >
+                          {" "}
+                          <img src={gitBruno} alt="" />
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/in/bruno-ricardo-gomes-silva-618a6b1b4/"
+                          rel="linkedin"
+                          target="_blank"
+                        >
+                          {" "}
+                          <img src={lnBruno} alt="" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                   <div className="equipe-fotos">
                     <img src={ferraz} alt="" />
                     <div className="equipe-content-fotos">
@@ -407,6 +447,90 @@ function PaginaInicial() {
                     </div>
                   </div>
                   <div className="equipe-fotos">
+                    <img src={jailson} alt="" />
+                    <div className="equipe-content-fotos">
+                      <div className="equipe-content-username">
+                        <h4>
+                          <b>Jailson Vitor</b>
+                        </h4>
+                      </div>
+                      <div className="equipe-content-midia">
+                        <a
+                          href="https://github.com/JAILSON-VITOR"
+                          rel="github"
+                          target="_blank"
+                        >
+                          {" "}
+                          <img src={gitJailson} alt="" />
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/in/jailson-vitor-5444bb1ba/"
+                          rel="linkedin"
+                          target="_blank"
+                        >
+                          {" "}
+                          <img src={lnJailson} alt="" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="equipe-fotos">
+                    <img src={jean} alt="" />
+                    <div className="equipe-content-fotos">
+                      <div className="equipe-content-username">
+                        <h4>
+                          <b>Jean Sousa</b>
+                        </h4>
+                      </div>
+                      <div className="equipe-content-midia">
+                        <a
+                          href="https://github.com/jean-sousasilva"
+                          rel="github"
+                          target="_blank"
+                        >
+                          {" "}
+                          <img src={gitJean} alt="" />
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/in/jean-sousa-3a433721a/"
+                          rel="linkedin"
+                          target="_blank"
+                        >
+                          {" "}
+                          <img src={lnJean} alt="" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="equipe-fotos">
+                    <img src={mathias} alt="" />
+                    <div className="equipe-content-fotos">
+                      <div className="equipe-content-username">
+                        <h4>
+                          <b>Mathias Carvalho</b>
+                        </h4>
+                      </div>
+                      <div className="equipe-content-midia">
+                        <a
+                          href="https://github.com/dasSouza"
+                          rel="github"
+                          target="_blank"
+                        >
+                          {" "}
+                          <img src={gitMathias} alt="" />
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/in/mathias-de-souza-953068205/"
+                          rel="linkedin"
+                          target="_blank"
+                        >
+                          {" "}
+                          <img src={lnMathias} alt="" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="equipe-fotos">
                     <img src={pedrao} alt="" />
                     <div className="equipe-content-fotos">
                       <div className="equipe-content-username">
@@ -434,7 +558,7 @@ function PaginaInicial() {
                       </div>
                     </div>
                   </div>
-                  <div className="equipe-fotos">
+                  {/* <div className="equipe-fotos">
                     <img src={vini} alt="" />
                     <div className="equipe-content-fotos">
                       <div className="equipe-content-username">
@@ -461,7 +585,7 @@ function PaginaInicial() {
                         </a>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
