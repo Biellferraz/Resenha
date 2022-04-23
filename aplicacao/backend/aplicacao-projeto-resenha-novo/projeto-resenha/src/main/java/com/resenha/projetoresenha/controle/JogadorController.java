@@ -1,6 +1,7 @@
 package com.resenha.projetoresenha.controle;
 
 import com.resenha.projetoresenha.dominio.Jogador;
+import com.resenha.projetoresenha.dominio.Login;
 import com.resenha.projetoresenha.repositorio.JogadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/jogadores")
 @CrossOrigin
+@RequestMapping("/jogadores")
 public class JogadorController {
     @Autowired
     private JogadorRepository repository;
@@ -41,6 +42,28 @@ public class JogadorController {
     @GetMapping("/{id}")
     public ResponseEntity getUsuarios(@PathVariable int id) {
         return ResponseEntity.of(repository.findById(id));
+
+    }
+
+    @GetMapping("/login/{email}/{senha}")
+    public ResponseEntity login(@PathVariable String email, @PathVariable String senha) {
+
+        Jogador jogador = repository.findByEmailAndSenha(email, senha);
+
+
+        return ResponseEntity.status(200).body(repository.findByEmailAndSenha(email, senha));
+    }
+
+    @GetMapping("/buscar")
+    public ResponseEntity loginApp(@RequestBody Login login){
+        Jogador  usuario = repository.findByEmailAndSenha(login.getEmail(), login.getSenha());
+
+        if (usuario == null) {
+            return ResponseEntity.status(404).build();
+        }
+
+        return ResponseEntity.status(200).body(usuario);
+
     }
 
     @DeleteMapping("/{id}")

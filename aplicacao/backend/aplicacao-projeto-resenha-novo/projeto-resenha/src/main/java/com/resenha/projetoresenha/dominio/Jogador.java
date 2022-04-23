@@ -9,7 +9,7 @@ public class Jogador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "idjogador", nullable = false)
     private Integer id;
 
     @Size(min = 14, max = 14)
@@ -29,7 +29,7 @@ public class Jogador {
     private String sobrenome;
 
     @PastOrPresent
-    @Column(name = "data_nasc")
+    @Column(name = "datanasc")
     private LocalDate data_nasc;
 
     @Size(min = 9, max = 9)
