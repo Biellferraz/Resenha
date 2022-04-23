@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".TelaDeOpcoes">
@@ -9,12 +8,13 @@
 
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/background"
+            android:orientation="vertical">
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/background"
                 android:orientation="vertical">
 
 
@@ -52,100 +52,97 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:onClick="modalidadeFutebol"
-                    >
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/blue_resenha"
-                    android:layout_marginTop="30dp"
-                    android:text="Futebol"
-                    android:textAlignment="center"
-                    android:textSize="24.84sp" />
+                    android:onClick="modalidadeFutebol">
 
-            <ImageView
-                    android:layout_width="295dp"
-                    android:layout_height="170dp"
-                    android:src="@drawable/futebol"
-                    android:layout_marginLeft="60dp"
-                    />
+
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue_resenha"
+                        android:layout_marginTop="30dp"
+                        android:text="Futebol"
+                        android:textAlignment="center"
+                        android:textSize="24.84sp" />
+
+                <ImageView
+                        android:layout_width="295dp"
+                        android:layout_height="170dp"
+                        android:src="@drawable/futebol"
+                        android:layout_marginLeft="60dp" />
             </LinearLayout>
 
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:onClick="modalidadeBasquete"
-                >
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:textColor="@color/blue_resenha"
-                    android:text="Basquete"
-                    android:textAlignment="center"
-                    android:textSize="24.84sp" />
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:onClick="modalidadeBasquete">
 
-            <ImageView
-                    android:layout_width="295dp"
-                    android:layout_height="170dp"
-                    android:src="@drawable/basquete"
-                    android:layout_marginLeft="60dp"
-                    />
-        </LinearLayout>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:textColor="@color/blue_resenha"
+                        android:text="Basquete"
+                        android:textAlignment="center"
+                        android:textSize="24.84sp" />
 
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:onClick="modalidadeTenis"
-                >
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:textColor="@color/blue_resenha"
-                    android:text="Tênis"
-                    android:textAlignment="center"
-                    android:textSize="24.84sp" />
+                <ImageView
+                        android:layout_width="295dp"
+                        android:layout_height="170dp"
+                        android:src="@drawable/basquete"
+                        android:layout_marginLeft="60dp" />
+            </LinearLayout>
 
-            <ImageView
-                    android:layout_width="293dp"
-                    android:layout_height="170dp"
-                    android:src="@drawable/tenis"
-                    android:layout_marginLeft="60dp"
-                    />
-        </LinearLayout>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:onClick="modalidadeTenis">
 
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:onClick="modalidadeVolei"
-                >
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/blue_resenha"
-                    android:layout_marginTop="30dp"
-                    android:text="Vôlei"
-                    android:textAlignment="center"
-                    android:textSize="24.84sp" />
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:textColor="@color/blue_resenha"
+                        android:text="Tênis"
+                        android:textAlignment="center"
+                        android:textSize="24.84sp" />
 
-            <ImageView
-                    android:layout_width="295dp"
-                    android:layout_height="170dp"
-                    android:layout_marginLeft="60dp"
-                    android:src="@drawable/volei"
-                    />
-        </LinearLayout>
+                <ImageView
+                        android:layout_width="293dp"
+                        android:layout_height="170dp"
+                        android:src="@drawable/tenis"
+                        android:layout_marginLeft="60dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:onClick="modalidadeVolei">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue_resenha"
+                        android:layout_marginTop="30dp"
+                        android:text="Vôlei"
+                        android:textAlignment="center"
+                        android:textSize="24.84sp" />
+
+                <ImageView
+                        android:layout_width="295dp"
+                        android:layout_height="170dp"
+                        android:layout_marginLeft="60dp"
+                        android:src="@drawable/volei" />
+            </LinearLayout>
 
             <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pesquisa"
-                    android:onClick="tela"
-                    />
+                    android:onClick="tela" />
 
         </LinearLayout>
     </ScrollView>
