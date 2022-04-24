@@ -10,7 +10,7 @@ O RESENHA é um grupo que tem como objetivo proporcionar a melhor experiência p
 ![](https://github.com/Biellferraz/Resenha/blob/main/documentacao/imagens-readme/HLD.png)
 
 ## Nossa equipe
-![](https://github.com/Biellferraz/Resenha/blob/main/documentacao/imagens-readme/equipe.png)
+![](https://github.com/Biellferraz/Resenha/blob/main/documentacao/imagens-readme/equipe)
 
 ### Sinta-se à vontade para
 • Dar feedbacks referente ao projeto; <br>
