@@ -57,8 +57,7 @@ class TelaLogin : AppCompatActivity() {
 
 
                 override fun onResponse(
-                    call: Call<AuthResponse>,
-                    response: Response<AuthResponse>
+                    call: Call<AuthResponse>, response: Response<AuthResponse>
                 ) {
                     if (response.isSuccessful) {
                         println(response.body()?.token)
@@ -69,11 +68,11 @@ class TelaLogin : AppCompatActivity() {
                         editor.putString("jwt_token", response.body()?.token)
                         editor.apply()
 
-                        startActivity(Intent(baseContext, MainActivity::class.java))
+                        startActivity(Intent(baseContext, TelaDeOpcoes::class.java))
                     } else if (response.code() == 403) {
                         Toast.makeText(
                             baseContext, "Usuario e/ou senha estão incorretos", Toast.LENGTH_LONG
-                        )
+                        ).show()
                     }
                 }
 

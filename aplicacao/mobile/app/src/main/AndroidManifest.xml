@@ -7,11 +7,13 @@
 
     <application
             android:allowBackup="true"
-            android:icon="@drawable/ic_logo_resenha_icon"
+            android:icon="@drawable/ic_logo_resenha"
             android:label="Resenha"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/Theme.MyApplication">
+            android:usesCleartextTraffic="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+<!--        na tag acima pode alterar a cor da barra de ação-->
         <activity
                 android:name=".TelaDeQuadras"
                 android:exported="false" />
