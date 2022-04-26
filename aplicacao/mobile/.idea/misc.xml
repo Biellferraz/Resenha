@@ -40,6 +40,7 @@
         <entry key="..\:/Users/vitor/OneDrive/Documentos/GitHub/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/vitor/OneDrive/Documentos/GitHub/Resenha/aplicacao/mobile/app/src/main/res/layout/activity_tela_login.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/ic_logo_resenha.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/ic_logo_resenha2.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/ic_logo_resenha_full_intro.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/ic_logo_resenha_icon.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/textview_border.xml" value="0.1265" />
@@ -48,6 +49,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/activity_meus_dados.xml" value="0.1203125" />
         <entry key="app/src/main/res/layout/activity_pagamento.xml" value="0.1203125" />
+        <entry key="app/src/main/res/layout/activity_pagamento_desejavel.xml" value="0.21486053466796876" />
         <entry key="app/src/main/res/layout/activity_tela_cadastro.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/activity_tela_de_opcoes.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_tela_inicial.xml" value="0.14175724637681159" />

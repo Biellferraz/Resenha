@@ -5,10 +5,15 @@
         android:layout_height="match_parent"
         tools:context=".PagamentoDesejavel">
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -78,7 +83,7 @@
 
                 <EditText
                         android:id="@+id/numero_Cartao"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left" />
 
@@ -96,9 +101,9 @@
                             android:textColor="@color/white" />
 
                     <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="100dp"
+                            android:layout_marginRight="80dp"
                             android:text="cvv"
                             android:textColor="@color/white" />
                 </LinearLayout>
@@ -138,47 +143,45 @@
                         android:layout_height="wrap_content"
                         android:onClick="Continuar"
                         android:text="Continuar"
-                        android:textColor="@color/blue_resenha"
-                        android:backgroundTint="@color/transaparent"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/blue_resenha2"
                         android:layout_marginTop="40dp"
                         android:layout_marginLeft="120dp" />
 
             </LinearLayout>
         </LinearLayout>
-
-
     </ScrollView>
 
-    <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:ignore="MissingConstraints"
-            android:layout_marginTop="4dp">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                >
 
 
-        <ImageView
-                android:layout_width="50dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_home"
-                android:onClick="home"
-                android:layout_marginRight="130dp" />
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_home"
+                    android:onClick="home"
+                    android:layout_marginRight="130dp" />
 
-        <ImageView
-                android:layout_width="50dp"
-                android:onClick="agendamento"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_agendamento"
-                android:layout_marginRight="125dp" />
+            <ImageView
+                    android:layout_width="50dp"
+                    android:onClick="agendamento"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_agendamento"
+                    android:layout_marginRight="125dp" />
 
-        <ImageView
-                android:onClick="pagamento"
-                android:layout_width="50dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_pagamento" />
+            <ImageView
+                    android:onClick="pagamento"
+                    android:layout_width="50dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_pagamento" />
 
 
-    </LinearLayout>
-
+        </LinearLayout>
+</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

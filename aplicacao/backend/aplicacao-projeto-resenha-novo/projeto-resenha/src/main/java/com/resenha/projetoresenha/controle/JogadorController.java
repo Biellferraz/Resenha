@@ -48,10 +48,10 @@ public class JogadorController {
     @GetMapping("/login/{email}/{senha}")
     public ResponseEntity login(@PathVariable String email, @PathVariable String senha) {
 
-        Jogador jogador = repository.findByEm   ailAndSenha(email, senha);
+        Jogador jogador = repository.findByEmailAndSenha(email, senha);
 
 
-        return ResponseEntity.status(200).body(repository.findByEmailAndSenha(email, senha));
+        return ResponseEntity.status(200).body(jogador);
     }
 
     @GetMapping("/buscar")
