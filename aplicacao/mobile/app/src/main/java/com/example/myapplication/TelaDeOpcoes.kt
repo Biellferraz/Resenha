@@ -18,14 +18,7 @@ class TelaDeOpcoes : AppCompatActivity() {
 
 
     fun modalidadeFutebol(v: View) {
-        val telaFut: Intent = Intent(
-            baseContext,
-            TelaLogin::class.java
-        )
-//        telaFut.putExtra("nome_usuario", "Caio")
-
-        val agendamento: Intent = Intent(baseContext, Agendamento::class.java)
-        startActivity(agendamento)
+        startActivity(Intent(baseContext, TelaDeQuadras::class.java))
     }
 
 

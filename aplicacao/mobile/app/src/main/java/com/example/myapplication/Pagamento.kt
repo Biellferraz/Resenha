@@ -16,4 +16,8 @@ class Pagamento : AppCompatActivity() {
         startActivity(tela)
     }
 
+    fun pagamento(view: View) {
+        startActivity(Intent(baseContext, PagamentoDesejavel::class.java))
+    }
+
 }

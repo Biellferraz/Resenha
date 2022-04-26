@@ -20,14 +20,15 @@
 
             <!--        linear da imagem-->
             <LinearLayout
-                    android:layout_width="71.48dp"
-                    android:layout_height="54.41dp"
-                    android:gravity="center">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
 
                 <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_logo_resenha2" />
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_logo_resenha2"
+                        android:layout_marginLeft="13dp" />
 
             </LinearLayout>
 
@@ -53,7 +54,6 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:onClick="modalidadeFutebol">
-
 
 
                 <TextView
@@ -137,12 +137,6 @@
                         android:layout_marginLeft="60dp"
                         android:src="@drawable/volei" />
             </LinearLayout>
-
-            <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Pesquisa"
-                    android:onClick="tela" />
 
         </LinearLayout>
     </ScrollView>

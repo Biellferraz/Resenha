@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -53,7 +54,7 @@ class TelaLogin : AppCompatActivity() {
             )
 
 
-            request.login(authRequest).enqueue(object : Callback<AuthResponse> {
+          /*  request.login(authRequest).enqueue(object : Callback<AuthResponse> {
 
 
                 override fun onResponse(
@@ -68,7 +69,7 @@ class TelaLogin : AppCompatActivity() {
                         editor.putString("jwt_token", response.body()?.token)
                         editor.apply()
 
-                        startActivity(Intent(baseContext, TelaDeOpcoes::class.java))
+
                     } else if (response.code() == 403) {
                         Toast.makeText(
                             baseContext, "Usuario e/ou senha estão incorretos", Toast.LENGTH_LONG
@@ -77,82 +78,20 @@ class TelaLogin : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    Log.e("api", t.message.toString())
+                    Log.e("api", t.cause?.message.toString())
                     Toast.makeText(
                         baseContext, t.message, Toast.LENGTH_LONG
                     ).show()
                 }
 
 
-            })
+            })*/
+
+
+            startActivity(Intent(baseContext, TelaInicial::class.java))
         }
     }
 
-//    fun dd(v: View) {
-//
-//        val telainicial: Intent = Intent(baseContext, TelaInicial::class.java)
-//        val request = retrofit.create(AuthService::class.java)
-//
-//
-//        if (et_email.text.toString().trim().equals("resenha@gmail")
-//            && et_senha.text.toString().equals("123456")
-//        ) {
-//            Toast.makeText(
-//                baseContext,
-//                et_email.text.toString(),
-//                Toast.LENGTH_SHORT
-//            ).show()
-//
-//            tvErro.visibility = View.GONE
-//            startActivity(telainicial)
-//
-//            val authRequest = AuthRequest(
-//                et_email.text.toString(),
-//                et_senha.text.toString()
-//            )
-//
-//            request.login(authRequest).enqueue(object : Callback<AuthResponse> {
-//
-//
-//                override fun onResponse(
-//                    call: Call<AuthResponse>,
-//                    response: Response<AuthResponse>
-//                ) {
-//                    if (response.isSuccessful) {
-//                        println(response.body()?.token)
-//                        val editor = getSharedPreferences(
-//                            "ACESSO", Context.MODE_PRIVATE
-//                        ).edit()
-//
-//                        editor.putString("jwt_token", response.body()?.token)
-//                        editor.apply()
-//
-//                        startActivity(Intent(baseContext, MainActivity::class.java))
-//                    } else if (response.code() == 403) {
-//                        Toast.makeText(
-//                            baseContext, "Usuario e/ou senha estão incorretos", Toast.LENGTH_LONG
-//                        )
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-//                    Toast.makeText(
-//                        baseContext, t.message, Toast.LENGTH_LONG
-//                    ).show()
-//                }
-//
-//
-//            })
-//
-//        } else {
-//            tvErro.text = "login e/ou senha estão incorretos"
-//            tvErro.setTextColor(
-//                AppCompatResources.getColorStateList(
-//                    baseContext,
-//                    R.color.primary_red
-//                )
-//            )
-//            tvErro.visibility = View.VISIBLE
-//        }
-//
-//    }
 }

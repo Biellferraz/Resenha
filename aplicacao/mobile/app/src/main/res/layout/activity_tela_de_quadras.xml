@@ -75,6 +75,115 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:hint="Ver Quadra"
+                                    android:onClick="verQuadra"
+                                    android:textColorHint="@color/white"
+                                    android:backgroundTint="@color/blue_resenha2" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="60dp"
+                        android:background="@drawable/textview_border">
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/quadra1" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp">
+
+                        <TextView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Quadra - PoliEsportiva"
+                                android:textColor="@color/blue_resenha2"
+                                android:textSize="18sp" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rua Haddock Lobo 113, Cerqueira César, São Paulo" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="11dp"
+                                android:text="Valor por hora R$89,00" />
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp">
+
+                            <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Ver Quadra"
+                                    android:onClick="verQuadra"
+                                    android:textColorHint="@color/white"
+                                    android:backgroundTint="@color/blue_resenha2" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="60dp"
+                        android:background="@drawable/textview_border">
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/quadra1" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp">
+
+                        <TextView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Quadra - EA Sports"
+                                android:textColor="@color/blue_resenha2"
+                                android:textSize="18sp" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rua Haddock Lobo 113, Cerqueira César, São Paulo" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="11dp"
+                                android:text="Valor por hora R$89,00" />
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp">
+
+                            <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Ver Quadra"
+                                    android:onClick="verQuadra"
                                     android:textColorHint="@color/white"
                                     android:backgroundTint="@color/blue_resenha2" />
                         </LinearLayout>

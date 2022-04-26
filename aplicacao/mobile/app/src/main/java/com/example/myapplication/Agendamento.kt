@@ -24,12 +24,12 @@ class Agendamento : AppCompatActivity() {
                 id: Long
             ) {
 
-                Toast.makeText(
+            /*    Toast.makeText(
                     this@Agendamento,
                     "voce selecionou ${adapterView?.getItemAtPosition(posisao).toString()}",
                     Toast.LENGTH_SHORT
                 ).show()
-
+*/
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -47,11 +47,11 @@ class Agendamento : AppCompatActivity() {
                 id: Long
             ) {
 
-                Toast.makeText(
+             /*   Toast.makeText(
                     this@Agendamento,
                     "voce selecionou ${adapterView?.getItemAtPosition(posisao).toString()}",
                     Toast.LENGTH_SHORT
-                ).show()
+                ).show()*/
 
             }
 
@@ -68,11 +68,13 @@ class Agendamento : AppCompatActivity() {
                 id: Long
             ) {
 
+/*
                 Toast.makeText(
                     this@Agendamento,
                     "voce selecionou ${adapterView?.getItemAtPosition(posisao).toString()}",
                     Toast.LENGTH_SHORT
                 ).show()
+*/
 
             }
 
@@ -89,11 +91,7 @@ class Agendamento : AppCompatActivity() {
                 id: Long
             ) {
 
-                Toast.makeText(
-                    this@Agendamento,
-                    "voce selecionou ${adapterView?.getItemAtPosition(posisao).toString()}",
-                    Toast.LENGTH_SHORT
-                ).show()
+
 
             }
 
@@ -105,7 +103,7 @@ class Agendamento : AppCompatActivity() {
     }
 
     fun agendar(v: View) {
-        val pagamento: Intent = Intent(baseContext, PagamentoDesejavel::class.java)
+        val pagamento: Intent = Intent(baseContext, Pagamento::class.java)
 
         startActivity(pagamento)
     }

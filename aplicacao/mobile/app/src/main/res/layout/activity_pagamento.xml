@@ -10,166 +10,164 @@
             android:layout_height="match_parent"
             android:backgroundTint="@color/background"
             android:orientation="vertical">
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-
-        <!--        linear da imagem-->
-        <LinearLayout
-                android:layout_width="71.48dp"
-                android:layout_height="54.41dp"
-                android:gravity="center">
-
-            <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_logo_resenha2" />
-
-        </LinearLayout>
-
-        <!--linear do texto pagamento-->
 
         <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/blue_resenha2"
-                    android:text="Pagamento"
-                    android:textStyle="bold"
-                    android:textSize="24.84sp" />
 
-
-        </LinearLayout>
-
-
-        <!--linear que vai segurar todas formas de pagamento-->
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="20dp">
-
-
-            <!--linear que vai segurar apenas o pix-->
+            <!--        linear da imagem-->
             <LinearLayout
-                    android:layout_width="295dp"
-                    android:layout_height="53dp"
-                    android:background="@drawable/textview_border"
-                    android:layout_marginTop="19dp"
-                    android:onClick="pix"
-                    >
+                    android:layout_width="71.48dp"
+                    android:layout_height="54.41dp"
+                    android:gravity="center">
 
                 <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_pix"
-                        android:layout_marginLeft="10dp" />
+                        android:src="@drawable/ic_logo_resenha2" />
+
+            </LinearLayout>
+
+            <!--linear do texto pagamento-->
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="50dp"
+                    android:orientation="vertical">
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="11dp"
-                        android:textSize="20sp"
-                        android:layout_marginLeft="19dp"
-                        android:text="PIX" />
+                        android:textColor="@color/blue_resenha2"
+                        android:text="Pagamento"
+                        android:textStyle="bold"
+                        android:textSize="24.84sp" />
+
+
             </LinearLayout>
 
-            <!--linar que vai sergurar o cartao visa-->
+
+            <!--linear que vai segurar todas formas de pagamento-->
             <LinearLayout
-                    android:layout_width="295dp"
-                    android:layout_height="53dp"
-                    android:background="@drawable/textview_border"
-                    android:layout_marginTop="33dp"
-                    android:onClick="visa"
-                    >
-
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_visa"
-                        android:layout_marginLeft="10dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp">
 
 
-                <!--linear que vai segurar as info do cartao-->
+                <!--linear que vai segurar apenas o pix-->
                 <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_width="295dp"
+                        android:layout_height="53dp"
+                        android:background="@drawable/textview_border"
+                        android:layout_marginTop="19dp"
+                        android:onClick="pix">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_pix"
+                            android:layout_marginLeft="10dp" />
 
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="11dp"
-                            android:textSize="10sp"
+                            android:textSize="20sp"
                             android:layout_marginLeft="19dp"
-                            android:text="VISA - CRÉDITO" />
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:textSize="12sp"
-                            android:layout_marginLeft="19dp"
-                            android:text="**** - ****" />
+                            android:text="PIX" />
                 </LinearLayout>
 
-
-            </LinearLayout>
-
-            <!--linar que vai sergurar o cartao MasterCard-->
-            <LinearLayout
-                    android:layout_width="295dp"
-                    android:layout_height="53dp"
-                    android:background="@drawable/textview_border"
-                    android:layout_marginTop="33dp"
-                    android:onClick="masterCard"
-                    >
-
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_mastercardmartercard"
-                        android:layout_marginLeft="10dp" />
-
-
-                <!--linear que vai segurar as info do cartao-->
+                <!--linar que vai sergurar o cartao visa-->
                 <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_width="295dp"
+                        android:layout_height="53dp"
+                        android:background="@drawable/textview_border"
+                        android:layout_marginTop="33dp"
+                        android:onClick="pagamento">
 
-                    <TextView
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_visa"
+                            android:layout_marginLeft="10dp" />
+
+
+                    <!--linear que vai segurar as info do cartao-->
+                    <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="11dp"
-                            android:textSize="10sp"
-                            android:layout_marginLeft="19dp"
-                            android:text="MASTERCARD - CRÉDITO" />
+                            android:orientation="vertical">
 
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:textSize="12sp"
-                            android:layout_marginLeft="19dp"
-                            android:text="**** - ****" />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="11dp"
+                                android:textSize="10sp"
+                                android:layout_marginLeft="19dp"
+                                android:text="VISA - CRÉDITO" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textSize="12sp"
+                                android:layout_marginLeft="19dp"
+                                android:text="**** - ****" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
+                <!--linar que vai sergurar o cartao MasterCard-->
+                <LinearLayout
+                        android:layout_width="295dp"
+                        android:layout_height="53dp"
+                        android:background="@drawable/textview_border"
+                        android:layout_marginTop="33dp"
+                        android:onClick="pagamento">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_mastercardmartercard"
+                            android:layout_marginLeft="10dp" />
+
+
+                    <!--linear que vai segurar as info do cartao-->
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="11dp"
+                                android:textSize="10sp"
+                                android:layout_marginLeft="19dp"
+                                android:text="MASTERCARD - CRÉDITO" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textSize="12sp"
+                                android:layout_marginLeft="19dp"
+                                android:text="**** - ****" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
     </ScrollView>
 
 

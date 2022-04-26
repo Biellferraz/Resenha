@@ -10,182 +10,352 @@
             android:layout_height="match_parent"
             android:backgroundTint="@color/background"
             android:orientation="vertical">
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/ic_logo_resenha2" />
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Centros Esportivos"
-                    android:textSize="20dp"
-                    android:layout_marginStart="10dp" />
-
-        </LinearLayout>
-
-        <HorizontalScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:scrollbarStyle="insideInset">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
+
 
                 <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="8dp">
+                        android:layout_weight="1">
 
                     <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic_quadra_agendamento" />
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/ic_logo_resenha2"
+                            android:layout_marginLeft="13dp"/>
 
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="center"
-                            android:text="PlayBall" />
                 </LinearLayout>
 
                 <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="20dp">
+                        android:layout_weight="1"
+                        android:onClick="filtrar"
+                        android:gravity="end"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="13dp">
 
-                    <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic_quadra_agendamento" />
 
                     <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAlignment="center"
-                            android:text="Square quad" />
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="20dp">
+                            android:text="Filtrar"
+                            android:textColor="@color/blue_resenha2"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_marginTop="6dp"/>
 
                     <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic_quadra_agendamento" />
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_filtro" />
 
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="center"
-                            android:text="Poli esportiva" />
                 </LinearLayout>
 
-                <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="20dp">
-
-                    <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic_quadra_agendamento" />
-
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="center"
-                            android:text="Esport center" />
-                </LinearLayout>
 
             </LinearLayout>
-        </HorizontalScrollView>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical"
-                android:gravity="center">
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Seu ultimo agendamento" />
-
-            <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/ic_quadra_agendamento" />
-
-            <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Esport center" />
-
-        </LinearLayout>
-
-        <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Agendar novamente" />
+                        android:text="Centros Esportivos"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:layout_marginStart="10dp" />
 
-                <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_quadra_agendamento" />
-
-                <TextView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:text="Esport center" />
             </LinearLayout>
 
-        </ScrollView>
+            <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:scrollbarStyle="insideInset">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="8dp">
+
+                        <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/quadra_futebol" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:text="PlayBall" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="20dp">
+
+                        <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/quadra_tenis" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:text="Square quad" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="20dp">
+
+                        <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/basquete" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:text="Poli esportiva" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="20dp">
+
+                        <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/quadra1" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:text="Esport center" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
 
 
-    </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seu ultimo agendamento"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginTop="40dp" />
+
+            <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="280dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:background="@drawable/textview_border">
+
+
+                <ImageView
+                        android:layout_width="280dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/quadra1" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp">
+
+                    <TextView
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Quadra - A1"
+                            android:textColor="@color/blue_resenha2"
+                            android:textSize="18sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="11dp"
+                            android:text="Valor por hora R$89,00" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:layout_marginEnd="10dp">
+
+                        <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="Ver Quadra"
+                                android:onClick="verQuadra"
+                                android:textColorHint="@color/white"
+                                android:backgroundTint="@color/blue_resenha2" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agendar novamente"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="40dp" />
+
+            <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                    <LinearLayout
+                            android:layout_width="300dp"
+                            android:layout_height="300dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/textview_border">
+
+
+                        <ImageView
+                                android:layout_width="285dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_height="200dp"
+                                android:src="@drawable/quadra_tenis2" />
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginLeft="10dp">
+
+                            <TextView
+                                    android:layout_marginTop="8dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Quadra - PoliEsportiva"
+                                    android:textColor="@color/blue_resenha2"
+                                    android:textSize="18sp" />
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="11dp"
+                                    android:text="Valor por hora R$89,00" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="end"
+                                    android:layout_marginEnd="10dp">
+
+                                <Button
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Ver Quadra"
+                                        android:onClick="verQuadra"
+                                        android:textColorHint="@color/white"
+                                        android:backgroundTint="@color/blue_resenha2" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                            android:layout_width="300dp"
+                            android:layout_height="280dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/textview_border">
+
+
+                        <ImageView
+                                android:layout_width="280dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/quadra1" />
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginLeft="10dp">
+
+                            <TextView
+                                    android:layout_marginTop="8dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Quadra - EA Sports"
+                                    android:textColor="@color/blue_resenha2"
+                                    android:textSize="18sp" />
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="11dp"
+                                    android:text="Valor por hora R$89,00" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="end"
+                                    android:layout_marginEnd="10dp">
+
+                                <Button
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Ver Quadra"
+                                        android:onClick="verQuadra"
+                                        android:textColorHint="@color/white"
+                                        android:backgroundTint="@color/blue_resenha2" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+
+        </LinearLayout>
 
     </ScrollView>
 

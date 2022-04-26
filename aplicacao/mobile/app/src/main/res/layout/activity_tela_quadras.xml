@@ -186,6 +186,7 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:hint="Agendar"
+                            android:onClick="pagar"
                             android:textColorHint="@color/white"
                             android:backgroundTint="@color/blue_resenha2" />
                 </LinearLayout>
