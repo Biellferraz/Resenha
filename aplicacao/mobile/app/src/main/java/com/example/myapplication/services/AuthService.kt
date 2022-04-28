@@ -9,7 +9,7 @@ import retrofit2.http.POST
 
 interface AuthService {
 
-    @POST("auth/login")
+    @POST("/jogadores/login")
     fun login(@Body authRequest: AuthRequest): Call<AuthResponse>
 
 

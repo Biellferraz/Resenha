@@ -32,7 +32,7 @@ public class JogadorController {
         System.out.println(jogadorInserido.getEmail() + jogadorInserido.getSenha());
 
         if (jogadorEncontrado == null) {
-            return ResponseEntity.status(404).build();
+            return ResponseEntity.status(403).build();
         }
 
         return ResponseEntity.status(200).body(jogadorEncontrado);

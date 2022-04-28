@@ -41,11 +41,11 @@ class TelaLogin : AppCompatActivity() {
 
 
     fun entrar(view: View) {
-        if (!Validator.emailIsFine(et_email.text.toString())) {
-            et_email.error = "E-mail inválido"
-        } else if (!Validator.passwordIsFine(et_senha.text.toString())) {
-            et_senha.error = "Senha inválida"
-        } else {
+//        if (!Validator.emailIsFine(et_email.text.toString())) {
+//            et_email.error = "E-mail inválido"
+//        } else if (!Validator.passwordIsFine(et_senha.text.toString())) {
+//            et_senha.error = "Senha inválida"
+//        } else {
             val request = retrofit.create(AuthService::class.java)
 
             val authRequest = AuthRequest(
@@ -54,20 +54,22 @@ class TelaLogin : AppCompatActivity() {
             )
 
 
-          /*  request.login(authRequest).enqueue(object : Callback<AuthResponse> {
+            request.login(authRequest).enqueue(object : Callback<AuthResponse> {
 
 
                 override fun onResponse(
                     call: Call<AuthResponse>, response: Response<AuthResponse>
                 ) {
                     if (response.isSuccessful) {
-                        println(response.body()?.token)
-                        val editor = getSharedPreferences(
-                            "ACESSO", Context.MODE_PRIVATE
-                        ).edit()
+                        startActivity(Intent(baseContext, TelaInicial::class.java))
 
-                        editor.putString("jwt_token", response.body()?.token)
-                        editor.apply()
+//                        println(response.body()?.token)
+//                        val editor = getSharedPreferences(
+//                            "ACESSO", Context.MODE_PRIVATE
+//                        ).edit()
+//
+//                        editor.putString("jwt_token", response.body()?.token)
+//                        editor.apply()
 
 
                     } else if (response.code() == 403) {
@@ -87,11 +89,10 @@ class TelaLogin : AppCompatActivity() {
                 }
 
 
-            })*/
+            })
 
 
-            startActivity(Intent(baseContext, TelaInicial::class.java))
-        }
+//        }
     }
 
 }
