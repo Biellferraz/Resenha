@@ -1,12 +1,14 @@
 package com.resenha.projetoresenha.controle;
 
 import com.resenha.projetoresenha.dominio.Jogador;
+import com.resenha.projetoresenha.dominio.Locatario;
 import com.resenha.projetoresenha.dominio.Login;
 import com.resenha.projetoresenha.repositorio.JogadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,6 +25,12 @@ public class JogadorController {
             return ResponseEntity.status(204).build();
         }
         return ResponseEntity.status(200).body(locatarios);
+    }
+
+    @PostMapping
+    public ResponseEntity postUsuarios(@RequestBody @Valid Jogador novoJogador) {
+        repository.save(novoJogador);
+        return ResponseEntity.status(201).build();
     }
 
     @PostMapping("/login")
