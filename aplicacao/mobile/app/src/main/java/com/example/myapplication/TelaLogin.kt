@@ -54,7 +54,7 @@ class TelaLogin : AppCompatActivity() {
             )
 
 
-            request.login(authRequest).enqueue(object : Callback<AuthResponse> {
+            request.postLogin(authRequest).enqueue(object : Callback<AuthResponse> {
 
 
                 override fun onResponse(
@@ -75,6 +75,11 @@ class TelaLogin : AppCompatActivity() {
                     } else if (response.code() == 403) {
                         Toast.makeText(
                             baseContext, "Usuario e/ou senha estão incorretos", Toast.LENGTH_LONG
+                        ).show()
+                    }
+                    else{
+                        Toast.makeText(
+                            baseContext, "Falha de login", Toast.LENGTH_LONG
                         ).show()
                     }
                 }

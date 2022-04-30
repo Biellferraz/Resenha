@@ -27,14 +27,14 @@ public class JogadorController {
         return ResponseEntity.status(200).body(locatarios);
     }
 
-    @PostMapping
-    public ResponseEntity postUsuarios(@RequestBody @Valid Jogador novoJogador) {
+    @PostMapping("/cadastrar")
+    public ResponseEntity postCadastrar(@RequestBody @Valid Jogador novoJogador) {
         repository.save(novoJogador);
         return ResponseEntity.status(201).build();
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody Jogador jogadorInserido) {
+    public ResponseEntity postLogin(@RequestBody Jogador jogadorInserido) {
         Jogador jogadorEncontrado = repository.findByEmailAndSenha(jogadorInserido.getEmail(),
                 jogadorInserido.getSenha());
         System.out.println(jogadorInserido.getEmail() + jogadorInserido.getSenha());
@@ -51,15 +51,6 @@ public class JogadorController {
     public ResponseEntity getUsuarios(@PathVariable int id) {
         return ResponseEntity.of(repository.findById(id));
 
-    }
-
-    @GetMapping("/login/{email}/{senha}")
-    public ResponseEntity login(@PathVariable String email, @PathVariable String senha) {
-
-        Jogador jogador = repository.findByEmailAndSenha(email, senha);
-
-
-        return ResponseEntity.status(200).body(jogador);
     }
 
     @GetMapping("/buscar")

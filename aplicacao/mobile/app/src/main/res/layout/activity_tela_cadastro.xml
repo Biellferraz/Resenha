@@ -50,7 +50,20 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp">
+                android:layout_marginTop="40dp">
+
+            <EditText
+                    android:id="@+id/et_cpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="CPF"
+                    android:backgroundTint="@color/blue_resenha" />
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
 
             <EditText
                     android:id="@+id/et_nome"
@@ -62,7 +75,7 @@
                     android:backgroundTint="@color/blue_resenha" />
 
             <EditText
-                    android:id="@+id/et_sobre_nome"
+                    android:id="@+id/et_sobrenome"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -70,6 +83,32 @@
                     android:inputType="textPersonName"
                     android:backgroundTint="@color/blue_resenha" />
         </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            >
+        <EditText
+                android:id="@+id/et_data_nasc"
+                android:layout_width="0dp"
+            android:layout_weight="1"
+                android:layout_height="wrap_content"
+            android:hint="Data de nascimento"
+            android:inputType="number"
+            android:backgroundTint="@color/blue_resenha"/>
+
+        <EditText
+                android:id="@+id/et_cep"
+                android:layout_width="0dp"
+            android:layout_weight="1"
+                android:layout_height="wrap_content"
+            android:hint="CEP"
+            android:inputType="number"
+            android:backgroundTint="@color/blue_resenha"/>
+
+
+    </LinearLayout>
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -109,19 +148,6 @@
                     android:backgroundTint="@color/blue_resenha" />
         </LinearLayout>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
-
-            <EditText
-                    android:id="@+id/et_cpf"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:hint="CPF"
-                    android:backgroundTint="@color/blue_resenha" />
-        </LinearLayout>
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -143,7 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="20dp">
 
             <Button
                     android:layout_width="150dp"
@@ -159,7 +185,7 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 

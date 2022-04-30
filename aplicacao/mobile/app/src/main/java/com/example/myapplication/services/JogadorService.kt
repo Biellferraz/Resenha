@@ -17,13 +17,6 @@ interface JogadorService {
         @Header("Authorization") token: String?,
     ): Call<Jogador>
 
-    @GET("jogadores/{email}/{senha}")
-    fun busarPorEmailSenha(
-        @Path("email") email: String,
-        @Path("senha") senha: String,
-        @Header("Authorization") token: String?,
-    ): Call<Jogador>
-
     @DELETE("/jogadores/{id}")
     fun remove(
         @Path("id") id: Long,
