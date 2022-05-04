@@ -1,5 +1,6 @@
 package com.resenha.projetoresenha.dominio;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -31,7 +32,8 @@ public class Jogador {
     private String sobrenome;
 
     @PastOrPresent
-    @DateTimeFormat(pattern = "dd/mm/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     @Column(name = "datanasc")
     private LocalDate data_nasc;
 
