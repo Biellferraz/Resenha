@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.Mascaras.MascaraCPF
 import com.example.myapplication.models.AuthResponse
 import com.example.myapplication.models.CadastroRequest
+import com.example.myapplication.models.Jogador
 import com.example.myapplication.rest.Rest
 import com.example.myapplication.services.AuthService
 import retrofit2.Call
@@ -44,7 +45,7 @@ class TelaCadastro : AppCompatActivity() {
     }
 
     fun criar(v: View){
-        fun entrar(view: View) {
+
 //        if (!Validator.emailIsFine(et_email.text.toString())) {
 //            et_email.error = "E-mail inválido"
 //        } else if (!Validator.passwordIsFine(et_senha.text.toString())) {
@@ -63,7 +64,6 @@ class TelaCadastro : AppCompatActivity() {
                 et_senha.text.toString()
             )
 
-
             request.postCadastrar(cadastroRequest).enqueue(object: Callback<AuthResponse>{
                 override fun onResponse(
                     call: Call<AuthResponse>,
@@ -71,14 +71,9 @@ class TelaCadastro : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful){
                         startActivity(Intent(baseContext, TelaLogin::class.java))
-                    }else if (response.code() == 403) {
+                    }else{
                         Toast.makeText(
-                            baseContext, "Usuario e/ou senha estão incorretos", Toast.LENGTH_LONG
-                        ).show()
-                    }
-                    else{
-                        Toast.makeText(
-                            baseContext, "Falha de login", Toast.LENGTH_LONG
+                            baseContext, "Erro ao cadastrar", Toast.LENGTH_LONG
                         ).show()
                     }
                 }
@@ -91,12 +86,11 @@ class TelaCadastro : AppCompatActivity() {
                         baseContext, t.message, Toast.LENGTH_LONG
                     ).show()
                 }
-
             })
 
 
 //        }
-        }
+
     }
 
     fun login(v: View) {

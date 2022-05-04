@@ -11,4 +11,5 @@ data class Jogador(
     val telefone : String,
     val email : String,
     val senha : String
+
 )

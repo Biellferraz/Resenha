@@ -1,5 +1,7 @@
 package com.resenha.projetoresenha.dominio;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
@@ -29,10 +31,12 @@ public class Jogador {
     private String sobrenome;
 
     @PastOrPresent
+    @DateTimeFormat(pattern = "dd/mm/yyyy")
     @Column(name = "datanasc")
     private LocalDate data_nasc;
 
-    @Size(min = 9, max = 9)
+
+    @Size(min = 8, max = 9)
     @NotNull
     @Column(name = "cep")
     private String cep;
