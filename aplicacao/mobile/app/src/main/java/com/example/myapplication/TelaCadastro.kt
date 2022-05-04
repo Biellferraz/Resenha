@@ -69,7 +69,7 @@ class TelaCadastro : AppCompatActivity() {
                     call: Call<AuthResponse>,
                     response: Response<AuthResponse>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.code() == 201){
                         startActivity(Intent(baseContext, TelaLogin::class.java))
                     }else{
                         Toast.makeText(

@@ -15,7 +15,7 @@ public class Jogador {
     @Column(name = "idjogador", nullable = false)
     private Integer id;
 
-    @Size(min = 14, max = 14)
+    @Size(min = 11, max = 14)
     @Column(name = "cpf")
     private String cpf;
 
@@ -44,7 +44,7 @@ public class Jogador {
     private String cep;
 
     @NotNull
-    @Size(min = 15, max = 15)
+    @Size(min = 11, max = 15)
     @Column(name = "telefone")
     private String telefone;
 
