@@ -141,12 +141,19 @@
                             android:textColor="@color/white"
                             android:text="Horarios disponiveis" />
 
-                    <Spinner
-                            android:id="@+id/spinner_horario"
+                    <TextView
                             android:layout_width="match_parent"
-                            android:entries="@array/horarios"
-                            android:theme="@style/corTextoSpinner"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:id="@+id/horaioMarcado"
+                            android:textColor="@color/blue_resenha"
+                            />
+
+<!--                    <Spinner-->
+<!--                            android:id="@+id/spinner_horario"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:entries="@array/horarios"-->
+<!--                            android:theme="@style/corTextoSpinner"-->
+<!--                            android:layout_height="wrap_content" />-->
 
                 </LinearLayout>
 
