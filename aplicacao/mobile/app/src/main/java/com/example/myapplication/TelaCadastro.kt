@@ -57,7 +57,7 @@ class TelaCadastro : AppCompatActivity() {
                 et_cpf.text.toString(),
                 et_nome.text.toString(),
                 et_sobrenome.text.toString(),
-                et_dataNasc.text.toString(),
+                et_dataNasc.text.toString().format("##/##/####"),
                 et_cep.text.toString(),
                 et_telefone.text.toString(),
                 et_email.text.toString(),

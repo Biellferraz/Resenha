@@ -6,7 +6,7 @@ data class CadastroRequest(
     val cpf : String,
     val nome: String,
     val sobrenome: String,
-    val datanasc : String,
+    val data_nascs : String,
     val cep : String,
     val telefone : String,
     val email : String,
