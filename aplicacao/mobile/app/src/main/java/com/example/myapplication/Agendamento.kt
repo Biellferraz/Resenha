@@ -16,7 +16,8 @@ class Agendamento : AppCompatActivity() {
         val dia = intent.getIntExtra("dia", 0)
         val mes = intent.getIntExtra("mes", 0)
         val ano = intent.getIntExtra("ano",0)
-        findViewById<TextView>(R.id.horaioMarcado).text = intent.getStringExtra("horario")
+        val horario = intent.getStringExtra("horario")
+        findViewById<TextView>(R.id.horaioMarcado).text = "${dia}/${mes}/${ano} às ${horario}"
 
         var spinnerModalidade = findViewById<Spinner>(R.id.spinner_modalidade)
 

@@ -11,24 +11,18 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import java.sql.Date
 
 class TelaQuadras : AppCompatActivity() {
-    private lateinit var calendario: CalendarView
+        private lateinit var calendario: CalendarView
 //    private lateinit var binding = ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_quadras)
         calendario = findViewById(R.id.calendar)
-        calendario.setOnDateChangeListener(CalendarView.OnDateChangeListener { view, year, month, dayOfMonth ->
-        val intent = Intent(this, Agendamento::class.java)
-        intent.putExtra("dia",dayOfMonth)
-        intent.putExtra("mes",month)
-        intent.putExtra("ano",year)
-    })
-    }
+}
 
     private var horario: String = ""
 
     fun horario1(v: View){
-        horario = "@string/horario1"
+        horario = getString(R.string.horario1)
         findViewById<TextView>(R.id.horario1).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_red))
         findViewById<TextView>(R.id.horario2).
@@ -47,14 +41,10 @@ class TelaQuadras : AppCompatActivity() {
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario9).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
-
-        val agendamento: Intent = Intent(baseContext,Agendamento::class.java)
-
-        agendamento.putExtra("horario",horario)
     }
 
     fun horario2(v: View){
-        horario = "@string/horario2"
+        horario = getString(R.string.horario2)
         findViewById<TextView>(R.id.horario1).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario2).
@@ -73,14 +63,10 @@ class TelaQuadras : AppCompatActivity() {
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario9).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
-
-        val agendamento: Intent = Intent(baseContext,Agendamento::class.java)
-
-        agendamento.putExtra("horario",horario)
     }
 
     fun horario3(v: View){
-        horario = "@string/horario3"
+        horario = getString(R.string.horario3)
         findViewById<TextView>(R.id.horario1).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario2).
@@ -99,14 +85,10 @@ class TelaQuadras : AppCompatActivity() {
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario9).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
-
-        val agendamento: Intent = Intent(baseContext,Agendamento::class.java)
-
-        agendamento.putExtra("horario",horario)
     }
 
     fun horario4(v: View){
-        horario = "@string/horario4"
+        horario = getString(R.string.horario4)
         findViewById<TextView>(R.id.horario1).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario2).
@@ -125,14 +107,10 @@ class TelaQuadras : AppCompatActivity() {
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario9).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
-
-        val agendamento: Intent = Intent(baseContext,Agendamento::class.java)
-
-        agendamento.putExtra("horario",horario)
     }
 
     fun horario5(v: View){
-        horario = "@string/horario5"
+        horario = getString(R.string.horario5)
         findViewById<TextView>(R.id.horario1).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario2).
@@ -151,14 +129,10 @@ class TelaQuadras : AppCompatActivity() {
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario9).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
-
-        val agendamento: Intent = Intent(baseContext,Agendamento::class.java)
-
-        agendamento.putExtra("horario",horario)
     }
 
     fun horario6(v: View){
-        horario = "@string/horario6"
+        horario = getString(R.string.horario6)
         findViewById<TextView>(R.id.horario1).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario2).
@@ -177,14 +151,10 @@ class TelaQuadras : AppCompatActivity() {
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario9).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
-
-        val agendamento: Intent = Intent(baseContext,Agendamento::class.java)
-
-        agendamento.putExtra("horario",horario)
     }
 
     fun horario7(v: View){
-        horario = "@string/horario7"
+        horario = getString(R.string.horario7)
         findViewById<TextView>(R.id.horario1).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario2).
@@ -203,14 +173,10 @@ class TelaQuadras : AppCompatActivity() {
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario9).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
-
-        val agendamento: Intent = Intent(baseContext,Agendamento::class.java)
-
-        agendamento.putExtra("horario",horario)
     }
 
     fun horario8(v: View){
-        horario = "@string/horario8"
+        horario = getString(R.string.horario8)
         findViewById<TextView>(R.id.horario1).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario2).
@@ -229,14 +195,10 @@ class TelaQuadras : AppCompatActivity() {
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_red))
         findViewById<TextView>(R.id.horario9).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
-
-        val agendamento: Intent = Intent(baseContext,Agendamento::class.java)
-
-        agendamento.putExtra("horario",horario)
     }
 
     fun horario9(v: View){
-        horario = "@string/horario9"
+        horario = getString(R.string.horario9)
         findViewById<TextView>(R.id.horario1).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario2).
@@ -255,13 +217,19 @@ class TelaQuadras : AppCompatActivity() {
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_green))
         findViewById<TextView>(R.id.horario9).
         setTextColor(AppCompatResources.getColorStateList(baseContext,R.color.primary_red))
-
-        val agendamento: Intent = Intent(baseContext,Agendamento::class.java)
-
-        agendamento.putExtra("horario",horario)
     }
 
     fun pagar(view: View) {
-        startActivity(Intent(baseContext, Agendamento::class.java))
+        val agendamento: Intent = Intent(baseContext,Agendamento::class.java)
+
+        calendario.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            agendamento.putExtra("dia", dayOfMonth)
+            agendamento.putExtra("mes", month)
+            agendamento.putExtra("ano", year)
+        }
+
+        agendamento.putExtra("horario",horario)
+
+        startActivity(agendamento)
     }
 }
