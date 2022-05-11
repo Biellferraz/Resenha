@@ -11,9 +11,14 @@
             android:label="Resenha"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:usesCleartextTraffic="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-<!--        na tag acima pode alterar a cor da barra de ação-->
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:usesCleartextTraffic="true">
+        <activity
+                android:name=".activity"
+                android:exported="false" />
+        <activity
+                android:name=".activity_quadras_tenis"
+                android:exported="false" /> <!-- na tag acima pode alterar a cor da barra de ação -->
         <activity
                 android:name=".TelaDeQuadras"
                 android:exported="false" />

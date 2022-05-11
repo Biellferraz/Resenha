@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity_quadras_tenis">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/background">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                <EditText
+                        android:layout_marginLeft="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etBusca"
+                        android:textSize="25sp"
+                        android:hint="Tênis" />
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/textview_border">
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/quadra_de_tenis" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="0dp">
+
+                        <TextView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Quadra - D1"
+                                android:textColor="@color/blue_resenha2"
+                                android:textSize="18sp" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="R. Frei Durão, 661 - Ipiranga, São Paulo - SP"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="11dp"
+                                android:text="Valor por hora R$95,00" />
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp">
+
+                            <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Ver Quadra"
+                                    android:onClick="verQuadra"
+                                    android:textColorHint="@color/white"
+                                    android:backgroundTint="@color/blue_resenha2" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="60dp"
+                        android:background="@drawable/textview_border">
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/quadra_tenis2" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp">
+
+                        <TextView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Padel Beach Panamericana"
+                                android:textColor="@color/blue_resenha2"
+                                android:textSize="18sp" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Praça Arcipreste Anselmo de Oliveira, s/ n - Alto de Pinheiro" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="11dp"
+                                android:text="Valor por hora R$78,00" />
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp">
+
+                            <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Ver Quadra"
+                                    android:onClick="verQuadra"
+                                    android:textColorHint="@color/white"
+                                    android:backgroundTint="@color/blue_resenha2" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="60dp"
+                        android:background="@drawable/textview_border">
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/quadra_de_tenis_wallau" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp">
+
+                        <TextView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Quadra - EA Sports"
+                                android:textColor="@color/blue_resenha2"
+                                android:textSize="18sp" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rua Haddock Lobo 113, Cerqueira César, São Paulo" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="11dp"
+                                android:text="Valor por hora R$102,00" />
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp">
+
+                            <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Ver Quadra"
+                                    android:onClick="verQuadra"
+                                    android:textColorHint="@color/white"
+                                    android:backgroundTint="@color/blue_resenha2" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
