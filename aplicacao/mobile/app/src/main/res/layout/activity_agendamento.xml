@@ -206,14 +206,36 @@
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp">
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical">
 
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                    <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/money" />
+
+                    <TextView
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="24sp"
+                            android:layout_marginLeft="8dp"
+                            android:textColor="@color/white"
+                            android:text="Valor" />
+
+                    </LinearLayout>
 
                     <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:id="@+id/valor"
                             android:textColor="@color/blue_resenha" />
+
                 </LinearLayout>
 
 
