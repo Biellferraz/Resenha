@@ -50,20 +50,20 @@
                                 android:layout_marginTop="8dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Quadra - A1"
+                                android:hint="@string/nome_quadra1"
                                 android:textColor="@color/blue_resenha2"
                                 android:textSize="18sp" />
 
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Rua Haddock Lobo 113, Cerqueira César, São Paulo" />
+                                android:text="@string/descricao_quadra1" />
 
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="11dp"
-                                android:text="Valor por hora R$89,00" />
+                                android:text="@string/valor_quadra1" />
 
                         <LinearLayout
                                 android:layout_width="match_parent"

@@ -41,19 +41,32 @@
                         android:layout_marginTop="50dp"
                         android:orientation="vertical">
 
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_user" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:textSize="24sp"
+                                android:textColor="@color/white"
+                                android:text="Nome do jogador responsavel"
+                                android:layout_marginLeft="8dp"/>
+                    </LinearLayout>
+
 
                     <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:textSize="24sp"
-                            android:textColor="@color/white"
-                            android:text="Nome do jogador responsavel" />
-
-                    <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_resenha2"
-                            android:backgroundTint="@color/white" />
+                            android:id="@+id/nomeJogador"
+                            android:textColor="@color/blue_resenha" />
+
 
 
                 </LinearLayout>
@@ -80,16 +93,16 @@
                                 android:textSize="24sp"
                                 android:layout_marginLeft="8dp"
                                 android:textColor="@color/white"
-                                android:text="Selecione um centro esportivo" />
+                                android:text="Centro esportivo" />
                     </LinearLayout>
 
 
-                    <Spinner
-                            android:id="@+id/spinner_centro"
+                    <TextView
                             android:layout_width="match_parent"
-                            android:theme="@style/corTextoSpinner"
-                            android:entries="@array/centro"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:id="@+id/centro"
+                            android:textColor="@color/blue_resenha" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -114,16 +127,15 @@
                                 android:textSize="24sp"
                                 android:layout_marginLeft="8dp"
                                 android:textColor="@color/white"
-                                android:text="Selecione uma quadra" />
+                                android:text="Quadra" />
                     </LinearLayout>
 
 
-                    <Spinner
-                            android:id="@+id/spinner_quadra"
+                    <TextView
                             android:layout_width="match_parent"
-                            android:entries="@array/quadra"
-                            android:theme="@style/corTextoSpinner"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:id="@+id/quadra"
+                            android:textColor="@color/blue_resenha" />
 
                 </LinearLayout>
 
@@ -145,15 +157,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/horaioMarcado"
-                            android:textColor="@color/blue_resenha"
-                            />
+                            android:textColor="@color/blue_resenha" />
 
-<!--                    <Spinner-->
-<!--                            android:id="@+id/spinner_horario"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:entries="@array/horarios"-->
-<!--                            android:theme="@style/corTextoSpinner"-->
-<!--                            android:layout_height="wrap_content" />-->
+                    <!--                    <Spinner-->
+                    <!--                            android:id="@+id/spinner_horario"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:entries="@array/horarios"-->
+                    <!--                            android:theme="@style/corTextoSpinner"-->
+                    <!--                            android:layout_height="wrap_content" />-->
 
                 </LinearLayout>
 
@@ -185,13 +196,11 @@
                     </LinearLayout>
 
 
-                    <Spinner
-                            android:id="@+id/spinner_modalidade"
+                    <TextView
                             android:layout_width="match_parent"
-                            android:entries="@array/modalidade"
-                            android:theme="@style/corTextoSpinner"
-                            android:layout_marginTop="8dp"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:id="@+id/modalidade"
+                            android:textColor="@color/blue_resenha" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -199,24 +208,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp">
 
-                    <EditText
-                            android:id="@+id/eT_confirmacaoHorario"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/blue_resenha2"
-                            android:backgroundTint="@color/white"
-                            android:inputType="time"
-                            android:hint="CONFIRMAÇAO DE HORARIO" />
 
-                    <EditText
-                            android:id="@+id/eT_valor"
+                    <TextView
                             android:layout_width="match_parent"
-                            android:backgroundTint="@color/white"
                             android:layout_height="wrap_content"
-                            android:hint="VALOR"
-                            android:inputType="number"
-                            android:textColor="@color/blue_resenha2"
-                            android:paddingRight="10dp" />
+                            android:id="@+id/valor"
+                            android:textColor="@color/blue_resenha" />
                 </LinearLayout>
 
 

@@ -4,7 +4,9 @@ package com.resenha.projetoresenha.teste.main;
 import com.resenha.projetoresenha.dominio.Agendamento;
 import com.resenha.projetoresenha.dominio.CentroEsportivo;
 import com.resenha.projetoresenha.dominio.Quadra;
+import com.resenha.projetoresenha.listas.Iterator;
 import com.resenha.projetoresenha.listas.ListaObj;
+import com.resenha.projetoresenha.listas.*;
 
 import java.io.*;
 import java.text.DateFormat;
@@ -637,6 +639,11 @@ public class Teste {
                 "São Paulo", "Pimenta Soccer", "08:00", "18:00", "(11) 93828-3823"));
 
         gravaArquivoTxtCentroEsportivo(listaCentroEsportivo, "CentroE.txt");
+
+//        Iterator iterator = new Iterator(lista);
+
+//        while (Iterator);
+
     }
 
 }

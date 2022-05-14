@@ -64,5 +64,8 @@
     <string name="horario7">15:00 - 16:00</string>
     <string name="horario8">16:00 - 17:00</string>
     <string name="horario9">17:00 - 18:00</string>
+    <string name="nome_quadra1">Quadra - A1</string>
+    <string name="descricao_quadra1">Rua Haddock Lobo 113, Cerqueira César, São Paulo</string>
+    <string name="valor_quadra1">Valor por hora R$89,00</string>
 
 </resources>

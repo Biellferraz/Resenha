@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +12,6 @@ import com.example.myapplication.models.AuthRequest
 import com.example.myapplication.models.AuthResponse
 import com.example.myapplication.rest.Rest
 import com.example.myapplication.services.AuthService
-import com.example.myapplication.services.Validator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +22,8 @@ class TelaLogin : AppCompatActivity() {
     private lateinit var et_email: EditText;
     private lateinit var et_senha: EditText;
     private lateinit var tvErro: TextView;
+    private val nome: String = "";
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,22 +46,32 @@ class TelaLogin : AppCompatActivity() {
 //        } else if (!Validator.passwordIsFine(et_senha.text.toString())) {
 //            et_senha.error = "Senha inválida"
 //        } else {
-            val request = retrofit.create(AuthService::class.java)
+        val request = retrofit.create(AuthService::class.java)
 
-            val authRequest = AuthRequest(
-                et_email.text.toString(),
-                et_senha.text.toString()
-            )
-
-
-            request.postLogin(authRequest).enqueue(object : Callback<AuthResponse> {
+        val authRequest = AuthRequest(
+            et_email.text.toString(),
+            et_senha.text.toString()
+        )
 
 
-                override fun onResponse(
-                    call: Call<AuthResponse>, response: Response<AuthResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        startActivity(Intent(baseContext, TelaInicial::class.java))
+        request.postLogin(authRequest).enqueue(object : Callback<AuthResponse> {
+
+
+            override fun onResponse(
+                call: Call<AuthResponse>, response: Response<AuthResponse>
+            ) {
+                if (response.isSuccessful) {
+
+                    val inicial: Intent = Intent(baseContext, TelaInicial::class.java)
+                    val agendamento: Intent = Intent(baseContext, Agendamento::class.java)
+
+
+
+                    agendamento.putExtra("nome", nome)
+
+                    startActivity(inicial)
+
+
 
 //                        println(response.body()?.token)
 //                        val editor = getSharedPreferences(
@@ -72,29 +82,28 @@ class TelaLogin : AppCompatActivity() {
 //                        editor.apply()
 
 
-                    } else if (response.code() == 403) {
-                        Toast.makeText(
-                            baseContext, "Usuario e/ou senha estão incorretos", Toast.LENGTH_LONG
-                        ).show()
-                    }
-                    else{
-                        Toast.makeText(
-                            baseContext, "Falha de login", Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                    t.printStackTrace()
-                    Log.e("api", t.message.toString())
-                    Log.e("api", t.cause?.message.toString())
+                } else if (response.code() == 403) {
                     Toast.makeText(
-                        baseContext, t.message, Toast.LENGTH_LONG
+                        baseContext, "Usuario e/ou senha estão incorretos", Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        baseContext, "Falha de login", Toast.LENGTH_LONG
                     ).show()
                 }
+            }
+
+            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+                t.printStackTrace()
+                Log.e("api", t.message.toString())
+                Log.e("api", t.cause?.message.toString())
+                Toast.makeText(
+                    baseContext, t.message, Toast.LENGTH_LONG
+                ).show()
+            }
 
 
-            })
+        })
 
 
 //        }
