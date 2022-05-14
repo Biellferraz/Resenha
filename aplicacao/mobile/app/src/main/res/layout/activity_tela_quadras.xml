@@ -39,6 +39,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="SPTech Clube"
+                        android:id="@+id/centro"
                         android:textColorHint="@color/blue_resenha2"
                         android:textSize="20dp" />
 

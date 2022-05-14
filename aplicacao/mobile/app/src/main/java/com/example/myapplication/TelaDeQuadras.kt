@@ -63,6 +63,9 @@ class TelaDeQuadras : AppCompatActivity() {
     }
 
     fun verQuadra(view: View) {
-        startActivity(Intent(baseContext, TelaQuadras::class.java))
+        val telaQuadra: Intent = Intent(baseContext, TelaQuadras::class.java)
+
+        telaQuadra
+
     }
 }
