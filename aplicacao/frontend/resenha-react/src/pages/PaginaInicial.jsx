@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 import favicon from "../html-css-template/img/resenha-icon.ico";
 import imgLogin from "../html-css-template/img/login.svg";
 import imgCadastro from "../html-css-template/img/cadastro.svg";
@@ -42,7 +42,7 @@ import lnJean from "../html-css-template/img/icon-linkedin.svg";
 import jailson from "../html-css-template/img/fotos-equipe/jailson.png";
 import gitJailson from "../html-css-template/img/icon-github.svg";
 import lnJailson from "../html-css-template/img/icon-linkedin.svg";
-import mathias from "../html-css-template/img/fotos-equipe/mathias.png"
+import mathias from "../html-css-template/img/fotos-equipe/mathias.png";
 import gitMathias from "../html-css-template/img/icon-github.svg";
 import lnMathias from "../html-css-template/img/icon-linkedin.svg";
 import logoResenhaContato from "../html-css-template/img/logo-resenha.svg";
@@ -360,204 +360,210 @@ function PaginaInicial() {
                   </div>
                 </div>
               </div>
+
               <div className="equipe-fotos">
                 <div className="container-equipe">
-                <div className="equipe-fotos">
-                    <img src={bruno} alt="" />
-                    <div className="equipe-content-fotos">
-                      <div className="equipe-content-username">
-                        <h4>
-                          <b>Bruno Ricardo</b>
-                        </h4>
+                  <div className="container-equipe-a">
+                    <div className="equipe-fotos-a">
+                      <img src={bruno} alt="" />
+                      <div className="equipe-content-fotos">
+                        <div className="equipe-content-username">
+                          <h4>
+                            <b>Bruno Ricardo</b>
+                          </h4>
+                        </div>
+                        <div className="equipe-content-midia">
+                          <a
+                            href="https://github.com/BrunoRGSilva"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={gitBruno} alt="" />
+                          </a>
+                          <a
+                            href="https://www.linkedin.com/in/bruno-ricardo-gomes-silva-618a6b1b4/"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={lnBruno} alt="" />
+                          </a>
+                        </div>
                       </div>
-                      <div className="equipe-content-midia">
-                        <a
-                          href="https://github.com/BrunoRGSilva"
-                          rel="github"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={gitBruno} alt="" />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/bruno-ricardo-gomes-silva-618a6b1b4/"
-                          rel="linkedin"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={lnBruno} alt="" />
-                        </a>
+                    </div>
+                    <div className="equipe-fotos-a">
+                      <img src={ferraz} alt="" />
+                      <div className="equipe-content-fotos">
+                        <div className="equipe-content-username">
+                          <h4>
+                            <b>Gabriel Ferraz</b>
+                          </h4>
+                        </div>
+                        <div className="equipe-content-midia">
+                          <a
+                            href="https://github.com/Biellferraz"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={gitFerraz} alt="" />
+                          </a>
+                          <a
+                            href="https://www.linkedin.com/in/gabriel-ferraz-85baa4129/"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={lnFerraz} alt="" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="equipe-fotos-a">
+                      <img src={gw} alt="" />
+                      <div className="equipe-content-fotos">
+                        <div className="equipe-content-username">
+                          <h4>
+                            <b>Gabriel Wesley</b>
+                          </h4>
+                        </div>
+                        <div className="equipe-content-midia">
+                          <a
+                            href="https://github.com/gabrielwesley1"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={gitGw} alt="" />
+                          </a>
+                          <a
+                            href="https://www.linkedin.com/in/gabriel-wesley-294b02213/"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={lnGw} alt="" />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="equipe-fotos">
-                    <img src={ferraz} alt="" />
-                    <div className="equipe-content-fotos">
-                      <div className="equipe-content-username">
-                        <h4>
-                          <b>Gabriel Ferraz</b>
-                        </h4>
+                  <div className="container-equipe-b">
+                    <div className="equipe-fotos-b">
+                      <img src={jailson} alt="" />
+                      <div className="equipe-content-fotos">
+                        <div className="equipe-content-username">
+                          <h4>
+                            <b>Jailson Vitor</b>
+                          </h4>
+                        </div>
+                        <div className="equipe-content-midia">
+                          <a
+                            href="https://github.com/JAILSON-VITOR"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={gitJailson} alt="" />
+                          </a>
+                          <a
+                            href="https://www.linkedin.com/in/jailson-vitor-5444bb1ba/"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={lnJailson} alt="" />
+                          </a>
+                        </div>
                       </div>
-                      <div className="equipe-content-midia">
-                        <a
-                          href="https://github.com/Biellferraz"
-                          rel="github"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={gitFerraz} alt="" />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/gabriel-ferraz-85baa4129/"
-                          rel="linkedin"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={lnFerraz} alt="" />
-                        </a>
+                    </div>
+                    <div className="equipe-fotos-b">
+                      <img src={jean} alt="" />
+                      <div className="equipe-content-fotos">
+                        <div className="equipe-content-username">
+                          <h4>
+                            <b>Jean Sousa</b>
+                          </h4>
+                        </div>
+                        <div className="equipe-content-midia">
+                          <a
+                            href="https://github.com/jean-sousasilva"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={gitJean} alt="" />
+                          </a>
+                          <a
+                            href="https://www.linkedin.com/in/jean-sousa-3a433721a/"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={lnJean} alt="" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="equipe-fotos-b">
+                      <img src={mathias} alt="" />
+                      <div className="equipe-content-fotos">
+                        <div className="equipe-content-username">
+                          <h4>
+                            <b>Mathias Carvalho</b>
+                          </h4>
+                        </div>
+                        <div className="equipe-content-midia">
+                          <a
+                            href="https://github.com/dasSouza"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={gitMathias} alt="" />
+                          </a>
+                          <a
+                            href="https://www.linkedin.com/in/mathias-de-souza-953068205/"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={lnMathias} alt="" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="equipe-fotos-b">
+                      <img src={pedrao} alt="" />
+                      <div className="equipe-content-fotos">
+                        <div className="equipe-content-username">
+                          <h4>
+                            <b>Pedro Leiva</b>
+                          </h4>
+                        </div>
+                        <div className="equipe-content-midia">
+                          <a
+                            href="https://github.com/PedroLeiva"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={gitPedrao} alt="" />
+                          </a>
+                          <a
+                            href="https://www.linkedin.com/in/pedro-henrique-l-a43104169/"
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {" "}
+                            <img src={lnPedrao} alt="" />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="equipe-fotos">
-                    <img src={gw} alt="" />
-                    <div className="equipe-content-fotos">
-                      <div className="equipe-content-username">
-                        <h4>
-                          <b>Gabriel Wesley</b>
-                        </h4>
-                      </div>
-                      <div className="equipe-content-midia">
-                        <a
-                          href="https://github.com/gabrielwesley1"
-                          rel="github"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={gitGw} alt="" />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/gabriel-wesley-294b02213/"
-                          rel="linkedin"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={lnGw} alt="" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="equipe-fotos">
-                    <img src={jailson} alt="" />
-                    <div className="equipe-content-fotos">
-                      <div className="equipe-content-username">
-                        <h4>
-                          <b>Jailson Vitor</b>
-                        </h4>
-                      </div>
-                      <div className="equipe-content-midia">
-                        <a
-                          href="https://github.com/JAILSON-VITOR"
-                          rel="github"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={gitJailson} alt="" />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/jailson-vitor-5444bb1ba/"
-                          rel="linkedin"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={lnJailson} alt="" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="equipe-fotos">
-                    <img src={jean} alt="" />
-                    <div className="equipe-content-fotos">
-                      <div className="equipe-content-username">
-                        <h4>
-                          <b>Jean Sousa</b>
-                        </h4>
-                      </div>
-                      <div className="equipe-content-midia">
-                        <a
-                          href="https://github.com/jean-sousasilva"
-                          rel="github"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={gitJean} alt="" />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/jean-sousa-3a433721a/"
-                          rel="linkedin"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={lnJean} alt="" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="equipe-fotos">
-                    <img src={mathias} alt="" />
-                    <div className="equipe-content-fotos">
-                      <div className="equipe-content-username">
-                        <h4>
-                          <b>Mathias Carvalho</b>
-                        </h4>
-                      </div>
-                      <div className="equipe-content-midia">
-                        <a
-                          href="https://github.com/dasSouza"
-                          rel="github"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={gitMathias} alt="" />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/mathias-de-souza-953068205/"
-                          rel="linkedin"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={lnMathias} alt="" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="equipe-fotos">
-                    <img src={pedrao} alt="" />
-                    <div className="equipe-content-fotos">
-                      <div className="equipe-content-username">
-                        <h4>
-                          <b>Pedro Leiva</b>
-                        </h4>
-                      </div>
-                      <div className="equipe-content-midia">
-                        <a
-                          href="https://github.com/PedroLeiva"
-                          rel="github"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={gitPedrao} alt="" />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/pedro-henrique-l-a43104169/"
-                          rel="linkedin"
-                          target="_blank"
-                        >
-                          {" "}
-                          <img src={lnPedrao} alt="" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+
                   {/* <div className="equipe-fotos">
                     <img src={vini} alt="" />
                     <div className="equipe-content-fotos">
