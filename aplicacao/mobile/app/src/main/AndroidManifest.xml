@@ -1,74 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication" >
+        package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_logo_resenha_icon"
-        android:label="Resenha"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-        android:usesCleartextTraffic="true" >
+            android:allowBackup="true"
+            android:icon="@drawable/ic_logo_resenha_icon"
+            android:label="Resenha"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:usesCleartextTraffic="true">
         <activity
-            android:name=".QuadraBasqueteActivity"
-            android:exported="false" />
+                android:name=".TelaQuadrasVolei"
+                android:exported="false" />
         <activity
-            android:name=".activity"
-            android:exported="false" />
+                android:name=".TelaQuadrasTenis"
+                android:exported="false" />
         <activity
-            android:name=".activity_quadras_tenis"
-            android:exported="false" /> <!-- na tag acima pode alterar a cor da barra de ação -->
+                android:name=".QuadraBasqueteActivity"
+                android:exported="false" />
         <activity
-            android:name=".TelaDeQuadras"
-            android:exported="false" />
+                android:name=".activity"
+                android:exported="false" />
         <activity
-            android:name=".TelaQuadras"
-            android:exported="false" />
+                android:name=".activity_quadras_tenis"
+                android:exported="false" /> <!-- na tag acima pode alterar a cor da barra de ação -->
         <activity
-            android:name=".PagamentoDesejavel"
-            android:exported="false" />
+                android:name=".TelaDeQuadras"
+                android:exported="false" />
         <activity
-            android:name=".Agendamento"
-            android:exported="false" />
+                android:name=".TelaQuadras"
+                android:exported="false" />
         <activity
-            android:name=".FeedBack"
-            android:exported="false" />
+                android:name=".PagamentoDesejavel"
+                android:exported="false" />
         <activity
-            android:name=".TelaDeOpcoes"
-            android:exported="false" />
+                android:name=".Agendamento"
+                android:exported="false" />
         <activity
-            android:name=".MeusDados"
-            android:exported="false" />
+                android:name=".FeedBack"
+                android:exported="false" />
         <activity
-            android:name=".Pagamento"
-            android:exported="false"
-            android:label="@string/title_activity_pagamento"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
+                android:name=".TelaDeOpcoes"
+                android:exported="false" />
         <activity
-            android:name=".Localizacao"
-            android:exported="false" />
+                android:name=".MeusDados"
+                android:exported="false" />
         <activity
-            android:name=".SobreNos"
-            android:exported="false" />
+                android:name=".Pagamento"
+                android:exported="false"
+                android:label="@string/title_activity_pagamento"
+                android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:name=".TelaErro"
-            android:exported="false" />
+                android:name=".Localizacao"
+                android:exported="false" />
         <activity
-            android:name=".TelaInicial"
-            android:exported="false" />
+                android:name=".SobreNos"
+                android:exported="false" />
         <activity
-            android:name=".TelaCadastro"
-            android:exported="false" />
+                android:name=".TelaErro"
+                android:exported="false" />
         <activity
-            android:name=".TelaLogin"
-            android:exported="false" />
+                android:name=".TelaInicial"
+                android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true" >
+                android:name=".TelaCadastro"
+                android:exported="false" />
+        <activity
+                android:name=".TelaLogin"
+                android:exported="false" />
+        <activity
+                android:name=".MainActivity"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
