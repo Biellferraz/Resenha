@@ -95,7 +95,7 @@
             android:layout_weight="1"
                 android:layout_height="wrap_content"
             android:hint="Data de nascimento"
-            android:inputType="number"
+            android:inputType="date"
             android:backgroundTint="@color/blue_resenha"/>
 
         <EditText

@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.Mascaras.MascaraCPF
 import com.example.myapplication.models.AuthResponse
-import com.example.myapplication.models.CadastroRequest
 import com.example.myapplication.models.Jogador
 import com.example.myapplication.rest.Rest
 import com.example.myapplication.services.AuthService
@@ -53,11 +52,11 @@ class TelaCadastro : AppCompatActivity() {
 //        } else {
             val request = retrofit.create(AuthService::class.java)
 
-            val cadastroRequest = CadastroRequest(
+            val cadastroRequest = Jogador(
                 et_cpf.text.toString(),
                 et_nome.text.toString(),
                 et_sobrenome.text.toString(),
-                et_dataNasc.text.toString().format("##/##/####"),
+                et_dataNasc.text.toString(),
                 et_cep.text.toString(),
                 et_telefone.text.toString(),
                 et_email.text.toString(),
