@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Jogador {
@@ -32,8 +33,8 @@ public class Jogador {
     private String sobrenome;
 
     @PastOrPresent
-    @DateTimeFormat(pattern = "ddMMyyyy")
-    @JsonFormat(pattern="ddMMyyyy")
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @JsonFormat(pattern="yyyy/MM/dd")
     @Column(name = "datanasc")
     private LocalDate data_nasc;
 

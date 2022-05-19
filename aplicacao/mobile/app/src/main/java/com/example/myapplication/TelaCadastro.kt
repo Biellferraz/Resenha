@@ -1,11 +1,13 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.Mascaras.MascaraCPF
 import com.example.myapplication.models.AuthResponse
@@ -15,6 +17,10 @@ import com.example.myapplication.services.AuthService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class TelaCadastro : AppCompatActivity() {
     private val retrofit = Rest.getInstance()
@@ -43,49 +49,55 @@ class TelaCadastro : AppCompatActivity() {
         et_senha = findViewById(R.id.et_senha)
     }
 
-    fun criar(v: View){
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun criar(v: View) {
 
 //        if (!Validator.emailIsFine(et_email.text.toString())) {
 //            et_email.error = "E-mail inválido"
 //        } else if (!Validator.passwordIsFine(et_senha.text.toString())) {
 //            et_senha.error = "Senha inválida"
 //        } else {
-            val request = retrofit.create(AuthService::class.java)
+        val request = retrofit.create(AuthService::class.java)
 
-            val cadastroRequest = Jogador(
-                et_cpf.text.toString(),
-                et_nome.text.toString(),
-                et_sobrenome.text.toString(),
-                et_dataNasc.text.toString(),
-                et_cep.text.toString(),
-                et_telefone.text.toString(),
-                et_email.text.toString(),
-                et_senha.text.toString()
-            )
+        var data = et_dataNasc.text.toString()
+        var formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        var dataFormatada = LocalDate.parse(data, formatter)
 
-            request.postCadastrar(cadastroRequest).enqueue(object: Callback<AuthResponse>{
-                override fun onResponse(
-                    call: Call<AuthResponse>,
-                    response: Response<AuthResponse>
-                ) {
-                    if (response.code() == 201){
-                        startActivity(Intent(baseContext, TelaLogin::class.java))
-                    }else{
-                        Toast.makeText(
-                            baseContext, "Erro ao cadastrar", Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
+        val cadastroRequest = Jogador(
+            et_cpf.text.toString(),
+            et_nome.text.toString(),
+            et_sobrenome.text.toString(),
+            dataFormatada,
+            et_cep.text.toString(),
+            et_telefone.text.toString(),
+            et_email.text.toString(),
+            et_senha.text.toString()
+        )
 
-                override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                    t.printStackTrace()
-                    Log.e("api", t.message.toString())
-                    Log.e("api", t.cause?.message.toString())
+        request.postCadastrar(cadastroRequest).enqueue(object : Callback<AuthResponse> {
+            override fun onResponse(
+                call: Call<AuthResponse>,
+                response: Response<AuthResponse>
+            ) {
+                if (response.code() == 201) {
+                    startActivity(Intent(baseContext, TelaLogin::class.java))
+                } else {
                     Toast.makeText(
-                        baseContext, t.message, Toast.LENGTH_LONG
+                        baseContext, "Erro ao cadastrar", Toast.LENGTH_LONG
                     ).show()
                 }
-            })
+            }
+
+            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+                t.printStackTrace()
+                Log.e("api", t.message.toString())
+                Log.e("api", t.cause?.message.toString())
+                Toast.makeText(
+                    baseContext, t.message, Toast.LENGTH_LONG
+                ).show()
+            }
+        })
 
 
 //        }

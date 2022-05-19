@@ -12,11 +12,26 @@ import java.util.*
 class TelaQuadras : AppCompatActivity() {
     private lateinit var calendario: CalendarView
 
+    private var dia: Int = 0
+    private var mes: Int = 0
+    private var ano: Int = 0
+
     //    private lateinit var binding = ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_quadras)
         calendario = findViewById(R.id.calendar)
+        configurarCalendario()
+    }
+
+    private fun configurarCalendario() {
+        val calendar = Calendar.getInstance()
+        calendario.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            dia = dayOfMonth
+            mes = month
+            ano = year
+            calendar.set(year, month, dayOfMonth)
+        }
     }
 
     private var horario: String = ""
@@ -544,22 +559,12 @@ class TelaQuadras : AppCompatActivity() {
     }
 
     fun pagar(view: View) {
-        val agendamento: Intent = Intent(baseContext, Agendamento::class.java)
-
-        val calendar = Calendar.getInstance()
-
-
-        calendario.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            agendamento.putExtra("dia", dayOfMonth)
-            agendamento.putExtra("mes", month)
-            agendamento.putExtra("ano", year)
-
-            calendar.set(year, month, dayOfMonth)
-
-        }
+        val agendamento = Intent(baseContext, Agendamento::class.java)
 
         agendamento.putExtra("teste", calendario.date.toString())
-
+        agendamento.putExtra("dia", dia)
+        agendamento.putExtra("mes", mes)
+        agendamento.putExtra("ano", ano)
         agendamento.putExtra("horario", horario)
 
         startActivity(agendamento)
