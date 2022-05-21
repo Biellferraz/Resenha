@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -19,11 +20,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 class TelaCadastro : AppCompatActivity() {
     private val retrofit = Rest.getInstance()
+
     private lateinit var et_cpf: EditText
     private lateinit var et_nome: EditText
     private lateinit var et_sobrenome: EditText
@@ -50,6 +53,7 @@ class TelaCadastro : AppCompatActivity() {
     }
 
 
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun criar(v: View) {
 
@@ -60,15 +64,17 @@ class TelaCadastro : AppCompatActivity() {
 //        } else {
         val request = retrofit.create(AuthService::class.java)
 
-        var data = et_dataNasc.text.toString()
-        var formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-        var dataFormatada = LocalDate.parse(data, formatter)
+       // val stringDate = et_dataNasc.text.toString()
+        //val pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+
+       // val data: LocalDateTime = LocalDateTime.parse(stringDate , pattern);
+
 
         val cadastroRequest = Jogador(
             et_cpf.text.toString(),
             et_nome.text.toString(),
             et_sobrenome.text.toString(),
-            dataFormatada,
+            et_dataNasc.text.toString(),
             et_cep.text.toString(),
             et_telefone.text.toString(),
             et_email.text.toString(),
@@ -81,7 +87,8 @@ class TelaCadastro : AppCompatActivity() {
                 response: Response<AuthResponse>
             ) {
                 if (response.code() == 201) {
-                    startActivity(Intent(baseContext, TelaLogin::class.java))
+                    val telaLogin: Intent = Intent(baseContext, TelaLogin::class.java)
+                    startActivity(telaLogin)
                 } else {
                     Toast.makeText(
                         baseContext, "Erro ao cadastrar", Toast.LENGTH_LONG

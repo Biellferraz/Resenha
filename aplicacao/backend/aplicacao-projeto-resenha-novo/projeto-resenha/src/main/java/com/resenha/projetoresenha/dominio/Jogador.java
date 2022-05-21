@@ -33,8 +33,8 @@ public class Jogador {
     private String sobrenome;
 
     @PastOrPresent
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
-    @JsonFormat(pattern="yyyy/MM/dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     @Column(name = "datanasc")
     private LocalDate data_nasc;
 

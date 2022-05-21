@@ -6,7 +6,7 @@ data class Jogador(
     val cpf : String,
     val nome: String,
     val sobrenome: String,
-    val data_nasc : LocalDate,
+    val data_nasc : String,
     val cep : String,
     val telefone : String,
     val email : String,
