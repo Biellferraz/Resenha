@@ -71,7 +71,7 @@ function PaginaInicial() {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <title>Resenha</title>
+          <title>Resenha2</title>
           <link href="../css/header.css" rel="stylesheet" />
           <link href="../css/index.css" rel="stylesheet" />
           <link href="../css/footer.css" rel="stylesheet" />
@@ -128,7 +128,7 @@ function PaginaInicial() {
             </header>
             <div className="sub-header">
               <label>
-                DEIXE O RESENHA
+                DEIXE O RESENHA2
                 <br />
                 CUIDAR DE SEU JOGO
               </label>
