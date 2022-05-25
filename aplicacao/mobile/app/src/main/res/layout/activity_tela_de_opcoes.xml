@@ -61,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/blue_resenha"
                         android:layout_marginTop="30dp"
-                        android:text="Futebol"
+                        android:text="@string/futebol"
                         android:textAlignment="center"
                         android:textSize="24.84sp" />
 
@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:textColor="@color/blue_resenha"
-                        android:text="Basquete"
+                        android:text="@string/basquete"
                         android:textAlignment="center"
                         android:textSize="24.84sp" />
 
@@ -105,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:textColor="@color/blue_resenha"
-                        android:text="Tênis"
+                        android:text="@string/tenis"
                         android:textAlignment="center"
                         android:textSize="24.84sp" />
 
@@ -127,7 +127,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/blue_resenha"
                         android:layout_marginTop="30dp"
-                        android:text="Vôlei"
+                        android:text="@string/volei"
                         android:textAlignment="center"
                         android:textSize="24.84sp" />
 

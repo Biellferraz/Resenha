@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface QuadraRepository extends JpaRepository<Quadra, Integer> {
     List<Quadra> findByFkCentroEsportivo(Integer fkCentroEsportivo);
+    List<Quadra> findByModalidade(String modalide);
 }

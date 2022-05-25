@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.adapters.QuadrasMockAdapter
 import com.example.myapplication.models.Jogador
+import com.example.myapplication.models.Quadra
 import com.example.myapplication.models.QuadraMock
 import com.example.myapplication.rest.Rest
+import com.example.myapplication.services.AuthService
 import com.example.myapplication.services.QuadraService
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,7 +34,6 @@ class TelaDeQuadras : AppCompatActivity() {
         etId = findViewById(R.id.etBusca)
         val recylerViewContainer = findViewById<RecyclerView>(R.id.recyclerQuadrasContainer)
         recylerViewContainer.layoutManager = LinearLayoutManager(baseContext)
-
         val imagem = "https://www.saopaulo.sp.gov.br/wp-content/uploads/2020/10/quadra-adolfo.jpg"
         val quadrasLists = listOf<QuadraMock>(
             QuadraMock(1, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
@@ -76,6 +77,18 @@ class TelaDeQuadras : AppCompatActivity() {
             }
 
         })
+    }
+
+    fun trazerQuadras(){
+
+        val prefs = getSharedPreferences("ACESSO", Context.MODE_PRIVATE)
+        val request = retrofit.create(AuthService::class.java)
+        val modalidade = intent.getStringExtra("modalidade")
+
+        request.getQuadraPorModalidade().enqueue(object : Callback<> {
+
+        })
+
     }
 
     fun verQuadra(view: View) {

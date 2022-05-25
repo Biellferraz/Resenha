@@ -31,6 +31,17 @@ public class QuadraController {
         return ResponseEntity.status(200).body(quadrasEncontradas);
     }
 
+    @GetMapping("/recuperar-quadras/{modalidade}")
+    public ResponseEntity getQuadrasPorModalidade(@PathVariable String modalide){
+        List<Quadra> quadrasEncontradas = repository.findByModalidade(modalide);
+
+        if (quadrasEncontradas == null) {
+            return ResponseEntity.status(404).build();
+        }
+
+        return ResponseEntity.status(200).body(quadrasEncontradas);
+    }
+
     @GetMapping
     public ResponseEntity getQuadras() {
         List<Quadra> quadraLista = repository.findAll();
