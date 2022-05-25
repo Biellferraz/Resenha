@@ -128,7 +128,7 @@ function PaginaInicial() {
             </header>
             <div className="sub-header">
               <label>
-                DEIXE O RESENHA2
+                DEIXE O RESENHA
                 <br />
                 CUIDAR DE SEU JOGO
               </label>
