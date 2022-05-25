@@ -11,9 +11,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.adapters.QuadrasAdapter
+import com.example.myapplication.adapters.QuadrasMockAdapter
 import com.example.myapplication.models.Jogador
-import com.example.myapplication.models.Quadra
+import com.example.myapplication.models.QuadraMock
 import com.example.myapplication.rest.Rest
 import com.example.myapplication.services.QuadraService
 import retrofit2.Call
@@ -34,14 +34,14 @@ class TelaDeQuadras : AppCompatActivity() {
         recylerViewContainer.layoutManager = LinearLayoutManager(baseContext)
 
         val imagem = "https://www.saopaulo.sp.gov.br/wp-content/uploads/2020/10/quadra-adolfo.jpg"
-        val quadrasList = listOf<Quadra>(
-            Quadra(1, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
-            Quadra(2, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
-            Quadra(3, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
-            Quadra(4, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
+        val quadrasLists = listOf<QuadraMock>(
+            QuadraMock(1, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
+            QuadraMock(2, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
+            QuadraMock(3, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
+            QuadraMock(4, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
         )
 
-        recylerViewContainer.adapter = QuadrasAdapter(quadrasList)
+        recylerViewContainer.adapter = QuadrasMockAdapter(quadrasLists)
     }
 
 
