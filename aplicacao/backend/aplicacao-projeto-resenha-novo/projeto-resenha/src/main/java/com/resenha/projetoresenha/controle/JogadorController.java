@@ -30,7 +30,7 @@ public class JogadorController {
     @PostMapping("/cadastrar")
     public ResponseEntity postCadastrar(@RequestBody @Valid Jogador novoJogador) {
         repository.save(novoJogador);
-        return ResponseEntity.status(201).build();
+        return ResponseEntity.status(201).body(novoJogador);
     }
 
     @PostMapping("/login")

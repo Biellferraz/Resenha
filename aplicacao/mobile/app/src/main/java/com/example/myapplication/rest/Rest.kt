@@ -7,7 +7,7 @@ object Rest {
     //TROCAR PARA A API FUNCIONAR
 
     //private val baseUrl = "http://10.18.34.103:8080/"
-    private val baseUrl = "http://192.168.0.128:8080/"
+    private val baseUrl = "http://10.18.33.227:8080/"
 
     fun getInstance(): Retrofit {
         return Retrofit

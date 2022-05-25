@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -106,8 +107,6 @@ class TelaCadastro : AppCompatActivity() {
             }
         })
 
-
-//        }
 
     }
 
