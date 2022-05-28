@@ -16,7 +16,6 @@ interface AuthService {
     @POST("/jogadores/cadastrar")
     fun postCadastrar(@Body cadastroRequest: Jogador): Call<AuthResponse>
 
-    @GET("/modalidade-quadra/{modalidade}")
-    fun getQuadraPorModalidade(@Body quadraRequest: Quadra): Call<AuthResponse>
+
 //    @Path("name") String name
 }

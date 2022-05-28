@@ -8,40 +8,46 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
-import com.example.myapplication.models.QuadraMock
+import com.example.myapplication.models.CentroEsportivo
+import com.example.myapplication.models.Quadra
 
 class QuadraAdapter (
-    val quadraMock: List<QuadraMock>,
-    val onClick: (QuadraMock) -> Unit
-) : RecyclerView.Adapter<QuadraAdapter.FilmesViewHolder>() {
+    val quadraMock: List<Quadra>,
+    val centroEsportivo:List<CentroEsportivo>,
+    val onClick: (Quadra) -> Unit
+) : RecyclerView.Adapter<QuadraAdapter.QuadraViewHolder>() {
 
     override fun getItemCount() = quadraMock.size
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmesViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuadraViewHolder {
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.quadra_item_list, parent, false)
-        return FilmesViewHolder(view)
+        return QuadraViewHolder(view)
     }
 
-    class FilmesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var tvmodalide: ImageView = view.findViewById(R.id.)
-        var tvnumero_quadra: ImageView = view.findViewById(R.id.tvFilmeImage)
-        var tvdisponivel: TextView = view.findViewById(R.id.tvFilmeTitle)
-        val tvfkCentroEsportivo: TextView = view.findViewById(R.id.tvFilmeDescription)
+    class QuadraViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var tvImage: ImageView = view.findViewById(R.id.img_quadra)
+        var tvnumero_quadra: TextView = view.findViewById(R.id.text_quadra)
+        var tvnome_centro_esportivo: TextView = view.findViewById(R.id.text_centro_esportivo)
+        val tvlocalizacao: TextView = view.findViewById(R.id.text_endereco)
+        val tvValor:TextView = view.findViewById(R.id.text_preco)
     }
 
-    override fun onBindViewHolder(holder: FilmesViewHolder, position: Int) {
-        val filme = quadraMock[position]
-        val filmeImage = quadraMock[position].imageUrl
-        holder.tvFilmeTitle.text = filme.title
-        holder.tvFilmeDescription.text = filme.decription
+    override fun onBindViewHolder(holder: QuadraViewHolder, position: Int) {
+        val quadra = quadraMock[position]
+        val quadraImage = quadraMock[position].imagem
+        val centroEsportivo = centroEsportivo[position]
+        holder.tvnome_centro_esportivo.text = centroEsportivo.nome
+        holder.tvnumero_quadra.text = quadra.numero_quadra.toString()
+        holder.tvlocalizacao.text = centroEsportivo.fkCidade
+        holder.tvValor.text = quadra.preco.toString()
 
-        Glide.with(holder.itemView).load(filmeImage).into(holder.tvFilmeImage)
+        Glide.with(holder.itemView).load(quadraImage).into(holder.tvImage)
         /*
         * Aqui modificaremos as propriedades do nosso FilmesViewHolder
         * */
         holder.itemView.setOnClickListener {
-            onClick(filme)
+            onClick(quadra)
         }
     }
 }

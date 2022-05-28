@@ -11,12 +11,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.adapters.QuadraAdapter
 import com.example.myapplication.adapters.QuadrasMockAdapter
-import com.example.myapplication.models.Jogador
 import com.example.myapplication.models.Quadra
-import com.example.myapplication.models.QuadraMock
 import com.example.myapplication.rest.Rest
-import com.example.myapplication.services.AuthService
 import com.example.myapplication.services.QuadraService
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,30 +33,58 @@ class TelaDeQuadras : AppCompatActivity() {
         val recylerViewContainer = findViewById<RecyclerView>(R.id.recyclerQuadrasContainer)
         recylerViewContainer.layoutManager = LinearLayoutManager(baseContext)
         val imagem = "https://www.saopaulo.sp.gov.br/wp-content/uploads/2020/10/quadra-adolfo.jpg"
-        val quadrasLists = listOf<QuadraMock>(
-            QuadraMock(1, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
-            QuadraMock(2, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
-            QuadraMock(3, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
-            QuadraMock(4, "SPTECH", "Quadra 1", "Rua hadock Lobo 595", 80.0, imagem),
+        val quadrasLists = listOf<Quadra>(
         )
 
         recylerViewContainer.adapter = QuadrasMockAdapter(quadrasLists)
     }
 
 
-    fun teste(view: View) {
-        val id = etId.text.toString().toLong()
-        val request = retrofit.create(QuadraService::class.java)
+//    fun teste(view: View) {
+//        val id = etId.text.toString().toLong()
+//        val request = retrofit.create(QuadraService::class.java)
+//        val prefs = getSharedPreferences("ACESSO", Context.MODE_PRIVATE)
+//        val token = prefs.getString("jwt_token", "")
+//
+//        request.getById(id, token).enqueue(object : Callback<Jogador> {
+//            override fun onResponse(call: Call<Jogador>, response: Response<Jogador>) {
+//                if (response.isSuccessful) {
+//                    Container.removeAllViews()
+//                    val tvMovie = TextView(baseContext)
+//                    tvMovie.text = response.body()?.nome
+//                    Container.addView(tvMovie)
+//                } else {
+//                    Toast.makeText(
+//                        baseContext,
+//                        response.message(),
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<Jogador>, t: Throwable) {
+//                Toast.makeText(
+//                    baseContext,
+//                    t.message,
+//                    Toast.LENGTH_LONG
+//                ).show()
+//            }
+//
+//        })
+//    }
+
+    fun trazerQuadras(){
+
         val prefs = getSharedPreferences("ACESSO", Context.MODE_PRIVATE)
+        val request = retrofit.create(QuadraService::class.java)
+        val modalidade = intent.getStringExtra("modalidade")
         val token = prefs.getString("jwt_token", "")
 
-        request.getById(id, token).enqueue(object : Callback<Jogador> {
-            override fun onResponse(call: Call<Jogador>, response: Response<Jogador>) {
+        request.getQuadraPorModalidade(modalidade,token).enqueue(object : Callback<Quadra> {
+            override fun onResponse(call: Call<Quadra>, response: Response<Quadra>) {
                 if (response.isSuccessful) {
-                    Container.removeAllViews()
-                    val tvMovie = TextView(baseContext)
-                    tvMovie.text = response.body()?.nome
-                    Container.addView(tvMovie)
+                   QuadraAdapter.QuadraViewHolder()
+
                 } else {
                     Toast.makeText(
                         baseContext,
@@ -68,24 +94,14 @@ class TelaDeQuadras : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<Jogador>, t: Throwable) {
+
+            override fun onFailure(call: Call<Quadra>, t: Throwable) {
                 Toast.makeText(
                     baseContext,
                     t.message,
                     Toast.LENGTH_LONG
                 ).show()
             }
-
-        })
-    }
-
-    fun trazerQuadras(){
-
-        val prefs = getSharedPreferences("ACESSO", Context.MODE_PRIVATE)
-        val request = retrofit.create(AuthService::class.java)
-        val modalidade = intent.getStringExtra("modalidade")
-
-        request.getQuadraPorModalidade().enqueue(object : Callback<> {
 
         })
 

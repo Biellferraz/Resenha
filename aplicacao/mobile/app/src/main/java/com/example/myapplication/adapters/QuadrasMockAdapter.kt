@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
-import com.example.myapplication.models.QuadraMock
 
 class QuadrasMockAdapter(val quadraMocks: List<QuadraMock>) :
     RecyclerView.Adapter<QuadrasMockAdapter.QuadraViewHolder>() {

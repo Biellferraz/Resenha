@@ -6,4 +6,6 @@ data class Quadra(
     val numero_quadra: Int,
     val disponivel: Int,
     val fkCentroEsportivo: Int,
+    val preco: Double,
+    val imagem: String
 )

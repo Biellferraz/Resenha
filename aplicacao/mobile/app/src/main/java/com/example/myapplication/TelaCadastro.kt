@@ -58,18 +58,7 @@ class TelaCadastro : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun criar(v: View) {
 
-//        if (!Validator.emailIsFine(et_email.text.toString())) {
-//            et_email.error = "E-mail inválido"
-//        } else if (!Validator.passwordIsFine(et_senha.text.toString())) {
-//            et_senha.error = "Senha inválida"
-//        } else {
         val request = retrofit.create(AuthService::class.java)
-
-       // val stringDate = et_dataNasc.text.toString()
-        //val pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-
-       // val data: LocalDateTime = LocalDateTime.parse(stringDate , pattern);
-
 
         val cadastroRequest = Jogador(
             et_cpf.text.toString(),
