@@ -20,7 +20,7 @@
                 android:name=".TelaQuadrasTenis"
                 android:exported="false" />
         <activity
-                android:name=".QuadraBasqueteActivity"
+                android:name=".QuadraBasquete"
                 android:exported="false" />
         <activity
                 android:name=".activity"
@@ -55,7 +55,7 @@
                 android:label="@string/title_activity_pagamento"
                 android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-                android:name=".Localizacao"
+                android:name=".TelaDeTermos"
                 android:exported="false" />
         <activity
                 android:name=".SobreNos"
