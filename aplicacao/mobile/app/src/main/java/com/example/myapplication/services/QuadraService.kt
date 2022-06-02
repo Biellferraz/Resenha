@@ -8,9 +8,9 @@ import retrofit2.http.*
 
 interface QuadraService {
 
-    @GET("Quadra/modalidade-quadra/{modalidade}")
-    fun getQuadraPorModalidade(@Path("Modalidade")Modalidade :String?,
-                               @Header("Authorization") token: String?): Call<Quadra>
+    @GET("quadras/buscar-quadras/{modalidade}")
+    fun getQuadraPorModalidade(@Path("modalidade")Modalidade :String?,
+                               @Header("Authorization") token: String?): Call<List<Quadra>>
 
 
 }

@@ -12,7 +12,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.adapters.QuadraAdapter
-import com.example.myapplication.adapters.QuadrasMockAdapter
 import com.example.myapplication.models.Quadra
 import com.example.myapplication.rest.Rest
 import com.example.myapplication.services.QuadraService
@@ -24,19 +23,17 @@ class TelaDeQuadras : AppCompatActivity() {
     private val retrofit = Rest.getInstance()
     private lateinit var Container: LinearLayout
     private lateinit var etId: EditText
-
+    private lateinit var recyclerViewContainer: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_de_quadras)
         etId = findViewById(R.id.etBusca)
-        val recylerViewContainer = findViewById<RecyclerView>(R.id.recyclerQuadrasContainer)
-        recylerViewContainer.layoutManager = LinearLayoutManager(baseContext)
+        recyclerViewContainer = findViewById(R.id.recyclerQuadrasContainer)
+        recyclerViewContainer.layoutManager = LinearLayoutManager(baseContext)
         val imagem = "https://www.saopaulo.sp.gov.br/wp-content/uploads/2020/10/quadra-adolfo.jpg"
-        val quadrasLists = listOf<Quadra>(
-        )
+        trazerQuadras(imagem)
 
-        recylerViewContainer.adapter = QuadrasMockAdapter(quadrasLists)
     }
 
 
@@ -73,35 +70,29 @@ class TelaDeQuadras : AppCompatActivity() {
 //        })
 //    }
 
-    fun trazerQuadras(){
+    fun trazerQuadras(imagem: String) {
 
         val prefs = getSharedPreferences("ACESSO", Context.MODE_PRIVATE)
         val request = retrofit.create(QuadraService::class.java)
-        val modalidade = intent.getStringExtra("modalidade")
+        val modalidade = intent.getStringExtra("modalidade") ?: "Futebol"
         val token = prefs.getString("jwt_token", "")
 
-        request.getQuadraPorModalidade(modalidade,token).enqueue(object : Callback<Quadra> {
-            override fun onResponse(call: Call<Quadra>, response: Response<Quadra>) {
+        request.getQuadraPorModalidade(modalidade, token).enqueue(object : Callback<List<Quadra>> {
+            override fun onResponse(call: Call<List<Quadra>>, response: Response<List<Quadra>>) {
                 if (response.isSuccessful) {
-                   QuadraAdapter.QuadraViewHolder()
-
-                } else {
-                    Toast.makeText(
-                        baseContext,
-                        response.message(),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    val quadrasList = mutableListOf<Quadra>()
+                    response.body()?.forEach { quadra ->
+                        quadra.imagem = imagem
+                        quadrasList.add(quadra)
+                    }
+                    recyclerViewContainer.adapter = QuadraAdapter(quadrasList)
                 }
             }
 
-
-            override fun onFailure(call: Call<Quadra>, t: Throwable) {
-                Toast.makeText(
-                    baseContext,
-                    t.message,
-                    Toast.LENGTH_LONG
-                ).show()
+            override fun onFailure(call: Call<List<Quadra>>, t: Throwable) {
+                TODO("Not yet implemented")
             }
+
 
         })
 

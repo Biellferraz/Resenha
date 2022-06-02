@@ -1,10 +1,12 @@
 package com.example.myapplication.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
@@ -12,9 +14,7 @@ import com.example.myapplication.models.CentroEsportivo
 import com.example.myapplication.models.Quadra
 
 class QuadraAdapter (
-    val quadraMock: List<Quadra>,
-    val centroEsportivo:List<CentroEsportivo>,
-    val onClick: (Quadra) -> Unit
+    val quadraMock: List<Quadra>
 ) : RecyclerView.Adapter<QuadraAdapter.QuadraViewHolder>() {
 
     override fun getItemCount() = quadraMock.size
@@ -36,10 +36,10 @@ class QuadraAdapter (
     override fun onBindViewHolder(holder: QuadraViewHolder, position: Int) {
         val quadra = quadraMock[position]
         val quadraImage = quadraMock[position].imagem
-        val centroEsportivo = centroEsportivo[position]
+        val centroEsportivo = quadraMock[position].centroEsportivo
         holder.tvnome_centro_esportivo.text = centroEsportivo.nome
-        holder.tvnumero_quadra.text = quadra.numero_quadra.toString()
-        holder.tvlocalizacao.text = centroEsportivo.fkCidade
+        holder.tvnumero_quadra.text = quadra.nome
+        holder.tvlocalizacao.text = centroEsportivo.cidade
         holder.tvValor.text = quadra.preco.toString()
 
         Glide.with(holder.itemView).load(quadraImage).into(holder.tvImage)
@@ -47,7 +47,7 @@ class QuadraAdapter (
         * Aqui modificaremos as propriedades do nosso FilmesViewHolder
         * */
         holder.itemView.setOnClickListener {
-            onClick(quadra)
+            Toast.makeText(holder.itemView.context, "Clicou na quadra", Toast.LENGTH_LONG).show()
         }
     }
 }

@@ -54,66 +54,55 @@ class TelaCadastro : AppCompatActivity() {
         et_senha = findViewById(R.id.et_senha)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun criar(v: View) {
 
-    fun checkBoxTermos(v: View){
-        if (v is CheckBox){
-            val checked: Boolean = v.isChecked
-            when(v.id){
-                R.id.checkBoxTermos -> {
-                    if (checked){
+        val request = retrofit.create(AuthService::class.java)
+        val checkBox = findViewById<CheckBox>(R.id.checkBoxTermos).isChecked
 
-                        @RequiresApi(Build.VERSION_CODES.O)
-                        fun criar(v: View) {
+        val cadastroRequest = Jogador(
+            et_cpf.text.toString(),
+            et_nome.text.toString(),
+            et_sobrenome.text.toString(),
+            et_dataNasc.text.toString(),
+            et_cep.text.toString(),
+            et_telefone.text.toString(),
+            et_email.text.toString(),
+            et_senha.text.toString()
+        )
+        if(checkBox) {
 
-                            val request = retrofit.create(AuthService::class.java)
-
-                            val cadastroRequest = Jogador(
-                                et_cpf.text.toString(),
-                                et_nome.text.toString(),
-                                et_sobrenome.text.toString(),
-                                et_dataNasc.text.toString(),
-                                et_cep.text.toString(),
-                                et_telefone.text.toString(),
-                                et_email.text.toString(),
-                                et_senha.text.toString()
-                            )
-
-                            request.postCadastrar(cadastroRequest).enqueue(object : Callback<AuthResponse> {
-                                override fun onResponse(
-                                    call: Call<AuthResponse>,
-                                    response: Response<AuthResponse>
-                                ) {
-                                    if (response.code() == 201) {
-                                        val telaLogin: Intent = Intent(baseContext, TelaLogin::class.java)
-                                        startActivity(telaLogin)
-                                    } else {
-                                        Toast.makeText(
-                                            baseContext, "Erro ao cadastrar", Toast.LENGTH_LONG
-                                        ).show()
-                                    }
-                                }
-
-                                override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                                    t.printStackTrace()
-                                    Log.e("api", t.message.toString())
-                                    Log.e("api", t.cause?.message.toString())
-                                    Toast.makeText(
-                                        baseContext, t.message, Toast.LENGTH_LONG
-                                    ).show()
-                                }
-                            })
-
-
-                        }
-                    }
-                    else {
+            request.postCadastrar(cadastroRequest).enqueue(object : Callback<AuthResponse> {
+                override fun onResponse(
+                    call: Call<AuthResponse>,
+                    response: Response<AuthResponse>
+                ) {
+                    if (response.code() == 201) {
+                        val telaLogin: Intent = Intent(baseContext, TelaLogin::class.java)
+                        startActivity(telaLogin)
+                    } else {
                         Toast.makeText(
-                            baseContext, "Para prosseguir você deve aceitar os termos!", Toast.LENGTH_LONG
+                            baseContext, "Erro ao cadastrar", Toast.LENGTH_LONG
                         ).show()
                     }
                 }
-            }
+
+                override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    Log.e("api", t.message.toString())
+                    Log.e("api", t.cause?.message.toString())
+                    Toast.makeText(
+                        baseContext, t.message, Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
         }
+        else {
+            Toast.makeText(
+                baseContext, "Para prosseguir você deve aceitar os termos!", Toast.LENGTH_LONG
+            ).show()
+    }
+
     }
 
 
