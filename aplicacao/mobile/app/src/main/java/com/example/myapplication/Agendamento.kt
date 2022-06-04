@@ -5,27 +5,37 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.models.Jogador
+import com.example.myapplication.models.Agendar
 import com.example.myapplication.rest.Rest
-import com.example.myapplication.services.AuthService
+import com.example.myapplication.services.AgendamentoService
 
 class Agendamento : AppCompatActivity() {
     private val retrofit = Rest.getInstance()
 
-    //    private val valor: String = ""
+    lateinit var nome: String
+    lateinit var quadra: String
+    lateinit var idQuadra: String
+    lateinit var centro: String
+    lateinit var modalidade: String
+    lateinit var valor: String
+    lateinit var hora_marcada: String
+    lateinit var idJogador: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agendamento)
-        val nome = intent.getStringExtra("nome")
-        val quadra = intent.getStringExtra("quadra")
-        val idQuadra = intent.getStringExtra("idQuadra")
-        val centro = intent.getStringExtra("centro")
-        val modalidade = intent.getStringExtra("modalidade")
-        val valor = intent.getStringExtra("valor")
-        val dia = intent.getIntExtra("dia", 0)
-        val mes = intent.getIntExtra("mes", 0)
-        val ano = intent.getIntExtra("ano", 0)
-        val horario = intent.getStringExtra("horario")
+        nome = intent.getStringExtra("nome").toString()
+        quadra = intent.getStringExtra("quadra").toString()
+        idQuadra = intent.getStringExtra("idQuadra").toString()
+        centro = intent.getStringExtra("centro").toString()
+        modalidade = intent.getStringExtra("modalidade").toString()
+        valor = intent.getStringExtra("valor").toString()
+        idJogador = intent.getStringExtra("idJogador").toString()
+        var dia = intent.getIntExtra("dia", 0)
+        var mes = intent.getIntExtra("mes", 0)
+        var ano = intent.getIntExtra("ano", 0)
+        var horario = intent.getStringExtra("horario").toString()
+        hora_marcada = "${dia}/${mes}/${ano}  ${horario}"
         findViewById<TextView>(R.id.horaioMarcado).text = "${dia}/${mes}/${ano} às ${horario}"
         findViewById<TextView>(R.id.nomeJogador).text = nome
         findViewById<TextView>(R.id.quadra).text = quadra
@@ -37,18 +47,19 @@ class Agendamento : AppCompatActivity() {
     }
 
     fun agendar(v: View) {
-        val request = retrofit.create(Agendamento::class.java)
+        val request = retrofit.create(AgendamentoService::class.java)
 
-        val agendamentoRequest = Agendamento(
-            idQ
-            val fkQuadra: Int,
-            val fkJogador: Int,
-            val preco: Double,
-            var hora_marcada: String
+        val fkJogador: String = "103"
+
+        val agendamentoRequest = Agendar(
+            idQuadra,
+            fkJogador,
+            valor,
+            hora_marcada
         )
+
         val pagamento: Intent = Intent(baseContext, Pagamento::class.java)
 
-//        pagamento.putExtra("valor", valor)
 
         startActivity(pagamento)
     }

@@ -82,12 +82,14 @@ class TelaDeQuadras : AppCompatActivity() {
             override fun onResponse(call: Call<List<Quadra>>, response: Response<List<Quadra>>) {
                 if (response.isSuccessful) {
                     val quadrasList = mutableListOf<Quadra>()
+
                     response.body()?.forEach { quadra ->
                         quadra.imagem = imagem
                         quadrasList.add(quadra)
                         verQuadra(quadra.id,quadra.imagem,quadra.nome, quadra.centroEsportivo.nome,
                             quadra.centroEsportivo.cidade,quadra.preco)
                     }
+
                     recyclerViewContainer.adapter = QuadraAdapter(quadrasList)
                 }
             }

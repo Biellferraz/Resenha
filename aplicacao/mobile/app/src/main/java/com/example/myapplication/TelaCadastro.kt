@@ -60,7 +60,10 @@ class TelaCadastro : AppCompatActivity() {
         val request = retrofit.create(AuthService::class.java)
         val checkBox = findViewById<CheckBox>(R.id.checkBoxTermos).isChecked
 
+        val idJogador: String = ""
+
         val cadastroRequest = Jogador(
+            idJogador.toString(),
             et_cpf.text.toString(),
             et_nome.text.toString(),
             et_sobrenome.text.toString(),

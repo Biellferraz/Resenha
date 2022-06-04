@@ -43,6 +43,19 @@ public class JogadorController {
             return ResponseEntity.status(403).build();
         }
 
+//        return ResponseEntity.status(200).body(jogadorEncontrado).getHeaders().jogador;
+        return ResponseEntity.status(200).header(jogadorEncontrado.getId().toString()).body(jogadorEncontrado);
+
+    }
+
+
+    @GetMapping("/buscarIdPorLogin")
+    public ResponseEntity getIdUsuariosPorLogin(@PathVariable String email, String senha) {
+        Jogador jogadorEncontrado = repository.findByEmailAndSenha(email, senha);
+        if (jogadorEncontrado == null) {
+            return ResponseEntity.status(403).build();
+        }
+
         return ResponseEntity.status(200).body(jogadorEncontrado);
 
     }
@@ -53,9 +66,9 @@ public class JogadorController {
 
     }
 
-    @GetMapping("/buscar")
-    public ResponseEntity loginApp(@RequestBody Login login){
-        Jogador  usuario = repository.findByEmailAndSenha(login.getEmail(), login.getSenha());
+  /*  @GetMapping("/buscar")
+    public ResponseEntity loginApp(@RequestBody Login login) {
+        Jogador usuario = repository.findByEmailAndSenha(login.getEmail(), login.getSenha());
 
         if (usuario == null) {
             return ResponseEntity.status(404).build();
@@ -63,7 +76,7 @@ public class JogadorController {
 
         return ResponseEntity.status(200).body(usuario);
 
-    }
+    }*/
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteUsuarios(@PathVariable int id) {

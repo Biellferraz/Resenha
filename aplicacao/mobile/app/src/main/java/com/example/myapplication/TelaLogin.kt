@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.models.AuthRequest
 import com.example.myapplication.models.AuthResponse
+import com.example.myapplication.models.Jogador
+import com.example.myapplication.models.Quadra
 import com.example.myapplication.rest.Rest
 import com.example.myapplication.services.AuthService
 import retrofit2.Call
@@ -23,6 +25,7 @@ class TelaLogin : AppCompatActivity() {
     private lateinit var et_senha: EditText;
     private lateinit var tvErro: TextView;
     private val nome: String = "";
+    private val idJogaodor: Int = 0;
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +57,10 @@ class TelaLogin : AppCompatActivity() {
         )
 
 
+
+
+
+
         request.postLogin(authRequest).enqueue(object : Callback<AuthResponse> {
 
 
@@ -63,14 +70,40 @@ class TelaLogin : AppCompatActivity() {
                 if (response.isSuccessful) {
 
                     val inicial: Intent = Intent(baseContext, TelaInicial::class.java)
-                    val agendamento: Intent = Intent(baseContext, Agendamento::class.java)
+
+                    request.getIdUsuariosPorLogin(
+                        et_email.text.toString(),
+                        et_senha.text.toString()
+                    ).enqueue(object : Callback<Jogador> {
+                        override fun onResponse(call: Call<Jogador>, response: Response<Jogador>) {
+                            if (response.isSuccessful) {
+
+                                val agendamento: Intent =
+                                    Intent(baseContext, Agendamento::class.java)
+
+                                /*val jogadorList = mutableListOf<Jogador>()
+
+                                response.body()?.forEach { jogador ->
+
+                                    jogadorList.add(jogador)
+
+                                }
+                                */
+
+                                agendamento.putExtra("idJogador", response.body()?.id)
+                                agendamento.putExtra("nome", response.body()?.nome)
+
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Jogador>, t: Throwable) {
+                            TODO("Not yet implemented")
+                        }
 
 
-                    agendamento.putExtra("idJogador", )
-                    agendamento.putExtra("nome", )
+                    })
 
                     startActivity(inicial)
-
 
 
 //                        println(response.body()?.token)

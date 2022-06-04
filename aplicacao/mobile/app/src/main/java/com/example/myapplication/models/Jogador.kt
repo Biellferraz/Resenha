@@ -3,6 +3,7 @@ package com.example.myapplication.models
 import java.time.LocalDate
 
 data class Jogador(
+    val id: String,
     val cpf : String,
     val nome: String,
     val sobrenome: String,
