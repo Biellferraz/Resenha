@@ -21,11 +21,11 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                <EditText
+                <TextView
                         android:layout_marginLeft="18dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/etBusca"
+                        android:id="@+id/etModalidade"
                         android:textSize="25sp"
                         android:hint="Futebol" />
 

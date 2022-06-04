@@ -20,6 +20,10 @@ class TelaDeOpcoes : AppCompatActivity() {
     fun modalidadeFutebol(v: View) {
         val tela: Intent = Intent(baseContext,TelaDeQuadras::class.java)
         tela.putExtra("modalidade",getString(R.string.futebol))
+        val tela2: Intent = Intent(baseContext,TelaDeQuadras::class.java)
+        tela.putExtra("modalidade",getString(R.string.futebol))
+        val tela3: Intent = Intent(baseContext,Agendamento::class.java)
+        tela.putExtra("modalidade",getString(R.string.futebol))
         startActivity(tela)
     }
 
@@ -27,17 +31,29 @@ class TelaDeOpcoes : AppCompatActivity() {
     fun modalidadeBasquete(v: View){
         val tela: Intent = Intent(baseContext,QuadraBasquete::class.java)
         tela.putExtra("modalidade",getString(R.string.basquete))
+        val tela2: Intent = Intent(baseContext,TelaDeQuadras::class.java)
+        tela.putExtra("modalidade",getString(R.string.basquete))
+        val tela3: Intent = Intent(baseContext,Agendamento::class.java)
+        tela.putExtra("modalidade",getString(R.string.basquete))
         startActivity(tela)
     }
 
     fun modalidadeTenis(v: View){
         val tela: Intent = Intent(baseContext,TelaQuadrasTenis::class.java)
         tela.putExtra("modalidade",getString(R.string.tenis))
+        val tela2: Intent = Intent(baseContext,TelaDeQuadras::class.java)
+        tela.putExtra("modalidade",getString(R.string.tenis))
+        val tela3: Intent = Intent(baseContext,Agendamento::class.java)
+        tela.putExtra("modalidade",getString(R.string.tenis))
         startActivity(tela)
     }
 
     fun modalidadeVolei(v: View){
         val tela: Intent = Intent(baseContext,TelaQuadrasVolei::class.java)
+        tela.putExtra("modalidade",getString(R.string.volei))
+        val tela2: Intent = Intent(baseContext,TelaDeQuadras::class.java)
+        tela.putExtra("modalidade",getString(R.string.volei))
+        val tela3: Intent = Intent(baseContext,Agendamento::class.java)
         tela.putExtra("modalidade",getString(R.string.volei))
         startActivity(tela)
     }

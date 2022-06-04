@@ -5,14 +5,20 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.models.Jogador
+import com.example.myapplication.rest.Rest
+import com.example.myapplication.services.AuthService
 
 class Agendamento : AppCompatActivity() {
-//    private val valor: String = ""
+    private val retrofit = Rest.getInstance()
+
+    //    private val valor: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agendamento)
         val nome = intent.getStringExtra("nome")
         val quadra = intent.getStringExtra("quadra")
+        val idQuadra = intent.getStringExtra("idQuadra")
         val centro = intent.getStringExtra("centro")
         val modalidade = intent.getStringExtra("modalidade")
         val valor = intent.getStringExtra("valor")
@@ -31,6 +37,15 @@ class Agendamento : AppCompatActivity() {
     }
 
     fun agendar(v: View) {
+        val request = retrofit.create(Agendamento::class.java)
+
+        val agendamentoRequest = Agendamento(
+            idQ
+            val fkQuadra: Int,
+            val fkJogador: Int,
+            val preco: Double,
+            var hora_marcada: String
+        )
         val pagamento: Intent = Intent(baseContext, Pagamento::class.java)
 
 //        pagamento.putExtra("valor", valor)

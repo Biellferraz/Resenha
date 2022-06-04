@@ -31,6 +31,7 @@ class TelaDeQuadras : AppCompatActivity() {
         etId = findViewById(R.id.etBusca)
         recyclerViewContainer = findViewById(R.id.recyclerQuadrasContainer)
         recyclerViewContainer.layoutManager = LinearLayoutManager(baseContext)
+        findViewById<TextView>(R.id.etModalidade).text = intent.getStringExtra("modalidade")
         val imagem = "https://www.saopaulo.sp.gov.br/wp-content/uploads/2020/10/quadra-adolfo.jpg"
         trazerQuadras(imagem)
 
@@ -84,6 +85,8 @@ class TelaDeQuadras : AppCompatActivity() {
                     response.body()?.forEach { quadra ->
                         quadra.imagem = imagem
                         quadrasList.add(quadra)
+                        verQuadra(quadra.id,quadra.imagem,quadra.nome, quadra.centroEsportivo.nome,
+                            quadra.centroEsportivo.cidade,quadra.preco)
                     }
                     recyclerViewContainer.adapter = QuadraAdapter(quadrasList)
                 }
@@ -98,10 +101,17 @@ class TelaDeQuadras : AppCompatActivity() {
 
     }
 
-    fun verQuadra(view: View) {
+    fun verQuadra(id: Int, imagem: String,nomeQuadra: String, nomeCentroEsportivo: String, localizacao: String, preco: Double) {
         val telaQuadra: Intent = Intent(baseContext, TelaQuadras::class.java)
+        telaQuadra.putExtra("idQuadra", id)
+        telaQuadra.putExtra("imagem", imagem)
+        telaQuadra.putExtra("nomeQuadra", nomeQuadra)
+        telaQuadra.putExtra("nomeCentroEsportivo", nomeCentroEsportivo)
+        telaQuadra.putExtra("localizacao", localizacao)
+        telaQuadra.putExtra("preco", preco)
 
-        telaQuadra
+
+        startActivity(telaQuadra)
 
     }
 }

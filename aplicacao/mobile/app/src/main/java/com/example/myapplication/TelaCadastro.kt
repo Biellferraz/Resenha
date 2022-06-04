@@ -70,6 +70,7 @@ class TelaCadastro : AppCompatActivity() {
             et_email.text.toString(),
             et_senha.text.toString()
         )
+
         if(checkBox) {
 
             request.postCadastrar(cadastroRequest).enqueue(object : Callback<AuthResponse> {

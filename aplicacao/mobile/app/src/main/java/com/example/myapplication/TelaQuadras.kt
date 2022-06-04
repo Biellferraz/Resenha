@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.CalendarView
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
@@ -16,12 +17,26 @@ class TelaQuadras : AppCompatActivity() {
     private var mes: Int = 0
     private var ano: Int = 0
 
+    private var idQuadra: Int = 0
+    private var preco: Double = 0.0
+    private var nomeQuadra: String = ""
+
     //    private lateinit var binding = ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_quadras)
         calendario = findViewById(R.id.calendar)
         configurarCalendario()
+        idQuadra = intent.getIntExtra("id",0)
+        val imagemQuadra = intent.getStringExtra("imagem")
+        val nomeQuadra = intent.getStringExtra("nomeQuadra")
+        val nomeCentroEsportivo = intent.getStringExtra("nomeCentroEsportivo")
+        val localizacaoQuadra = intent.getStringExtra("localizacao")
+        preco = intent.getDoubleExtra("preco",0.0)
+        findViewById<TextView>(R.id.centro).text = nomeCentroEsportivo
+        findViewById<TextView>(R.id.nomeQuadra).text = nomeQuadra
+        findViewById<TextView>(R.id.endereco).text = localizacaoQuadra
+        findViewById<TextView>(R.id.preco).text = "Valor por hora R$${preco}"
     }
 
     private fun configurarCalendario() {
@@ -565,7 +580,10 @@ class TelaQuadras : AppCompatActivity() {
         agendamento.putExtra("dia", dia)
         agendamento.putExtra("mes", mes)
         agendamento.putExtra("ano", ano)
+        agendamento.putExtra("idQuadra", idQuadra)
+        agendamento.putExtra("quadra", nomeQuadra)
         agendamento.putExtra("horario", horario)
+        agendamento.putExtra("preco", preco)
 
         startActivity(agendamento)
     }

@@ -66,8 +66,8 @@ class TelaLogin : AppCompatActivity() {
                     val agendamento: Intent = Intent(baseContext, Agendamento::class.java)
 
 
-
-                    agendamento.putExtra("nome", nome)
+                    agendamento.putExtra("idJogador", )
+                    agendamento.putExtra("nome", )
 
                     startActivity(inicial)
 

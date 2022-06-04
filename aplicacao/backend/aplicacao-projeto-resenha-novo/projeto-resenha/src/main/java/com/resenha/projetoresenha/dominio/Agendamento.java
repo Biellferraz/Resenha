@@ -1,5 +1,8 @@
 package com.resenha.projetoresenha.dominio;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
@@ -27,6 +30,8 @@ public class Agendamento {
     private Double preco;
 
     @FutureOrPresent(message = "A data inserida deve ser futura")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     @NotNull
     @Column(name = "hora_Marcada")
     private LocalDateTime hora_Marcada;

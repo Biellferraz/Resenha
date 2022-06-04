@@ -22,6 +22,7 @@
                     android:layout_height="wrap_content">
 
                 <ImageView
+                        android:id="@+id/imagemQuadra"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:src="@drawable/quadra1" />
@@ -44,6 +45,7 @@
                         android:textSize="20dp" />
 
                 <TextView
+                        android:id="@+id/nomeQuadra"
                         android:layout_marginTop="8dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -52,11 +54,13 @@
                         android:textSize="18sp" />
 
                 <TextView
+                        android:id="@+id/endereco"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Rua Haddock Lobo 113, Cerqueira César, São Paulo" />
 
                 <TextView
+                        android:id="@+id/preco"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="11dp"
