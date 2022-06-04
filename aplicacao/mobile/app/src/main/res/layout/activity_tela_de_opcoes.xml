@@ -50,6 +50,7 @@
             </LinearLayout>
 
             <LinearLayout
+                    android:id="@+id/modalidadeFutebol"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -73,6 +74,7 @@
             </LinearLayout>
 
             <LinearLayout
+                    android:id="@+id/modalidadeBasquete"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -95,6 +97,7 @@
             </LinearLayout>
 
             <LinearLayout
+                    android:id="@+id/modalidadeTenis"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -117,6 +120,7 @@
             </LinearLayout>
 
             <LinearLayout
+                    android:id="@+id/modalidadeVolei"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"

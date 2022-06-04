@@ -25,19 +25,19 @@ class TelaDeOpcoes : AppCompatActivity() {
 
 
     fun modalidadeBasquete(v: View){
-        val tela: Intent = Intent(baseContext,TelaDeQuadras::class.java)
+        val tela: Intent = Intent(baseContext,QuadraBasquete::class.java)
         tela.putExtra("modalidade",getString(R.string.basquete))
         startActivity(tela)
     }
 
     fun modalidadeTenis(v: View){
-        val tela: Intent = Intent(baseContext,TelaDeQuadras::class.java)
+        val tela: Intent = Intent(baseContext,TelaQuadrasTenis::class.java)
         tela.putExtra("modalidade",getString(R.string.tenis))
         startActivity(tela)
     }
 
     fun modalidadeVolei(v: View){
-        val tela: Intent = Intent(baseContext,TelaDeQuadras::class.java)
+        val tela: Intent = Intent(baseContext,TelaQuadrasVolei::class.java)
         tela.putExtra("modalidade",getString(R.string.volei))
         startActivity(tela)
     }
