@@ -12,10 +12,20 @@ class TelaInicial : AppCompatActivity() {
     }
 
     fun verQuadra(view: View) {
-        startActivity(Intent(baseContext, TelaQuadras::class.java))
+        val telaQuadras: Intent = Intent(baseContext, TelaQuadras::class.java)
+        val idJogador = intent.getStringExtra("idJogador").toString()
+        val nomeJogador = intent.getStringExtra("nomeJogador").toString()
+        telaQuadras.putExtra("idJogador",idJogador)
+        telaQuadras.putExtra("nomeJogador",nomeJogador)
+        startActivity(telaQuadras)
     }
 
     fun filtrar(view: View) {
-        startActivity(Intent(baseContext, TelaDeOpcoes::class.java))
+        val telaOpcao: Intent = Intent(baseContext, TelaDeOpcoes::class.java)
+        val idJogador = intent.getStringExtra("idJogador").toString()
+        val nomeJogador = intent.getStringExtra("nomeJogador").toString()
+        telaOpcao.putExtra("idJogador",idJogador)
+        telaOpcao.putExtra("nomeJogador",nomeJogador)
+        startActivity(telaOpcao)
     }
 }

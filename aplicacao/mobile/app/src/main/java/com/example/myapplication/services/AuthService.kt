@@ -13,7 +13,7 @@ import retrofit2.http.Path
 interface AuthService {
 
     @POST("/jogadores/login")
-    fun postLogin(@Body authRequest: AuthRequest): Call<AuthResponse>
+    fun postLogin(@Body authRequest: AuthRequest): Call<Jogador>
 
     @POST("/jogadores/cadastrar")
     fun postCadastrar(@Body cadastroRequest: Jogador): Call<AuthResponse>

@@ -72,7 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Ver Quadra"
-                        android:onClick="verQuadra"
+                        android:onClick="irParaQuadra"
                         android:textColorHint="@color/white"
                         android:backgroundTint="@color/blue_resenha2" />
             </LinearLayout>

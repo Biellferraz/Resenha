@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -24,8 +25,6 @@ class TelaLogin : AppCompatActivity() {
     private lateinit var et_email: EditText;
     private lateinit var et_senha: EditText;
     private lateinit var tvErro: TextView;
-    private val nome: String = "";
-    private val idJogaodor: Int = 0;
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,63 +60,36 @@ class TelaLogin : AppCompatActivity() {
 
 
 
-        request.postLogin(authRequest).enqueue(object : Callback<AuthResponse> {
+        request.postLogin(authRequest).enqueue(object : Callback<Jogador> {
 
 
-            override fun onResponse(
-                call: Call<AuthResponse>, response: Response<AuthResponse>
-            ) {
+            override fun onResponse(call: Call<Jogador>, response: Response<Jogador>) {
                 if (response.isSuccessful) {
 
                     val inicial: Intent = Intent(baseContext, TelaInicial::class.java)
 
-                    request.getIdUsuariosPorLogin(
-                        et_email.text.toString(),
-                        et_senha.text.toString()
-                    ).enqueue(object : Callback<Jogador> {
-                        override fun onResponse(call: Call<Jogador>, response: Response<Jogador>) {
-                            if (response.isSuccessful) {
 
-                                val agendamento: Intent =
-                                    Intent(baseContext, Agendamento::class.java)
+                    val id = response.body()?.id
+                    val nome = response.body()?.nome +(" ") + response.body()?.sobrenome
 
-                                /*val jogadorList = mutableListOf<Jogador>()
+                    inicial.putExtra("idJogador",id)
+                    inicial.putExtra("nomeJogador",nome)
 
-                                response.body()?.forEach { jogador ->
+                    val editor = getSharedPreferences(
+                        "DadosJogador", Context.MODE_PRIVATE
+                    ).edit()
 
-                                    jogadorList.add(jogador)
+                    editor.putString("nomeJogador", nome)
+                    editor.putString("idJogador", id)
+                    editor.apply()
 
-                                }
-                                */
-
-                                agendamento.putExtra("idJogador", response.body()?.id)
-                                agendamento.putExtra("nome", response.body()?.nome)
-
-                            }
-                        }
-
-                        override fun onFailure(call: Call<Jogador>, t: Throwable) {
-                            TODO("Not yet implemented")
-                        }
-
-
-                    })
 
                     startActivity(inicial)
 
 
-//                        println(response.body()?.token)
-//                        val editor = getSharedPreferences(
-//                            "ACESSO", Context.MODE_PRIVATE
-//                        ).edit()
-//
-//                        editor.putString("jwt_token", response.body()?.token)
-//                        editor.apply()
-
-
                 } else if (response.code() == 403) {
                     Toast.makeText(
-                        baseContext, "Usuario e/ou senha estão incorretos", Toast.LENGTH_LONG
+                        baseContext, "Usuario e/ou senha estÃ£o incorretos", Toast.LENGTH_LONG
                     ).show()
                 } else {
                     Toast.makeText(
@@ -126,7 +98,7 @@ class TelaLogin : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+            override fun onFailure(call: Call<Jogador>, t: Throwable) {
                 t.printStackTrace()
                 Log.e("api", t.message.toString())
                 Log.e("api", t.cause?.message.toString())
@@ -137,9 +109,6 @@ class TelaLogin : AppCompatActivity() {
 
 
         })
-
-
-//        }
     }
 
 }

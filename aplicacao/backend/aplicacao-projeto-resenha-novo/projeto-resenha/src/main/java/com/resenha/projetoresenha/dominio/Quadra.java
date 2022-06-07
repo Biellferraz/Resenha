@@ -29,6 +29,12 @@ public class Quadra {
     @Column(name = "fk_centro_esportivo")
     private Integer fkCentroEsportivo;
 
+    @Column(name = "preco")
+    private Double preco;
+
+    @Column(name = "imagem")
+    private String imagem;
+
     // Construtores
     // Sobrescrita de Construtores para evidenciar para o Spring qual o Construtor Default
     public Quadra() {
@@ -86,6 +92,22 @@ public class Quadra {
 
     public void setDisponivel(Integer disponivel) {
         this.disponivel = disponivel;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     @Override

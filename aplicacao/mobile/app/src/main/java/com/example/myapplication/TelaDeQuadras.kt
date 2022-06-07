@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -21,55 +22,43 @@ import retrofit2.Response
 
 class TelaDeQuadras : AppCompatActivity() {
     private val retrofit = Rest.getInstance()
-    private lateinit var Container: LinearLayout
-    private lateinit var etId: EditText
     private lateinit var recyclerViewContainer: RecyclerView
+    private var imagem:String = ""
+    private var idJogador:String =""
+    private var nomeJogador:String =""
+    private var modalidade:String = ""
+    private var nomeQuadra:String = ""
+    private var idQuadra:String = ""
+    private var nomeCentroEsportivo:String =""
+    private var localizacao:String = ""
+    private var preco:Double = 0.0
+
+   // telaQuadra.putExtra("idQuadra", id)
+   // telaQuadra.putExtra("imagem", imagem)
+    //telaQuadra.putExtra("nomeQuadra", nomeQuadra)
+    //telaQuadra.putExtra("nomeCentroEsportivo", nomeCentroEsportivo)
+    //telaQuadra.putExtra("localizacao", localizacao)
+   // telaQuadra.putExtra("nomeJogador",nomeJogador)
+    //telaQuadra.putExtra("idJogador",idJogador)
+   // telaQuadra.putExtra("modalidade",modalidade)
+    //telaQuadra.putExtra("valor",preco)
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+         idJogador = intent.getStringExtra("idJogador").toString()
+         nomeJogador = intent.getStringExtra("nomeJogador").toString()
+         modalidade = intent.getStringExtra("modalidade") ?: "Futebol"
         setContentView(R.layout.activity_tela_de_quadras)
-        etId = findViewById(R.id.etBusca)
         recyclerViewContainer = findViewById(R.id.recyclerQuadrasContainer)
         recyclerViewContainer.layoutManager = LinearLayoutManager(baseContext)
         findViewById<TextView>(R.id.etModalidade).text = intent.getStringExtra("modalidade")
-        val imagem = "https://www.saopaulo.sp.gov.br/wp-content/uploads/2020/10/quadra-adolfo.jpg"
+         imagem = "https://www.saopaulo.sp.gov.br/wp-content/uploads/2020/10/quadra-adolfo.jpg"
         trazerQuadras(imagem)
 
     }
-
-
-//    fun teste(view: View) {
-//        val id = etId.text.toString().toLong()
-//        val request = retrofit.create(QuadraService::class.java)
-//        val prefs = getSharedPreferences("ACESSO", Context.MODE_PRIVATE)
-//        val token = prefs.getString("jwt_token", "")
-//
-//        request.getById(id, token).enqueue(object : Callback<Jogador> {
-//            override fun onResponse(call: Call<Jogador>, response: Response<Jogador>) {
-//                if (response.isSuccessful) {
-//                    Container.removeAllViews()
-//                    val tvMovie = TextView(baseContext)
-//                    tvMovie.text = response.body()?.nome
-//                    Container.addView(tvMovie)
-//                } else {
-//                    Toast.makeText(
-//                        baseContext,
-//                        response.message(),
-//                        Toast.LENGTH_LONG
-//                    ).show()
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<Jogador>, t: Throwable) {
-//                Toast.makeText(
-//                    baseContext,
-//                    t.message,
-//                    Toast.LENGTH_LONG
-//                ).show()
-//            }
-//
-//        })
-//    }
 
     fun trazerQuadras(imagem: String) {
 
@@ -95,7 +84,12 @@ class TelaDeQuadras : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<Quadra>>, t: Throwable) {
-                TODO("Not yet implemented")
+                t.printStackTrace()
+                Log.e("api", t.message.toString())
+                Log.e("api", t.cause?.message.toString())
+                Toast.makeText(
+                    baseContext, t.message, Toast.LENGTH_LONG
+                ).show()
             }
 
 
@@ -104,16 +98,27 @@ class TelaDeQuadras : AppCompatActivity() {
     }
 
     fun verQuadra(id: Int, imagem: String,nomeQuadra: String, nomeCentroEsportivo: String, localizacao: String, preco: Double) {
+
+        idQuadra = id.toString()
+        this.imagem = imagem
+        this.nomeQuadra = nomeQuadra
+        this.nomeCentroEsportivo =nomeCentroEsportivo
+        this.localizacao = localizacao
+        this.preco = preco
+
+    }
+
+    fun irParaQuadra(v:View){
         val telaQuadra: Intent = Intent(baseContext, TelaQuadras::class.java)
-        telaQuadra.putExtra("idQuadra", id)
+        telaQuadra.putExtra("idQuadra", idQuadra)
         telaQuadra.putExtra("imagem", imagem)
         telaQuadra.putExtra("nomeQuadra", nomeQuadra)
         telaQuadra.putExtra("nomeCentroEsportivo", nomeCentroEsportivo)
         telaQuadra.putExtra("localizacao", localizacao)
-        telaQuadra.putExtra("preco", preco)
-
-
+        telaQuadra.putExtra("nomeJogador",nomeJogador)
+        telaQuadra.putExtra("idJogador",idJogador)
+        telaQuadra.putExtra("modalidade",modalidade)
+        telaQuadra.putExtra("valor",preco)
         startActivity(telaQuadra)
-
     }
 }

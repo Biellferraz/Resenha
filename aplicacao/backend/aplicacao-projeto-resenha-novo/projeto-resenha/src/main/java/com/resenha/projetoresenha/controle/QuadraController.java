@@ -52,8 +52,8 @@ public class QuadraController {
                     QuadraCentroEsportivoResponse qcr = new QuadraCentroEsportivoResponse();
                     qcr.setId(quadra.getId());
                     qcr.setNome("Quadra " + quadra.getNumero_quadra().toString());
-                    qcr.setPreco(0.0);
-                    qcr.setImagem("");
+                    qcr.setPreco(quadra.getPreco());
+                    qcr.setImagem(quadra.getImagem());
                     qcr.setCentroEsportivo(centroEsportivo);
                     quadraCentroEsportivoResponses.add(qcr);
                 }

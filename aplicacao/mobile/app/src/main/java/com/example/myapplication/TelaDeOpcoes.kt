@@ -6,6 +6,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
 class TelaDeOpcoes : AppCompatActivity() {
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_de_opcoes)
@@ -19,10 +22,10 @@ class TelaDeOpcoes : AppCompatActivity() {
 
     fun modalidadeFutebol(v: View) {
         val tela: Intent = Intent(baseContext,TelaDeQuadras::class.java)
-        tela.putExtra("modalidade",getString(R.string.futebol))
-        val tela2: Intent = Intent(baseContext,TelaDeQuadras::class.java)
-        tela.putExtra("modalidade",getString(R.string.futebol))
-        val tela3: Intent = Intent(baseContext,Agendamento::class.java)
+        val idJogador = intent.getStringExtra("idJogador").toString()
+        val nomeJogador = intent.getStringExtra("nomeJogador").toString()
+        tela.putExtra("idJogador",idJogador)
+        tela.putExtra("nomeJogador",nomeJogador)
         tela.putExtra("modalidade",getString(R.string.futebol))
         startActivity(tela)
     }
