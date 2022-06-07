@@ -7,11 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 
 class TelaDeOpcoes : AppCompatActivity() {
 
-
+    var idJogador: String = ""
+    var nomeJogador: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_de_opcoes)
+         idJogador = intent.getStringExtra("idJogador").toString()
+         nomeJogador = intent.getStringExtra("nomeJogador").toString()
     }
 
     fun tela(v: View) {
@@ -19,11 +22,8 @@ class TelaDeOpcoes : AppCompatActivity() {
         startActivity(tela)
     }
 
-
     fun modalidadeFutebol(v: View) {
         val tela: Intent = Intent(baseContext,TelaDeQuadras::class.java)
-        val idJogador = intent.getStringExtra("idJogador").toString()
-        val nomeJogador = intent.getStringExtra("nomeJogador").toString()
         tela.putExtra("idJogador",idJogador)
         tela.putExtra("nomeJogador",nomeJogador)
         tela.putExtra("modalidade",getString(R.string.futebol))
@@ -32,7 +32,9 @@ class TelaDeOpcoes : AppCompatActivity() {
 
 
     fun modalidadeBasquete(v: View){
-        val tela: Intent = Intent(baseContext,QuadraBasquete::class.java)
+        val tela: Intent = Intent(baseContext,TelaDeQuadras::class.java)
+        tela.putExtra("idJogador",idJogador)
+        tela.putExtra("nomeJogador",nomeJogador)
         tela.putExtra("modalidade",getString(R.string.basquete))
         val tela2: Intent = Intent(baseContext,TelaDeQuadras::class.java)
         tela.putExtra("modalidade",getString(R.string.basquete))
@@ -42,7 +44,9 @@ class TelaDeOpcoes : AppCompatActivity() {
     }
 
     fun modalidadeTenis(v: View){
-        val tela: Intent = Intent(baseContext,TelaQuadrasTenis::class.java)
+        val tela: Intent = Intent(baseContext,TelaDeQuadras::class.java)
+        tela.putExtra("idJogador",idJogador)
+        tela.putExtra("nomeJogador",nomeJogador)
         tela.putExtra("modalidade",getString(R.string.tenis))
         val tela2: Intent = Intent(baseContext,TelaDeQuadras::class.java)
         tela.putExtra("modalidade",getString(R.string.tenis))
@@ -52,7 +56,9 @@ class TelaDeOpcoes : AppCompatActivity() {
     }
 
     fun modalidadeVolei(v: View){
-        val tela: Intent = Intent(baseContext,TelaQuadrasVolei::class.java)
+        val tela: Intent = Intent(baseContext,TelaDeQuadras::class.java)
+        tela.putExtra("idJogador",idJogador)
+        tela.putExtra("nomeJogador",nomeJogador)
         tela.putExtra("modalidade",getString(R.string.volei))
         val tela2: Intent = Intent(baseContext,TelaDeQuadras::class.java)
         tela.putExtra("modalidade",getString(R.string.volei))

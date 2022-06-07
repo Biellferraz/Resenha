@@ -2,12 +2,18 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.models.Agendar
+import com.example.myapplication.models.AuthResponse
 import com.example.myapplication.rest.Rest
 import com.example.myapplication.services.AgendamentoService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Agendamento : AppCompatActivity() {
     private val retrofit = Rest.getInstance()
@@ -31,7 +37,7 @@ class Agendamento : AppCompatActivity() {
         val mes = intent.getIntExtra("mes", 0)
         val ano = intent.getIntExtra("ano", 0)
         val horario = intent.getStringExtra("horario").toString()
-        hora_marcada = "${dia}/${mes}/${ano}  ${horario}"
+        hora_marcada = "${dia}/${mes+1}/${ano}  ${horario}"
         valor = intent.getDoubleExtra("valor",0.0).toString()
         nomeJogador = intent.getStringExtra("nomeJogador").toString()
         quadraNome = intent.getStringExtra("nomeQuadra").toString()
@@ -56,10 +62,30 @@ class Agendamento : AppCompatActivity() {
             valor,
             hora_marcada
         )
+        request.postAgendamento(agendamentoRequest).enqueue(object : Callback<Agendar> {
 
-        val pagamento: Intent = Intent(baseContext, Pagamento::class.java)
+            override fun onResponse(
+                call: Call<Agendar>,
+                response: Response<Agendar>
+            ) {
+                if (response.code() == 201) {
+                    val pagamento: Intent = Intent(baseContext, Pagamento::class.java)
+                    startActivity(pagamento)
+                } else {
+                    Toast.makeText(
+                        baseContext, "Erro ao agendar, data invalida", Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
 
-
-        startActivity(pagamento)
+            override fun onFailure(call: Call<Agendar>, t: Throwable) {
+                t.printStackTrace()
+                Log.e("api", t.message.toString())
+                Log.e("api", t.cause?.message.toString())
+                Toast.makeText(
+                    baseContext, t.message, Toast.LENGTH_LONG
+                ).show()
+            }
+        })
     }
-}
+    }
