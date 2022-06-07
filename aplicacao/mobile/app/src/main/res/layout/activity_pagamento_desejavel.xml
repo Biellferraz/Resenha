@@ -152,36 +152,6 @@
         </LinearLayout>
     </ScrollView>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="bottom"
-                >
-
-
-            <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ic_home"
-                    android:onClick="home"
-                    android:layout_marginRight="130dp" />
-
-            <ImageView
-                    android:layout_width="50dp"
-                    android:onClick="agendamento"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ic_agendamento"
-                    android:layout_marginRight="125dp" />
-
-            <ImageView
-                    android:onClick="pagamento"
-                    android:layout_width="50dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ic_pagamento" />
-
-
-        </LinearLayout>
 </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
