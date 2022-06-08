@@ -5,7 +5,6 @@ public class AgendamentoRequisicao {
     Integer idJogador;
     Double preco;
     String data;
-    String hora;
 
     public Integer getIdQuadra() {
         return idQuadra;
@@ -23,7 +22,4 @@ public class AgendamentoRequisicao {
         return data;
     }
 
-    public String getHora() {
-        return hora;
-    }
 }

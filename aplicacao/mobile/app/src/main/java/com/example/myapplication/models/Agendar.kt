@@ -1,8 +1,8 @@
 package com.example.myapplication.models
 
 data class Agendar(
-    val fkQuadra: String,
-    val fkJogador: String,
+    val idQuadra: String,
+    val idJogador: String,
     val preco: String,
-    var hora_marcada: String
+    var data: String
 )

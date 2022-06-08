@@ -8,7 +8,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.models.Agendar
-import com.example.myapplication.models.AuthResponse
 import com.example.myapplication.rest.Rest
 import com.example.myapplication.services.AgendamentoService
 import retrofit2.Call
@@ -24,9 +23,9 @@ class Agendamento : AppCompatActivity() {
     private var valor: String = ""
     private var hora_marcada: String = ""
     private var idJogador: String = ""
-    private var nomeJogador:String = ""
+    private var nomeJogador: String = ""
     private var modalidade: String = ""
-    private var centroSportivo:String = ""
+    private var centroSportivo: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +36,8 @@ class Agendamento : AppCompatActivity() {
         val mes = intent.getIntExtra("mes", 0)
         val ano = intent.getIntExtra("ano", 0)
         val horario = intent.getStringExtra("horario").toString()
-        hora_marcada = "${dia}/${mes+1}/${ano}  ${horario}"
-        valor = intent.getDoubleExtra("valor",0.0).toString()
+        hora_marcada = "${dia}/${mes + 1}/${ano}  ${horario}"
+        valor = intent.getDoubleExtra("valor", 0.0).toString()
         nomeJogador = intent.getStringExtra("nomeJogador").toString()
         quadraNome = intent.getStringExtra("nomeQuadra").toString()
         centroSportivo = intent.getStringExtra("nomeCentroEsportivo").toString()
@@ -46,7 +45,7 @@ class Agendamento : AppCompatActivity() {
         findViewById<TextView>(R.id.nomeJogador).setText(nomeJogador)
         findViewById<TextView>(R.id.quadra).setText(quadraNome)
         findViewById<TextView>(R.id.centro).setText(centroSportivo)
-        findViewById<TextView>(R.id.modalidade).setText(modalidade )
+        findViewById<TextView>(R.id.modalidade).setText(modalidade)
         findViewById<TextView>(R.id.valor).setText(valor)
         findViewById<TextView>(R.id.horaioMarcado).setText(hora_marcada)
 
@@ -88,4 +87,4 @@ class Agendamento : AppCompatActivity() {
             }
         })
     }
-    }
+}

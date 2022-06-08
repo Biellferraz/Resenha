@@ -87,15 +87,13 @@ public class AgendamentoController {
     @PostMapping
     public ResponseEntity postAgendamento(@RequestBody @Valid AgendamentoRequisicao novoAgendamento) {
 
-        LocalDate data = LocalDate.parse(novoAgendamento.getData());
-        LocalTime hora = LocalTime.parse(novoAgendamento.getHora());
-        LocalDateTime dtHrAtendimento = LocalDateTime.of(data.getYear(), data.getMonth().getValue(), data.getDayOfMonth(), hora.getHour(), 0);
+        LocalDateTime data = LocalDateTime.parse(novoAgendamento.getData()) ;
 
         Agendamento agendamento = new Agendamento(
                 novoAgendamento.getIdQuadra(),
                 novoAgendamento.getIdJogador(),
                 novoAgendamento.getPreco(),
-                dtHrAtendimento
+                data
         );
 
         System.out.println(novoAgendamento);
