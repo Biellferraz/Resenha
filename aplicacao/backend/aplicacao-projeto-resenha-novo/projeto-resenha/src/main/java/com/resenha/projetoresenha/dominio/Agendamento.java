@@ -30,8 +30,8 @@ public class Agendamento {
     private Double preco;
 
     @FutureOrPresent(message = "A data inserida deve ser futura")
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @JsonFormat(pattern="dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     @NotNull
     @Column(name = "hora_Marcada")
     private LocalDateTime hora_Marcada;

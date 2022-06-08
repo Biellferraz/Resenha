@@ -7,12 +7,14 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.load.model.ByteArrayLoader
 import com.example.myapplication.models.Agendar
 import com.example.myapplication.rest.Rest
 import com.example.myapplication.services.AgendamentoService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDateTime
 
 class Agendamento : AppCompatActivity() {
     private val retrofit = Rest.getInstance()
@@ -32,11 +34,11 @@ class Agendamento : AppCompatActivity() {
         setContentView(R.layout.activity_agendamento)
         idQuadra = intent.getStringExtra("idQuadra").toString()
         idJogador = intent.getStringExtra("idJogador").toString()
-        val dia = intent.getIntExtra("dia", 0)
-        val mes = intent.getIntExtra("mes", 0)
-        val ano = intent.getIntExtra("ano", 0)
+        val dia = intent.getStringExtra("dia")
+        val mes = intent.getStringExtra("mes")
+        val ano = intent.getStringExtra("ano")
         val horario = intent.getStringExtra("horario").toString()
-        hora_marcada = "${dia}/${mes + 1}/${ano}  ${horario}"
+        hora_marcada = "${dia}/${mes}/${ano} ${horario}"
         valor = intent.getDoubleExtra("valor", 0.0).toString()
         nomeJogador = intent.getStringExtra("nomeJogador").toString()
         quadraNome = intent.getStringExtra("nomeQuadra").toString()

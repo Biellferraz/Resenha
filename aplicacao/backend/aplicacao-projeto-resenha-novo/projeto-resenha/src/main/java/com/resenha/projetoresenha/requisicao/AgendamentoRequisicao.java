@@ -1,10 +1,12 @@
 package com.resenha.projetoresenha.requisicao;
 
+import java.time.LocalDateTime;
+
 public class AgendamentoRequisicao {
     Integer idQuadra;
     Integer idJogador;
     Double preco;
-    String data;
+    LocalDateTime data;
 
     public Integer getIdQuadra() {
         return idQuadra;
@@ -18,8 +20,7 @@ public class AgendamentoRequisicao {
         return preco;
     }
 
-    public String getData() {
+    public LocalDateTime getData() {
         return data;
     }
-
 }

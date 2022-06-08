@@ -87,13 +87,13 @@ public class AgendamentoController {
     @PostMapping
     public ResponseEntity postAgendamento(@RequestBody @Valid AgendamentoRequisicao novoAgendamento) {
 
-        LocalDateTime data = LocalDateTime.parse(novoAgendamento.getData()) ;
+
 
         Agendamento agendamento = new Agendamento(
                 novoAgendamento.getIdQuadra(),
                 novoAgendamento.getIdJogador(),
                 novoAgendamento.getPreco(),
-                data
+                novoAgendamento.getData()
         );
 
         System.out.println(novoAgendamento);
