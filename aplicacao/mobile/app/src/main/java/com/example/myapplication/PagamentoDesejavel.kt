@@ -22,8 +22,7 @@ class PagamentoDesejavel : AppCompatActivity() {
         startActivity(pagamento)
     }
 
-    fun agendamento(v: View) {
-        val agendamento: Intent = Intent(baseContext, Agendamento::class.java)
-        startActivity(agendamento)
+    fun Continuar(v: View) {
+       //encaminhar para um tela dizendo pagamento efetuado apenas para apresentação
     }
 }

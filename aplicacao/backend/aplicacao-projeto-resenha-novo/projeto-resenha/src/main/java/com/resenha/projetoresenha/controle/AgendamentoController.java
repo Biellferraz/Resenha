@@ -104,7 +104,7 @@ public class AgendamentoController {
         System.out.println(novoAgendamento);
 
         repository.save(agendamento);
-        return ResponseEntity.status(201).build();
+        return ResponseEntity.status(201).body(novoAgendamento);
     }
 
     @GetMapping("/{id}")
