@@ -28,17 +28,19 @@ class Agendamento : AppCompatActivity() {
     private var nomeJogador: String = ""
     private var modalidade: String = ""
     private var centroSportivo: String = ""
+    private var horaMarcadaRequest: String= ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agendamento)
         idQuadra = intent.getStringExtra("idQuadra").toString()
         idJogador = intent.getStringExtra("idJogador").toString()
-        val dia = intent.getStringExtra("dia")
-        val mes = intent.getStringExtra("mes")
-        val ano = intent.getStringExtra("ano")
+        val dia = intent.getIntExtra("dia",0)
+        val mes = intent.getIntExtra("mes",0)
+        val ano = intent.getIntExtra("ano",0)
         val horario = intent.getStringExtra("horario").toString()
-        hora_marcada = "${dia}/${mes}/${ano} ${horario}"
+        hora_marcada = "${dia}/0${mes+1}/${ano} as ${horario}"
+        horaMarcadaRequest = "${ano}-0${mes+1}-${dia}T${horario}:00"
         valor = intent.getDoubleExtra("valor", 0.0).toString()
         nomeJogador = intent.getStringExtra("nomeJogador").toString()
         quadraNome = intent.getStringExtra("nomeQuadra").toString()
@@ -61,7 +63,7 @@ class Agendamento : AppCompatActivity() {
             idQuadra,
             idJogador,
             valor,
-            hora_marcada
+            horaMarcadaRequest
         )
         request.postAgendamento(agendamentoRequest).enqueue(object : Callback<Agendar> {
 

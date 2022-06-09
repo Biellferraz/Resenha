@@ -8,7 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface AgendamentoService {
-    @POST("/agendamentos")
+    @POST("/agendamentos/agendar")
     fun postAgendamento(@Body authRequest: Agendar): Call<Agendar>
 
 

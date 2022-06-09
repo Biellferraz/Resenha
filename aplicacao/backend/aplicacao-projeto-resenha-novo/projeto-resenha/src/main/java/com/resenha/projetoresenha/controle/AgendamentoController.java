@@ -84,8 +84,12 @@ public class AgendamentoController {
         return ResponseEntity.status(200).body(agendamentoFilaObj.toList());
     }
 
-    @PostMapping
+    @PostMapping("/agendar")
     public ResponseEntity postAgendamento(@RequestBody @Valid AgendamentoRequisicao novoAgendamento) {
+
+
+        LocalDateTime data = LocalDateTime.parse(novoAgendamento.getData());
+        LocalDateTime dtHrAtendimento = LocalDateTime.of(data.getYear(), data.getMonth().getValue(), data.getDayOfMonth(), data.getHour(), 0);
 
 
 
@@ -93,7 +97,8 @@ public class AgendamentoController {
                 novoAgendamento.getIdQuadra(),
                 novoAgendamento.getIdJogador(),
                 novoAgendamento.getPreco(),
-                novoAgendamento.getData()
+                dtHrAtendimento
+
         );
 
         System.out.println(novoAgendamento);

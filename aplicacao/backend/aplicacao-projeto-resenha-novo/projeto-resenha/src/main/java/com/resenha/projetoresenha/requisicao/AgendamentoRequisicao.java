@@ -6,7 +6,7 @@ public class AgendamentoRequisicao {
     Integer idQuadra;
     Integer idJogador;
     Double preco;
-    LocalDateTime data;
+    String data;
 
     public Integer getIdQuadra() {
         return idQuadra;
@@ -20,7 +20,8 @@ public class AgendamentoRequisicao {
         return preco;
     }
 
-    public LocalDateTime getData() {
+    public String getData() {
         return data;
     }
+
 }

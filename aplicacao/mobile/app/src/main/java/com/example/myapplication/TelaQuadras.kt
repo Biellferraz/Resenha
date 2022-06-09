@@ -18,9 +18,9 @@ import java.util.*
 class TelaQuadras : AppCompatActivity() {
     private lateinit var calendario: CalendarView
 
-    private var dia: String =""
-    private var mes: String =""
-    private var ano: String =""
+    private var dia: Int = 0
+    private var mes: Int = 0
+    private var ano: Int = 0
 
 
 
@@ -44,9 +44,9 @@ class TelaQuadras : AppCompatActivity() {
     private fun configurarCalendario() {
         val calendar = Calendar.getInstance()
         calendario.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            dia = dayOfMonth.toString()
-            mes = month.toString()
-            ano = year.toString()
+            dia = dayOfMonth
+            mes = month
+            ano = year
             calendar.set(year, month, dayOfMonth)
         }
     }
